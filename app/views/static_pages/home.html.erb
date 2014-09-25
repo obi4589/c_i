@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Welcome to Cherry Ivy</title>
+<%= stylesheet_link_tag    "home.css", media: "all", "data-turbolinks-track" => true %>
+  	<%= csrf_meta_tags %>
+ 	<%= render 'layouts/shim' %>
+</head>
+
+<body>
+
+<!-- navigation bar section -->
+<div class="menu1">
+	<div class="page_width1">
+		<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), root_path %>
+		<%= link_to image_tag("Nav-Name.png", alt: "Home", id: "nav_name"), root_path %>
+		<div id="admin">
+			<%= link_to "Sign Up", signup1_path, class: "admin_button_a" %>
+			<%= link_to "Log In", login_path, class: "admin_button_a" %>
+		</div>				
+	</div>
+</div>
+<!-- end of navigation bar -->
+
+
+
+
+
+
+<div class="menu2"> 
+
+
+
+<!-- beginning of EVENTS section -->
+	<div id="page_width2">
+		
+		<div class="events_update">
+			<ul>
+				<li>
+					<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
+					<%= link_to image_tag("eventpic1.gif", alt: "pic", class: "event_pic"), '#' %>
+					<form>
+						<input type="submit" class="go_button" value="Go">
+					</form>
+					<div id="events_text">
+						<a href="#"><b>2013 Winter Coat Drive</b></a><br />
+						<a href="#"><b id="event_organization">New York Cares</b></a> <br /> 
+						<a href="#"><b id="event_date">Thursday | May 16th @ 6:30 PM</b></a> <br /> 
+						<a href="#"><b id="event_city">New York, NY</b></a> <br />  
+					</div>
+				</li>
+				<li>
+					<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
+					<%= link_to image_tag("eventpic2.gif", alt: "pic", class: "event_pic"), '#' %>
+					<form>
+						<input type="submit" class="go_button" value="Go">
+					</form>
+					<div id="events_text">
+						<a href="#"><b>Tree Planting at Fort Greene Park</b></a> <br />
+						<a href="#"><b id="event_organization">New York Restoration Project</b></a><br />
+						<a href="#"><b id="event_date">Saturday | October 18th @ 12:30PM</b></a> <br />
+						<a href="#"><b id="event_city">Brooklyn, NY</b></a> <br /> 
+					</div>
+				</li>
+				<li>
+					<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
+					<%= link_to image_tag("eventpic3.gif", alt: "pic", class: "event_pic"), '#' %>
+					<form>
+						<input type="submit" class="go_button" value="Go">
+					</form>
+					<div id="events_text">
+						<a href="#"><b>Serve Meals at Our Community Kitchen</b></a> <br />
+						<a href="#"><b id="event_organization">Food Bank of New York City</b></a> <br />
+						<a href="#"><b id="event_date">Monday | December 23rd @ 6:30PM</b></a> <br />
+						<a href="#"><b id="event_city">Harlem, NY</b></a> <br /> 
+					</div>
+				</li>
+				<li>
+					<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
+					<%= link_to image_tag("eventpic4.gif", alt: "pic", class: "event_pic"), '#' %>
+					<form>
+						<input type="submit" class="go_button" value="Go">
+					</form>
+					<div id="events_text">
+						<a href="#"><b>AIDS Talk with Alicia Keys</b></a> <br />
+						<a href="#"><b id="event_organization">Keep A Child Alive</b></a> <br /> 
+						<a href="#"><b id="event_date">Wednesday | February 5th @ 7:00 PM</b></a> <br /> 
+						<a href="#"><b id="event_city">New York, NY</b></a> <br />   
+					</div>
+				</li>
+				<li>
+					<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
+					<%= link_to image_tag("eventpic5.gif", alt: "pic", class: "event_pic"), '#' %>
+					<form>
+						<input type="submit" class="go_button" value="Go">
+					</form>
+					<div id="events_text">
+						<a href="#"><b>Charity Dog Walk w/ The NY Rangers</b></a> <br />
+						<a href="#"><b id="event_organization">The Humane Society</b></a> <br />
+						<a href="#"><b id="event_date">Thursday | March 13th @ 12:30PM</b></a> <br />
+						<a href="#"><b id="event_city">New York, NY</b></a> <br /> 
+					</div>
+				</li>
+				<li>
+					<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
+					<%= link_to image_tag("eventpic6.gif", alt: "pic", class: "event_pic"), '#' %>
+					<form>
+						<input type="submit" class="go_button" value="Go">
+					</form>
+					<div id="events_text">
+						<a href="#"><b>Kick Off to Summer Benefit</b></a> <br />
+						<a href="#"><b id="event_organization">New York Police & Fire Widow's & Children's Benefit Fund</b></a> <br />
+						<a href="#"><b id="event_date">Wednesday | July 23rd @ 6:30PM</b></a> <br />
+						<a href="#"><b id="event_city">New York, NY</b></a> <br /> 
+					</div>
+				</li>
+				<li>
+					<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
+					<%= link_to image_tag("eventpic1.gif", alt: "pic", class: "event_pic"), '#' %>
+					<form>
+						<input type="submit" class="go_button" value="Go">
+					</form>
+					<div id="events_text">
+						<a href="#"><b>2013 Winter Coat Drive</b></a><br />
+						<a href="#"><b id="event_organization">New York Cares</b></a> <br /> 
+						<a href="#"><b id="event_date">Thursday | May 16th @ 6:30 PM</b></a> <br /> 
+						<a href="#"><b id="event_city">New York, NY</b></a> <br />  
+					</div>
+				</li>
+				<li>
+					<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
+					<%= link_to image_tag("eventpic2.gif", alt: "pic", class: "event_pic"), '#' %>
+					<form>
+						<input type="submit" class="go_button" value="Go">
+					</form>
+					<div id="events_text">
+						<a href="#"><b>Tree Planting at Fort Greene Park</b></a> <br />
+						<a href="#"><b id="event_organization">New York Restoration Project</b></a><br />
+						<a href="#"><b id="event_date">Saturday | October 18th @ 12:30PM</b></a> <br />
+						<a href="#"><b id="event_city">Brooklyn, NY</b></a> <br /> 
+					</div>
+				</li>
+				<li>
+					<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
+					<%= link_to image_tag("eventpic3.gif", alt: "pic", class: "event_pic"), '#' %>
+					<form>
+						<input type="submit" class="go_button" value="Go">
+					</form>
+					<div id="events_text">
+						<a href="#"><b>Serve Meals at Our Community Kitchen</b></a> <br />
+						<a href="#"><b id="event_organization">Food Bank of New York City</b></a> <br />
+						<a href="#"><b id="event_date">Monday | December 23rd @ 6:30PM</b></a> <br />
+						<a href="#"><b id="event_city">Harlem, NY</b></a> <br /> 
+					</div>
+				</li>
+				<li>
+					<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
+					<%= link_to image_tag("eventpic4.gif", alt: "pic", class: "event_pic"), '#' %>
+					<form>
+						<input type="submit" class="go_button" value="Go">
+					</form>
+					<div id="events_text">
+						<a href="#"><b>AIDS Talk with Alicia Keys</b></a> <br />
+						<a href="#"><b id="event_organization">Keep A Child Alive</b></a> <br /> 
+						<a href="#"><b id="event_date">Wednesday | February 5th @ 7:00 PM</b></a> <br /> 
+						<a href="#"><b id="event_city">New York, NY</b></a> <br />   
+					</div>
+				</li>
+				<li>
+					<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
+					<%= link_to image_tag("eventpic5.gif", alt: "pic", class: "event_pic"), '#' %>
+					<form>
+						<input type="submit" class="go_button" value="Go">
+					</form>
+					<div id="events_text">
+						<a href="#"><b>Charity Dog Walk w/ The NY Rangers</b></a> <br />
+						<a href="#"><b id="event_organization">The Humane Society</b></a> <br />
+						<a href="#"><b id="event_date">Thursday | March 13th @ 12:30PM</b></a> <br />
+						<a href="#"><b id="event_city">New York, NY</b></a> <br /> 
+					</div>
+				</li>
+				<li>
+					<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
+					<%= link_to image_tag("eventpic6.gif", alt: "pic", class: "event_pic"), '#' %>
+					<form>
+						<input type="submit" class="go_button" value="Go">
+					</form>
+					<div id="events_text">
+						<a href="#"><b>Kick Off to Summer Benefit</b></a> <br />
+						<a href="#"><b id="event_organization">New York Police & Fire Widow's & Children's Benefit Fund</b></a> <br />
+						<a href="#"><b id="event_date">Wednesday | July 23rd @ 6:30PM</b></a> <br />
+						<a href="#"><b id="event_city">New York, NY</b></a> <br /> 
+					</div>
+				</li>
+			</ul>	
+           	<br />
+		</div>
+	</div>
+
+		
+<!-- end of EVENTS section -->
+
+
+
+<!-- beginning of FOOTER section -->
+
+	<div id="page_width3">
+		<div class="footer">
+			<ul>
+            	<li><%= link_to "About", about_path %></li>
+            	<li><%= link_to "Terms", terms_path %></li>
+            	<li><%= link_to "Privacy", privacy_path %></li>
+            	<li><%= link_to "Help", help_path %></li>
+            </ul>
+		</div>				
+	</div>
+
+<!-- end of FOOTER section -->
+
+</div>
+
+
+</body>
+</html>

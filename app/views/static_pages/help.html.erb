@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Cherry Ivy Help Center</title>
+	<%= stylesheet_link_tag    "help.css", media: "all", "data-turbolinks-track" => true %>
+  	<%= csrf_meta_tags %>
+ 	<%= render 'layouts/shim' %>
+</head>
+
+<body>
+
+<!-- navigation bar section -->
+<div class="menu1">
+	<div class="page_width1">
+		<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), root_path %>
+		<%= link_to image_tag("Nav-Name.png", alt: "Home", id: "nav_name"), root_path %>
+		<div id="admin">
+			<%= link_to "Sign Up", signup1_path, class: "admin_button_a" %>
+			<%= link_to "Log In", login_path, class: "admin_button_a" %>
+		</div>				
+	</div>
+</div>
+<!-- end of navigation bar -->
+
+
+
+
+
+
+<div class="menu2"> 
+
+
+
+<!-- beginning of PAGE CONTENT section -->
+	<div id="page_width2">
+		<div class="page">
+			<div id="title">
+				Help Center
+			</div>
+            <div id="body">
+
+<b>
+Philanthropists
+</b>
+
+<p>        
+All individuals are philanthropists! Whether rich or poor, famous or unknown, we all can contribute to making the world a better place! 
+</p>
+<br	 />
+
+<p>
+<b>
+Charities
+</b>
+</p>
+
+<p>        
+Charities are all 501(c)(3) organizations. 
+</p>
+<p>
+Section 501(c)(3) is the section of the Tax Code that describes religious, scientific, literary, educational and other charitable organizations exempt from federal income tax. Private foundations and public charities are the two types of 501(c)(3) organizations. All 501(c)(3) organizations (charities) are deemed to be a private foundations unless they satisfy the IRS that they meet one of the definitions of a public charity under Section 509(a).
+</p>
+<p>
+Private foundations receive almost all of their income (other than investment income) from a very narrow group of persons, such as a single individual, family or corporation. Public charities receive broad public support from gifts or fees.
+</p>
+<br />
+
+<p>
+<b>
+Exclusion Policy
+</b>
+</p>
+
+<p>        
+HATE GROUPS WILL NOT BE GRANTED ACCESS TO CHERRY IVY. 
+</p>
+<p>
+All hate groups have beliefs or practices that attack or malign an entire class of people, typically for their immutable characteristics. The Southern Poverty Law Center counted 939 active hate groups in the United States in 2013. Only organizations and their chapters known to be active during 2013 are included in <%= link_to "SPLC's list", 'http://www.splcenter.org/get-informed/hate-map', class: "splc" %>.
+</p>
+<p>
+Hate group activities can include criminal acts, marches, rallies, speeches, meetings, leafleting or publishing. Websites appearing to be merely the work of a single individual, rather than the publication of a group, are not included in SPLC’s list. Being listed by SPLC does not imply a group advocates or engages in violence or other criminal activity.
+</p>
+
+See <%= link_to "SPLC's Hate Map", 'http://www.splcenter.org/get-informed/hate-map', class: "splc" %> for more information.
+<br  />
+<br  />
+
+			</div>
+		</div>
+	</div>
+
+		
+<!-- end of PAGE CONTENT section -->
+
+
+
+<!-- beginning of FOOTER section -->
+
+	<div id="page_width3">
+		<div class="footer">
+			<ul>
+            	<li><%= link_to "About", about_path %></li>
+            	<li><%= link_to "Terms", terms_path %></li>
+            	<li><%= link_to "Privacy", privacy_path %></li>
+            	<li><%= link_to "Help", help_path %></li>
+            </ul>
+		</div>				
+	</div>
+
+<!-- end of FOOTER section -->
+
+</div>
+
+
+</body>
+</html>

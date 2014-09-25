@@ -1,0 +1,306 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background-color: #ecf0f1;
+	width: 100%;
+	overflow-x:hidden;
+	scrollbar-face-color: #a2a2a2;
+	scrollbar-highlight-color: #a2a2a2;
+	scrollbar-3dlight-color: #a2a2a2;
+	scrollbar-darkshadow-color:  #a2a2a2;
+	scrollbar-shadow-color:  #a2a2a2;
+	scrollbar-arrow-color: #8a8a8a;
+	scrollbar-track-color:  #a2a2a2;
+}
+
+
+
+
+/**NAVIGATION BAR **/
+
+.menu1 {
+	background-color: #fff;
+	height: 45px;
+	width: 100%;
+	margin-top: -8px;
+	z-index: 1;	
+	margin-left: -8px;
+	position: fixed;
+	
+}
+
+.page_width1 {
+	width: 960px;
+	height: auto;
+	margin: auto;
+}
+
+.page_width1 a {
+	text-decoration: none;
+}
+
+
+#nav_logo {
+	margin-top: 4px;
+	margin-left: -1px;
+	float: left;
+}
+
+
+#nav_name {
+	display: inline;
+	float: left ;
+	margin-top: 8px;
+	margin-left: 10px;
+}
+
+
+#admin {
+	
+	display: inline;
+	float: right;	
+	margin-top: 5px;
+}
+
+.admin_button_a {
+	width: 88px;
+	border: 1px solid #ecf0f1;
+	background-color: #ecf0f1;
+	padding: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #2c3e50;
+	font-size: 20px;
+	cursor: pointer;
+	display: inline-block;
+	text-align: center
+}
+
+.admin_button_a:active {
+	border: 1px solid #fff;
+	background-color: #fff;
+}
+
+
+
+
+/** END OF NAVIGATION BAR **/
+
+
+
+
+
+
+
+.menu2 {
+	width: 100%;
+	margin-left: -8px;
+	position: absolute;
+}
+
+
+
+
+/** beginning of PAGE CONTENT section **/
+
+#page_width2 {
+	width: 960px;
+	margin: auto;
+	margin-top: 77px;
+	height: auto;
+	margin-bottom: 40px;
+	height-min: 450px;
+	background-color: #fff;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+
+
+.page {
+	
+	
+}
+
+
+#title {
+	font-family: Arial, Helvetica, sans-serif;
+	height: auto;
+	margin: auto;
+	text-align: left;
+	font-size: 50px;
+	margin-bottom: 50px;
+	color: #2c3e50;
+	text-align: left;
+	padding: 20px;
+}
+
+#body1 {
+	font-family: Arial, Helvetica, sans-serif;
+	height: auto;
+	margin: auto;
+	text-align: left;
+	font-size: 20px;
+	color: #2c3e50;
+	text-align: left;
+	padding: 20px;
+}
+
+
+#body1 ul {
+	list-style-type: none;
+	margin: auto;
+	margin-left: -45px;
+	font-family: Arial, Helvetica, sans-serif;
+	height: auto;
+	color: #2c3e50;
+}
+
+
+#body1 ul li {
+	padding: 5px;
+	margin-right: 50px;
+	display: inline-block;
+	text-align: left;
+}
+
+#body1 ul li a {
+	text-decoration: none;
+	color: #2c3e50; 
+}
+
+#body1 ul li a:hover {
+	text-decoration: underline;
+}
+
+#underline {
+	text-decoration: underline;
+}
+
+
+
+#body2 {
+	font-family: Arial, Helvetica, sans-serif;
+	height: auto;
+	margin: auto;
+	text-align: left;
+	font-size: 20px;
+	color: #2c3e50;
+	text-align: left;
+	padding: 20px;
+}
+
+
+
+.form-input {
+	width: 250px;
+	border: 1px solid #ecf0f1;
+	background-color: #ecf0f1;
+	outline: none;
+	padding: 10px;
+	font-size: 15px;
+	color: #2c3e50;
+	
+}
+
+.form-input:focus {
+	border: 1px solid #56b4ef;
+	box-shadow: 0px 0px 3px 1px #c8def0;
+	background-color: #fff;
+}
+
+
+.sign-up-button {
+	padding: 10px;
+	width: 271px;
+	font-family: Arial, Helvetica, sans-serif;
+	cursor: pointer;
+	color: #fff;
+	font-size: 20px;
+	border: 1px solid #3498db;
+	background-color: #3498db;
+	margin-top: -15px;
+}
+
+
+.sign-up-button:active { 
+	background-color: #2c3e50;
+	border: 1px solid #2c3e50;
+}	
+
+/**end of PAGE CONTENT section **/
+
+
+
+
+
+
+
+
+
+
+
+
+/** beginning of FOOTER section **/
+
+#page_width3 {
+	width: 100%;
+	background-color: #fff;
+}
+
+
+.footer {
+	width: 960px;
+	margin: auto;
+	height: auto;
+	color: #2c3e50;	
+	background-color: #fff;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	
+}
+
+.footer a {
+	color:#3498db;
+	text-decoration: none;
+}
+
+.footer a:hover {
+	text-decoration: underline;
+}
+
+.footer ul {
+	list-style-type: none;
+	margin: auto;
+	margin-left: -41px;
+	font-family: Arial, Helvetica, sans-serif;
+	height: auto;
+	color: #2c3e50;	
+	background-color: #fff;
+}
+
+
+.footer ul li {
+	padding: 5px;
+	margin-right: 10px;
+	display: inline-block;
+	font-size: 16px;
+	text-align: left;
+}
+
+
+
+
+
+
+
+
+
+/**end of FOOTER section **/
+
+
+
+
+
+
+

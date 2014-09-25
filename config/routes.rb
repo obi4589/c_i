@@ -1,4 +1,17 @@
 CI::Application.routes.draw do
+
+
+  root  'static_pages#home'
+  match '/about',    to: 'static_pages#about',    via: 'get'
+  match '/terms',   to: 'static_pages#terms',   via: 'get'
+  match '/privacy', to: 'static_pages#privacy', via: 'get'
+  match '/help',    to: 'static_pages#help',    via: 'get'
+  match '/login',   to: 'static_pages#login',   via: 'get'
+  match '/signup1', to: 'static_pages#signup1', via: 'get'
+  match '/signup2', to: 'static_pages#signup2', via: 'get'
+  match '/reset', to: 'static_pages#reset', via: 'get'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
