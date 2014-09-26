@@ -1,6 +1,10 @@
 CI::Application.routes.draw do
 
 
+  get "charities/new"
+  get "philanthropists/new"
+
+  
   root  'static_pages#home'
   match '/about',    to: 'static_pages#about',    via: 'get'
   match '/terms',   to: 'static_pages#terms',   via: 'get'
