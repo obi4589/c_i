@@ -190,6 +190,16 @@ body {
 	padding: 20px;
 }
 
+#error_explanation {
+	float: right;
+	color: red;
+	list-style-type: none;
+}
+
+#error_explanation ul {
+	list-style-type: none;
+
+}
 
 
 .form-input {

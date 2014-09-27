@@ -1,9 +1,13 @@
 CI::Application.routes.draw do
 
+  resources :philanthropists
+  match '/signup1', to: 'philanthropists#new', via: 'get'
 
-  get "charities/new"
-  get "philanthropists/new"
 
+  resources :charities
+  match '/signup2', to: 'charities#new', via: 'get' 
+
+  
   
   root  'static_pages#home'
   match '/about',    to: 'static_pages#about',    via: 'get'
@@ -11,8 +15,6 @@ CI::Application.routes.draw do
   match '/privacy', to: 'static_pages#privacy', via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/login',   to: 'static_pages#login',   via: 'get'
-  match '/signup1', to: 'static_pages#signup1', via: 'get'
-  match '/signup2', to: 'static_pages#signup2', via: 'get'
   match '/reset', to: 'static_pages#reset', via: 'get'
 
 
