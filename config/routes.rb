@@ -8,13 +8,16 @@ CI::Application.routes.draw do
   match '/signup2', to: 'charities#new', via: 'get' 
 
   
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/login',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
+  
   
   root  'static_pages#home'
   match '/about',    to: 'static_pages#about',    via: 'get'
   match '/terms',   to: 'static_pages#terms',   via: 'get'
   match '/privacy', to: 'static_pages#privacy', via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'
-  match '/login',   to: 'static_pages#login',   via: 'get'
   match '/reset', to: 'static_pages#reset', via: 'get'
 
 

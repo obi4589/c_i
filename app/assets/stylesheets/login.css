@@ -146,6 +146,12 @@ body {
 	padding: 20px;
 }
 
+.error {
+	float: right;
+	color: red;
+	margin-right: 150px;
+	display: ;
+}
 
 
 .form-input {

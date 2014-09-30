@@ -194,6 +194,7 @@ body {
 	float: right;
 	color: red;
 	list-style-type: none;
+	margin-right: 50px;
 }
 
 #error_explanation ul {

@@ -6,6 +6,7 @@ class CharitiesController < ApplicationController
   def create
     @charity = Charity.new(charity_params)   
     if @charity.save
+        sign_in @charity
         flash[:success] = "Welcome to Cherry Ivy"
         redirect_to @charity
     else

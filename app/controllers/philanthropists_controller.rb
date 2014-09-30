@@ -6,6 +6,7 @@ class PhilanthropistsController < ApplicationController
   def create
     @philanthropist = Philanthropist.new(philanthropist_params)    
     if @philanthropist.save
+        sign_in @philanthropist
         flash[:success] = "Welcome to Cherry Ivy"
         redirect_to @philanthropist
     else
