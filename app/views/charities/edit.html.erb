@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Update info</title>
+<%= stylesheet_link_tag    "edit2.css", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+<%= render 'layouts/shim' %>
+
+</head>
+
+<body>
+
+<!-- navigation bar section -->
+<div class="menu1">
+  <div class="page_width1">
+    <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+
+    <a ref="#" id="nav_button">O</a>
+
+    <% if signed_in? %>
+      <ul id="pages">
+        <%= link_to "<li class='page_name'>Profile</li>".html_safe, current_user %>
+        <%= link_to "<li class='page_name'>Activity</li>".html_safe, '#' %>
+      </ul>
+    <% else %>
+      <ul id="pages">
+        <a href="#"><li class="page_name">Profile</li></a>
+        <a href="#"><li class="page_name">Activity</li></a>
+      </ul>
+    <% end %>
+
+    <form id="search">
+      <input name="search" type="text" value="Search" class="search-input" onfocus="if(this.value == 'Search')  {this.value=''}" onblur="if(this.value == ''){this.value ='Search'}"/>
+    </form>
+    <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: name %>
+      <% end -%>
+
+      <div id="nav_button_div">
+          <ul>
+            <% if signed_in? %>
+              <% if is_charity? %>
+                <%= link_to "<li>Settings</li>".html_safe, edit_charity_path(current_user) %>
+              <% elsif is_superadmin? %>
+                <%= link_to "<li>Users</li>".html_safe, superadmins_path %>
+              <% else %>
+                <%= link_to "<li>Settings</li>".html_safe, edit_philanthropist_path(current_user) %>
+              <% end %>
+              <%= link_to "<li id='s-o'>Sign Out</li>".html_safe, signout_path, method: "delete" %>
+            <% else %>
+                  <a href="#"><li>Settings</li></a>
+                  <a href="#"><li id="s-o">Sign Out</li></a>
+                <% end %>
+            </ul>
+        </div>
+  </div>
+</div>
+<!-- end of navigation bar -->
+
+
+
+
+
+
+<div class="menu2"> 
+
+
+
+<!-- beginning of PAGE CONTENT section -->
+       <div id="page_width2">
+              <div class="page">
+                     <div id="title">
+                            Update info
+                     </div>
+            <div id="body1">
+              <%= render 'shared/error_messages_c' %>
+              <%= form_for(@charity) do |f| %>
+
+              <%= f.label :legal_name, "Legal Name" %><br />
+              <%= f.text_field :legal_name, class: "form-input" %>
+              <br /><br />
+
+              <%= f.label :name, "Display Name" %><br />
+              <%= f.text_field :name, class: "form-input" %>
+              <br /><br />
+
+                       <%= f.label :ein, "EIN" %> <br />
+              <%= f.text_field :ein, class: "form-input" %>
+              <br /><br />
+
+              <%= f.label :zip_code, "Zip Code" %><br />
+              <%= f.text_field :zip_code, class: "form-input"  %>
+              <br /><br />
+
+              <%= f.label :contact_person, "Contact Person" %><br />
+              <%= f.text_field :contact_person, class: "form-input"  %>
+              <br /><br />
+
+              <%= f.label :email %> <br />
+              <%= f.text_field :email, class: "form-input" %>
+              <br /><br />
+
+
+              <%= f.label :phone, "Phone Number" %><br />
+              <%= f.text_field :phone, class: "form-input"  %>
+              <br /><br />
+
+              <%= f.label :password %><br />
+              <%= f.password_field :password, class: "form-input"  %>
+              <br /><br />
+
+              <%= f.label :password_confirmation, "Confirm Password" %><br />
+              <%= f.password_field :password_confirmation, class: "form-input"  %>
+              <br /><br />
+
+               <%= f.label :mission %><br />
+              <%= f.text_area :mission, size: "4x6", class: "form-input"  %>
+              <br /><br /><br />
+
+
+              <%= f.submit "Save Changes", class: "sign-up-button" %><br />
+              <% end %>
+
+
+            </div>
+              </div>
+       </div>
+
+              
+<!-- end of PAGE CONTENT section -->
+
+
+
+
+</div>
+
+
+
+
+</body>
+</html>

@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><%= @charity.name %></title>
-<%= stylesheet_link_tag    "profile2_c.css", media: "all", "data-turbolinks-track" => true %>
+<title><%= @superadmin.name %></title>
+<%= stylesheet_link_tag    "profile2_s.css", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   	<%= csrf_meta_tags %>
  	<%= render 'layouts/shim' %>
@@ -66,14 +66,17 @@
 
 <div class="menu2"> 
 
+
+
+
 <!-- beginning of cover photo section -->
 	<div id="page_width2">
 		<div id="cover_photo_section">
 			<div id="name">
-			<a href="#"><%= @charity.name %></a>
+			<a href="#"><%= @superadmin.name %></a>
 			</div>
 			<div id="location">
-				<a href="#"><%= @charity.zip_code %></a>
+				<a href="#"><%= @superadmin.zip_code %></a>
 			</div>
 			<form id="buttons_left">
 				<input type="submit" class="left_button" value="Events">

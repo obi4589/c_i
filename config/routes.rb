@@ -1,5 +1,8 @@
 CI::Application.routes.draw do
 
+  resources :superadmins, only: [:index, :show]
+  match '/index2', to: 'superadmins#index2', via: 'get'
+
   resources :philanthropists
   match '/signup1', to: 'philanthropists#new', via: 'get'
 

@@ -41,11 +41,17 @@
     	<div id="nav_button_div">
         	<ul>
         		<% if signed_in? %>
-        		<%= link_to "<li>Settings</li>".html_safe, '#' %>
-        		<%= link_to "<li id='s-o'>Sign Out</li>".html_safe, signout_path, method: "delete" %>
+        			<% if is_charity? %>
+	        			<%= link_to "<li>Settings</li>".html_safe, edit_charity_path(current_user) %>
+	        		<% elsif is_superadmin? %>
+	        			<%= link_to "<li>Users</li>".html_safe, superadmins_path %>
+	        		<% else %>
+	        			<%= link_to "<li>Settings</li>".html_safe, edit_philanthropist_path(current_user) %>
+	        		<% end %>
+	        		<%= link_to "<li id='s-o'>Sign Out</li>".html_safe, signout_path, method: "delete" %>
         		<% else %>
-                <a href="#"><li>Settings</li></a>
-                <a href="#"><li id="s-o">Sign Out</li></a>
+	                <a href="#"><li>Settings</li></a>
+	                <a href="#"><li id="s-o">Sign Out</li></a>
                 <% end %>
             </ul>
         </div>
