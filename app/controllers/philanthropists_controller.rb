@@ -53,7 +53,7 @@ class PhilanthropistsController < ApplicationController
     keep_page
     Philanthropist.find(params[:id]).destroy
     flash[:success] = "Philanthropist deleted."
-    redirect_back_or superadmins_url
+    redirect_back_or index1_superadmin_path(current_user)
   end
 
   
