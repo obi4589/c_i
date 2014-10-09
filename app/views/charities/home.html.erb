@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><%= @superadmin.name %></title>
-<%= stylesheet_link_tag    "profile2_s.css", media: "all", "data-turbolinks-track" => true %>
+<title>Home | <%= @charity.name %></title>
+<%= stylesheet_link_tag    "home2_c.css", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   	<%= csrf_meta_tags %>
  	<%= render 'layouts/shim' %>
@@ -75,63 +75,64 @@
 
 
 
+
 <div class="menu2"> 
 
 
 
-
-<!-- beginning of cover photo section -->
+<!-- beginning of EVENTS section -->
 	<div id="page_width2">
-		<div id="cover_photo_section">
+		<div class="events_header1">
 			<div id="name">
-			<a href="#"><%= @superadmin.name %></a>
+				<%= link_to "#{current_user.name}", '#' %>
 			</div>
-			<div id="location">
-				<% unless @superadmin.zip_code.blank?%>
-				<a href="#"><%= @superadmin.zip_code.to_region %></a>
-				<%end%>
-			</div>
-			<form id="buttons_left">
-				<input type="submit" class="left_button" value="Events">
-				<input type="submit" class="left_button" value="Community">
-			</form>
-			<form id="buttons_right">
-				<input type="submit" class="right_button" value="About">
-				<input type="submit" class="right_button" value="Follow">
-			</form>
-		</div>
-		<div id="profile_pic">
-		</div>
-	</div>
-	
-		
-<!-- end of cover photo section -->
-
-
-
-
-
-<!-- beginning of EVENTS sectoin -->
-	<div id="page_width3">
-		<div class="events_header">
 			<ul>
-				<li><a href="#">CI Events: <%=@events.count%></a></li> 
+				<li><a href="#">Events: <%=@charity.events.count%></a></li> 
 				<!--<li><a href="#">Hours: 12</a></li>-->
 			</ul>
-            <form id="event_feed_toggle">
-				<input type="submit" class="upcoming_history_button" value="Upcoming">
+		</div>
+		<div class="events_header2">
+			<form id="header2_buttons">
+			<input type="submit" class="header_button" id="selected" value="Community">
+			<input type="submit" class="header_button" value="Upcoming">
+			<input type="submit" class="header_button" value="History">
+			<input type="submit" class="header_button" value="Invited">
 			</form>
 		</div>
 		<div class="events_update">
 			<ul>
-				<li id="no_event_holder">
-	                I am Superadmin
-	             </li>
+				<%if @feed_items.any?%>
+					<% @feed_items.each do |event| %>
+					<li>
+						<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
+						<%= link_to image_tag("eventpic1.gif", alt: "pic", class: "event_pic"), event %>
+						<form>
+							<input type="submit" class="num_friends_button"  value="12">
+						</form>
+						<div id="events_text">
+							<%= link_to "<b>#{event.title}</b>".html_safe, event %><br />
+							<%= link_to "<b id='event_organization'>#{event.charity.name}</b>".html_safe, event.charity %> <br />
+							<%= link_to "<b id='event_date'>#{event.start_date.strftime('%A')} | #{event.start_date.strftime('%B %-d')} @ #{event.start_time.strftime('%-I:%M %p')}</b>".html_safe, '#' %> <br />
+							<% if event.zip_code.blank? %>
+							<%= link_to "<b id='event_city'>#{event.location}</b>".html_safe, '#' %><br /> 
+							<% else %>
+							<%= link_to "<b id='event_city'>#{event.zip_code.to_region}</b>".html_safe, '#' %><br />  
+							<% end %>
+						</div>
+					</li>
+					<%end%>
+				<% else %>
+					<li id="no_event_holder">
+	                No Feed Events
+	                </li>
+				<%end%>
 			</ul>		
 		</div>
 	</div>
-	<!-- end of EVENTS section -->
-
+	
+		
+<!-- end of EVENTS section -->
+		
 
 
 </div>

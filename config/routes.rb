@@ -1,13 +1,23 @@
 CI::Application.routes.draw do
 
-  resources :superadmins, only: [:index, :show]
-  match '/index2', to: 'superadmins#index2', via: 'get'
+  resources :events
+  match '/new_event', to: "events#new", via: 'get'
+
+  resources :superadmins, only: [:show] do
+    member do
+      get :index1, :index2
+    end
+  end
 
   resources :philanthropists
   match '/signup1', to: 'philanthropists#new', via: 'get'
 
 
-  resources :charities
+  resources :charities do
+    member do
+      get :home
+    end
+  end
   match '/signup2', to: 'charities#new', via: 'get' 
 
   
@@ -16,7 +26,7 @@ CI::Application.routes.draw do
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   
   
-  root  'static_pages#home'
+  root  'static_pages#root'
   match '/about',    to: 'static_pages#about',    via: 'get'
   match '/terms',   to: 'static_pages#terms',   via: 'get'
   match '/privacy', to: 'static_pages#privacy', via: 'get'

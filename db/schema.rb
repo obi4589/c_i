@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140929201642) do
+ActiveRecord::Schema.define(version: 20141006184355) do
+
+  create_table "events", force: true do |t|
+    t.integer  "charity_id"
+    t.string   "title"
+    t.date     "start_date"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.string   "location"
+    t.text     "description"
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "zip_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "events", ["charity_id", "start_date", "start_time"], name: "index_events_on_charity_id_and_start_date_and_start_time"
 
   create_table "users", force: true do |t|
     t.string   "name"

@@ -1,0 +1,311 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background-color: #ecf0f1;
+	width: 100%;
+	overflow-x:hidden;
+	scrollbar-face-color: #a2a2a2;
+	scrollbar-highlight-color: #a2a2a2;
+	scrollbar-3dlight-color: #a2a2a2;
+	scrollbar-darkshadow-color:  #a2a2a2;
+	scrollbar-shadow-color:  #a2a2a2;
+	scrollbar-arrow-color: #8a8a8a;
+	scrollbar-track-color:  #a2a2a2;
+}
+
+
+
+
+/**NAVIGATION BAR **/
+
+.menu1 {
+	background-color: #fff;
+	height: 45px;
+	width: 100%;
+	margin-top: -8px;
+	z-index: 1;	
+	margin-left: -8px;
+	position: fixed;
+}
+
+.page_width1 {
+	width: 960px;
+	height: auto;
+	margin: auto;
+}
+
+.page_width1 a {
+	text-decoration: none;
+}
+
+
+#nav_logo {
+	margin-top: 4px;
+	margin-left: -1px;
+}
+
+
+#pages {
+	list-style-type: none;
+	margin-top: -26px;
+	margin-left: 30px;
+	width: 220px;
+}
+
+.page_name {
+	display: inline;
+	padding-left: 22px;
+	padding-right: 22px;
+	padding-top: 13px;
+	padding-bottom: 10px;
+	color: #2c3e50;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 17px;
+}
+
+.page_name a {
+	text-decoration: none;
+}
+
+.page_name:hover {
+	background-color: #ecf0f1;
+}
+
+
+#search {
+	float: right;
+	margin-top: -47px;
+	
+}
+
+.search-input {
+	width: 480px;
+	border: 1px solid #ecf0f1;
+	outline: none;
+	padding: 6px;
+	background-color: #ecf0f1;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #2c3e50;
+	font-size: 17px;
+}
+
+.search-input:focus {
+	border: 1px solid #56b4ef;
+	box-shadow: 0px 0px 3px 1px #c8def0;
+	background-color: #fff;
+
+}
+
+#nav_button {
+	text-decoration: none;
+	float: left;
+	width: 18px;
+	height: 21px;
+	cursor: pointer;
+	border: 2px solid #fff;
+	background-color: #fff;
+	margin-top: -35px;
+	margin-left: 970px;
+	font-family: Arial, Helvetica, sans-serif;
+	display: block;
+	padding-top: 9px;
+	padding-left: 8px;
+	text-align: left;
+	font-size: 12px;
+	font-weight: bold;
+	color: #2c3e50;
+}
+
+
+#nav_button:hover { 
+	border: 2px solid #fff;
+	box-shadow: 0px 0px 3px 1px #c8def0;
+}	
+
+
+.success {
+	padding: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #2ecc71;
+	font-size: 20px;
+	color: white;
+	opacity: 0.8;
+	text-align: center;
+	margin-top: -6px;
+	position: absolute;
+	width: 940px;
+}
+
+
+
+#nav_button_div {
+	float: left;
+	width: auto;
+	height: auto;
+	cursor: pointer;
+	background-color: #fff;
+	margin-left: 890px;
+	font-family: Arial, Helvetica, sans-serif;
+	border-radius: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border: 1px solid #ecf0f1;
+	margin-top: -4px;
+	display: none;
+	
+}
+
+#nav_button_div ul{
+	list-style-type:none;
+	margin: auto ;
+	width: 69px;
+}
+
+#nav_button_div ul li{
+	padding: 5px 0px 5px 10px;
+	display: block;
+	font-size: 16px;
+	color: #2c3e50;
+	text-align: left;
+	margin-left: -41px;
+	
+}
+
+#nav_button_div ul li:hover{
+	background-color: #3498db;
+	color: #fff;
+	
+}
+
+
+#s-o {
+	border-top: 1px solid #ecf0f1;
+	
+}
+
+
+/** END OF NAVIGATION BAR **/
+
+
+
+
+
+.menu2 {
+	width: 100%;
+	margin-left: -8px;
+	position: absolute;
+}
+
+
+
+
+/** beginning of PAGE CONTENT section **/
+
+#page_width2 {
+	width: 960px;
+	margin: auto;
+	margin-top: 77px;
+	height: auto;
+	margin-bottom: 40px;
+	height-min: 450px;
+	background-color: #fff;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+
+
+.page {
+	
+	
+}
+
+
+#title {
+	font-family: Arial, Helvetica, sans-serif;
+	height: auto;
+	margin: auto;
+	text-align: left;
+	font-size: 50px;
+	margin-bottom: 50px;
+	color: #2c3e50;
+	text-align: left;
+	padding: 20px;
+}
+
+
+#body1 {
+	font-family: Arial, Helvetica, sans-serif;
+	height: auto;
+	margin: auto;
+	text-align: left;
+	font-size: 20px;
+	color: #2c3e50;
+	text-align: left;
+	padding: 20px;
+}
+
+#error_explanation {
+	float: right;
+	color: red;
+	list-style-type: none;
+	margin-right: 50px;
+	margin-top: -80px;
+}
+
+#error_explanation ul {
+	list-style-type: none;
+}
+
+.asterisk {
+
+	color: red;
+}
+
+
+.form-input {
+	width: 480px;
+	border: 1px solid #ecf0f1;
+	background-color: #ecf0f1;
+	outline: none;
+	padding: 10px;
+	font-size: 15px;
+	color: #2c3e50;
+	
+}
+
+.form-input:focus {
+	border: 1px solid #56b4ef;
+	box-shadow: 0px 0px 3px 1px #c8def0;
+	background-color: #fff;
+}
+
+
+.sign-up-button {
+	padding: 10px;
+	width: 501px;
+	font-family: Arial, Helvetica, sans-serif;
+	cursor: pointer;
+	color: #fff;
+	font-size: 20px;
+	border: 1px solid #3498db;
+	background-color: #3498db;
+	margin-top: -15px;
+}
+
+
+.sign-up-button:active { 
+	background-color: #2c3e50;
+	border: 1px solid #2c3e50;
+}	
+
+/**end of PAGE CONTENT section **/
+
+
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 class CharitiesController < ApplicationController
-  before_action :signed_in_user, only: [:index, :edit, :update]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :signed_in_user, only: [:index, :edit, :update, :home]
+  before_action :correct_user,   only: [:edit, :update, :home]
   before_action :is_superadmin?, only: [:destroy]
 
 
@@ -31,6 +31,7 @@ class CharitiesController < ApplicationController
 
   def show
   	@charity = Charity.find(params[:id]) 
+    @events = @charity.events.all
   end
 
 
@@ -54,9 +55,16 @@ class CharitiesController < ApplicationController
     Charity.find(params[:id]).destroy
     flash[:success] = "Charity deleted."
     redirect_back_or superadmins_url
-    #flash[:success] = "Charity deleted."
-    #redirect_to superadmins_url
   end
+
+  
+
+  def home
+    @charity = Charity.find(params[:id])
+    @feed_items = current_user.feed.all
+    render 'home'
+  end
+
 
 
 

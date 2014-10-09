@@ -2,11 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Update info</title>
-<%= stylesheet_link_tag    "edit2.css", media: "all", "data-turbolinks-track" => true %>
+<title>New event</title>
+<%= stylesheet_link_tag    "new_event.css", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
 <%= render 'layouts/shim' %>
+
 
 </head>
 
@@ -74,7 +75,6 @@
 
 
 
-
 <div class="menu2"> 
 
 
@@ -83,61 +83,56 @@
        <div id="page_width2">
               <div class="page">
                      <div id="title">
-                            Update info
+                            New event
                      </div>
             <div id="body1">
-              <%= render 'shared/error_messages_c' %>
-              <%= form_for(@charity) do |f| %>
+              <%= render 'shared/error_messages_e' %>
+              <%= form_for(@event) do |f| %>
 
-              <%= f.label :legal_name, "Legal Name" %><br />
-              <%= f.text_field :legal_name, class: "form-input" %>
+              <%= f.label :title %><span class="asterisk">*</span><br />
+              <%= f.text_field :title, class: "form-input" %>
               <br /><br />
 
-              <%= f.label :name, "Display Name" %><br />
-              <%= f.text_field :name, class: "form-input" %>
+              <%= f.label :description %><span class="asterisk">*</span><br />
+              <%= f.text_area :description, id: "ckeditor"  %><br /><br />
+
+              <%= f.label :location, "Location Name" %><br />
+              <%= f.text_field :location, class: "form-input" %>
               <br /><br />
 
-                       <%= f.label :ein, "EIN" %> <br />
-              <%= f.text_field :ein, class: "form-input" %>
+              <%= f.label :address_line_1, "Address Line 1" %> <br />
+              <%= f.text_field :address_line_1, class: "form-input" %>
+              <br /><br />
+
+              <%= f.label :address_line_2, "Address Line 2" %><br />
+              <%= f.text_field :address_line_2, class: "form-input"  %>
               <br /><br />
 
               <%= f.label :zip_code, "Zip Code" %><br />
               <%= f.text_field :zip_code, class: "form-input"  %>
               <br /><br />
 
-              <%= f.label :contact_person, "Contact Person" %><br />
-              <%= f.text_field :contact_person, class: "form-input"  %>
-              <br /><br />
-
-              <%= f.label :email %> <br />
-              <%= f.text_field :email, class: "form-input" %>
+              <%= f.label :start_date, "Date" %><span class="asterisk">*</span> <br />
+              <%= f.date_field :start_date, class: "form-input" %>
               <br /><br />
 
 
-              <%= f.label :phone, "Phone Number" %><br />
-              <%= f.text_field :phone, class: "form-input"  %>
+              <%= f.label :start_time, "Start Time" %><span class="asterisk">*</span><br />
+              <%= f.time_field :start_time, class: "form-input"  %>
               <br /><br />
 
-              <%= f.label :password %><br />
-              <%= f.password_field :password, class: "form-input"  %>
-              <br /><br />
-
-              <%= f.label :password_confirmation, "Confirm Password" %><br />
-              <%= f.password_field :password_confirmation, class: "form-input"  %>
-              <br /><br />
-
-               <%= f.label :mission %><br />
-              <%= f.text_area :mission, size: "4x6", class: "form-input"  %>
+              <%= f.label :end_time, "End Time" %><span class="asterisk">*</span><br />
+              <%= f.time_field :end_time, class: "form-input"  %>
               <br /><br /><br />
 
 
-              <%= f.submit "Save Changes", class: "sign-up-button" %><br />
+              <%= f.submit "Create Event", class: "sign-up-button" %><br />
               <% end %>
 
-
+             
             </div>
-              </div>
        </div>
+  </div>
 
               
 <!-- end of PAGE CONTENT section -->

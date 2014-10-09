@@ -510,6 +510,14 @@ body {
 	text-decoration: underline;
 }
 
+#no_event_holder {
+	width: 930px;
+	text-align: center;
+	padding-top: 60px;
+	padding-bottom: 70px;
+	font-size: 30px;
+	color: #2c3e50;
+}
 /**end of EVENTS section **/
 
 

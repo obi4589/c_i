@@ -36,3 +36,9 @@ group :production do
   gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end
+
+#gem for zip_cope manipulation
+gem 'area', '0.10.0'
+
+#gem for CKEditor
+gem 'ckeditor_rails', '4.4.3'

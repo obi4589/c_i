@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><%= @event.title %></title>
+<%= stylesheet_link_tag    "event_m.css", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+<%= render 'layouts/shim' %>
+
+</head>
+
+<body>
+
+<!-- navigation bar section -->
+<div class="menu1">
+  <div class="page_width1">
+  	<% if signed_in? %>
+  		<% if is_charity?%>
+  			<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), home_charity_path(current_user)%>
+  		<% elsif is_superadmin?%>
+  			<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+  		<% else%>
+  			<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+  		<%end%>
+  	<%else%>
+    	<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+    <%end%>
+
+    <a ref="#" id="nav_button">O</a>
+
+    <% if signed_in? %>
+      <ul id="pages">
+        <%= link_to "<li class='page_name'>Profile</li>".html_safe, current_user %>
+        <%= link_to "<li class='page_name'>Activity</li>".html_safe, '#' %>
+      </ul>
+    <% else %>
+      <ul id="pages">
+        <a href="#"><li class="page_name">Profile</li></a>
+        <a href="#"><li class="page_name">Activity</li></a>
+      </ul>
+    <% end %>
+
+    <form id="search">
+      <input name="search" type="text" value="Search" class="search-input" onfocus="if(this.value == 'Search')  {this.value=''}" onblur="if(this.value == ''){this.value ='Search'}"/>
+    </form>
+    <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: name %>
+      <% end -%>
+
+      <div id="nav_button_div">
+          <ul>
+            <% if signed_in? %>
+              <% if is_charity? %>
+                <%= link_to "<li>Settings</li>".html_safe, edit_charity_path(current_user) %>
+                <%= link_to "<li>New Event</li>".html_safe, new_event_path %>
+              <% elsif is_superadmin? %>
+                <%= link_to "<li>Users</li>".html_safe, index1_superadmin_path(current_user) %>
+              <% else %>
+                <%= link_to "<li>Settings</li>".html_safe, edit_philanthropist_path(current_user) %>
+              <% end %>
+              <%= link_to "<li id='s-o'>Sign Out</li>".html_safe, signout_path, method: "delete" %>
+            <% else %>
+                  <a href="#"><li>Settings</li></a>
+                  <a href="#"><li id="s-o">Sign Out</li></a>
+                <% end %>
+            </ul>
+        </div>
+  </div>
+</div>
+<!-- end of navigation bar -->
+
+
+
+
+
+
+
+
+<div class="menu2"> 
+
+<div class="page_width2">
+
+<!-- beginning of event header section -->
+	<div id="event_header_section">
+		<a href="#">
+		<div id="picture_holder">
+			<%= image_tag("eventcoverBIG2.jpg", width: '960')%>
+		</div>
+		</a>
+		<form id="event_buttons">
+			<input type="submit" class="three_buttons" value="Go"></li>
+			<input type="submit" class="three_buttons" value="Share"></li>
+			<input type="submit" class="three_buttons" value="Invite"></li>	
+		</form>
+		<% if current_user?(@event.charity) %>
+		<div id = "admin_buttons_div">
+			<%= link_to "Edit", edit_event_path(@event), class: "admin_buttons" %> 
+			<%= link_to "Delete", @event, class: "admin_buttons", method: :delete, data: {confirm: "Are you sure?"} %>
+        </div>
+        <%elsif current_user.type == "Superadmin" %>
+        <div id = "admin_buttons_div">
+        	<%= link_to "Delete", @event, class: "admin_buttons", method: :delete, data: {confirm: "Are you sure?"} %>
+        </div>
+        <%end%>
+		
+		<div class="event_details">
+			<%= link_to "<b id='event_name'>#{@event.title}</b>".html_safe, @event %><br/>
+			<%= link_to "<b id='event_date'>#{@event.start_date.strftime('%B %-d, %Y')} | #{@event.start_date.strftime('%A')} #{@event.start_time.strftime('%-I:%M %p')} - #{@event.end_time.strftime('%-I:%M %p')}</b>".html_safe, '#' %><br/>
+			<%= link_to "<b id='event_location'>#{@event.location}</b>".html_safe, '#' %><br/><br/>
+			<%= link_to "<b id='event_host'>#{@event.charity.name}</b>".html_safe, @event.charity %><br/>
+			<form>
+			<input type="button" class="donate_button" value="Donate">
+			</form>
+		</div>
+	</div>
+	
+<!-- end of event header section -->
+
+
+
+
+
+
+	
+	<!-- beginning of under event header section --->
+	<div id="under_event_header_section">
+		<!-- beginning of GOING & MAPS section -->
+		<div id="going_map_section">
+			<div class="going_header">
+				<ul>
+					<li><a href="#">Going (43)</a></li> 
+				</ul>
+			</div>
+			<div class="going_update">
+				<ul>
+					<li>
+						<a href="#">
+							<img src="" width="33" height="33" class="going_pic"/> 
+						</a>
+						<div id="going_text">
+							<a href="#"><b>Obinna Victor Ezebuiroh</b></a>
+						</div>
+					</li>
+					<li>
+						<a href="#">
+							<img src="" width="33" height="33" class="going_pic"/> 
+						</a>
+						<div id="going_text">
+							<a href="#"><b>Luol Deng</b></a>
+						</div>
+					</li>
+					<li>
+						<a href="#">
+							<img src="" width="33" height="33" class="going_pic"/> 
+						</a>
+						<div id="going_text">
+							<a href="#"><b>Gerardo Gonzalez</b></a>
+						</div>
+					</li>
+					<li>
+						<a href="#">
+							<img src="" width="33" height="33" class="going_pic"/> 
+						</a>
+						<div id="going_text">
+							<a href="#"><b>Deron Williams</b></a>
+						</div>
+					</li>
+				</ul>		
+			</div>
+			<div class="map_header">
+				<ul>
+					<li><a href="#">Maps and Directions</a></li> 
+				</ul>
+			</div>
+			<address class= "map_pic">
+				<% if @event.location.present? && @event.address_line_1.present? %>
+				<%= @event.address_line_1%>,
+				<% else %>
+				<%= @event.location %>, <%=@event.address_line_1%>,	
+				<% end %>
+				<% unless @event.zip_code.blank?%> 
+				<%=@event.zip_code.to_region%> <%=@event.zip_code%>
+				 <% end%>
+			</address>
+			<div class="map_update">
+				<%= link_to "<b>#{@event.location}</b>".html_safe, '#' %>
+				<p><%=  @event.address_line_1 %></p>
+				<p><%=  @event.address_line_2 %></p>
+				<p>
+					<% unless @event.zip_code.blank? %> 
+					<%=@event.zip_code.to_region%> <%=@event.zip_code %> 
+					<%end%></p>
+			</div>
+		</div>
+		<!-- end of GOING & MAP section --> 
+
+
+		
+		
+		<!-- beginning of INFO section -->
+		<div id="information_section">
+			
+			<%= raw@event.description %>
+			
+			
+		</div>
+		<!-- end of INFO sectoin -->
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- beginning of TICKET section -->
+		<div id="ticket_section">
+			<form id="ticket_header">
+				<input type="button" class="ticket_header_button" value="Individual">
+				<input type="button" class="ticket_header_button" value="Table">
+				<input type="button" class="ticket_header_button" value="Sponsor">
+			</form>
+			<div class="ticket_wrapper">
+				<ul>
+					<li>
+						<div class="ticket">
+							<div class="price_description">
+								<div id="price"><b>$100.00</b></div>
+								<div id="description"><b>General Admission</b></div>
+							</div>
+							<form class="purchase_comment">
+								<input type="button" class="purchase_button" value="Purchase">
+								<textarea name="Comment" cols="35" rows="" onfocus="if(this.value == 'Comments') {this.value=''}" onblur="if(this.value == 
+								''){this.value ='Comments'}"/>Comments</textarea>
+							</form>
+							<div id="ticket_text">
+								Includes three-hour open bar, hors d'oeuvres, and a gift bag of fabulous items (must be 21 and over).
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ticket">
+							<div class="price_description">
+								<div id="price"><b>$150.00</b></div>
+								<div id="description"><b>FDNY, NYPD, PAPD Ticket</b></div>
+							</div>
+							<form class="purchase_comment">
+								<input type="button" class="purchase_button" value="Purchase">
+								<textarea name="Comment" cols="35" rows="" onfocus="if(this.value == 'Comments') {this.value=''}" onblur="if(this.value == 
+								''){this.value ='Comments'}"/>Comments</textarea>
+							</form>
+							<div id="ticket_text">
+								Includes three-hour open bar, hors d'oeuvres, and a gift bag of fabulous items (must be 21 and over). This ticket is for 
+								active-duty NYPD, FDNY, and PAPD first responders who protect and serve our community every day. Please provide your badge 
+								number to take advantage of this special rate 
+							</div>
+						</div>
+					</li>
+				</ul>
+				<div class="be_there">
+					<form>
+						<input type="button" class="be_there_button" value="I'll Be There">
+					</form>
+					<div id="attending">
+						Employees and other individuals who won’t need a ticket should still let their community know that they’ll be attending!!!
+					</div>
+				</div>	
+			</div>
+		</div>
+		<!-- end of TICKET section -->
+		
+		
+	
+	
+		
+		<!-- beginning of COMMENTS section -->
+		<div id="comments_section">
+			<div class="comments_header">
+				<ul>
+					<li><a href="#">Comments (43)</a></li> 
+				</ul>
+				<form>
+					<input name="Comments" type="text" value="Type comment here..." class="comments" onfocus="if(this.value == 'Type comment here...')	
+					{this.value=''}" onblur="if(this.value == ''){this.value ='Type comment here...'}"/>
+				</form>
+			</div>
+			<div class="comments_update">
+				<ul>
+					<li>
+						<a href="#">
+						<img src="" width="63" height="63" class="friend_pic"/> 
+						</a>
+						<div id="comments_text">
+						<a href="#"><b>Obinna Ezebuiroh</b></a> <br /><br />
+						This was an awesome event! 
+						</div>
+					</li>
+					<li>
+						<a href="#">
+						<img src="" width="63" height="63" class="friend_pic"/> 
+						</a>
+						<div id="comments_text">
+						<a href="#"><b>Chinedu Ezebuiroh</b></a> <br /><br />
+						I was wondering what the dress code is going to be for this event?? 
+						</div>
+					</li>
+				</ul>		
+			</div>
+		</div>
+		<!-- end of COMMENTS section --> 
+		
+	</div> 
+</div>
+</div>
+</body>
+</html>

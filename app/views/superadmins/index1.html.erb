@@ -15,7 +15,17 @@
 <!-- navigation bar section -->
 <div class="menu1">
   <div class="page_width1">
-    <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+    <% if signed_in? %>
+      <% if is_charity?%>
+        <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), home_charity_path(current_user)%>
+      <% elsif is_superadmin?%>
+        <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+      <% else%>
+        <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+      <%end%>
+    <%else%>
+      <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+    <%end%>
 
     <a ref="#" id="nav_button">O</a>
 
@@ -43,8 +53,9 @@
             <% if signed_in? %>
               <% if is_charity? %>
                 <%= link_to "<li>Settings</li>".html_safe, edit_charity_path(current_user) %>
+                <%= link_to "<li>New Event</li>".html_safe, new_event_path %>
               <% elsif is_superadmin? %>
-                <%= link_to "<li>Users</li>".html_safe, superadmins_path %>
+                <%= link_to "<li>Users</li>".html_safe, index1_superadmin_path(current_user) %>
               <% else %>
                 <%= link_to "<li>Settings</li>".html_safe, edit_philanthropist_path(current_user) %>
               <% end %>
@@ -72,15 +83,16 @@
   <div id="page_width2">
     <div class="page">
       <div id="title">
-        All Users (<%= @users.count - @superadmins.count %>)
+        Users (<%= @users.count - @superadmins.count %>) <br/>
+        Events (<%= @events.count%>)
       </div>
             <div id="body1">
               <ul>
                   <li id="underline">
-                    <%= link_to "Philanthropist", superadmins_path %>
+                    <%= link_to "Philanthropist", index1_superadmin_path(current_user) %>
                   </li>
                   <li>
-                    <%= link_to "Charity", index2_path %>
+                    <%= link_to "Charity", index2_superadmin_path(current_user) %>
                   </li>
                 </ul>
       </div>
@@ -113,7 +125,7 @@
             </a>
             <div id="user_text">
              <%= link_to "<b>#{user.name}</b>".html_safe, user %> <br />
-             <%= link_to "<b id='user_locatin'>#{user.zip_code}</b>".html_safe, '#' %><br />
+             <%= link_to "<b id='user_locatin'>#{user.zip_code.to_region}</b>".html_safe, '#' %><br />
             </div>
             <form class="user_button_form">
               <% if is_superadmin? && !current_user?(user) %>

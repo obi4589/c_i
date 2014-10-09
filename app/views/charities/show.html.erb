@@ -14,48 +14,59 @@
 
 <!-- navigation bar section -->
 <div class="menu1">
-	<div class="page_width1">
-		<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+  <div class="page_width1">
+  	<% if signed_in? %>
+  		<% if is_charity?%>
+  			<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), home_charity_path(current_user)%>
+  		<% elsif is_superadmin?%>
+  			<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+  		<% else%>
+  			<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+  		<%end%>
+  	<%else%>
+    	<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+    <%end%>
 
-		<a ref="#" id="nav_button">O</a>
+    <a ref="#" id="nav_button">O</a>
 
-		<% if signed_in? %>
-			<ul id="pages">
-				<%= link_to "<li class='page_name'>Profile</li>".html_safe, current_user %>
-				<%= link_to "<li class='page_name'>Activity</li>".html_safe, '#' %>
-			</ul>
-		<% else %>
-			<ul id="pages">
-				<a href="#"><li class="page_name">Profile</li></a>
-				<a href="#"><li class="page_name">Activity</li></a>
-			</ul>
-		<% end %>
+    <% if signed_in? %>
+      <ul id="pages">
+        <%= link_to "<li class='page_name'>Profile</li>".html_safe, current_user %>
+        <%= link_to "<li class='page_name'>Activity</li>".html_safe, '#' %>
+      </ul>
+    <% else %>
+      <ul id="pages">
+        <a href="#"><li class="page_name">Profile</li></a>
+        <a href="#"><li class="page_name">Activity</li></a>
+      </ul>
+    <% end %>
 
-		<form id="search">
-			<input name="search" type="text" value="Search" class="search-input" onfocus="if(this.value == 'Search') 	{this.value=''}" onblur="if(this.value == ''){this.value ='Search'}"/>
-		</form>
-		<% flash.each do |name, msg| -%>
-      		<%= content_tag :div, msg, class: name %>
-    	<% end -%>
+    <form id="search">
+      <input name="search" type="text" value="Search" class="search-input" onfocus="if(this.value == 'Search')  {this.value=''}" onblur="if(this.value == ''){this.value ='Search'}"/>
+    </form>
+    <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: name %>
+      <% end -%>
 
-    	<div id="nav_button_div">
-        	<ul>
-        		<% if signed_in? %>
-        			<% if is_charity? %>
-	        			<%= link_to "<li>Settings</li>".html_safe, edit_charity_path(current_user) %>
-	        		<% elsif is_superadmin? %>
-	        			<%= link_to "<li>Users</li>".html_safe, superadmins_path %>
-	        		<% else %>
-	        			<%= link_to "<li>Settings</li>".html_safe, edit_philanthropist_path(current_user) %>
-	        		<% end %>
-	        		<%= link_to "<li id='s-o'>Sign Out</li>".html_safe, signout_path, method: "delete" %>
-        		<% else %>
-	                <a href="#"><li>Settings</li></a>
-	                <a href="#"><li id="s-o">Sign Out</li></a>
+      <div id="nav_button_div">
+          <ul>
+            <% if signed_in? %>
+              <% if is_charity? %>
+                <%= link_to "<li>Settings</li>".html_safe, edit_charity_path(current_user) %>
+                <%= link_to "<li>New Event</li>".html_safe, new_event_path %>
+              <% elsif is_superadmin? %>
+                <%= link_to "<li>Users</li>".html_safe, index1_superadmin_path(current_user) %>
+              <% else %>
+                <%= link_to "<li>Settings</li>".html_safe, edit_philanthropist_path(current_user) %>
+              <% end %>
+              <%= link_to "<li id='s-o'>Sign Out</li>".html_safe, signout_path, method: "delete" %>
+            <% else %>
+                  <a href="#"><li>Settings</li></a>
+                  <a href="#"><li id="s-o">Sign Out</li></a>
                 <% end %>
             </ul>
         </div>
-	</div>
+  </div>
 </div>
 <!-- end of navigation bar -->
 
@@ -73,7 +84,7 @@
 			<a href="#"><%= @charity.name %></a>
 			</div>
 			<div id="location">
-				<a href="#"><%= @charity.zip_code %></a>
+				<a href="#"><%= @charity.zip_code.to_region %></a>
 			</div>
 			<form id="buttons_left">
 				<input type="submit" class="left_button" value="Events">
@@ -99,8 +110,8 @@
 	<div id="page_width3">
 		<div class="events_header">
 			<ul>
-				<li><a href="#">Events: 5</a></li> 
-				<li><a href="#">Hours: 12</a></li>
+				<li><a href="#">Events: <%= @charity.events.count %></a></li> 
+				<!--<li><a href="#">Hours: 12</a></li>-->
 			</ul>
             <form id="event_feed_toggle">
 				<input type="submit" class="upcoming_history_button" value="Upcoming">
@@ -108,84 +119,31 @@
 		</div>
 		<div class="events_update">
 			<ul>
-				<li>
-					<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
-					<%= link_to image_tag("eventpic1.gif", alt: "pic", class: "event_pic"), '#' %>
-					<form>
-						<input type="submit" class="num_friends_button"  value="12">
-					</form>
-					<div id="events_text">
-						<a href="#"><b>2013 Winter Coat Drive</b></a><br />
-						<a href="#"><b id="event_organization">New York Cares</b></a> <br /> 
-						<a href="#"><b id="event_date">Thursday | May 16th @ 6:30 PM</b></a> <br /> 
-						<a href="#"><b id="event_city">New York, NY</b></a> <br />  
-					</div>
-				</li>
-				<li>
-					<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
-					<%= link_to image_tag("eventpic2.gif", alt: "pic", class: "event_pic"), '#' %>
-					<form>
-						<input type="submit" class="num_friends_button" value="6">
-					</form>
-					<div id="events_text">
-						<a href="#"><b>Tree Planting at Fort Greene Park</b></a> <br />
-						<a href="#"><b id="event_organization">New York Restoration Project</b></a><br />
-						<a href="#"><b id="event_date">Saturday | October 18th @ 12:30PM</b></a> <br />
-						<a href="#"><b id="event_city">Brooklyn, NY</b></a> <br /> 
-					</div>
-				</li>
-				<li>
-					<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
-					<%= link_to image_tag("eventpic3.gif", alt: "pic", class: "event_pic"), '#' %>
-					<form>
-						<input type="submit" class="num_friends_button" value="25">
-					</form>
-					<div id="events_text">
-						<a href="#"><b>Serve Meals at Our Community Kitchen</b></a> <br />
-						<a href="#"><b id="event_organization">Food Bank of New York City</b></a> <br />
-						<a href="#"><b id="event_date">Monday | December 23rd @ 6:30PM</b></a> <br />
-						<a href="#"><b id="event_city">Harlem, NY</b></a> <br /> 
-					</div>
-				</li>
-				<li>
-					<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
-					<%= link_to image_tag("eventpic4.gif", alt: "pic", class: "event_pic"), '#' %>
-					<form>
-						<input type="submit" class="num_friends_button" value="8">
-					</form>
-					<div id="events_text">
-						<a href="#"><b>AIDS Talk with Alicia Keys</b></a> <br />
-						<a href="#"><b id="event_organization">Keep A Child Alive</b></a> <br /> 
-						<a href="#"><b id="event_date">Wednesday | February 5th @ 7:00 PM</b></a> <br /> 
-						<a href="#"><b id="event_city">New York, NY</b></a> <br />   
-					</div>
-				</li>
-				<li>
-					<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
-					<%= link_to image_tag("eventpic5.gif", alt: "pic", class: "event_pic"), '#' %>
-					<form>
-						<input type="submit" class="num_friends_button" value="16">
-					</form>
-					<div id="events_text">
-						<a href="#"><b>Charity Dog Walk w/ The NY Rangers</b></a> <br />
-						<a href="#"><b id="event_organization">The Humane Society</b></a> <br />
-						<a href="#"><b id="event_date">Thursday | March 13th @ 12:30PM</b></a> <br />
-						<a href="#"><b id="event_city">New York, NY</b></a> <br /> 
-					</div>
-				</li>
-				<li>
-					<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
-					<%= link_to image_tag("eventpic6.gif", alt: "pic", class: "event_pic"), '#' %>
-					<form>
-						<input type="submit" class="num_friends_button" value="4">
-					</form>
-					<div id="events_text">
-						<a href="#"><b>Kick Off to Summer Benefit</b></a> <br />
-						<a href="#"><b id="event_organization">New York Police & Fire Widow's & Children's Benefit Fund</b></a> <br />
-						<a href="#"><b id="event_date">Wednesday | July 23rd @ 6:30PM</b></a> <br />
-						<a href="#"><b id="event_city">New York, NY</b></a> <br /> 
-					</div>
-				</li>
+				<%if @charity.events.any?%>
+					<% @events.each do |event| %>
+					<li>
+						<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
+						<%= link_to image_tag("eventpic1.gif", alt: "pic", class: "event_pic"), event %>
+						<form>
+							<input type="submit" class="num_friends_button"  value="12">
+						</form>
+						<div id="events_text">
+							<%= link_to "<b>#{event.title}</b>".html_safe, event %><br />
+							<%= link_to "<b id='event_organization'>#{event.charity.name}</b>".html_safe, event.charity %> <br />
+							<%= link_to "<b id='event_date'>#{event.start_date.strftime('%A')} | #{event.start_date.strftime('%B %-d')} @ #{event.start_time.strftime('%-I:%M %p')}</b>".html_safe, '#' %> <br />
+							<% if event.zip_code.blank? %>
+							<%= link_to "<b id='event_city'>#{event.location}</b>".html_safe, '#' %><br /> 
+							<% else %>
+							<%= link_to "<b id='event_city'>#{event.zip_code.to_region}</b>".html_safe, '#' %><br />  
+							<% end %>
+						</div>
+					</li>
+					<%end%>
+				<% else %>
+					<li id="no_event_holder">
+	                No Upcoming Events
+	                </li>
+				<%end%>
 			</ul>		
 		</div>
 	</div>

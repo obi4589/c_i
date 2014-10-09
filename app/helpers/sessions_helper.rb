@@ -41,7 +41,6 @@ module SessionsHelper
 #-----------SECTION FOR DETERMINING IF CURRENT USER IS CHARITY OR PHILANTHROPIST OR SUPERADMIN
   def is_charity?
     current_user.type == "Charity"
-    #!current_user.ein.nil?
   end
 
   def is_superadmin?

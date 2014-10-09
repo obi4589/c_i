@@ -15,7 +15,17 @@
 <!-- navigation bar section -->
 <div class="menu1">
   <div class="page_width1">
-    <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+    <% if signed_in? %>
+      <% if is_charity?%>
+        <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), home_charity_path(current_user)%>
+      <% elsif is_superadmin?%>
+        <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+      <% else%>
+        <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+      <%end%>
+    <%else%>
+      <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+    <%end%>
 
     <a ref="#" id="nav_button">O</a>
 
@@ -43,8 +53,9 @@
             <% if signed_in? %>
               <% if is_charity? %>
                 <%= link_to "<li>Settings</li>".html_safe, edit_charity_path(current_user) %>
+                <%= link_to "<li>New Event</li>".html_safe, new_event_path %>
               <% elsif is_superadmin? %>
-                <%= link_to "<li>Users</li>".html_safe, superadmins_path %>
+                <%= link_to "<li>Users</li>".html_safe, index1_superadmin_path(current_user) %>
               <% else %>
                 <%= link_to "<li>Settings</li>".html_safe, edit_philanthropist_path(current_user) %>
               <% end %>
