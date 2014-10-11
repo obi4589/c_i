@@ -60,7 +60,11 @@
               <%= f.text_field :name, class: "form-input" %>
               <br /><br />
 
-			  <%= f.label :ein, "EIN" %> <br />
+              <%= f.label :mission %><br />
+              <%= f.text_area :mission, size: "4x6", class: "form-input"  %>
+              <br /><br />
+
+			        <%= f.label :ein, "EIN" %> <br />
               <%= f.text_field :ein, class: "form-input" %>
               <br /><br />
 
@@ -87,10 +91,6 @@
 
               <%= f.label :password_confirmation, "Confirm Password" %><br />
               <%= f.password_field :password_confirmation, class: "form-input"  %>
-              <br /><br />
-
-               <%= f.label :mission %><br />
-              <%= f.text_area :mission, size: "4x6", class: "form-input"  %>
               <br /><br /><br />
 
 

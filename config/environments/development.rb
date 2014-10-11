@@ -29,5 +29,5 @@ CI::Application.configure do
 
 
   #included because custom config.js.coffee file not load in development,
-  #config.serve_static_assets = false
+  config.serve_static_assets = false
 end

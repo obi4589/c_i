@@ -1,9 +1,13 @@
 $(document).ready(function() {
 	
-  $('#ckeditor').ckeditor({
+  $('.ckeditor').ckeditor({
+
 		  // optional config
-		  customConfig: 'app/assets/javascripts/ckeditor/config_2.js.coffee'
-		  //customConfig: 'app/assets/javascripts/ckeditor/config.js'
+		  // DON'T FORGET THE FUCKING SEMICOLON AT THE END OF EACH LINE #HEADACHE	
+		 customConfig: 'app/assets/javascripts/ckeditor/config.js';
+		  //config.contentsCss: CKEDITOR_BASEPATH( 'contents.css' );
+		 // config.contentsCss = CKEDITOR.getUrl( 'contents.css' );
+		  
 	});
   
   
