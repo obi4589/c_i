@@ -12,8 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-// file below is for CKEditor
-//= require ckeditor-jquery 
 //= require turbolinks
 //= require_tree .
 // 

@@ -40,5 +40,3 @@ end
 #gem for zip_cope manipulation
 gem 'area', '0.10.0'
 
-#gem for CKEditor
-gem 'ckeditor_rails', '4.4.3'
