@@ -40,3 +40,6 @@ end
 #gem for zip_cope manipulation
 gem 'area', '0.10.0'
 
+#gem for ckeditor install
+gem 'ckeditor', '4.1.0'
+
