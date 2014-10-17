@@ -1,5 +1,7 @@
 CI::Application.routes.draw do
 
+  resources :attendances, only: [:create, :destroy]
+
   resources :events
   match '/new_event', to: "events#new", via: 'get'
 
@@ -9,7 +11,11 @@ CI::Application.routes.draw do
     end
   end
 
-  resources :philanthropists
+  resources :philanthropists do
+    member do
+      get :home
+    end
+  end
   match '/signup1', to: 'philanthropists#new', via: 'get'
 
 

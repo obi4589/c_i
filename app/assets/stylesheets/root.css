@@ -164,7 +164,7 @@ body {
 }
 
 #events_text a {
-	color:#3498db;
+	color:#2c3e50;
 	text-decoration: none;
 	font-size: 19px;
 }
@@ -173,10 +173,17 @@ body {
 	text-decoration: underline;
 }
 
+#event_title {
+	color:#2c3e50;
+	text-decoration: none;
+	font-size: 19px;
+	font-weight: 100;
+}
+
 #event_organization {
 	color: #1abc9c;
 	font-size: 14px;
-	font-weight: bold;
+	font-weight: 100;
 }
 
 
@@ -185,9 +192,9 @@ body {
 }
 
 #event_date {
-	color: #2c3e50;
+	color: #3498db;
 	font-size: 14px;
-	font-weight: bold;
+	font-weight: 100;
 }
 
 
@@ -196,9 +203,9 @@ body {
 }
 
 #event_city {
-	color: #2c3e50;
+	color: #3498db;
 	font-size: 14px;
-	font-weight: bold;
+	font-weight: 100;
 }
 
 

@@ -240,7 +240,7 @@ body {
 
 #name a {
 	text-decoration: none;
-	color: #3498db;
+	color: #2c3e50;
 }
 
 #name a:hover {
@@ -262,7 +262,7 @@ body {
 
 #location a {
 	text-decoration: none;
-	color: #3498db;
+	color: #2c3e50;
 }
 
 #location a:hover {
@@ -279,19 +279,26 @@ body {
 
 .left_button {
 	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
 	height: 30px;
 	cursor: pointer;
-	background-color: #3498db;
-	border: 1px solid #3498db;
-	color: #fff;
+	background-color: #fff;
+	border: 1px solid #fff;
+	color: #2c3e50;
 	margin-left: -1px;
 	margin-right: -1px;
 }
 
-.left_button:active { 
-	background-color: #2c3e50;
-	border: 1px solid #2c3e50;
+.left_button:hover {
+	background-color: #ecf0f1;
+	border: 1px solid #ecf0f1;
 }
+
+#selected {
+	background-color: #ecf0f1;
+	border: 1px solid #ecf0f1;
+}
+
 
 #buttons_right {
 	float: right;
@@ -301,19 +308,17 @@ body {
 
 .right_button {
 	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
 	height: 30px;
 	cursor: pointer;
-	background-color: #3498db;
-	border: 1px solid #3498db;
-	color: #fff;
+	background-color: #ecf0f1;
+	border: 1px solid #ecf0f1;
+	color: #2c3e50;
 	margin-left: -1px;
 	margin-right: -1px;
 }
 
-.right_button:active { 
-	background-color: #2c3e50;
-	border: 1px solid #2c3e50;
-}
+
 
 #profile_pic {
 	height: 170px;
@@ -369,7 +374,7 @@ body {
 
 .events_header ul li a {
 	text-decoration: none;
-	color: #3498db;
+	color: #2c3e50;
 }
 
 .events_header ul li a:hover {
@@ -394,7 +399,7 @@ body {
 	cursor: pointer;
 	background-color: #ecf0f1;
 	border: 1px solid #ecf0f1;
-	color: #3498db;
+	color: #2c3e50;
 	margin-left: -1px;
 	margin-right: -1px;
 	
@@ -468,7 +473,7 @@ body {
 }
 
 #events_text a {
-	color:#3498db;
+	color:#2c3e50;
 	text-decoration: none;
 	font-size: 19px;
 }
@@ -477,10 +482,17 @@ body {
 	text-decoration: underline;
 }
 
+#event_title {
+	color:#2c3e50;
+	text-decoration: none;
+	font-size: 19px;
+	font-weight: 100;
+}
+
 #event_organization {
 	color: #1abc9c;
 	font-size: 14px;
-	font-weight: bold;
+	font-weight: 100;
 }
 
 
@@ -489,9 +501,9 @@ body {
 }
 
 #event_date {
-	color: #2c3e50;
+	color: #3498db;
 	font-size: 14px;
-	font-weight: bold;
+	font-weight: 100;
 }
 
 
@@ -500,9 +512,9 @@ body {
 }
 
 #event_city {
-	color: #2c3e50;
+	color: #3498db;
 	font-size: 14px;
-	font-weight: bold;
+	font-weight: 100;
 }
 
 

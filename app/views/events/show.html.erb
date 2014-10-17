@@ -21,7 +21,7 @@
   		<% elsif is_superadmin?%>
   			<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
   		<% else%>
-  			<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+  			<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), home_philanthropist_path(current_user)%>
   		<%end%>
   	<%else%>
     	<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
@@ -88,11 +88,18 @@
 			<%= image_tag("eventcoverBIG2.jpg", width: '960')%>
 		</div>
 		</a>
-		<form id="event_buttons">
-			<input type="submit" class="three_buttons" value="Go"></li>
-			<input type="submit" class="three_buttons" value="Share"></li>
-			<input type="submit" class="three_buttons" value="Invite"></li>	
-		</form>
+		
+		<% if is_philanthropist? %>	
+			<div id = "attend_form">
+				<% if current_user.attending?(@event)%>
+					<%= render 'going' %>
+				<% else %>
+					<%= render 'go' %>
+				<%end%>
+			</div>
+		<%end%>
+			
+
 		<% if current_user?(@event.charity) %>
 		<div id = "admin_buttons_div">
 			<%= link_to "Edit", edit_event_path(@event), class: "admin_buttons" %> 
@@ -105,7 +112,7 @@
         <%end%>
 		
 		<div class="event_details">
-			<%= link_to "<b id='event_name'>#{@event.title}</b>".html_safe, @event %><br/>
+			<%= link_to "<b id='event_title'>#{@event.title}</b>".html_safe, @event %><br/>
 			<%= link_to "<b id='event_date'>#{@event.start_date.strftime('%B %-d, %Y')} | #{@event.start_date.strftime('%A')} #{@event.start_time.strftime('%-I:%M %p')} - #{@event.end_time.strftime('%-I:%M %p')}</b>".html_safe, '#' %><br/>
 			<%= link_to "<b id='event_location'>#{@event.location}</b>".html_safe, '#' %><br/><br/>
 			<%= link_to "<b id='event_host'>#{@event.charity.name}</b>".html_safe, @event.charity %><br/>
@@ -129,44 +136,13 @@
 		<div id="going_map_section">
 			<div class="going_header">
 				<ul>
-					<li><a href="#">Going (43)</a></li> 
+					<li><a href="#">Going (<span id = "num_attendees"><%=@event.philanthropists.count%></span>)</a></li> 
 				</ul>
 			</div>
 			<div class="going_update">
 				<ul>
-					<li>
-						<a href="#">
-							<img src="" width="33" height="33" class="going_pic"/> 
-						</a>
-						<div id="going_text">
-							<a href="#"><b>Obinna Victor Ezebuiroh</b></a>
-						</div>
-					</li>
-					<li>
-						<a href="#">
-							<img src="" width="33" height="33" class="going_pic"/> 
-						</a>
-						<div id="going_text">
-							<a href="#"><b>Luol Deng</b></a>
-						</div>
-					</li>
-					<li>
-						<a href="#">
-							<img src="" width="33" height="33" class="going_pic"/> 
-						</a>
-						<div id="going_text">
-							<a href="#"><b>Gerardo Gonzalez</b></a>
-						</div>
-					</li>
-					<li>
-						<a href="#">
-							<img src="" width="33" height="33" class="going_pic"/> 
-						</a>
-						<div id="going_text">
-							<a href="#"><b>Deron Williams</b></a>
-						</div>
-					</li>
-				</ul>		
+					
+				</ul>	
 			</div>
 			<div class="map_header">
 				<ul>

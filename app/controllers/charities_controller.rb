@@ -21,7 +21,7 @@ class CharitiesController < ApplicationController
     if @charity.save
         sign_in @charity
         flash[:success] = "Welcome to Cherry Ivy"
-        redirect_to @charity
+        redirect_to home_charity_path(@charity)
     else
       render 'new'
     end    

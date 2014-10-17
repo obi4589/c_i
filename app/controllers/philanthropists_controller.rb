@@ -1,6 +1,6 @@
 class PhilanthropistsController < ApplicationController
-  before_action :signed_in_user, only: [:index, :edit, :update]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :signed_in_user, only: [:index, :edit, :update, :home]
+  before_action :correct_user,   only: [:edit, :update, :home]
   before_action :is_superadmin?, only: [:destroy]
 
 
@@ -20,7 +20,7 @@ class PhilanthropistsController < ApplicationController
     if @philanthropist.save
         sign_in @philanthropist
         flash[:success] = "Welcome to Cherry Ivy"
-        redirect_to @philanthropist
+        redirect_to home_philanthropist_path(@philanthropist)
     else
       render 'new'
     end    
@@ -31,6 +31,7 @@ class PhilanthropistsController < ApplicationController
 
   def show
   	@philanthropist = Philanthropist.find(params[:id]) 
+    @events = @philanthropist.events.all
   end
 
 
@@ -54,6 +55,12 @@ class PhilanthropistsController < ApplicationController
     Philanthropist.find(params[:id]).destroy
     flash[:success] = "Philanthropist deleted."
     redirect_back_or index1_superadmin_path(current_user)
+  end
+
+  def home
+    @philanthropist = Philanthropist.find(params[:id])
+    @feed_items = current_user.feed.all
+    render 'home'
   end
 
   

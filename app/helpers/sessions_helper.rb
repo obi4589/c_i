@@ -47,6 +47,10 @@ module SessionsHelper
     current_user.type == "Superadmin"
   end
 
+  def is_philanthropist?
+    current_user.type == "Philanthropist"
+  end
+
 
 
 

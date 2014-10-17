@@ -1,0 +1,3 @@
+<%= form_for(current_user.attendances.find_by(event_id: @event.id), html: { method: :delete, id: "event_buttons_2" }, remote: true) do |f| %>
+	<%= f.submit "Going", class: "going_button" %>
+<% end %>

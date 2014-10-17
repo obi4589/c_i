@@ -21,7 +21,7 @@
   		<% elsif is_superadmin?%>
   			<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
   		<% else%>
-  			<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+  			<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), home_philanthropist_path(current_user) %>
   		<%end%>
   	<%else%>
     	<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
@@ -84,7 +84,7 @@
 	<div id="page_width2">
 		<div class="events_header1">
 			<div id="name">
-				<%= link_to "#{current_user.name}", '#' %>
+				<%= link_to current_user.name, current_user %>
 			</div>
 			<ul>
 				<li><a href="#">Events: <%=@charity.events.count%></a></li> 
@@ -110,7 +110,7 @@
 							<input type="submit" class="num_friends_button"  value="12">
 						</form>
 						<div id="events_text">
-							<%= link_to "<b>#{event.title}</b>".html_safe, event %><br />
+							<%= link_to "<b id='event_title'>#{event.title}</b>".html_safe, event %><br />
 							<%= link_to "<b id='event_organization'>#{event.charity.name}</b>".html_safe, event.charity %> <br />
 							<%= link_to "<b id='event_date'>#{event.start_date.strftime('%A')} | #{event.start_date.strftime('%B %-d')} @ #{event.start_time.strftime('%-I:%M %p')}</b>".html_safe, '#' %> <br />
 							<% if event.zip_code.blank? %>

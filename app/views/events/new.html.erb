@@ -22,7 +22,7 @@
       <% elsif is_superadmin?%>
         <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
       <% else%>
-        <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+        <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), home_philanthropist_path(current_user)%>
       <%end%>
     <%else%>
       <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
