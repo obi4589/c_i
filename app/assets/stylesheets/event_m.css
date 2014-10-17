@@ -74,7 +74,7 @@ body {
 
 #search {
 	float: right;
-	margin-top: -47px;
+	margin-top: -46px;
 	
 }
 
@@ -614,7 +614,7 @@ body {
 #information_section {
 	width: 669px;
 	height: auto;
-	min-height: 510px;
+	min-height: 310px;
 	margin-left: 251px;
 	background-color: #fff;
 	padding: 20px;
