@@ -1,5 +1,5 @@
 class Philanthropist < User
-	has_many :attendances
+	has_many :attendances, dependent: :destroy
 	has_many :events, through: :attendances
 
 	validates :zip_code,  presence: true, length: { is: 5 }

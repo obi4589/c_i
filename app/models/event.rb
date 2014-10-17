@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
 	belongs_to :charity 
 	
-	has_many :attendances
+	has_many :attendances, dependent: :destroy
 	has_many :philanthropists, through: :attendances
 
 	validates :charity_id, presence: true
