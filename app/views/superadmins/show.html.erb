@@ -91,13 +91,23 @@
 				<a href="#"><%= @superadmin.zip_code.to_region %></a>
 				<%end%>
 			</div>
-			<form id="buttons_left">
-				<input type="submit" class="left_button" id="selected" value="Events">
-				<input type="submit" class="left_button" value="Community">
-			</form>
-			<form id="buttons_right">
-				<input type="submit" class="right_button" value="Follow">
-			</form>
+
+      <div id="buttons_left">
+        <a href="#" class= "left_button" id="underline1">Events</a>
+      </div>
+
+      <% if is_philanthropist? || is_charity? %>
+        <%unless current_user?(@user)%>
+          <div id="buttons_right">
+            <% if current_user.following?(@user)%>
+                <%= render 'shared/unfollow_1' %>
+            <% else %>
+                <%= render 'shared/follow_1' %>
+            <%end%>
+          </div>
+        <%end%>
+      <%end%>
+
 		</div>
 		<div id="profile_pic">
 		</div>
@@ -117,9 +127,9 @@
 				<li><a href="#">CI Events: <%=@events.count%></a></li> 
 				<!--<li><a href="#">Hours: 12</a></li>-->
 			</ul>
-            <form id="event_feed_toggle">
-				<input type="submit" class="upcoming_history_button" value="Upcoming">
-			</form>
+      <div id="event_feed_toggle">
+        <a href="#" class="upcoming_history_button">Upcoming</a>
+      </div>
 		</div>
 		<div class="events_update">
 			<ul>

@@ -1,5 +1,7 @@
 CI::Application.routes.draw do
 
+  resources :follows, only: [:create, :destroy] 
+
   resources :attendances, only: [:create, :destroy]
 
   resources :events
@@ -13,7 +15,7 @@ CI::Application.routes.draw do
 
   resources :philanthropists do
     member do
-      get :home
+      get :home, :followers, :following
     end
   end
   match '/signup1', to: 'philanthropists#new', via: 'get'
@@ -21,7 +23,7 @@ CI::Application.routes.draw do
 
   resources :charities do
     member do
-      get :home
+      get :home, :followers, :following
     end
   end
   match '/signup2', to: 'charities#new', via: 'get' 

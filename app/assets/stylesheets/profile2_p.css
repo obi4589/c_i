@@ -269,6 +269,7 @@ body {
 	text-decoration: underline;
 }
 
+
 #buttons_left {
 	float: left;
 	margin-top: 105px;
@@ -277,27 +278,34 @@ body {
 	
 }
 
+
 .left_button {
+	text-decoration: none;
+	display: inline-block;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
-	height: 30px;
 	cursor: pointer;
 	background-color: #fff;
 	border: 1px solid #fff;
 	color: #2c3e50;
 	margin-left: -1px;
 	margin-right: -1px;
+	padding: 6px;
 }
 
-.left_button:hover { 
+.left_button:hover {
 	background-color: #ecf0f1;
-	border: 1px solid #ecf0f1;
+	border: 1px solid #ecf0f1;		
 }
 
-#selected {
+
+
+#underline1 {
 	background-color: #ecf0f1;
-	border: 1px solid #ecf0f1;
+	border: 1px solid #ecf0f1;	
 }
+
+
 
 #buttons_right {
 	float: right;
@@ -305,7 +313,8 @@ body {
 	margin-right: -150px;
 }
 
-.right_button {
+
+#follow {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	height: 30px;
@@ -315,6 +324,20 @@ body {
 	color: #2c3e50;
 	margin-left: -1px;
 	margin-right: -1px;
+	
+}
+
+#unfollow {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	height: 30px;
+	cursor: pointer;
+	background-color: #2c3e50;
+	border: 1px solid #2c3e50;
+	color: #fff;
+	margin-left: -1px;
+	margin-right: -1px;
+	
 }
 
 
@@ -383,6 +406,7 @@ body {
 
 
 
+
 #event_feed_toggle {
 	float: right;
 	margin-top: -25px;
@@ -391,15 +415,18 @@ body {
 }
 
 .upcoming_history_button {
+	text-decoration: none;
+	display: inline-block;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 15px;
-	height: 30px;
 	cursor: pointer;
 	background-color: #ecf0f1;
 	border: 1px solid #ecf0f1;
 	color: #2c3e50;
 	margin-left: -1px;
 	margin-right: -1px;
+	padding: 6px;
+	font-weight: 100;
 	
 }
 
@@ -407,6 +434,7 @@ body {
 	border: 1px solid #ecf0f1;
 	background-color: #ecf0f1;
 }
+
 
 
 
@@ -530,459 +558,6 @@ body {
 }
 
 /**end of EVENTS section **/
-
-
-
-
-
-
-
-
-
-/**beginning of EVENTS section **/
-
-#page_width4 {
-	width: 960px;
-	height: auto;
-	margin: auto;
-	margin-bottom: 20px;
-}
-
-.photos_header {
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	background-color: #fff;
-	height: 35px;
-	color: #2c3e50;	
-}
-
-.photos_header ul {
-	list-style-type: none;
-	padding-top: 8px;
-	margin: auto;
-	margin-left: -40px;
-}
-
-.photos_header li {
-	min-width: 120px;
-	display: inline-block;
-	text-align: left;
-	margin-left: 10px;
-}
-
-
-.photos_header ul li a {
-	text-decoration: none;
-	color: #3498db;
-}
-
-.photos_header ul li a:hover {
-	text-decoration: underline;
-}
-
-
-#picture_frame {
-	width: 960px;
-	background-color: #fff;
-	height: 125px;
-	margin: auto;
-	
-}
-
-#picture_list {
-	list-style-type: none;
-	margin: auto;
-	margin-left: -30px;
-}
-
-.pictures {
-	display: inline-block;
-	width: 130px;
-	margin-top: 8px;
-	margin-right: 24px;
-}
-
-
-
-/**end of PHOTOS section **/
-
-
-
-
-
-
-
-
-
-
-/** BEGINNING OF FOLLOWING AND PEOPLE YOU MAY KNOW SECTION **/
-#page_width5 {
-	width: 960px;
-	height: auto;
-	margin: auto;
-	margin-bottom: 20px;
-}
-
-
-/**beginning of FOLLOWING section **/
-
-#following_section {
-	width: 630px;
-	height: auto;
-	float: left;
-	margin-bottom: 20px;
-}
-
-.following_header {
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	background-color: #fff;
-	height: 35px;
-	color: #3498db;	
-}
-
-.following_header ul {
-	list-style-type: none;
-	padding-top: 8px;
-	margin: auto;
-	margin-left: -40px;
-}
-
-.following_header li {
-	width: 180px;
-	display: inline-block;
-	text-align: left;
-	margin-left: 10px;
-}
-
-
-.following_header ul li a {
-	color: #3498db;
-	text-decoration: none;
-}
-
-.following_header ul li a:hover {
-	text-decoration: underline;
-}
-
-
-.following_update ul {
-	list-style-type: none;
-	margin: auto;
-	margin-left: -36px;
-}
-
-
-.following_update ul li {
-	width: 295px;
-	min-height: 65px;
-	background-color: #fff;
-	margin-bottom: 1px;
-	padding: 10px;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 13px;
-	display: inline-block;
-	color: #2c3e50;
-	margin-left: -4px;
- 
-}
-
-.friend_pic {
-	float: left;
-	margin-right: 10px;
-}
-
-#people_know_text {
-	width: 150px;
-	height: auto;
-	display: inline-block;
-	margin-left: 6px;
-
-}
-
-
-#people_know_text a {
-	color:#2c3e50;
-	text-decoration: none;
-}
-
-#people_know_text a:hover {
-	text-decoration: underline;
-}
-
-#people_location {
-	color: #1abc9c;
-	font-weight: bold;
-}
-
-
-#people_location:hover {
-	text-decoration: underline;
-	
-}
-
-
-.add_friend_button_form {
-	float: right;
-}
-
-.add_friend_button {
-	font-family: Arial, Helvetica, sans-serif;
-	height: 30px;
-	cursor: pointer;
-	background-color: #3498db;
-	border: 1px solid #3498db;
-	color: #fff;
-}
-
-
-.add_friend_button:active { 
-	background-color: #2c3e50;
-	border: 1px solid #2c3e50;
-}
-
-
-/**end of FOLLOWING section **/
-
-
-
-
-
-
-
-
-
-
-
-/**beginning of PEOPLE YOU MAY KNOW section **/
-
-#people_know_section {
-	width: 310px;
-	height: auto;
-	float: right;
-	margin-bottom: 20px;
-}
-
-.people_know_header {
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	background-color: #fff;
-	height: 35px;
-	color: #3498db;	
-}
-
-.people_know_header ul {
-	list-style-type: none;
-	padding-top: 8px;
-	margin: auto;
-	margin-left: -40px;
-}
-
-.people_know_header li {
-	width: 180px;
-	display: inline-block;
-	text-align: left;
-	margin-left: 10px;
-}
-
-
-.people_know_header ul li a {
-	color: #3498db;
-	text-decoration: none;
-}
-
-.people_know_header ul li a:hover {
-	text-decoration: underline;
-}
-
-
-.people_know_update ul {
-	list-style-type: none;
-	margin: auto;
-	margin-left: -40px;
-}
-
-
-.people_know_update ul li {
-	width: auto;
-	min-height: 65px;
-	background-color: #fff;
-	margin-bottom: 1px;
-	padding: 10px;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 13px;
-	display: block;
-	color: #2c3e50;
- 
-}
-
-.friend_pic {
-	float: left;
-	margin-right: 10px;
-}
-
-#people_know_text {
-	width: 150px;
-	height: auto;
-	display: inline-block;
-	margin-left: 6px;
-
-}
-
-
-#people_know_text a {
-	color:#2c3e50;
-	text-decoration: none;
-}
-
-#people_know_text a:hover {
-	text-decoration: underline;
-}
-
-#people_location {
-	color: #1abc9c;
-	font-weight: bold;
-}
-
-
-#people_location:hover {
-	text-decoration: underline;
-	
-}
-
-
-.add_friend_button_form {
-	float: right;
-}
-
-.add_friend_button {
-	font-family: Arial, Helvetica, sans-serif;
-	height: 30px;
-	cursor: pointer;
-	background-color: #3498db;
-	border: 1px solid #3498db;
-	color: #fff;
-}
-
-
-/**end of PEOPLE YOU MAY KNOW section **/
-
-/** END OF FOLLOWING AND PEOPLE YOU MAY KNOW SECTION **/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**beginning ACTIVITY section **/
-
-#page_width6 {
-	width: 960px;
-	height: auto;
-	margin: auto;
-	margin-bottom: 20px;
-	/**border: 1px solid black; **/
-}
-	
-
-#activity_section {
-	width: 630px;
-	height: auto;
-	float: left;
-	/**border: 1px solid black;**/
-}
-
-.activity_header {
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	background-color: #fff;
-	height: 35px;
-	color: #3498db;	
-}
-
-.activity_header ul {
-	list-style-type: none;
-	padding-top: 8px;
-	margin: auto;
-	margin-left: -40px;
-}
-
-.activity_header li {
-	display: inline-block;
-	text-align: left;
-	margin-left: 10px;
-	min-width: 110px;
-
-	
-}
-
-
-.activity_header ul li a {
-	color: #3498db;	
-	text-decoration: none;
-}
-
-.activity_header ul li a:hover {
-	text-decoration: underline;
-}
-	
-
-.activity_update ul {
-	list-style-type: none;
-	margin: auto;
-	margin-left: -40px;
-}
-
-
-.activity_update ul li {
-	width: auto;
-	min-height: 65px;
-	background-color: #fff;
-	margin-bottom: 1px;
-	padding: 10px;
-	font-family: Helvetica;
-	font-size: 13px;
-	display: block;
-	color: #2c3e50;
-}
-
-.friend_pic {
-	float: left;
-	margin-right: 10px;
-}
-
-#activity_text {
-	width: 470px;
-	height: auto;
-	display: inline-block;
-	margin-left: 25px;
-	
-	
-	
-}
-
-#activity_text a {
-	color: #3498db;
-	text-decoration: none;
-	font-weight: bold;
-}
-
-#activity_text a:hover {
-	text-decoration: underline;
-}
-
-/**end of ACTIVITY section **/
-
-
-
 
 
 

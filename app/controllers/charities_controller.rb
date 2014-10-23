@@ -1,5 +1,5 @@
 class CharitiesController < ApplicationController
-  before_action :signed_in_user, only: [:index, :edit, :update, :home]
+  before_action :signed_in_user, only: [:index, :edit, :update, :home, :followers, :following]
   before_action :correct_user,   only: [:edit, :update, :home]
   before_action :is_superadmin?, only: [:destroy]
 
@@ -32,6 +32,7 @@ class CharitiesController < ApplicationController
   def show
   	@charity = Charity.find(params[:id]) 
     @events = @charity.events.all
+    @user = @charity
   end
 
 
@@ -63,6 +64,20 @@ class CharitiesController < ApplicationController
     @charity = Charity.find(params[:id])
     @feed_items = current_user.feed.all
     render 'home'
+  end
+
+  def followers
+    @charity = Charity.find(params[:id])
+    @user = @charity
+    @followers = @user.followers
+    render 'followers'
+  end
+
+  def following
+    @charity = Charity.find(params[:id])
+    @user = @charity
+    @following = @user.all_follows
+    render 'following'
   end
 
 

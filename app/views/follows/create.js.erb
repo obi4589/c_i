@@ -1,0 +1,4 @@
+$("#buttons_right").html("<%= escape_javascript(render('shared/unfollow_1')) %>")
+$("#num_followers").html('<%=@user.followers_count%>')
+$("#num_following").html('<%=@user.follow_count%>')
+

@@ -1,5 +1,5 @@
 class PhilanthropistsController < ApplicationController
-  before_action :signed_in_user, only: [:index, :edit, :update, :home]
+  before_action :signed_in_user, only: [:index, :edit, :update, :home, :followers, :following]
   before_action :correct_user,   only: [:edit, :update, :home]
   before_action :is_superadmin?, only: [:destroy]
 
@@ -32,6 +32,7 @@ class PhilanthropistsController < ApplicationController
   def show
   	@philanthropist = Philanthropist.find(params[:id]) 
     @events = @philanthropist.events.all
+    @user = @philanthropist
   end
 
 
@@ -61,6 +62,20 @@ class PhilanthropistsController < ApplicationController
     @philanthropist = Philanthropist.find(params[:id])
     @feed_items = current_user.feed.all
     render 'home'
+  end
+
+  def followers
+    @philanthropist = Philanthropist.find(params[:id])
+    @user = @philanthropist
+    @followers = @user.followers
+    render 'followers'
+  end
+
+  def following
+    @philanthropist = Philanthropist.find(params[:id])
+    @user = @philanthropist
+    @following = @user.all_follows
+    render 'following'
   end
 
   

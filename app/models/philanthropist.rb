@@ -7,7 +7,7 @@ class Philanthropist < User
 
 
 
-	def attending?(event)
+	  def attending?(event)
     	attendances.find_by(event_id: event.id)
   	end
 

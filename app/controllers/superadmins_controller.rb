@@ -29,6 +29,7 @@ class SuperadminsController < ApplicationController
 	def show
 		@superadmin = Superadmin.find(params[:id])
 		@events = Event.all
+		@user = @superadmin
 	end
 
 

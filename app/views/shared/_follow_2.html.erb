@@ -1,0 +1,4 @@
+<%= form_for(current_user.follows.build(followable_id: user.id), html: {class: "follow_user_button_form"}) do |f| %>
+	<div><%= f.hidden_field :followable_id %></div>
+	<%= f.submit "Follow", class: "follow_user_button" %>
+<% end %>

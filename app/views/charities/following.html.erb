@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><%= @charity.name %></title>
+<%= stylesheet_link_tag    "following_c.css", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>
+
+</head>
+
+<body>
+
+<!-- navigation bar section -->
+<div class="menu1">
+  <div class="page_width1">
+    <% if signed_in? %>
+        <% if is_charity?%>
+            <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), home_charity_path(current_user)%>
+        <% elsif is_superadmin?%>
+            <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+        <% else%>
+            <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), home_philanthropist_path(current_user)%>
+        <%end%>
+    <%else%>
+        <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+    <%end%>
+
+    <a ref="#" id="nav_button">O</a>
+
+    <% if signed_in? %>
+      <ul id="pages">
+        <%= link_to "<li class='page_name'>Profile</li>".html_safe, current_user %>
+        <%= link_to "<li class='page_name'>Activity</li>".html_safe, '#' %>
+      </ul>
+    <% else %>
+      <ul id="pages">
+        <a href="#"><li class="page_name">Profile</li></a>
+        <a href="#"><li class="page_name">Activity</li></a>
+      </ul>
+    <% end %>
+
+    <form id="search">
+      <input name="search" type="text" value="Search" class="search-input" onfocus="if(this.value == 'Search')  {this.value=''}" onblur="if(this.value == ''){this.value ='Search'}"/>
+    </form>
+    <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: name %>
+      <% end -%>
+
+      <div id="nav_button_div">
+          <ul>
+            <% if signed_in? %>
+              <% if is_charity? %>
+                <%= link_to "<li>Settings</li>".html_safe, edit_charity_path(current_user) %>
+                <%= link_to "<li>New Event</li>".html_safe, new_event_path %>
+              <% elsif is_superadmin? %>
+                <%= link_to "<li>Users</li>".html_safe, index1_superadmin_path(current_user) %>
+              <% else %>
+                <%= link_to "<li>Settings</li>".html_safe, edit_philanthropist_path(current_user) %>
+              <% end %>
+              <%= link_to "<li id='s-o'>Sign Out</li>".html_safe, signout_path, method: "delete" %>
+            <% else %>
+                  <a href="#"><li>Settings</li></a>
+                  <a href="#"><li id="s-o">Sign Out</li></a>
+                <% end %>
+            </ul>
+        </div>
+  </div>
+</div>
+<!-- end of navigation bar -->
+
+
+
+
+
+
+<div class="menu2"> 
+
+<!-- beginning of cover photo section -->
+    <div id="page_width2">
+        <div id="cover_photo_section">
+            <div id="name">
+                <%= link_to @charity.name, @charity %>
+            </div>
+            <div id="location">
+                <a href="#"><%= @charity.zip_code.to_region %></a>
+            </div>
+
+            <div id="buttons_left">
+                <%= link_to "Events", @charity, class: "left_button"%>
+                <%= link_to "Community", followers_charity_path(@charity), class: "left_button",  id: "underline1"%>
+                <%= link_to "About", '#', class: "left_button" %>
+            </div>
+
+            <% if is_philanthropist? || is_charity? %>
+              <%unless current_user?(@user)%>
+                <div id="buttons_right">
+                    <% if current_user.following?(@user)%>
+                        <%= render 'shared/unfollow_1' %>
+                    <% else %>
+                        <%= render 'shared/follow_1' %>
+                    <%end%>
+                </div>
+              <%end%>
+            <%end%>
+
+        </div>
+        <div id="profile_pic">
+        </div>
+    </div>
+    
+        
+<!-- end of cover photo section -->
+
+
+
+
+
+
+<!-- beginning of followers sectoin -->
+	<div id="page_width3">
+		<div class="community_header">
+        	<div id="follower_header">
+                <%= link_to "Followers: <span id='num_followers'>#{@user.followers_count}</span>".html_safe, followers_charity_path(@charity)%>
+            </div>
+            <div id="following_header">
+                <%= link_to "Following: <span id='num_following'>#{@user.follow_count}</span>".html_safe, following_charity_path(@charity)%>
+            </div>
+		</div>
+        <div class="user_update">
+            <ul>
+                <% if @following.any? %>
+                <% @following.each do |user| %>
+                <li>
+                    <a href="#">
+                    <img src="" width="63" height="63" class="user_pic"/> 
+                    </a>
+                    <div id="user_text">
+                        <%= link_to "<b>#{user.followable.name}</b>".html_safe, user.followable %> <br/>
+                        <%= link_to "<b id='user_location'>#{user.followable.zip_code.to_region}</b>".html_safe, '#' %><br/>
+                    </div>
+
+                    <% if is_philanthropist? || is_charity? %>
+                     <%unless current_user?(user.followable)%>
+                        <div id="follow_unfollow_form">
+                            <% if current_user.following?(user.followable)%>
+                                <%= render partial: 'shared/unfollow_2', locals: {user: user.followable}  %>
+                            <% else %>
+                                <%= render partial: 'shared/follow_2', locals: {user: user.followable} %>
+                            <% end %>
+                        </div>
+                    <%end%>
+                    <%end%>
+
+                </li>
+                <% end %>
+                <% end%>
+            </ul>       
+        </div>
+	</div>
+	<!-- end of followers section -->
+
+
+
+</div>
+
+
+
+
+</body>
+</html>

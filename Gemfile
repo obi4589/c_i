@@ -43,3 +43,5 @@ gem 'area', '0.10.0'
 #gem for ckeditor install
 gem 'ckeditor', '4.1.0'
 
+#gem for follow/unfollow features
+gem 'acts_as_follower', '0.2.1'
