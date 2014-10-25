@@ -90,7 +90,7 @@
 			<div id="buttons_left">
         <%= link_to "Events", @charity, class: "left_button", id: "underline1"%>
         <%= link_to "Community", followers_charity_path(@charity), class: "left_button"%>
-        <%= link_to "About", '#', class: "left_button" %>
+        <%= link_to "About", about_charity_path(@charity), class: "left_button" %>
 			</div>
 
 			<% if is_philanthropist? || is_charity? %>

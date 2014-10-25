@@ -1,5 +1,5 @@
 class CharitiesController < ApplicationController
-  before_action :signed_in_user, only: [:index, :edit, :update, :home, :followers, :following]
+  before_action :signed_in_user, only: [:index, :edit, :update, :home, :followers, :following, :about]
   before_action :correct_user,   only: [:edit, :update, :home]
   before_action :is_superadmin?, only: [:destroy]
 
@@ -78,6 +78,12 @@ class CharitiesController < ApplicationController
     @user = @charity
     @following = @user.all_follows
     render 'following'
+  end
+
+  def about
+    @charity = Charity.find(params[:id])
+    @user = @charity
+    render 'charity_about'
   end
 
 

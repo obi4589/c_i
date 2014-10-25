@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><%= @charity.name %></title>
-<%= stylesheet_link_tag    "following_c.css", media: "all", "data-turbolinks-track" => true %>
+<%= stylesheet_link_tag    "charity_about.css", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
@@ -87,10 +87,10 @@
                 <a href="#"><%= @charity.zip_code.to_region %></a>
             </div>
 
-            <div id="buttons_left">
+           <div id="buttons_left">
                 <%= link_to "Events", @charity, class: "left_button"%>
-                <%= link_to "Community", followers_charity_path(@charity), class: "left_button",  id: "underline1"%>
-                <%= link_to "About", about_charity_path(@charity), class: "left_button" %>
+                <%= link_to "Community", followers_charity_path(@charity), class: "left_button"%>
+                <%= link_to "About", about_charity_path(@charity) , class: "left_button", id: "underline1"%>
             </div>
 
             <% if is_philanthropist? || is_charity? %>
@@ -118,48 +118,29 @@
 
 
 
-<!-- beginning of followers sectoin -->
+<!-- beginning of EVENTS section -->
 	<div id="page_width3">
-		<div class="community_header">
-        	<div id="follower_header">
-                <%= link_to "Followers: <span id='num_followers'>#{@user.followers_count}</span>".html_safe, followers_charity_path(@charity)%>
-            </div>
-            <div id="following_header">
-                <%= link_to "Following: <span id='num_following'>#{@user.follow_count}</span>".html_safe, following_charity_path(@charity)%>
-            </div>
+		<div class="about_header">
+			<ul>
+				<li><a href="#">About</a></li> 
+			</ul>
 		</div>
-        <div class="user_update">
-            <ul>
-                <% if @following.any? %>
-                <% @following.each do |user| %>
-                <li>
-                    <a href="#">
-                    <img src="" width="63" height="63" class="user_pic"/> 
-                    </a>
-                    <div id="user_text">
-                        <%= link_to "<b>#{user.followable.name}</b>".html_safe, user.followable %> <br/>
-                        <%= link_to "<b id='user_location'>#{user.followable.zip_code.to_region}</b>".html_safe, '#' %><br/>
-                    </div>
-
-                    <% if is_philanthropist? || is_charity? %>
-                     <%unless current_user?(user.followable)%>
-                        <div id="follow_unfollow_form">
-                            <% if current_user.following?(user.followable)%>
-                                <%= render partial: 'shared/unfollow_2', locals: {user: user.followable}  %>
-                            <% else %>
-                                <%= render partial: 'shared/follow_2', locals: {user: user.followable} %>
-                            <% end %>
-                        </div>
-                    <%end%>
-                    <%end%>
-
-                </li>
-                <% end %>
-                <% end%>
-            </ul>       
-        </div>
+		<div id="body">
+        <b>Legal Name</b>
+        <p><%= @charity.legal_name %></p>
+        <p><b>Mission</b></p>
+        <p><%= @charity.mission%></p>
+        <p><b>EIN</b></p>
+        <p><%= @charity.ein[0..1]%>-<%= @charity.ein[2..8]%></p>
+        <p><b>Contact Person</b></p>
+        <p><%= @charity.contact_person%></p>
+        <p><b>Email</b></p>
+        <p><%= @charity.email%></p>
+        <p><b>Phone Number</b></p>
+        <p>(<%= @charity.phone[0..2]%>) <%= @charity.phone[3..5]%>-<%= @charity.phone[6..9]%></p>
+		</div>
 	</div>
-	<!-- end of followers section -->
+	<!-- end of EVENTS section -->
 
 
 

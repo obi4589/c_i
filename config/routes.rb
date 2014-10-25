@@ -23,7 +23,7 @@ CI::Application.routes.draw do
 
   resources :charities do
     member do
-      get :home, :followers, :following
+      get :home, :followers, :following, :about
     end
   end
   match '/signup2', to: 'charities#new', via: 'get' 
