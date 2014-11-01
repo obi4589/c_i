@@ -25,7 +25,7 @@ gem 'sass-rails', '4.0.3'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.0.4'
-gem 'turbolinks', '1.1.1'
+gem 'turbolinks', '2.3.0'
 gem 'jbuilder', '1.0.2'
 
 group :doc do
@@ -45,3 +45,6 @@ gem 'ckeditor', '4.1.0'
 
 #gem for follow/unfollow features
 gem 'acts_as_follower', '0.2.1'
+
+#jQuery plugin for drop-in fix binded events problem caused by Turbolinks
+gem 'jquery-turbolinks', '2.1.0'

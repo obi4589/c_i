@@ -11,10 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require ckeditor/init
 //= require_tree .
 // 
 // Vendor files
 //= require google_maps
+
+//= require turbolinks
