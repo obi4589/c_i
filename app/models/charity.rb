@@ -10,8 +10,17 @@ class Charity < User
 
 
 
-
+#these are the HOME FEED methods for charities
 	def feed
     	Event.where("charity_id = ?", id)
   	end
+
+  	def feed1
+      Event.joins(:attendances).from_philanthropists_followed_by_2(self).distinct
+    end
+
+    def feed2
+      Event.from_charities_followed_by_2(self).distinct
+    end
+
 end

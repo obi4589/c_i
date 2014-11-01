@@ -383,7 +383,7 @@ body {
 	list-style-type: none;
 	padding-top: 15px;
 	margin: auto;
-	margin-left: -80px;
+	margin-left: -82px;
 }
 
 .events_header li {
@@ -466,11 +466,15 @@ body {
 	margin-left: -8px;
 }
 
-.num_friends_button {
+
+.num_friends_link {
+	display: block;
 	width: 50px;
-	height: 50px;
+	height: 39px;
+	padding-top:11px;
+	text-align: center;
+	text-decoration: none;
 	cursor: pointer;
-	border: 1px solid #00B0F0;
 	background-color: #00B0F0;
 	color: white;
 	position: absolute;
@@ -480,12 +484,15 @@ body {
 	font-size: 25px;
 }
 
-.num_friends_button:active {
-	border: 1px solid #2c3e50;
+.num_friends_link:active {
 	background-color: #2c3e50;
 }
 
-
+.going_star {
+	position: absolute;
+	margin-top: -25px;
+	
+}
 
 
 
@@ -555,6 +562,19 @@ body {
 	padding-bottom: 70px;
 	font-size: 30px;
 	color: #2c3e50;
+}
+
+#event_month_header {
+	width: 930px;
+	text-align: left;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 14px;
+	color: #2c3e50;
+	padding-left: 8px;
+	padding-right: 22px;
+	margin-bottom: 0px;
+	background-color: ;
 }
 
 /**end of EVENTS section **/

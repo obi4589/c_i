@@ -1,5 +1,5 @@
 class PhilanthropistsController < ApplicationController
-  before_action :signed_in_user, only: [:index, :edit, :update, :home, :followers, :following]
+  before_action :signed_in_user, only: [:index, :show, :edit, :update, :home, :followers, :following]
   before_action :correct_user,   only: [:edit, :update, :home]
   before_action :is_superadmin?, only: [:destroy]
 
@@ -31,7 +31,9 @@ class PhilanthropistsController < ApplicationController
 
   def show
   	@philanthropist = Philanthropist.find(params[:id]) 
-    @events = @philanthropist.events.all
+    events = @philanthropist.events.all.sort_by {|x| [x.start_date, x.start_time, x.end_time] }
+    @final_feed = events.select {|x| x.start_date >= Date.today }.take(100)
+    @months = @final_feed.map {|x| x.start_date.strftime('%B, %Y')}.uniq
     @user = @philanthropist
   end
 
@@ -60,21 +62,27 @@ class PhilanthropistsController < ApplicationController
 
   def home
     @philanthropist = Philanthropist.find(params[:id])
-    @feed_items = current_user.feed.all
+    #@feed_items = current_user.feed.all
+    feed1 = current_user.feed1.all
+    feed2 = current_user.feed2.all
+    total_feed = feed1 + feed2
+    feed_items = total_feed.uniq.sort_by {|x| [x.start_date, x.start_time, x.end_time] }
+    @final_feed = feed_items.select {|x| x.start_date >= Date.today }.take(100)
+    @months = @final_feed.map {|x| x.start_date.strftime('%B, %Y')}.uniq
     render 'home'
   end
 
   def followers
     @philanthropist = Philanthropist.find(params[:id])
     @user = @philanthropist
-    @followers = @user.followers
+    @followers = @user.followers.sort_by(&:name)
     render 'followers'
   end
 
   def following
     @philanthropist = Philanthropist.find(params[:id])
     @user = @philanthropist
-    @following = @user.all_follows
+    @following = @user.all_follows.sort{ |a,b| b[:created_at] <=> a[:created_at] }
     render 'following'
   end
 

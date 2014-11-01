@@ -7,7 +7,7 @@ class SuperadminsController < ApplicationController
 
 	def index1
 		@superadmin = Superadmin.find(params[:id])
-		@users = User.all
+		@users = User.all.sort{ |a,b| b[:created_at] <=> a[:created_at] }
 		@philanthropists = Philanthropist.all
 		@superadmins = Superadmin.all
 		@events = Event.all
@@ -16,7 +16,7 @@ class SuperadminsController < ApplicationController
 
 	def index2
 		@superadmin = Superadmin.find(params[:id])
-		@users = User.all
+		@users = User.all.sort{ |a,b| b[:created_at] <=> a[:created_at] }
 		@charities = Charity.all
 		@superadmins = Superadmin.all
 		@events = Event.all
