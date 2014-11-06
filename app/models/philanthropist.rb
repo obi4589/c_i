@@ -36,7 +36,8 @@ class Philanthropist < User
 
 #this is for philanthropist search
     def self.search(query)
-    where("name like ? OR email like ? OR city_st like ? OR zip_code like ?", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%") 
-  end
+      where("lower(name) LIKE lower(?) OR  lower(email) LIKE lower(?) OR  lower(city_st) LIKE lower(?) OR  lower(zip_code) LIKE lower(?)", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%") 
+    end
+
 
 end

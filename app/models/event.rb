@@ -71,7 +71,7 @@ class Event < ActiveRecord::Base
 
 #this is for event search
   def self.search(query)
-    where("charity_name like ? OR charity_legal_name like ? OR city_st like ? OR zip_code like ? OR title like ? OR description like ?", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%") 
+    where("lower(charity_name) LIKE lower(?) OR  lower(charity_legal_name) LIKE lower(?) OR  lower(city_st) LIKE lower(?) OR  lower(zip_code) LIKE lower(?) OR  lower(title) LIKE lower(?) OR  lower(description) LIKE lower(?)", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%") 
   end
 
 end

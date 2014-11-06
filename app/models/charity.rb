@@ -26,8 +26,9 @@ class Charity < User
 
 #this is for charity search
     def self.search(query)
-    where("name like ? OR legal_name like ? OR ein like ? OR mission like ? OR city_st like ? OR zip_code like ? OR email like ?", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%") 
+    where("lower(name) LIKE lower(?) OR  lower(legal_name) LIKE lower(?) OR  lower(ein) LIKE lower(?) OR  lower(mission) LIKE lower(?) OR  lower(city_st) LIKE lower(?) OR  lower(zip_code) LIKE lower(?) OR  lower(email) LIKE lower(?)", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%") 
   end
   
+
 
 end
