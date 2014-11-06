@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Search</title>
+<%= stylesheet_link_tag    "search.css", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>
+
+</head>
+
+<body>
+
+<!-- navigation bar section -->
+<div class="menu1">
+  <div class="page_width1">
+    <% if signed_in? %>
+        <% if is_charity?%>
+            <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), home_charity_path(current_user)%>
+        <% elsif is_superadmin?%>
+            <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+        <% else%>
+            <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), home_philanthropist_path(current_user)%>
+        <%end%>
+    <%else%>
+        <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+    <%end%>
+
+    <a ref="#" id="nav_button">O</a>
+
+    <% if signed_in? %>
+      <ul id="pages">
+        <%= link_to "<li class='page_name'>Profile</li>".html_safe, current_user %>
+        <%= link_to "<li class='page_name'>Activity</li>".html_safe, '#' %>
+      </ul>
+    <% else %>
+      <ul id="pages">
+        <a href="#"><li class="page_name">Profile</li></a>
+        <a href="#"><li class="page_name">Activity</li></a>
+      </ul>
+    <% end %>
+
+    <%= form_for(events_path, method: "get", id: "search" , url: events_url) do  %>
+    <%= text_field_tag :search, params[:search], placeholder: 'Search', class: "search-input"%>
+    <% end %>
+    
+    <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: name %>
+      <% end -%>
+
+      <div id="nav_button_div">
+          <ul>
+            <% if signed_in? %>
+              <% if is_charity? %>
+                <%= link_to "<li>Settings</li>".html_safe, edit_charity_path(current_user) %>
+                <%= link_to "<li>New Event</li>".html_safe, new_event_path %>
+              <% elsif is_superadmin? %>
+                <%= link_to "<li>Users</li>".html_safe, index1_superadmin_path(current_user) %>
+              <% else %>
+                <%= link_to "<li>Settings</li>".html_safe, edit_philanthropist_path(current_user) %>
+              <% end %>
+              <%= link_to "<li id='s-o'>Sign Out</li>".html_safe, signout_path, method: "delete" %>
+            <% else %>
+                  <a href="#"><li>Settings</li></a>
+                  <a href="#"><li id="s-o">Sign Out</li></a>
+                <% end %>
+            </ul>
+        </div>
+  </div>
+</div>
+<!-- end of navigation bar -->
+
+
+
+
+
+
+<div class="menu2"> 
+
+
+
+<!-- beginning of EVENTS section -->
+	<div id="page_width2">
+		<div class="events_header1">
+			<div id="name">
+				<a href="#">Events: <%=@events.count%></a>
+			</div>
+			<ul>
+				<!--<li><a href="#">Events: 5</a></li> -->
+				<!--<li><a href="#">Hours: 12</a></li>-->
+			</ul>
+		</div>
+		<div class="events_header2">
+			<form id="header2_buttons">
+			<input type="submit" class="header_button" id="selected" value="Community">
+			<input type="submit" class="header_button" value="Upcoming">
+			<input type="submit" class="header_button" value="History">
+			<input type="submit" class="header_button" value="Invited">
+			</form>
+		</div>
+		<div class="events_update">
+			<ul>           
+				<%if @events.any? %>
+
+                        <% @events.each do |event| %>
+                            <li>
+                                <!-- photo 100% on MS word.. height 2.3 and width 3.18-->
+                                <%= link_to image_tag("eventpic1.gif", alt: "pic", class: "event_pic"), event %>
+                                <div>
+                                    <% unless event.follows_at_event(current_user).count == 0 %>
+                                        <%= link_to "#{event.follows_at_event(current_user).count}", '#', class: "num_friends_link" %>
+                                    <% end%>
+                                    <% if is_philanthropist? %>
+                                      <%if current_user.attending?(event)%> 
+                                        <%= image_tag("star.png", alt: "pic", class: "going_star")%>
+                                      <% end %>
+                                    <% elsif is_charity? %>
+                                      <% if current_user.id == event.charity.id %>
+                                        <%= image_tag("star.png", alt: "pic", class: "going_star")%>
+                                      <% end %>
+                                    <% end %> 
+                                </div>
+                                <div id="events_text">
+                                    <%= link_to "<b id='event_title'>#{event.title}</b>".html_safe, event %><br />
+                                    <%= link_to "<b id='event_organization'>#{event.charity.name}</b>".html_safe, event.charity %> <br />
+                                    <%= link_to "<b id='event_date'>#{event.start_date.strftime('%A')} | #{event.start_date.strftime('%B %-d')} @ #{event.start_time.strftime('%-I:%M %p')}</b>".html_safe, '#' %> <br />
+                                    <% if event.zip_code.blank? %>
+                                    <%= link_to "<b id='event_city'>#{event.location}</b>".html_safe, '#' %><br /> 
+                                    <% else %>
+                                    <%= link_to "<b id='event_city'>#{event.zip_code.to_region}</b>".html_safe, '#' %><br />  
+                                    <% end %>
+                                </div>
+                            </li>
+                        <%end %>
+
+                <% else %>
+                <li id="no_events_holder">
+                No Event Results
+                </li>   
+                <% end %>    
+			</ul>		
+		</div>
+	</div>		
+<!-- end of EVENTS section -->
+		
+
+
+
+	
+<!-- beginning of charities section -->
+	<div id="page_width3">
+		<div class="community_header">
+        	<div id="user_header">
+            	<a href="#">Charities: <%=@charities.count%></a>
+            </div>
+		</div>
+        <div class="user_update">
+            <ul>
+                <% if @charities.any? %>
+                    <% @charities.each do |user| %>
+                        <li>
+                            <a href="#">
+                            <img src="" width="63" height="63" class="user_pic"/> 
+                            </a>
+                            <div id="user_text">
+                                <%= link_to "<b>#{user.name}</b>".html_safe, user %> <br/>
+                                <%= link_to "<b id='user_location'>#{user.zip_code.to_region}</b>".html_safe, '#' %><br/>
+                            </div>
+
+                            <% if is_philanthropist? || is_charity? %>
+                                 <%unless current_user?(user)%>
+                                    <div id="follow_unfollow_form">
+                                        <% if current_user.following?(user)%>
+                                            <%= render partial: 'shared/unfollow_2', locals: {user: user}  %>
+                                        <% else %>
+                                            <%= render partial: 'shared/follow_2', locals: {user: user} %>
+                                        <% end %>
+                                    </div>
+                                <%end%>
+                            <%end%>
+                        </li>
+                    <% end %>
+                <% else%>
+                    <li id="no_users_holder">
+                    No Charity Results
+                    </li>
+                <%end%>
+            </ul>		
+        </div>
+	</div>
+	<!-- end of charities section -->
+    
+    
+    
+    
+    
+    	
+<!-- beginning of philanthropists section -->
+	<div id="page_width3">
+		<div class="community_header">
+        	<div id="user_header">
+            	<a href="#">Philanthropists: <%=@philanthropists.count%></a>
+            </div>
+		</div>
+        <div class="user_update">
+            <ul>
+                <% if @philanthropists.any? %>
+                    <% @philanthropists.each do |user| %>
+                        <li>
+                            <a href="#">
+                            <img src="" width="63" height="63" class="user_pic"/> 
+                            </a>
+                            <div id="user_text">
+                                <%= link_to "<b>#{user.name}</b>".html_safe, user %> <br/>
+                                <%= link_to "<b id='user_location'>#{user.zip_code.to_region}</b>".html_safe, '#' %><br/>
+                            </div>
+
+                            <% if is_philanthropist? || is_charity? %>
+                                 <%unless current_user?(user)%>
+                                    <div id="follow_unfollow_form">
+                                        <% if current_user.following?(user)%>
+                                            <%= render partial: 'shared/unfollow_2', locals: {user: user}  %>
+                                        <% else %>
+                                            <%= render partial: 'shared/follow_2', locals: {user: user} %>
+                                        <% end %>
+                                    </div>
+                                <%end%>
+                            <%end%>
+                        </li>
+                    <% end %>
+                <% else%>
+                    <li id="no_users_holder">
+                    No Philanthropist Results
+                    </li>
+                <%end%>
+            </ul>		
+        </div>
+	</div>
+	<!-- end of followers section -->
+
+
+</div>
+
+
+
+
+</body>
+</html>

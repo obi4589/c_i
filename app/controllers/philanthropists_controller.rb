@@ -4,11 +4,6 @@ class PhilanthropistsController < ApplicationController
   before_action :is_superadmin?, only: [:destroy]
 
 
-  def index
-    @users = User.all
-  end
-
-
   def new
   	@philanthropist = Philanthropist.new
   end

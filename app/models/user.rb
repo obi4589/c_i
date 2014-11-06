@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
+  before_save { self.city_st = zip_code.to_region unless zip_code.blank? }
+  before_save { self.city_st = nil if zip_code.blank? } 
   before_create :create_remember_token
 
   validates :name,  presence: true, length: { maximum: 50 }

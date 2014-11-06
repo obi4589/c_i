@@ -4,6 +4,21 @@ class EventsController < ApplicationController
   before_action :correct_user_type, only: [:new]
   before_action :correct_or_sa, only: [:destroy]
 
+  
+  def index
+    if params[:search]
+      @events = Event.search(params[:search]).select {|x| x.start_date >= Date.today }.sort_by {|x| [x.start_date, x.start_time, x.end_time] }.take(30)
+      @charities = Charity.search(params[:search]).sort_by(&:name).take(30)
+      @philanthropists = Philanthropist.search(params[:search]).sort_by(&:name).take(30)
+    else
+      @events = Event.all.take(0)
+      @charities = Charity.all.take(0)
+      @philanthropists = Philanthropist.all.take(0)
+    end
+  end
+
+
+
   def new
   	@event = current_user.events.build
   end
@@ -34,6 +49,7 @@ class EventsController < ApplicationController
       flash[:success] = "Event updated"
       redirect_to @event
     else
+      @feed_items = []
       render 'edit'
     end
   end

@@ -42,9 +42,9 @@
       </ul>
     <% end %>
 
-    <form id="search">
-      <input name="search" type="text" value="Search" class="search-input" onfocus="if(this.value == 'Search')  {this.value=''}" onblur="if(this.value == ''){this.value ='Search'}"/>
-    </form>
+    <%= form_for(events_path, method: "get", id: "search" , url: events_url) do  %>
+      <%= text_field_tag :search, params[:search], placeholder: 'Search', class: "search-input"%>
+    <% end %>
     <% flash.each do |name, msg| -%>
           <%= content_tag :div, msg, class: name %>
       <% end -%>

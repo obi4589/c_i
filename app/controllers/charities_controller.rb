@@ -1,13 +1,7 @@
 class CharitiesController < ApplicationController
-  before_action :signed_in_user, only: [:index, :show, :edit, :update, :home, :followers, :following, :about]
+  before_action :signed_in_user, only: [:show, :edit, :update, :home, :followers, :following, :about]
   before_action :correct_user,   only: [:edit, :update, :home]
   before_action :is_superadmin?, only: [:destroy]
-
-
-  def index
-    @users = User.all
-  end
-
 
 
   def new

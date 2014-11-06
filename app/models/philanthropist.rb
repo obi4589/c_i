@@ -33,4 +33,10 @@ class Philanthropist < User
       Event.from_charities_followed_by_1(self).distinct
     end
 
+
+#this is for philanthropist search
+    def self.search(query)
+    where("name like ? OR email like ? OR city_st like ? OR zip_code like ?", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%") 
+  end
+
 end

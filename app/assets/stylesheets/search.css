@@ -1,0 +1,611 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background-color: #ecf0f1;
+	width: 100%;
+	overflow-x:hidden;
+	scrollbar-face-color: #a2a2a2;
+	scrollbar-highlight-color: #a2a2a2;
+	scrollbar-3dlight-color: #a2a2a2;
+	scrollbar-darkshadow-color:  #a2a2a2;
+	scrollbar-shadow-color:  #a2a2a2;
+	scrollbar-arrow-color: #8a8a8a;
+	scrollbar-track-color:  #a2a2a2;
+}
+
+
+
+/**NAVIGATION BAR **/
+
+.menu1 {
+	background-color: #fff;
+	height: 45px;
+	width: 100%;
+	margin-top: -8px;
+	z-index: 1;	
+	margin-left: -8px;
+	position: fixed;
+}
+
+.page_width1 {
+	width: 960px;
+	height: auto;
+	margin: auto;
+}
+
+.page_width1 a {
+	text-decoration: none;
+}
+
+
+#nav_logo {
+	margin-top: 4px;
+	margin-left: -1px;
+}
+
+
+#pages {
+	list-style-type: none;
+	margin-top: -26px;
+	margin-left: 30px;
+	width: 220px;
+}
+
+.page_name {
+	display: inline;
+	padding-left: 22px;
+	padding-right: 22px;
+	padding-top: 13px;
+	padding-bottom: 10px;
+	color: #2c3e50;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 17px;
+}
+
+.page_name a {
+	text-decoration: none;
+}
+
+.page_name:hover {
+	background-color: #ecf0f1;
+}
+
+
+#search {
+	float: right;
+	margin-top: -46px;
+	
+}
+
+.search-input {
+	width: 480px;
+	border: 1px solid #ecf0f1;
+	outline: none;
+	padding: 6px;
+	background-color: #ecf0f1;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #2c3e50;
+	font-size: 17px;
+}
+
+.search-input:focus {
+	border: 1px solid #56b4ef;
+	box-shadow: 0px 0px 3px 1px #c8def0;
+	background-color: #fff;
+
+}
+
+#nav_button {
+	text-decoration: none;
+	float: left;
+	width: 18px;
+	height: 21px;
+	cursor: pointer;
+	border: 2px solid #fff;
+	background-color: #fff;
+	margin-top: -35px;
+	margin-left: 970px;
+	font-family: Arial, Helvetica, sans-serif;
+	display: block;
+	padding-top: 9px;
+	padding-left: 8px;
+	text-align: left;
+	font-size: 12px;
+	font-weight: bold;
+	color: #2c3e50;
+}
+
+
+#nav_button:hover { 
+	border: 2px solid #fff;
+	box-shadow: 0px 0px 3px 1px #c8def0;
+}	
+
+
+.success {
+	padding: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #2ecc71;
+	font-size: 20px;
+	color: white;
+	opacity: 0.8;
+	text-align: center;
+	margin-top: -6px;
+	position: absolute;
+	width: 940px;
+}
+
+
+
+#nav_button_div {
+	float: left;
+	width: auto;
+	height: auto;
+	cursor: pointer;
+	background-color: #fff;
+	margin-left: 890px;
+	font-family: Arial, Helvetica, sans-serif;
+	border-radius: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border: 1px solid #ecf0f1;
+	margin-top: -4px;
+	display: none;
+	
+}
+
+#nav_button_div ul{
+	list-style-type:none;
+	margin: auto ;
+	width: 69px;
+}
+
+#nav_button_div ul li{
+	padding: 5px 0px 5px 10px;
+	display: block;
+	font-size: 16px;
+	color: #2c3e50;
+	text-align: left;
+	margin-left: -41px;
+	
+}
+
+#nav_button_div ul li:hover{
+	background-color: #3498db;
+	color: #fff;
+	
+}
+
+
+#s-o {
+	border-top: 1px solid #ecf0f1;
+	
+}
+
+
+/** END OF NAVIGATION BAR **/
+
+
+
+
+
+.menu2 {
+	width: 100%;
+	margin-left: -8px;
+	position: absolute;
+}
+
+
+
+
+/** beginning of EVENTS section **/
+
+#page_width2 {
+	width: 960px;
+	margin: auto;
+	margin-top: 57px;
+	height: auto;
+	margin-bottom: 20px;
+}
+
+
+.events_header1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	background-color: #fff;
+	height: 45px;
+	color: #3498db;	
+}
+
+
+#name {
+	width: auto;
+	height: auto;
+	float: left;
+	display: inline-block;
+	margin: auto;
+	padding: 7px;
+	margin-top: 5px;
+	margin-left: 0px;
+}
+
+
+
+#name a {
+	color:#2c3e50;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+
+
+.events_header1 ul {
+	display: inline-block;
+	list-style-type: none;
+	padding-top: 8px;
+	margin: auto;
+	margin-top: 5px;
+	margin-right: 8px;
+	float: right;
+}
+
+.events_header1 li {
+	display: inline-block;
+	text-align: right;
+	margin-left: 50px;
+}
+
+
+.events_header1 ul li a {
+	color: #2c3e50;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.events_header1 ul li a:hover {
+	text-decoration: underline;
+}
+
+
+.events_header2 {
+	background-color: #fff;
+	height: 45px;
+	display: none;
+}
+
+#header2_buttons {
+	margin-left: 10px;
+}
+
+.header_button {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	cursor: pointer;
+	background-color: #ecf0f1;
+	border: 1px solid #ecf0f1;
+	color: #2c3e50;
+	padding: 10px;
+	margin-left: -1px;
+	margin-right: -1px;
+	width: 234px;
+}
+
+.header_button:active { 
+	background-color: #2c3e50;
+	border: 1px solid #2c3e50;
+	color: #fff;
+}
+
+
+#selected {
+	background-color: #2c3e50;
+	border: 1px solid #2c3e50;
+	color: #fff;
+}
+
+
+
+
+.events_update ul {
+	list-style-type: none;
+	margin: auto;
+	margin-left: -36px;
+}
+
+
+.events_update ul li {
+	width: 290px;
+	height: auto;
+	background-color: #fff;
+	margin-bottom: 1px;
+	margin-left: -4px;
+	padding: 15px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	display: inline-block;
+}
+
+.event_pic {
+	/**photoshop @100% in word  height 2.3 and width 3.18**/
+	margin-left: -8px;
+}
+
+
+.num_friends_link {
+	display: block;
+	width: 50px;
+	height: 39px;
+	padding-top:11px;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	background-color: #00B0F0;
+	color: white;
+	position: absolute;
+	margin-top: -221px;
+	margin-left: -8px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 25px;
+}
+
+.num_friends_link:active {
+	background-color: #2c3e50;
+}
+
+.going_star {
+	position: absolute;
+	margin-top: -25px;
+	
+}
+
+
+
+#events_text {
+	width: 287px;
+	min-height: 110px;
+	display: inline-block;
+	float: left;
+	margin-top: 10px;
+	margin-left: -6px;
+}
+#events_text a {
+	color:#2c3e50;
+	text-decoration: none;
+	font-size: 19px;
+}
+
+
+#events_text a:hover {
+	text-decoration: underline;
+}
+
+
+#event_title {
+	color: #2c3e50;
+	font-size: 19px;
+	font-weight: 100;
+	
+}
+
+
+
+#event_organization {
+	color: #1abc9c;
+	font-size: 14px;
+	font-weight: 100;
+}
+
+
+#event_organization:hover {
+	text-decoration: underline;
+}
+
+#event_date {
+	color: #3498db;
+	font-size: 14px;
+	font-weight: 100;
+}
+
+
+#event_date:hover {
+	text-decoration: underline;
+}
+
+#event_city {
+	color: #3498db;
+	font-size: 14px;
+	font-weight: 100;
+}
+
+
+#event_city:hover {
+	text-decoration: underline;
+}
+
+
+#no_events_holder {
+	width: 930px;
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 40px;
+	font-size: 30px;
+	color: #2c3e50;
+}
+
+
+
+/**end of EVENTS section **/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**beginning of EVENTS section **/
+
+#page_width3 {
+	width: 960px;
+	height: auto;
+	margin: auto;
+	margin-bottom: 20px;
+}
+
+.community_header {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	background-color: #fff;
+	height: 45px;
+	color: #2c3e50;	
+}
+
+
+
+#user_header {
+	display: inline-block;
+	margin-left: 10px;
+	margin-top: 15px;
+	
+}
+
+#user_header a {
+	text-decoration: none;
+	color: #2c3e50;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.user_update ul {
+	list-style-type: none;
+	margin: auto;
+	margin-left: -36px;
+}
+
+
+.user_update ul li {
+	width: 300px;
+	min-height: 65px;
+	background-color: #fff;
+	margin-bottom: -4px;
+	padding: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	display: inline-block;
+	color: #2c3e50;
+	margin-left: -4px;
+ 
+}
+
+.user_pic {
+	float: left;
+	margin-right: 10px;
+}
+
+#user_text {
+	width: 150px;
+	height: auto;
+	display: inline-block;
+	margin-left: 6px;
+	position: absolute;
+
+}
+
+
+#user_text a {
+	color:#2c3e50;
+	text-decoration: none;
+}
+
+#user_text a:hover {
+	text-decoration: underline;
+}
+
+#user_location {
+	color: #3498db;
+	font-weight: 100;
+}
+
+
+#user_location:hover {
+	text-decoration: underline;
+	
+}
+
+
+.follow_user_button_form {
+	float: right;
+}
+
+
+.follow_user_button {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	padding: 7px;
+	cursor: pointer;
+	background-color: #ecf0f1;
+	border: 1px solid #ecf0f1;
+	color: #2c3e50;
+	margin-bottom: 1px;
+	margin-left: 2px;
+	margin-right: 2px;
+	display: block;
+	text-decoration: none;
+	text-align: center;
+}
+
+
+
+
+.unfollow_user_button_form {
+	float: right;
+}
+
+
+.unfollow_user_button {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	padding: 7px;
+	cursor: pointer;
+	background-color: #2c3e50;
+	border: 1px solid #2c3e50;
+	color: #fff;
+	margin-bottom: 1px;
+	margin-left: 2px;
+	margin-right: 2px;
+	display: block;
+	text-decoration: none;
+	text-align: center;
+}
+
+
+#no_users_holder {
+	width: 940px;
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 10px;
+	font-size: 30px;
+	color: #2c3e50;
+	margin-bottom: 1px;
+	
+}
+
+
+/**end of followers section **/
+
+
+
+
+
+
+
+

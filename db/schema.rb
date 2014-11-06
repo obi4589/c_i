@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021210829) do
+ActiveRecord::Schema.define(version: 20141105234255) do
 
   create_table "attendances", force: true do |t|
     t.integer  "philanthropist_id"
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(version: 20141021210829) do
     t.string   "zip_code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "city_st"
+    t.string   "charity_name"
+    t.string   "charity_legal_name"
   end
 
   add_index "events", ["charity_id", "start_date", "start_time"], name: "index_events_on_charity_id_and_start_date_and_start_time"
@@ -69,6 +72,7 @@ ActiveRecord::Schema.define(version: 20141021210829) do
     t.string   "phone"
     t.text     "mission"
     t.string   "remember_token"
+    t.string   "city_st"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

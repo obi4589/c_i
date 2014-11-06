@@ -1,5 +1,12 @@
 class Event < ActiveRecord::Base
-	belongs_to :charity 
+	before_save { self.city_st = zip_code.to_region unless zip_code.blank? }
+  before_save { self.city_st = nil if zip_code.blank? }
+  before_save { self.charity_name = charity.name unless charity.blank? }
+  before_save { self.charity_name = nil if charity.blank? }
+  before_save { self.charity_legal_name = charity.legal_name unless charity.blank? }
+  before_save { self.charity_legal_name = nil if charity.blank? }      
+
+  belongs_to :charity 
 	
 	has_many :attendances, dependent: :destroy
 	has_many :philanthropists, through: :attendances
@@ -13,7 +20,7 @@ class Event < ActiveRecord::Base
 	validates :description, presence: true
 	#validates :address_line_1, presence: true
 
-	#validates :zip_code, presence: true, length: {is: 5}
+	#validates :zip_code, presence: true, length: {is: 5}, unless: :zip_code
 
 
 
@@ -60,5 +67,11 @@ class Event < ActiveRecord::Base
   end
 
 
+
+
+#this is for event search
+  def self.search(query)
+    where("charity_name like ? OR charity_legal_name like ? OR city_st like ? OR zip_code like ? OR title like ? OR description like ?", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%") 
+  end
 
 end
