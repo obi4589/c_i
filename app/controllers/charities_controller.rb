@@ -27,7 +27,7 @@ class CharitiesController < ApplicationController
   	@charity = Charity.find(params[:id]) 
     events = @charity.events.all.sort_by {|x| [x.start_date, x.start_time, x.end_time] }
     @final_feed = events.select {|x| x.start_date >= Date.today }.take(100)
-    @months = @final_feed.map {|x| x.start_date.strftime('%B, %Y')}.uniq
+    @months = @final_feed.map {|x| x.start_date.strftime('%B %Y')}.uniq
     @user = @charity
   end
 
@@ -65,7 +65,7 @@ class CharitiesController < ApplicationController
     total_feed = feed1 + feed2
     feed_items = total_feed.uniq.sort_by {|x| [x.start_date, x.start_time, x.end_time] }
     @final_feed = feed_items.select {|x| x.start_date >= Date.today }.take(100)
-    @months = @final_feed.map {|x| x.start_date.strftime('%B, %Y')}.uniq
+    @months = @final_feed.map {|x| x.start_date.strftime('%B %Y')}.uniq
     render 'home'
   end
  

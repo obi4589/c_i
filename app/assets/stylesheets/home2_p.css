@@ -207,6 +207,7 @@ body {
 	margin-top: 57px;
 	height: auto;
 	margin-bottom: 20px;
+	background-color: #fff;
 }
 
 
@@ -318,7 +319,6 @@ body {
 	width: 290px;
 	height: auto;
 	background-color: #fff;
-	margin-bottom: 1px;
 	margin-left: -4px;
 	padding: 15px;
 	font-family: Arial, Helvetica, sans-serif;
@@ -431,16 +431,14 @@ body {
 }
 
 #event_month_header {
-	width: 930px;
+	height: 16px;
+	margin-bottom: 10px;
+	margin-top: -10px;
 	text-align: left;
-	padding-top: 10px;
-	padding-bottom: 10px;
 	font-size: 14px;
 	color: #2c3e50;
-	padding-left: 7px;
-	padding-right: 23px;
-	margin-bottom: 0px;
-	background-color: #fff;
+	margin-left: -8px;
+	background-color: #fff ;
 }
 
 

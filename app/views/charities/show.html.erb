@@ -133,12 +133,15 @@
 				<%if @final_feed.any? %>
 
           <% @months.each do |month| %> 
-            <li id="event_month_header">
-                      <%= month %>
-            </li>
-            <% month_feed = @final_feed.select {|x| x.start_date.strftime('%B, %Y') == month } %>
+            
+            <% month_feed = @final_feed.select {|x| x.start_date.strftime('%B %Y') == month } %>
             <% month_feed.each do |event| %>
             <li>
+                <div id="event_month_header">
+                  <% if event == month_feed[0] %>
+                    <%= month %>
+                  <% end %>
+                </div>
                 <!-- photo 100% on MS word.. height 2.3 and width 3.18-->
                 <%= link_to image_tag("eventpic1.gif", alt: "pic", class: "event_pic"), event %>
                 <% if is_charity? or is_philanthropist? %>
