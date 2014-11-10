@@ -104,23 +104,23 @@
 		<!-- beginning of GOING & MAPS section -->
 		<div id="going_section">
 			<% if is_philanthropist? %>  
-                <div id = "attend_form">
-                    <% if current_user.attending?(@event)%>
-                        <%= render 'going' %>
-                    <% else %>
-                        <%= render 'go' %>
-                    <%end%>
-                </div>
-            <%end%>
-            <div class="going_header">
-                <ul>
-                    <li><%= link_to "<span id='bold'>Going (<span id = 'num_attendees'>#{@event.philanthropists.count}</span>)</span>".html_safe, attendees_event_path(@event) %></li>
-                </ul>
+        <div id = "attend_form">
+          <% if current_user.attending?(@event)%>
+              <%= render 'going' %>
+          <% else %>
+              <%= render 'go' %>
+          <%end%>
+        </div>
+      <%end%>
+      <div class="going_header">
+        <ul>
+          <li><%= link_to "<span id='bold'>Going (<span id = 'num_attendees'>#{@event.philanthropists.count}</span>)</span>".html_safe, attendees_event_path(@event) %></li>
+        </ul>
 			</div>
-            <div class="going_header">
-				<ul>
+      <div class="going_header">
+  			<ul>
           <li><%= link_to "<span>Friends (#{@friends.count})</span>".html_safe, friends_event_path(@event) %></li>
-                </ul>
+        </ul>
 			</div>
 		</div>
 		<!-- end of GOING & MAP section --> 
@@ -131,33 +131,33 @@
 		<!-- beginning of INFO section -->
 		<div class="user_update">
 			<ul>
-                <% if @attendees.any? %>
-                <% @attendees.each do |user| %>
-                <li>
-                    <a href="#">
-                    <img src="" width="63" height="63" class="user_pic"/> 
-                    </a>
-                    <div id="user_text">
-                        <%= link_to "<b>#{user.name}</b>".html_safe, user %> <br/>
-                        <%= link_to "<b id='user_location'>#{user.zip_code.to_region}</b>".html_safe, '#' %><br/>
-                    </div>
+          <% if @attendees.any? %>
+          <% @attendees.each do |user| %>
+          <li>
+              <a href="#">
+              <img src="" width="63" height="63" class="user_pic"/> 
+              </a>
+              <div id="user_text">
+                  <%= link_to "<b>#{user.name}</b>".html_safe, user %> <br/>
+                  <%= link_to "<b id='user_location'>#{user.zip_code.to_region}</b>".html_safe, '#' %><br/>
+              </div>
 
-                    <% if is_philanthropist? || is_charity? %>
-                     <%unless current_user?(user)%>
-                        <div id="follow_unfollow_form">
-                            <% if current_user.following?(user)%>
-                                <%= render partial: 'shared/unfollow_2', locals: {user: user}  %>
-                            <% else %>
-                                <%= render partial: 'shared/follow_2', locals: {user: user} %>
-                            <% end %>
-                        </div>
-                    <%end%>
-                    <%end%>
+              <% if is_philanthropist? || is_charity? %>
+               <%unless current_user?(user)%>
+                  <div id="follow_unfollow_form">
+                      <% if current_user.following?(user)%>
+                          <%= render partial: 'shared/unfollow_2', locals: {user: user}  %>
+                      <% else %>
+                          <%= render partial: 'shared/follow_2', locals: {user: user} %>
+                      <% end %>
+                  </div>
+               <%end%>
+              <%end%>
 
-                </li>
-                <% end %>
-                <% end%>
-            </ul>
+          </li>
+          <% end %>
+          <% end%>
+      </ul>
 		</div>
 		<!-- end of INFO sectoin -->
 		
