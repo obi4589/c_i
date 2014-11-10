@@ -136,7 +136,7 @@
 		<div id="going_map_section">
 			<div class="going_header">
 				<ul>
-					<li><a href="#">Going (<span id = "num_attendees"><%=@event.philanthropists.count%></span>)</a></li> 
+					<li><%= link_to "Going (<span id = 'num_attendees'>#{@event.philanthropists.count}</span>)".html_safe, attendees_event_path(@event) %></li>
 				</ul>
 			</div>
 			<div class="going_update">

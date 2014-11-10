@@ -102,14 +102,14 @@
 		<div class="events_update">
 			<ul>           
 				<%if @events.any? %>
-
                         <% @events.each do |event| %>
                             <li>
                                 <!-- photo 100% on MS word.. height 2.3 and width 3.18-->
                                 <%= link_to image_tag("eventpic1.gif", alt: "pic", class: "event_pic"), event %>
-                                <div>
+                                <% if is_charity? or is_philanthropist? %>
+                                  <div>
                                     <% unless event.follows_at_event(current_user).count == 0 %>
-                                        <%= link_to "#{event.follows_at_event(current_user).count}", '#', class: "num_friends_link" %>
+                                      <%= link_to "#{event.follows_at_event(current_user).count}", friends_event_path(event), class: "num_friends_link" %>
                                     <% end%>
                                     <% if is_philanthropist? %>
                                       <%if current_user.attending?(event)%> 
@@ -120,7 +120,14 @@
                                         <%= image_tag("star.png", alt: "pic", class: "going_star")%>
                                       <% end %>
                                     <% end %> 
-                                </div>
+                                  </div>
+                                <% else %>
+                                    <div>
+                                        <% unless event.attendances.count == 0 %>
+                                            <%= link_to "#{event.attendances.count}", attendees_event_path(event), class: "num_friends_link" %>
+                                        <%end%>
+                                    </div>
+                                <%end%>
                                 <div id="events_text">
                                     <%= link_to "<b id='event_title'>#{event.title}</b>".html_safe, event %><br />
                                     <%= link_to "<b id='event_organization'>#{event.charity.name}</b>".html_safe, event.charity %> <br />

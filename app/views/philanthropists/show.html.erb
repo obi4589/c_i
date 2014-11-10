@@ -150,7 +150,7 @@
                   <% if is_charity? or is_philanthropist? %>
                       <div>
                         <% unless event.follows_at_event(current_user).count == 0 %>
-                          <%= link_to "#{event.follows_at_event(current_user).count}", '#', class: "num_friends_link" %>
+                          <%= link_to "#{event.follows_at_event(current_user).count}", friends_event_path(event), class: "num_friends_link" %>
                         <% end%>
                         <% if is_philanthropist? %>
                           <%if current_user.attending?(event)%> 
@@ -163,9 +163,11 @@
                         <% end %> 
                       </div>
                   <% else %>
-                     <div>
-                     <%= link_to "#{event.attendances.count}", '#', class: "num_friends_link" %>
-                     </div>
+                      <div>
+                          <% unless event.attendances.count == 0 %>
+                              <%= link_to "#{event.attendances.count}", attendees_event_path(event), class: "num_friends_link" %>
+                          <%end%>
+                      </div>
                   <%end%>
                   <div id="events_text">
                     <%= link_to "<b id='event_title'>#{event.title}</b>".html_safe, event %><br />

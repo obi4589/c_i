@@ -4,7 +4,11 @@ CI::Application.routes.draw do
 
   resources :attendances, only: [:create, :destroy]
 
-  resources :events
+  resources :events do
+    member do
+      get :attendees, :friends
+    end
+  end
   match '/new_event', to: "events#new", via: 'get'
 
   resources :superadmins, only: [:show] do

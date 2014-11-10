@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><%= @event.title %></title>
+<%= stylesheet_link_tag    "attendees.css", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+<%= render 'layouts/shim' %>
+
+</head>
+
+<body>
+
+<!-- navigation bar section -->
+<div class="menu1">
+  <div class="page_width1">
+    <% if signed_in? %>
+        <% if is_charity?%>
+            <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), home_charity_path(current_user)%>
+        <% elsif is_superadmin?%>
+            <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+        <% else%>
+            <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), home_philanthropist_path(current_user)%>
+        <%end%>
+    <%else%>
+        <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+    <%end%>
+
+    <a ref="#" id="nav_button">O</a>
+
+    <% if signed_in? %>
+      <ul id="pages">
+        <%= link_to "<li class='page_name'>Profile</li>".html_safe, current_user %>
+        <%= link_to "<li class='page_name'>Activity</li>".html_safe, '#' %>
+      </ul>
+    <% else %>
+      <ul id="pages">
+        <a href="#"><li class="page_name">Profile</li></a>
+        <a href="#"><li class="page_name">Activity</li></a>
+      </ul>
+    <% end %>
+
+    <%= form_for(events_path, method: "get", id: "search" , url: events_url) do  %>
+      <%= text_field_tag :search, params[:search], placeholder: 'Search', class: "search-input"%>
+    <% end %>
+    <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: name %>
+      <% end -%>
+
+      <div id="nav_button_div">
+          <ul>
+            <% if signed_in? %>
+              <% if is_charity? %>
+                <%= link_to "<li>Settings</li>".html_safe, edit_charity_path(current_user) %>
+                <%= link_to "<li>New Event</li>".html_safe, new_event_path %>
+              <% elsif is_superadmin? %>
+                <%= link_to "<li>Users</li>".html_safe, index1_superadmin_path(current_user) %>
+              <% else %>
+                <%= link_to "<li>Settings</li>".html_safe, edit_philanthropist_path(current_user) %>
+              <% end %>
+              <%= link_to "<li id='s-o'>Sign Out</li>".html_safe, signout_path, method: "delete" %>
+            <% else %>
+                  <a href="#"><li>Settings</li></a>
+                  <a href="#"><li id="s-o">Sign Out</li></a>
+                <% end %>
+            </ul>
+        </div>
+  </div>
+</div>
+<!-- end of navigation bar -->
+
+
+
+
+
+
+
+
+<div class="menu2"> 
+
+<div class="page_width2">
+
+<!-- beginning of event header section -->
+	<div id="event_header_section">
+		<div class="event_details">
+            <%= link_to "<b id='event_title'>#{@event.title}</b>".html_safe, @event %><br/>
+            <%= link_to "<b id='event_date'>#{@event.start_date.strftime('%B %-d, %Y')} | #{@event.start_date.strftime('%A')} #{@event.start_time.strftime('%-I:%M %p')} - #{@event.end_time.strftime('%-I:%M %p')}</b>".html_safe, '#' %><br/>
+            <%= link_to "<b id='event_location'>#{@event.location}</b>".html_safe, '#' %><br/><br/>
+            <%= link_to "<b id='event_host'>#{@event.charity.name}</b>".html_safe, @event.charity %><br/>
+        </div>
+	</div>
+	
+<!-- end of event header section -->
+
+
+
+
+
+
+	
+	<!-- beginning of under event header section --->
+	<div id="under_event_header_section">
+		<!-- beginning of GOING & MAPS section -->
+		<div id="going_section">
+			<% if is_philanthropist? %>  
+          <div id = "attend_form">
+              <% if current_user.attending?(@event)%>
+                  <%= render 'going' %>
+              <% else %>
+                  <%= render 'go' %>
+              <%end%>
+          </div>
+      <%end%>
+      <div class="going_header">
+          <ul>
+              <li><%= link_to "Going (<span id = 'num_attendees'>#{@event.philanthropists.count}</span>)".html_safe, attendees_event_path(@event) %></li>
+          </ul>
+      </div>
+      <div class="going_header">
+				<ul>
+          <li><%= link_to "<span id='bold'><span>Friends (#{@friends.count})</span></span>".html_safe, friends_event_path(@event) %></li>
+				</ul>
+			</div>
+		</div>
+		<!-- end of GOING & MAP section --> 
+
+
+		
+		
+		<!-- beginning of INFO section -->
+		<div class="user_update">
+			<ul>
+                <% if @friends.any? %>
+                <% @friends.each do |user| %>
+                <li>
+                    <a href="#">
+                    <img src="" width="63" height="63" class="user_pic"/> 
+                    </a>
+                    <div id="user_text">
+                        <%= link_to "<b>#{user.philanthropist.name}</b>".html_safe, user.philanthropist %> <br/>
+                        <%= link_to "<b id='user_location'>#{user.philanthropist.zip_code.to_region}</b>".html_safe, '#' %><br/>
+                    </div>
+
+                    <% if is_philanthropist? || is_charity? %>
+                     <%unless current_user?(user.philanthropist)%>
+                        <div id="follow_unfollow_form">
+                            <% if current_user.following?(user.philanthropist)%>
+                                <%= render partial: 'shared/unfollow_2', locals: {user: user.philanthropist}  %>
+                            <% else %>
+                                <%= render partial: 'shared/follow_2', locals: {user: user.philanthropist} %>
+                            <% end %>
+                        </div>
+                    <%end%>
+                    <%end%>
+
+                </li>
+                <% end %>
+                <% end%>
+            </ul>
+		</div>
+		<!-- end of INFO sectoin -->
+		
+		
+		
+		
+	</div> 
+</div>
+</div>
+</body>
+</html>

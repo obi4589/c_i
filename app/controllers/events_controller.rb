@@ -61,6 +61,22 @@ class EventsController < ApplicationController
     redirect_to @event.charity
   end
 
+  def attendees
+    @event = Event.find(params[:id]) 
+    @attendees = @event.philanthropists.all.sort_by(&:name)
+    @friends = @event.follows_at_event(current_user)
+
+    render 'attendees'
+  end
+
+  def friends
+    @event = Event.find(params[:id]) 
+    @attendees = @event.philanthropists.all
+    @friends = @event.follows_at_event(current_user).sort{ |a,b| b[:created_at] <=> a[:created_at] }
+
+    render 'friends'
+  end
+
   
 
 
