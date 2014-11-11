@@ -135,6 +135,9 @@
                     <a href="#">
                     <img src="" width="63" height="63" class="user_pic"/> 
                     </a>
+                    <% if user.type == 'Charity'%>
+                        <span id="id"></span>
+                    <% end %>
                     <div id="user_text">
                         <%= link_to "<b>#{user.name}</b>".html_safe, user %> <br/>
                         <%= link_to "<b id='user_location'>#{user.zip_code.to_region}</b>".html_safe, '#' %><br/>
