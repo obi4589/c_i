@@ -428,10 +428,10 @@ body {
 	background-color: #ecf0f1;
 }
 
-
-
-
-
+.upcoming_history_button:active {
+	border: 1px solid #fff;
+	background-color: #fff;
+}
 
 
 

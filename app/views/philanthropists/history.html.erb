@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><%= @charity.name %></title>
-<%= stylesheet_link_tag    "profile2_c.css", media: "all", "data-turbolinks-track" => true %>
+<title><%= @philanthropist.name %></title>
+<%= stylesheet_link_tag    "profile2_p.css", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   	<%= csrf_meta_tags %>
  	<%= render 'layouts/shim' %>
@@ -77,20 +77,22 @@
 
 <div class="menu2"> 
 
+
+
+
 <!-- beginning of cover photo section -->
 	<div id="page_width2">
 		<div id="cover_photo_section">
 			<div id="name">
-				<%= link_to @charity.name, @charity %>
+				<%= link_to @philanthropist.name, @philanthropist %>
 			</div>
 			<div id="location">
-				<a href="#"><%= @charity.zip_code.to_region %></a>
+				<a href="#"><%= @philanthropist.zip_code.to_region %></a>
 			</div>
 
 			<div id="buttons_left">
-        <%= link_to "Events", @charity, class: "left_button", id: "underline1"%>
-        <%= link_to "Community", followers_charity_path(@charity), class: "left_button"%>
-        <%= link_to "About", about_charity_path(@charity), class: "left_button" %>
+        <%= link_to "Events", @philanthropist, class: "left_button", id: "underline1"%>
+        <%= link_to "Community", followers_philanthropist_path(@philanthropist), class: "left_button" %>
 			</div>
 
 			<% if is_philanthropist? || is_charity? %>
@@ -104,6 +106,7 @@
           		</div>
           	  <%end%>
         	<%end%>
+			
 
 		</div>
 		<div id="profile_pic">
@@ -125,63 +128,63 @@
 				<!--<li><a href="#">Hours: 12</a></li>-->
 			</ul>
             <div id="event_feed_toggle">
-        		<%= link_to "Upcoming", history_charity_path(@charity), class: "upcoming_history_button" %>
+              <%= link_to "History", @philanthropist, class: "upcoming_history_button" %>
       		</div>
 		</div>
 		<div class="events_update">
 			<ul>
-				<%if @final_feed.any? %>
+        <%if @final_feed.any? %>
 
           <% @months.each do |month| %> 
-            
-            <% month_feed = @final_feed.select {|x| x.start_date.strftime('%B %Y') == month } %>
-            <% month_feed.each do |event| %>
-            <li>
-                <div id="event_month_header">
-                  <% if event == month_feed[0] %>
-                    <%= month %>
-                  <% end %>
-                </div>
-                <!-- photo 100% on MS word.. height 2.3 and width 3.18-->
-                <%= link_to image_tag("eventpic1.gif", alt: "pic", class: "event_pic"), event %>
-                <% if is_charity? or is_philanthropist? %>
-                    <div>
-                      <% unless event.follows_at_event(current_user).count == 0 %>
-                        <%= link_to "#{event.follows_at_event(current_user).count}", friends_event_path(event), class: "num_friends_link" %>
-                      <% end%>
-                      <% if is_philanthropist? %>
-                        <%if current_user.attending?(event)%> 
-                          <%= image_tag("star.png", alt: "pic", class: "going_star")%>
-                        <% end %>
-                      <% elsif is_charity? %>
-                        <% if current_user.id == event.charity.id %>
-                          <%= image_tag("star.png", alt: "pic", class: "going_star")%>
-                        <% end %>
-                      <% end %> 
-                    </div>
-                <% else %>
-                    <div>
-                        <% unless event.attendances.count == 0 %>
-                            <%= link_to "#{event.attendances.count}", attendees_event_path(event), class: "num_friends_link" %>
-                        <%end%>
-                    </div>
-                <%end%>
-                <div id="events_text">
-                  <%= link_to "<b id='event_title'>#{event.title}</b>".html_safe, event %><br />
-                  <%= link_to "<b id='event_organization'>#{event.charity.name}</b>".html_safe, event.charity %> <br />
-                  <%= link_to "<b id='event_date'>#{event.start_date.strftime('%A')} | #{event.start_date.strftime('%B %-d')} @ #{event.start_time.strftime('%-I:%M %p')}</b>".html_safe, '#' %> <br />
-                  <% if event.zip_code.blank? %>
-                  <%= link_to "<b id='event_city'>#{event.location}</b>".html_safe, '#' %><br /> 
+              
+              <% month_feed = @final_feed.select {|x| x.start_date.strftime('%B %Y') == month } %>
+              <% month_feed.each do |event| %>
+                <li>
+                  <div id="event_month_header">
+                    <% if event == month_feed[0] %>
+                      <%=month %>
+                    <%end%>
+                  </div>
+                  <!-- photo 100% on MS word.. height 2.3 and width 3.18-->
+                  <%= link_to image_tag("eventpic1.gif", alt: "pic", class: "event_pic"), event %>
+                  <% if is_charity? or is_philanthropist? %>
+                      <div>
+                        <% unless event.follows_at_event(current_user).count == 0 %>
+                          <%= link_to "#{event.follows_at_event(current_user).count}", friends_event_path(event), class: "num_friends_link" %>
+                        <% end%>
+                        <% if is_philanthropist? %>
+                          <%if current_user.attending?(event)%> 
+                            <%= image_tag("star.png", alt: "pic", class: "going_star")%>
+                          <% end %>
+                        <% elsif is_charity? %>
+                          <% if current_user.id == event.charity.id %>
+                            <%= image_tag("star.png", alt: "pic", class: "going_star")%>
+                          <% end %>
+                        <% end %> 
+                      </div>
                   <% else %>
-                  <%= link_to "<b id='event_city'>#{event.zip_code.to_region}</b>".html_safe, '#' %><br />  
-                  <% end %>
-                </div>
-              </li>
+                      <div>
+                          <% unless event.attendances.count == 0 %>
+                              <%= link_to "#{event.attendances.count}", attendees_event_path(event), class: "num_friends_link" %>
+                          <%end%>
+                      </div>
+                  <%end%>
+                  <div id="events_text">
+                    <%= link_to "<b id='event_title'>#{event.title}</b>".html_safe, event %><br />
+                    <%= link_to "<b id='event_organization'>#{event.charity.name}</b>".html_safe, event.charity %> <br />
+                    <%= link_to "<b id='event_date'>#{event.start_date.strftime('%A')} | #{event.start_date.strftime('%B %-d')} @ #{event.start_time.strftime('%-I:%M %p')}</b>".html_safe, '#' %> <br />
+                    <% if event.zip_code.blank? %>
+                    <%= link_to "<b id='event_city'>#{event.location}</b>".html_safe, '#' %><br /> 
+                    <% else %>
+                    <%= link_to "<b id='event_city'>#{event.zip_code.to_region}</b>".html_safe, '#' %><br />  
+                    <% end %>
+                  </div>
+                </li>
             <%end %>
           <%end%>
         <% else %>
 					<li id="no_event_holder">
-	                No Upcoming Events
+	                No History of Events
 	         </li>
 				<%end%>
 			</ul>		

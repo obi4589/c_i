@@ -125,7 +125,7 @@
 				<!--<li><a href="#">Hours: 12</a></li>-->
 			</ul>
             <div id="event_feed_toggle">
-        		<%= link_to "Upcoming", history_charity_path(@charity), class: "upcoming_history_button" %>
+        		<%= link_to "History", @charity, class: "upcoming_history_button" %>
       		</div>
 		</div>
 		<div class="events_update">
@@ -181,7 +181,7 @@
           <%end%>
         <% else %>
 					<li id="no_event_holder">
-	                No Upcoming Events
+	                No History of Events
 	         </li>
 				<%end%>
 			</ul>		
