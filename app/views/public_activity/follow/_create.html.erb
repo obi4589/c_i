@@ -1,0 +1,9 @@
+<% if activity.trackable %>
+	<% if activity.trackable.followable.name == @current_user.name %>
+		started following <b>you</b>
+	<% else %>
+		started following <%= link_to activity.trackable.followable.name, activity.trackable.followable %>
+	<% end %>
+<% else %>
+is no longer following a specific user
+<% end %>

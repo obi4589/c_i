@@ -8,7 +8,9 @@ class FollowsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to request.referrer }
       format.js
-    end    
+    end 
+    @follow = Follow.find_by(follower_id: current_user.id, followable_id: @user.id) 
+    @follow.create_activity :create, owner: current_user  
   end
 
   def destroy

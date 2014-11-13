@@ -32,7 +32,7 @@
     <% if signed_in? %>
       <ul id="pages">
         <%= link_to "<li class='page_name'>Profile</li>".html_safe, current_user %>
-        <%= link_to "<li class='page_name'>Activity</li>".html_safe, '#' %>
+        <%= link_to "<li class='page_name'>Activity</li>".html_safe, activities_path %>
       </ul>
     <% else %>
       <ul id="pages">

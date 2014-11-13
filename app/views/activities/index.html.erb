@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Activity</title>
+<%= stylesheet_link_tag    "activity.css", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>
+
+</head>
+
+<body>
+
+<!-- navigation bar section -->
+<div class="menu1">
+  <div class="page_width1">
+    <% if signed_in? %>
+        <% if is_charity?%>
+            <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), home_charity_path(current_user)%>
+        <% elsif is_superadmin?%>
+            <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+        <% else%>
+            <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), home_philanthropist_path(current_user)%>
+        <%end%>
+    <%else%>
+        <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
+    <%end%>
+
+    <a ref="#" id="nav_button">O</a>
+
+    <% if signed_in? %>
+      <ul id="pages">
+        <%= link_to "<li class='page_name'>Profile</li>".html_safe, current_user %>
+        <%= link_to "<li class='page_name'>Activity</li>".html_safe, activities_path %>
+      </ul>
+    <% else %>
+      <ul id="pages">
+        <a href="#"><li class="page_name">Profile</li></a>
+        <a href="#"><li class="page_name">Activity</li></a>
+      </ul>
+    <% end %>
+
+    <%= form_for(events_path, method: "get", id: "search" , url: events_url) do  %>
+      <%= text_field_tag :search, params[:search], placeholder: 'Search', class: "search-input"%>
+    <% end %>
+    <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: name %>
+      <% end -%>
+
+      <div id="nav_button_div">
+          <ul>
+            <% if signed_in? %>
+              <% if is_charity? %>
+                <%= link_to "<li>Settings</li>".html_safe, edit_charity_path(current_user) %>
+                <%= link_to "<li>New Event</li>".html_safe, new_event_path %>
+              <% elsif is_superadmin? %>
+                <%= link_to "<li>Users</li>".html_safe, index1_superadmin_path(current_user) %>
+              <% else %>
+                <%= link_to "<li>Settings</li>".html_safe, edit_philanthropist_path(current_user) %>
+              <% end %>
+              <%= link_to "<li id='s-o'>Sign Out</li>".html_safe, signout_path, method: "delete" %>
+            <% else %>
+                  <a href="#"><li>Settings</li></a>
+                  <a href="#"><li id="s-o">Sign Out</li></a>
+                <% end %>
+            </ul>
+        </div>
+  </div>
+</div>
+<!-- end of navigation bar -->
+
+
+
+
+
+<div class="menu2"> 
+
+
+<!-- beginning of under navbar section --->
+	<div id="under_navbar_section">
+		<!-- beginning of UPDATE FEED section -->
+		<div id="update_feed_section">
+			<div class="feed_header">
+				<form>
+					<input name="update" type="text" value="What&#8217s up..." class="update" onfocus="if(this.value == 'What&#8217s up...') 	{this.value=''}" onblur=			
+					"if(this.value == ''){this.value ='What&#8217s up...'}"/>
+					<input type="submit" class="update_type_button" value="All Activity">
+				</form> 
+			</div>
+			<div class="activity_header">
+				<ul>
+					<li><a href="#">Activity</a></li> 
+				</ul>
+			</div>
+			<div class="feed_update">
+				<ul>
+					<% if @activities.any? %>
+						<% @activities.each do |activity| %>	
+						<li>
+							<a href="#">
+							<img src="" width="63" height="63" class="friend_pic"/> 
+							</a>
+							<div id="feed_text">
+								<%= link_to activity.owner.name, activity.owner if activity.owner %> <%= render_activity(activity) %>
+								<%= time_ago_in_words(activity.created_at, true) %> ago
+							</div>
+						</li>				
+	               		<% end %>
+					<% else %>
+						<li id="no_activity_holder">
+		                No Activity
+		                </li>
+	                <% end %>
+					
+				</ul>		
+			</div>
+		</div>
+		<!-- end of UPDATE FEED section --> 
+	
+		
+		
+		
+		
+		<!-- beginning of CONTROL PANEL  section -->
+		<div id="control_panel_section">
+			<div>
+				<%= link_to "Activity", activities_path, class: "control_panel_link", id: "chosen" %>
+				<%= link_to "Me", me_activities_path, class: "control_panel_link"%>
+			</div>
+		</div>
+		<!-- end of CONTROL PANEL section -->	
+		
+		
+		
+		
+		
+		
+		<div id="people_know_section">
+			<div class="people_know_header">
+				<ul>
+					<li><a href="#">People to follow</a></li> 
+				</ul>
+			</div>
+			<div class="people_know_update">
+				<ul>
+					<li>
+						<a href="#">
+						<img src="" width="63" height="63" class="friend_pic"/> 
+						</a>
+						<div id="people_know_text">
+						<a href="#"><b>Gale King</b></a> <br />
+						<a href="#"><b id="people_location">Chicago, IL</b></a> <br />
+						</div>
+						<form class="add_friend_button_form">
+   	 		   				<input type="submit" class="add_friend_button" value="Follow">
+						</form>
+					</li>
+					<li>
+						<a href="#">
+						<img src="" width="63" height="63" class="friend_pic"/> 
+						</a>
+						<div id="people_know_text">
+						<a href="#"><b>Chinedu Ezebuiroh</b></a> <br />
+						<a href="#"><b id="people_location">Washington, DC</b></a> <br />
+						</div>
+						<form class="add_friend_button_form">
+   	 		   				<input type="submit" class="add_friend_button" value="Follow">
+						</form>
+					</li>
+					<li>
+						<a href="#">
+						<img src="" width="63" height="63" class="friend_pic"/> 
+						</a>
+						<div id="people_know_text">
+						<a href="#"><b>Gerardo Gonzalez</b></a> <br />
+						<a href="#"><b id="people_location">Piscataway, NJ</b></a> <br />
+						</div>
+						<form class="add_friend_button_form">
+   	 		   				<input type="submit" class="add_friend_button" value="Follow">
+						</form>
+					</li>
+				</ul>		
+			</div>
+		</div>
+		<!-- end of PEOPLE YOU MAY KNOW section -->	
+
+		
+		
+		
+		
+	</div>
+			
+			
+	
+
+
+</div>
+</body>
+</html>

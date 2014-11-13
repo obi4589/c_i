@@ -4,7 +4,9 @@ class Event < ActiveRecord::Base
   before_save { self.charity_name = charity.name unless charity.blank? }
   before_save { self.charity_name = nil if charity.blank? }
   before_save { self.charity_legal_name = charity.legal_name unless charity.blank? }
-  before_save { self.charity_legal_name = nil if charity.blank? }      
+  before_save { self.charity_legal_name = nil if charity.blank? }   
+
+  include PublicActivity::Common   
 
   belongs_to :charity 
 	

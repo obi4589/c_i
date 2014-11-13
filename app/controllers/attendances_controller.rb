@@ -9,7 +9,8 @@ class AttendancesController < ApplicationController
       format.html { redirect_to @event }
       format.js
     end
-    
+    @attendance = Attendance.find_by(philanthropist_id: current_user.id, event_id: @event.id) 
+    @attendance.create_activity :create, owner: current_user 
   end
 
   def destroy

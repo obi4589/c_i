@@ -1,5 +1,8 @@
 class Attendance < ActiveRecord::Base
-	belongs_to :philanthropist
+	
+  include PublicActivity::Common
+
+  belongs_to :philanthropist
 	belongs_to :event
 	
 	validates :philanthropist_id, presence: true

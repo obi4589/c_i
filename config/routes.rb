@@ -1,5 +1,11 @@
 CI::Application.routes.draw do
 
+  resources :activities do
+    collection do
+      get :me 
+    end
+  end
+
   resources :follows, only: [:create, :destroy] 
 
   resources :attendances, only: [:create, :destroy]

@@ -48,3 +48,6 @@ gem 'acts_as_follower', '0.2.1'
 
 #jQuery plugin for drop-in fix binded events problem caused by Turbolinks
 gem 'jquery-turbolinks', '2.1.0'
+
+#gem for actitivy feed
+gem 'public_activity', '1.4.2'

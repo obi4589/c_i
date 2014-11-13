@@ -1,0 +1,5 @@
+<% if activity.trackable %>
+is attending <%= link_to activity.trackable.event.title, activity.trackable.event %>
+<% else %>
+is no longer attending a specific event
+<% end %>

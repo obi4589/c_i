@@ -1,0 +1,569 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background-color: #ecf0f1;
+	width: 100%;
+	overflow-x:hidden;
+	scrollbar-face-color: #a2a2a2;
+	scrollbar-highlight-color: #a2a2a2;
+	scrollbar-3dlight-color: #a2a2a2;
+	scrollbar-darkshadow-color:  #a2a2a2;
+	scrollbar-shadow-color:  #a2a2a2;
+	scrollbar-arrow-color: #8a8a8a;
+	scrollbar-track-color:  #a2a2a2;
+}
+
+
+
+
+/**NAVIGATION BAR **/
+
+.menu1 {
+	background-color: #fff;
+	height: 45px;
+	width: 100%;
+	margin-top: -8px;
+	z-index: 1;	
+	margin-left: -8px;
+	position: fixed;
+}
+
+.page_width1 {
+	width: 960px;
+	height: auto;
+	margin: auto;
+}
+
+.page_width1 a {
+	text-decoration: none;
+}
+
+
+#nav_logo {
+	margin-top: 4px;
+	margin-left: -1px;
+}
+
+
+#pages {
+	list-style-type: none;
+	margin-top: -26px;
+	margin-left: 30px;
+	width: 220px;
+}
+
+.page_name {
+	display: inline;
+	padding-left: 22px;
+	padding-right: 22px;
+	padding-top: 13px;
+	padding-bottom: 10px;
+	color: #2c3e50;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 17px;
+}
+
+.page_name a {
+	text-decoration: none;
+}
+
+.page_name:hover {
+	background-color: #ecf0f1;
+}
+
+
+#search {
+	float: right;
+	margin-top: -46px;
+	
+}
+
+.search-input {
+	width: 480px;
+	border: 1px solid #ecf0f1;
+	outline: none;
+	padding: 6px;
+	background-color: #ecf0f1;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #2c3e50;
+	font-size: 17px;
+}
+
+.search-input:focus {
+	border: 1px solid #56b4ef;
+	box-shadow: 0px 0px 3px 1px #c8def0;
+	background-color: #fff;
+
+}
+
+#nav_button {
+	text-decoration: none;
+	float: left;
+	width: 18px;
+	height: 21px;
+	cursor: pointer;
+	border: 2px solid #fff;
+	background-color: #fff;
+	margin-top: -35px;
+	margin-left: 970px;
+	font-family: Arial, Helvetica, sans-serif;
+	display: block;
+	padding-top: 9px;
+	padding-left: 8px;
+	text-align: left;
+	font-size: 12px;
+	font-weight: bold;
+	color: #2c3e50;
+}
+
+
+#nav_button:hover { 
+	border: 2px solid #fff;
+	box-shadow: 0px 0px 3px 1px #c8def0;
+}	
+
+
+.success {
+	padding: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #2ecc71;
+	font-size: 20px;
+	color: white;
+	opacity: 0.8;
+	text-align: center;
+	margin-top: -6px;
+	display:  none;
+	position: absolute;
+	width: 940px;
+}
+
+
+
+#nav_button_div {
+	float: left;
+	width: auto;
+	height: auto;
+	cursor: pointer;
+	background-color: #fff;
+	margin-left: 890px;
+	font-family: Arial, Helvetica, sans-serif;
+	border-radius: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border: 1px solid #ecf0f1;
+	margin-top: -4px;
+	display: none;
+	
+}
+
+#nav_button_div ul{
+	list-style-type:none;
+	margin: auto ;
+	width: 69px;
+}
+
+#nav_button_div ul li{
+	padding: 5px 0px 5px 10px;
+	display: block;
+	font-size: 16px;
+	color: #2c3e50;
+	text-align: left;
+	margin-left: -41px;
+	
+}
+
+#nav_button_div ul li:hover{
+	background-color: #3498db;
+	color: #fff;
+	
+}
+
+
+#s-o {
+	border-top: 1px solid #ecf0f1;
+	
+}
+
+
+/** END OF NAVIGATION BAR **/
+
+
+
+
+
+
+
+
+
+
+
+/**UNDER NAVBAR SECTION **/
+.menu2 {
+	width: 100%;
+	margin-left: -8px;
+	position: absolute;
+}
+
+
+
+
+
+
+
+
+/**beginning of under navbar section **/
+
+#under_navbar_section {
+	width: 960px;
+	height: auto;
+	margin: auto;
+	margin-bottom: 20px;
+	margin-top: 58px;
+	/**border: 1px solid black; **/
+}
+	
+/** begnning of UPDATE FEED section**/
+#update_feed_section {
+	width: 630px;
+	height: auto;
+	float: left;
+	padding-bottom: 20px;
+}
+
+.feed_header {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #fff;
+	color: #34495e;	
+	padding: 10px;
+	display: none;
+}
+
+
+.update {
+	width: 505px;
+	outline: none;
+	padding: 5px;
+	background-color: #ecf0f1;
+	border: 1px solid #ecf0f1;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #2c3e50;
+	font-size: 14px;
+}
+
+.update:focus {
+	border: 1px solid #56b4ef;
+	box-shadow: 0px 0px 3px 1px #c8def0;
+	background-color: #fff;
+	min-height: 25px;
+
+}
+
+
+.update_type_button {
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 5px 10px 5px 10px;
+	cursor: pointer;
+	background-color: #3498db;
+	border: 1px solid #3498db;
+	color: #fff;
+	margin-top: -10px;
+	font-size: 14px;
+}
+
+
+.update_type_button:active { 
+	background-color: #2c3e50;
+	border: 1px solid #2c3e50;
+}	
+
+
+
+
+
+
+
+
+
+.activity_header {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	background-color: #fff;
+	height: 35px;
+	color: #3498db;	
+}
+
+.activity_header ul {
+	list-style-type: none;
+	padding-top: 8px;
+	margin: auto;
+	margin-left: -40px;
+}
+
+.activity_header li {
+	display: inline-block;
+	text-align: left;
+	margin-left: 10px;
+	min-width: 110px;
+
+	
+}
+
+
+.activity_header ul li a {
+	color: #2c3e50;	
+	text-decoration: none;
+}
+
+.activity_header ul li a:hover {
+	text-decoration: underline;
+}
+	
+
+
+
+
+
+
+
+
+.feed_update ul {
+	list-style-type: none;
+	margin: auto;
+	margin-left: -40px;
+}
+
+
+.feed_update ul li {
+	width: auto;
+	min-height: 65px;
+	background-color: #fff;
+	margin-bottom: 1px;
+	padding: 10px;
+	font-family: Helvetica;
+	font-size: 13px;
+	display: block;
+	color: #2c3e50;
+}
+
+.friend_pic {
+	float: left;
+	margin-right: 10px;
+}
+
+#feed_text {
+	width: 470px;
+	height: auto;
+	display: inline-block;
+	margin-left: 25px;
+	
+	
+	
+}
+
+#feed_text a {
+	color: #3498db;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#feed_text a:hover {
+	text-decoration: underline;
+}
+
+
+
+#no_activity_holder {
+	width: 610px;
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 20px;
+	font-size: 30px;
+	color: #2c3e50;
+}
+
+/**end of UPDATE FEED section **/
+
+
+
+
+
+
+
+
+
+
+/** beginning of CONTROL PANEL section **/
+#control_panel_section {
+	width: 310px;
+	height: auto;
+	float: right;
+	margin-bottom: 20px;
+}
+
+
+.control_panel_link {
+	font-family: Arial, Helvetica, sans-serif;
+	width:131px;
+	padding: 10px;
+	font-size: 16px;
+	cursor: pointer;
+	background-color: #fff;
+	border: 1px solid #fff;
+	color: #2c3e50;
+	display: inline-block;
+	text-decoration: none;
+	text-align: center;
+}
+
+.control_panel_link:hover { 
+	background-color: #2c3e50;
+	border: 1px solid #2c3e50;
+	color: #fff;
+}
+
+#chosen {
+	background-color: #2c3e50;
+	border: 1px solid #2c3e50;
+	color: #fff;
+}
+
+
+/** end of CONTROL PANEL section **/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**beginning of PEOPLE YOU MAY KNOW section **/
+
+#people_know_section {
+	width: 310px;
+	height: auto;
+	float: right;
+	margin-bottom: 20px;
+}
+
+.people_know_header {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	background-color: #fff;
+	height: 35px;
+	color: #3498db;	
+}
+
+.people_know_header ul {
+	list-style-type: none;
+	padding-top: 8px;
+	margin: auto;
+	margin-left: -40px;
+}
+
+.people_know_header li {
+	width: 180px;
+	display: inline-block;
+	text-align: left;
+	margin-left: 10px;
+}
+
+
+.people_know_header ul li a {
+	color: #2c3e50;
+	text-decoration: none;
+}
+
+.people_know_header ul li a:hover {
+	text-decoration: underline;
+}
+
+
+.people_know_update ul {
+	list-style-type: none;
+	margin: auto;
+	margin-left: -40px;
+}
+
+
+.people_know_update ul li {
+	width: auto;
+	min-height: 65px;
+	background-color: #fff;
+	margin-bottom: 1px;
+	padding: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	display: block;
+	color: #2c3e50;
+ 
+}
+
+.friend_pic {
+	float: left;
+	margin-right: 10px;
+}
+
+#people_know_text {
+	width: 150px;
+	height: auto;
+	display: inline-block;
+	margin-left: 6px;
+
+}
+
+
+#people_know_text a {
+	color:#2c3e50;
+	text-decoration: none;
+}
+
+#people_know_text a:hover {
+	text-decoration: underline;
+}
+
+#people_location {
+	color: #3498db;
+	font-weight: 100;
+}
+
+
+#people_location:hover {
+	text-decoration: underline;
+	
+}
+
+
+.add_friend_button_form {
+	float: right;
+}
+
+.add_friend_button {
+	font-family: Arial, Helvetica, sans-serif;
+	height: 30px;
+	cursor: pointer;
+	background-color: #ecf0f1;
+	border: 1px solid #ecf0f1;
+	color: #2c3e50;
+}
+
+.add_friend_button:active { 
+	background-color: #2c3e50;
+	border: 1px solid #2c3e50;
+	color: #fff;
+}
+
+/**end of PEOPLE YOU MAY KNOW section **/
+
+
+
+
+/**end of under navbar section**/
