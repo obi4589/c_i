@@ -139,48 +139,44 @@
 		<div id="people_know_section">
 			<div class="people_know_header">
 				<ul>
-					<li><a href="#">People to follow</a></li> 
+					<li><%= link_to "People to follow", suggestions_activities_path  %></li>
 				</ul>
 			</div>
 			<div class="people_know_update">
+				<div class="user_update">
 				<ul>
+					<% if @recommended_users.any? %>
+					<% @recommended_users.each do |user| %>
 					<li>
 						<a href="#">
-						<img src="" width="63" height="63" class="friend_pic"/> 
+						<img src="" width="63" height="63" class="user_pic"/> 
 						</a>
-						<div id="people_know_text">
-						<a href="#"><b>Gale King</b></a> <br />
-						<a href="#"><b id="people_location">Chicago, IL</b></a> <br />
+						<% if user.type == 'Charity'%>
+                        	<span id="id"></span>
+                    	<% end %>
+						<div id="user_text">
+						<%= link_to "<b>#{user.name}</b>".html_safe, user %> <br/>
+                        <%= link_to "<b id='user_location'>#{user.zip_code.to_region}</b>".html_safe, '#' %><br/>
 						</div>
-						<form class="add_friend_button_form">
-   	 		   				<input type="submit" class="add_friend_button" value="Follow">
-						</form>
+						
+
+						<% if is_philanthropist? || is_charity? %>
+		                    <%unless current_user?(user)%>
+		                        <div id="follow_unfollow_form">
+		                            <% if current_user.following?(user)%>
+		                                <%= render partial: 'shared/unfollow_2', locals: {user: user}  %>
+		                            <% else %>
+		                                <%= render partial: 'shared/follow_2', locals: {user: user} %>
+		                            <% end %>
+		                        </div>
+		                    <%end%>
+                   		<%end%>
+
 					</li>
-					<li>
-						<a href="#">
-						<img src="" width="63" height="63" class="friend_pic"/> 
-						</a>
-						<div id="people_know_text">
-						<a href="#"><b>Chinedu Ezebuiroh</b></a> <br />
-						<a href="#"><b id="people_location">Washington, DC</b></a> <br />
-						</div>
-						<form class="add_friend_button_form">
-   	 		   				<input type="submit" class="add_friend_button" value="Follow">
-						</form>
-					</li>
-					<li>
-						<a href="#">
-						<img src="" width="63" height="63" class="friend_pic"/> 
-						</a>
-						<div id="people_know_text">
-						<a href="#"><b>Gerardo Gonzalez</b></a> <br />
-						<a href="#"><b id="people_location">Piscataway, NJ</b></a> <br />
-						</div>
-						<form class="add_friend_button_form">
-   	 		   				<input type="submit" class="add_friend_button" value="Follow">
-						</form>
-					</li>
+					<% end %>
+					<% end %>
 				</ul>		
+			</div>		
 			</div>
 		</div>
 		<!-- end of PEOPLE YOU MAY KNOW section -->	

@@ -2,7 +2,7 @@ CI::Application.routes.draw do
 
   resources :activities do
     collection do
-      get :me 
+      get :me, :suggestions
     end
   end
 

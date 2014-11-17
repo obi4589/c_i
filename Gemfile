@@ -51,3 +51,6 @@ gem 'jquery-turbolinks', '2.1.0'
 
 #gem for actitivy feed
 gem 'public_activity', '1.4.2'
+
+#gem for geocoding and distance calculation
+gem 'geocoder', '1.2.6'
