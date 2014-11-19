@@ -133,7 +133,6 @@ body {
 	opacity: 0.8;
 	text-align: center;
 	margin-top: -6px;
-	display:  none;
 	position: absolute;
 	width: 940px;
 }
@@ -242,7 +241,7 @@ body {
 }
 
 #suggestions_title a:hover {
-	cursor: default;
+	text-decoration: underline;
 }
 
 

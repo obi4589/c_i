@@ -15,7 +15,8 @@ class PhilanthropistsController < ApplicationController
     if @philanthropist.save
         sign_in @philanthropist
         flash[:success] = "Welcome to Cherry Ivy"
-        redirect_to home_philanthropist_path(@philanthropist)
+        redirect_to suggestions_activities_path
+        #redirect_to home_philanthropist_path(@philanthropist)
     else
       render 'new'
     end    
