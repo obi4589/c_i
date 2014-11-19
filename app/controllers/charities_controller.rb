@@ -72,7 +72,8 @@ class CharitiesController < ApplicationController
   def followers
     @charity = Charity.find(params[:id])
     @user = @charity
-    @followers = @user.followers.sort_by(&:name)
+    @followers = Follow.where(followable_id: @user.id).sort{ |a,b| b[:created_at] <=> a[:created_at] }
+    #@followers = @user.followers.sort_by(&:name)
   end
 
   def following

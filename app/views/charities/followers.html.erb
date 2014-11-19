@@ -135,21 +135,21 @@
                     <a href="#">
                     <img src="" width="63" height="63" class="user_pic"/> 
                     </a>
-                    <% if user.type == 'Charity'%>
+                    <% if user.follower.type == 'Charity'%>
                         <span id="id"></span>
                     <% end %>
                     <div id="user_text">
-                        <%= link_to "<b>#{user.name}</b>".html_safe, user %> <br/>
-                        <%= link_to "<b id='user_location'>#{user.zip_code.to_region}</b>".html_safe, '#' %><br/>
+                        <%= link_to "<b>#{user.follower.name}</b>".html_safe, user.follower %> <br/>
+                        <%= link_to "<b id='user_location'>#{user.follower.zip_code.to_region}</b>".html_safe, '#' %><br/>
                     </div>
 
                     <% if is_philanthropist? || is_charity? %>
-                     <%unless current_user?(user)%>
+                     <%unless current_user?(user.follower)%>
                         <div id="follow_unfollow_form">
-                            <% if current_user.following?(user)%>
-                                <%= render partial: 'shared/unfollow_2', locals: {user: user}  %>
+                            <% if current_user.following?(user.follower)%>
+                                <%= render partial: 'shared/unfollow_2', locals: {user: user.follower}  %>
                             <% else %>
-                                <%= render partial: 'shared/follow_2', locals: {user: user} %>
+                                <%= render partial: 'shared/follow_2', locals: {user: user.follower} %>
                             <% end %>
                         </div>
                     <%end%>
