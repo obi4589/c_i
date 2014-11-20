@@ -144,6 +144,7 @@ body {
 	color: #2c3e50;
 	text-align: left;
 	padding: 20px;
+	padding-bottom: 90px;
 }
 
 .error {
@@ -205,6 +206,8 @@ body {
 	color: #2c3e50;
 	text-align: left;
 	padding: 20px;
+	position: absolute;
+	margin-top: 30px;
 }
 
 

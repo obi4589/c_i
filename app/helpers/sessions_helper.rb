@@ -7,6 +7,13 @@ module SessionsHelper
     self.current_user = user
   end
 
+  def sign_in2(user)
+    remember_token = User.new_remember_token
+    cookies[:remember_token] = remember_token
+    user.update_attribute(:remember_token, User.digest(remember_token))
+    self.current_user = user
+  end
+
   #the method below gets called by the last line of the previous method
   def current_user=(user)
     @current_user = user
