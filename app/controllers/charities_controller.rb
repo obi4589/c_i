@@ -13,8 +13,9 @@ class CharitiesController < ApplicationController
   def create
     @charity = Charity.new(charity_params)   
     if @charity.save
+        UserMailer.welcome_email(@charity).deliver
         sign_in @charity
-        flash[:success] = "Welcome to Cherry Ivy"
+        flash[:success] = "Welcome to Cherry Ivy! Check your email."
         redirect_to suggestions_activities_path
         #redirect_to home_charity_path(@charity)
     else

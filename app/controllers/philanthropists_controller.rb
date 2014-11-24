@@ -13,8 +13,9 @@ class PhilanthropistsController < ApplicationController
   def create
     @philanthropist = Philanthropist.new(philanthropist_params)    
     if @philanthropist.save
+        UserMailer.welcome_email(@philanthropist).deliver
         sign_in @philanthropist
-        flash[:success] = "Welcome to Cherry Ivy"
+        flash[:success] = "Welcome to Cherry Ivy! Check your email."
         redirect_to suggestions_activities_path
         #redirect_to home_philanthropist_path(@philanthropist)
     else
@@ -42,7 +43,6 @@ class PhilanthropistsController < ApplicationController
   def update
     @philanthropist = Philanthropist.find(params[:id])
     if @philanthropist.update_attributes(philanthropist_params)
-      UserMailer.welcome_email(@philanthropist).deliver
       flash[:success] = "Profile updated"
       redirect_to @philanthropist
     else
