@@ -30,4 +30,7 @@ CI::Application.configure do
 
   #included because custom config.js.coffee file not load in development,
   config.serve_static_assets = false
+
+  #default host for action mailer test in development
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 end

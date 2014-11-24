@@ -42,6 +42,7 @@ class PhilanthropistsController < ApplicationController
   def update
     @philanthropist = Philanthropist.find(params[:id])
     if @philanthropist.update_attributes(philanthropist_params)
+      UserMailer.welcome_email(@philanthropist).deliver
       flash[:success] = "Profile updated"
       redirect_to @philanthropist
     else
