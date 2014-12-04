@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Password Reset</title>
+<title>New Password</title>
 	<%= stylesheet_link_tag    "reset.css", media: "all", "data-turbolinks-track" => true %>
   	<%= csrf_meta_tags %>
  	<%= render 'layouts/shim' %>
@@ -36,17 +36,23 @@
 	<div id="page_width2">
 		<div class="page">
 			<div id="title">
-				Password Reset
+				New Password
 			</div>
             <div id="body1">
-            	<form>
-       
-                <label for="">Email</label> <br />
-  				<input id="" name="" type="text" class="form-input"/><br /><br /><br />
-                
-                <input type="submit" class="reset-button" value="Reset">
-                
-                </form>
+            	
+            	<%= render 'shared/error_messages_reset' %>
+
+            	<%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
+
+      				<%= f.label :password %><br />
+      				<%= f.password_field :password, class: "form-input" %><br /><br />
+
+      				<%= f.label :password_confirmation, "Confirm Password" %><br />
+      				<%= f.password_field :password_confirmation, class: "form-input" %><br /><br /><br />
+
+      			  <%= f.submit "Update", class: "reset-button" %>
+   				    <% end %>
+              
             </div>
 		</div>
 	</div>

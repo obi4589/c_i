@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Password Reset</title>
+	<%= stylesheet_link_tag    "reset.css", media: "all", "data-turbolinks-track" => true %>
+  	<%= csrf_meta_tags %>
+ 	<%= render 'layouts/shim' %>
+</head>
+
+<body>
+
+<!-- navigation bar section -->
+<div class="menu1">
+	<div class="page_width1">
+		<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), root_path %>
+		<%= link_to image_tag("Nav-Name.png", alt: "Home", id: "nav_name"), root_path %>
+		<div id="admin">
+			<%= link_to "Sign Up", signup1_path, class: "admin_button_a" %>
+			<%= link_to "Log In", login_path, class: "admin_button_a" %>
+		</div>				
+	</div>
+</div>
+<!-- end of navigation bar -->
+
+
+
+
+
+
+<div class="menu2"> 
+
+
+
+<!-- beginning of PAGE CONTENT section -->
+	<div id="page_width2">
+		<div class="page">
+			<div id="title">
+				Password Reset
+			</div>
+            <div id="body1">
+            	
+                <% flash.each do |name, msg| -%>
+      			  <%= content_tag :div, msg, class: name %>
+    			    <% end -%>
+
+            	<%= form_for(:password_reset, url: password_resets_path) do |f| %>
+
+      				<%= f.label :email %><br />
+      				<%= f.text_field :email, class: "form-input" %><br /><br /><br />
+
+      			  	<%= f.submit "Reset", class: "reset-button" %>
+   				<% end %>
+
+            </div>
+		</div>
+	</div>
+
+		
+<!-- end of PAGE CONTENT section -->
+
+
+
+<!-- beginning of FOOTER section -->
+
+	<div id="page_width3">
+		<div class="footer">
+			<ul>
+            	<li><%= link_to "About", about_path %></li>
+            	<li><%= link_to "Terms", terms_path %></li>
+            	<li><%= link_to "Privacy", privacy_path %></li>
+            	<li><%= link_to "Help", help_path %></li>
+            </ul>
+		</div>				
+	</div>
+
+<!-- end of FOOTER section -->
+
+</div>
+
+
+</body>
+</html>

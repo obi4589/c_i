@@ -14,9 +14,7 @@ class StaticPagesController < ApplicationController
   def help
   end
 
-  def reset
-  end
-
+ 
 
 
   layout false

@@ -152,6 +152,28 @@ body {
 	padding: 20px;
 }
 
+.error {
+	float: right;
+	color: red;
+	margin-right: 225px;
+}
+
+.error2 {
+	float: right;
+	color: red;
+	margin-right: 190px;
+}
+
+#error_explanation {
+	float: right;
+	color: red;
+	list-style-type: none;
+	margin-right: 60px;
+}
+
+#error_explanation ul {
+	list-style-type: none;
+}
 
 
 .form-input {

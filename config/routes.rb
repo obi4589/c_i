@@ -1,5 +1,10 @@
 CI::Application.routes.draw do
 
+  resources :password_resets
+  match '/reset', to: 'password_resets#new', via: 'get'
+
+
+
   resources :activities do
     collection do
       get :me, :suggestions
@@ -49,7 +54,7 @@ CI::Application.routes.draw do
   match '/terms',   to: 'static_pages#terms',   via: 'get'
   match '/privacy', to: 'static_pages#privacy', via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'
-  match '/reset', to: 'static_pages#reset', via: 'get'
+  
 
 
   # The priority is based upon order of creation: first created -> highest priority.
