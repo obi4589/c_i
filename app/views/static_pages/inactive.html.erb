@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Activity</title>
+<%= stylesheet_link_tag    "inactive.css", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>
+
+</head>
+
+<body>
+
+<!-- navigation bar section -->
+<%= render 'shared/nav_bar_signed_in' %>
+<!-- end of navigation bar -->
+
+
+
+
+
+<div class="menu2"> 
+
+
+
+<!-- beginning of PAGE CONTENT section -->
+	<div id="page_width2">
+		<div class="page">
+			<div id="title">
+				Inactive Account <br/>
+                <span style="font-size:20px;">(an email will be sent when your account becomes active)</span>
+			</div>
+            <div id="body">
+
+
+<b>
+1) Why would my account be inactive?
+</b>
+
+
+<div class="indent1">
+<p>        
+a) Cherry Ivy administrators are verifying your credentials
+</p>
+<p>        
+b) You have engaged in some form of misconduct, as outlined in our <%= link_to 'Terms of Service', terms_path %> and <%= link_to 'Privacy Policy', privacy_path %> 
+</p>
+</div>
+
+<p>
+<b>
+2) Restrictions
+</b>
+</p>
+
+<div class = "indent1">
+<p>
+While your account is inactive, you may not:
+</p>
+<p>
+a) Create or modify any events (Charities only)
+</p>
+<p>
+b) Attend any events (Philanthropists only)
+</p>
+<p>
+c) Follow or unfollow any users
+</p>
+</div>
+
+
+			</div>
+		</div>
+	</div>
+
+		
+<!-- end of PAGE CONTENT section -->
+
+
+</div>
+
+
+</body>
+</html>

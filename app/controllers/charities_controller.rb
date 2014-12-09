@@ -99,6 +99,18 @@ class CharitiesController < ApplicationController
   end
 
 
+  def active
+    @charity = Charity.find(params[:id])
+    if @charity.active_c? 
+      @charity.update_attribute(:active_c, false)
+      redirect_to request.referrer 
+    else
+      @charity.update_attribute(:active_c, true)
+      UserMailer.active_email(@charity).deliver
+      redirect_to request.referrer 
+    end
+  end
+
 
   private
   	def charity_params

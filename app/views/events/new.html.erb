@@ -14,61 +14,7 @@
 <body>
 
 <!-- navigation bar section -->
-<div class="menu1">
-  <div class="page_width1">
-    <% if signed_in? %>
-      <% if is_charity?%>
-        <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), home_charity_path(current_user)%>
-      <% elsif is_superadmin?%>
-        <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
-      <% else%>
-        <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), home_philanthropist_path(current_user)%>
-      <%end%>
-    <%else%>
-      <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
-    <%end%>
-
-    <a ref="#" id="nav_button">O</a>
-
-    <% if signed_in? %>
-      <ul id="pages">
-        <%= link_to "<li class='page_name'>Profile</li>".html_safe, current_user %>
-        <%= link_to "<li class='page_name'>Activity</li>".html_safe, activities_path %>
-      </ul>
-    <% else %>
-      <ul id="pages">
-        <a href="#"><li class="page_name">Profile</li></a>
-        <a href="#"><li class="page_name">Activity</li></a>
-      </ul>
-    <% end %>
-
-    <%= form_for(events_path, method: "get", id: "search" , url: events_url) do  %>
-      <%= text_field_tag :search, params[:search], placeholder: 'Search', class: "search-input"%>
-    <% end %>
-    <% flash.each do |name, msg| -%>
-          <%= content_tag :div, msg, class: name %>
-      <% end -%>
-
-      <div id="nav_button_div">
-          <ul>
-            <% if signed_in? %>
-              <% if is_charity? %>
-                <%= link_to "<li>Settings</li>".html_safe, edit_charity_path(current_user) %>
-                <%= link_to "<li>New Event</li>".html_safe, new_event_path %>
-              <% elsif is_superadmin? %>
-                <%= link_to "<li>Users</li>".html_safe, index1_superadmin_path(current_user) %>
-              <% else %>
-                <%= link_to "<li>Settings</li>".html_safe, edit_philanthropist_path(current_user) %>
-              <% end %>
-              <%= link_to "<li id='s-o'>Sign Out</li>".html_safe, signout_path, method: "delete" %>
-            <% else %>
-                  <a href="#"><li>Settings</li></a>
-                  <a href="#"><li id="s-o">Sign Out</li></a>
-                <% end %>
-            </ul>
-        </div>
-  </div>
-</div>
+<%= render 'shared/nav_bar_signed_in' %>
 <!-- end of navigation bar -->
 
 

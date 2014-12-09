@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :correct_user_type, only: [:new]
   before_action :correct_or_sa, only: [:destroy]
+  before_action :is_active, only: [:new, :create, :edit, :update, :destroy]
 
   
   def index
@@ -110,6 +111,14 @@ class EventsController < ApplicationController
       def correct_or_sa
         @event = Event.find(params[:id])
         redirect_to(@event) unless current_user?(@event.charity) || current_user.type == "Superadmin"
+      end
+
+      def is_active
+        if current_user.type == 'Philanthropist'
+          redirect_to(inactive_path) unless current_user.active_p == true
+        elsif current_user.type == 'Charity'
+          redirect_to(inactive_path) unless current_user.active_c == true
+        end
       end
 
 layout false

@@ -3,12 +3,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cherry Ivy / Terms of Service</title>
+
+<% if signed_in? %>
+<%= stylesheet_link_tag    "inactive.css", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<% else %>
 	<%= stylesheet_link_tag    "terms.css", media: "all", "data-turbolinks-track" => true %>
+<% end %>
   	<%= csrf_meta_tags %>
  	<%= render 'layouts/shim' %>
 </head>
 
 <body>
+
+<% if signed_in? %>
+<!-- navigation bar section -->
+<%= render 'shared/nav_bar_signed_in' %>
+<!-- end of navigation bar -->
+<% else %>
+
 
 <!-- navigation bar section -->
 <div class="menu1">
@@ -23,6 +36,7 @@
 </div>
 <!-- end of navigation bar -->
 
+<% end %>
 
 
 
@@ -544,7 +558,7 @@ By indicating during registration that you have read and agreed to this Agreemen
 <!-- end of PAGE CONTENT section -->
 
 
-
+<% unless signed_in?%>
 <!-- beginning of FOOTER section -->
 
 	<div id="page_width3">
@@ -559,6 +573,7 @@ By indicating during registration that you have read and agreed to this Agreemen
 	</div>
 
 <!-- end of FOOTER section -->
+<% end %>
 
 </div>
 

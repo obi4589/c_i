@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203005629) do
+ActiveRecord::Schema.define(version: 20141205192408) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -92,6 +92,8 @@ ActiveRecord::Schema.define(version: 20141203005629) do
     t.string   "city_st"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.boolean  "active_p",               default: true
+    t.boolean  "active_c",               default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

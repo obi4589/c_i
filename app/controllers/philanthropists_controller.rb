@@ -90,6 +90,19 @@ class PhilanthropistsController < ApplicationController
     @user = @philanthropist
   end
 
+
+  def active
+    @philanthropist = Philanthropist.find(params[:id])
+    if @philanthropist.active_p? 
+      @philanthropist.update_attribute(:active_p, false)
+      redirect_to request.referrer 
+    else
+      @philanthropist.update_attribute(:active_p, true)
+      UserMailer.active_email(@philanthropist).deliver
+      redirect_to request.referrer 
+    end
+  end
+
   
 
   private

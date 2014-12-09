@@ -1,6 +1,7 @@
 class FollowsController < ApplicationController
   before_action :signed_in_user
   before_action :correct_user_type
+  before_action :is_active
 
   def create
     @user = User.find(params[:follow][:followable_id])
@@ -40,5 +41,13 @@ class FollowsController < ApplicationController
 
       def correct_user_type
         redirect_to(current_user) unless current_user.type == 'Philanthropist' || current_user.type == 'Charity'
+      end
+
+      def is_active
+        if current_user.type == 'Philanthropist'
+          redirect_to(inactive_path) unless current_user.active_p == true
+        elsif current_user.type == 'Charity'
+          redirect_to(inactive_path) unless current_user.active_c == true
+        end
       end
 end

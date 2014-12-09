@@ -11,4 +11,9 @@ class UserMailer < ActionMailer::Base
   	mail(to: @user.email, subject: 'Password Reset')
   end
 
+  def active_email(user)
+  	@user = user
+  	mail(to: @user.email, subject: 'Active Account')
+  end
+
 end
