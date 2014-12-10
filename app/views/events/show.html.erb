@@ -35,15 +35,49 @@
 		</div>
 		</a>
 		
-		<% if is_philanthropist? %>	
-			<div id = "attend_form">
-				<% if current_user.attending?(@event)%>
-					<%= render 'going' %>
+		<!-- LOGIC FOR GO/GOING/EVENT-FULL/EVENT-ENDED BUTTON -->
+		<% if Date.today <= @event.start_date %>	
+			<% if is_philanthropist? %>	
+				<% if @event.attend_limit.blank?%>
+					<div id = "attend_form">
+						<% if current_user.attending?(@event)%>
+							<%= render 'going' %>
+						<% else %>
+							<%= render 'go' %>
+						<%end%>
+					</div>
 				<% else %>
-					<%= render 'go' %>
+					<% if @event.philanthropists.count < @event.attend_limit %>
+						<div id = "attend_form">
+							<% if current_user.attending?(@event)%>
+								<%= render 'going' %>
+							<% else %>
+								<%= render 'go' %>
+							<%end%>
+						</div>
+					<%else%>
+						<% if  current_user.events.include?(@event) %>
+							<div id = "attend_form">
+								<% if current_user.attending?(@event)%>
+									<%= render 'going' %>
+								<% else %>
+									<%= render 'go' %>
+								<%end%>
+							</div>
+						<% else %>
+							<form id="event_buttons_3">
+								<button type="button" class="full_button">Event Full</button>
+							</form>
+						<% end %>
+					<%end%>
 				<%end%>
-			</div>
-		<%end%>
+			<% end %>
+		<% else %>
+			<form id="event_buttons_3">
+				<button type="button" class="full_button" style="background-color: #2ecc71; border: 1px solid #2ecc71;">Event Ended</button>
+			</form>
+		<% end %>
+		<!-- END OF LOGIC FOR GO/GOING/EVENT-FULL/EVENT-ENDED BUTTON -->
 			
 
 		<% if current_user?(@event.charity) %>

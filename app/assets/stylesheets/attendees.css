@@ -364,6 +364,16 @@ body {
 	margin-bottom: 10px;	
 }
 
+
+#event_buttons_3 { 
+	margin: auto;
+	text-align: left;
+	margin-left: -45px;
+	margin-top: 11px;
+	margin-bottom: 10px;
+} 
+
+
 .go_button {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
@@ -411,6 +421,20 @@ body {
 .going_button:hover {
 	opacity:1.0;
 	filter:alpha(opacity=100);
+}
+
+
+.full_button {
+	font-family: Arial, Helvetica, sans-serif; 
+	font-size: 16px;
+	cursor: pointer;
+	background-color: #00B0F0;
+	border: 1px solid #00B0F0;
+	color: #fff;
+	padding: 10px;
+	width: 200px;
+	margin-left: 55px;
+	margin-right: 55px;
 }
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205192408) do
+ActiveRecord::Schema.define(version: 20141210012602) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20141205192408) do
     t.string   "city_st"
     t.string   "charity_name"
     t.string   "charity_legal_name"
+    t.integer  "attend_limit"
   end
 
   add_index "events", ["charity_id", "start_date", "start_time"], name: "index_events_on_charity_id_and_start_date_and_start_time"

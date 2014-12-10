@@ -86,7 +86,7 @@ class EventsController < ApplicationController
 
 	private
 	  	def event_params
-	  		params.require(:event).permit(:title, :start_date, :start_time, :end_time, :location, :description, :address_line_1, :address_line_2, :zip_code)
+	  		params.require(:event).permit(:title, :start_date, :start_time, :end_time, :location, :description, :address_line_1, :address_line_2, :zip_code, :attend_limit)
 	  	end
 
 	    # Before filters
