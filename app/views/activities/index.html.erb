@@ -44,9 +44,11 @@
 					<% if @activities.any? %>
 						<% @activities.each do |activity| %>	
 						<li>
-							<a href="#">
-							<img src="" width="63" height="63" class="friend_pic"/> 
-							</a>
+							<% if activity.owner.avatar.blank? %>
+                        		<%= link_to image_tag("default-user-avatar.png", class: 'user_pic', width: '63'), activity.owner %>
+                    		<% else %>
+		                        <%= link_to image_tag(activity.owner.avatar.url(:small), class: 'user_pic'), activity.owner %>
+		                    <% end %>
 							<div id="feed_text">
 								<%= link_to activity.owner.name, activity.owner if activity.owner %> <%= render_activity(activity) %>
 								<%= time_ago_in_words(activity.created_at, true) %> ago
@@ -93,9 +95,11 @@
 					<% if @recommended_users.any? %>
 					<% @recommended_users.each do |user| %>
 					<li>
-						<a href="#">
-						<img src="" width="63" height="63" class="user_pic"/> 
-						</a>
+						<% if user.avatar.blank? %>
+	                        <%= link_to image_tag("default-user-avatar.png", class: 'user_pic', width: '63'), user %>
+	                    <% else %>
+	                        <%= link_to image_tag(user.avatar.url(:small), class: 'user_pic'), user %>
+	                    <% end %>
 						<% if user.type == 'Charity'%>
                         	<span id="id"></span>
                     	<% end %>

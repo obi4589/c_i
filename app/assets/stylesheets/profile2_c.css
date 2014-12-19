@@ -335,12 +335,12 @@ body {
 
 
 #profile_pic {
-	height: 170px;
-	width: 170px;
-	border-radius: 85px;
+	height: 134px;
+	width: 134px;
+	border-radius: 70px;
 	border: 1px solid #ecf0f1;
 	margin: auto;
-	margin-top: -130px;
+	margin-top: -138px;
 	background-color: #fff;
 }
 
@@ -456,6 +456,8 @@ body {
 .event_pic {
 	/**photoshop @100% in word  height 2.3 and width 3.18**/
 	margin-left: -8px;
+	width: 306px;
+	height: 221px;
 }
 
 .num_friends_link {

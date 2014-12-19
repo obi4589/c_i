@@ -360,6 +360,7 @@ body {
 .user_pic {
 	float: left;
 	margin-right: 10px;
+	border: 1px solid #ecf0f1;
 }
 
 #user_text {

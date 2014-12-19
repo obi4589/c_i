@@ -60,7 +60,11 @@
 	                				<% end %>
 	                			</div>
 								<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
-								<%= link_to image_tag("eventpic1.gif", alt: "pic", class: "event_pic"), event %>
+								<% if event.cover_photo.blank? %>
+									<%= link_to image_tag("", alt: "pic", class: "event_pic"), event %>
+								<% else %>
+									<%= link_to image_tag(event.cover_photo.url(:medium), class: 'event_pic'), event %>
+								<% end %>
 								<div>
 									<% unless event.follows_at_event(current_user).count == 0 %>
 										<%= link_to "#{event.follows_at_event(current_user).count}", friends_event_path(event), class: "num_friends_link" %>

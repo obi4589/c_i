@@ -120,9 +120,11 @@
                 <% if @friends.any? %>
                 <% @friends.each do |user| %>
                 <li>
-                    <a href="#">
-                    <img src="" width="63" height="63" class="user_pic"/> 
-                    </a>
+                    <% if user.philanthropist.avatar.blank? %>
+                        <%= link_to image_tag("default-user-avatar.png", class: 'user_pic', width: '63'), user.philanthropist %>
+                    <% else %>
+                        <%= link_to image_tag(user.philanthropist.avatar.url(:small), class: 'user_pic'), user.philanthropist %>
+                    <% end %>
                     <div id="user_text">
                         <%= link_to "<b>#{user.philanthropist.name}</b>".html_safe, user.philanthropist %> <br/>
                         <%= link_to "<b id='user_location'>#{user.philanthropist.zip_code.to_region}</b>".html_safe, '#' %><br/>

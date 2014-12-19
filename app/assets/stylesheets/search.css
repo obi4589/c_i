@@ -329,6 +329,8 @@ body {
 .event_pic {
 	/**photoshop @100% in word  height 2.3 and width 3.18**/
 	margin-left: -8px;
+	width: 306px;
+	height: 221px;
 }
 
 
@@ -509,6 +511,7 @@ body {
 .user_pic {
 	float: left;
 	margin-right: 10px;
+	border: 1px solid #ecf0f1;
 }
 
 #user_text {

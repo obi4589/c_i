@@ -56,6 +56,11 @@
 
 		</div>
 		<div id="profile_pic">
+      <% if @philanthropist.avatar.blank? %>
+        <%= image_tag("default-user-avatar.png", width: '134', style: "border-radius:85px") %>
+      <% else %>
+        <%= image_tag @philanthropist.avatar.url(:medium), style: "border-radius:70px" %>
+      <%end %>
 		</div>
 	</div>
 	
@@ -92,7 +97,11 @@
                     <%end%>
                   </div>
                   <!-- photo 100% on MS word.. height 2.3 and width 3.18-->
-                  <%= link_to image_tag("eventpic1.gif", alt: "pic", class: "event_pic"), event %>
+                  <% if event.cover_photo.blank? %>
+                    <%= link_to image_tag("", alt: "pic", class: "event_pic"), event %>
+                  <% else %>
+                    <%= link_to image_tag(event.cover_photo.url(:medium), class: 'event_pic'), event %>
+                  <% end %>
                   <% if is_charity? or is_philanthropist? %>
                       <div>
                         <% unless event.follows_at_event(current_user).count == 0 %>

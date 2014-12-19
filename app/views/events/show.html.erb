@@ -31,7 +31,11 @@
 	<div id="event_header_section">
 		<a href="#">
 		<div id="picture_holder">
-			<%= image_tag("eventcoverBIG2.jpg", width: '960')%>
+			<% if @event.cover_photo.blank? %>
+	          <%= image_tag("", alt: "pic", width: '960', height: '600') %>
+	        <% else %>
+	          <%= image_tag(@event.cover_photo.url(:large)) %>
+	        <% end %>
 		</div>
 		</a>
 		

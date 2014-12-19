@@ -21,9 +21,23 @@ class Event < ActiveRecord::Base
 	#validates :location, presence: true
 	validates :description, presence: true
 	#validates :address_line_1, presence: true
-
 	#validates :zip_code, presence: true, length: {is: 5}, unless: :zip_code
 
+
+
+  #paperclip/imagemagick configuration
+  has_attached_file :cover_photo, 
+    styles: {
+      medium:  '306x221^',
+      large: '960x600^'
+    }, 
+    convert_options: {
+      medium: " -gravity center -crop '306x221+0+0'",
+      large: " -gravity center -crop '960x600+0+0'"
+    }
+    validates_attachment_content_type :cover_photo, 
+      :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+    validates_attachment_presence :cover_photo
 
 
 

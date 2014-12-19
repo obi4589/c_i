@@ -13,11 +13,27 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }     
 
 
+  #acts as follower gem
   acts_as_followable
   acts_as_follower
 
 
-  
+
+  #paperclip/imagemagick configuration
+  has_attached_file :avatar, 
+    styles: {
+      small:  '63x63^',
+      medium: '134x134^'
+    }, 
+    convert_options: {
+      small: " -gravity center -crop '63x63+0+0'",
+      medium: " -gravity center -crop '134x134+0+0'"
+    }
+    validates_attachment_content_type :avatar, 
+      :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
+
+ 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
@@ -25,6 +41,9 @@ class User < ActiveRecord::Base
   def User.digest(token)
     Digest::SHA1.hexdigest(token.to_s)
   end
+
+ 
+  
 
   private
 

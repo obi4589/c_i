@@ -56,7 +56,12 @@
 
 		</div>
 		<div id="profile_pic">
-		</div>
+        <% if @superadmin.avatar.blank? %>
+            <%= image_tag("default-user-avatar.png", width: '134', style: "border-radius:85px") %>
+        <% else %>
+            <%= image_tag @superadmin.avatar.url(:medium), style: "border-radius:70px" %>
+        <%end %>
+    </div>
 	</div>
 	
 		

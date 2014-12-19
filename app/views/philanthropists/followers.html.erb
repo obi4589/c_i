@@ -56,6 +56,11 @@
 
         </div>
         <div id="profile_pic">
+            <% if @philanthropist.avatar.blank? %>
+                <%= image_tag("default-user-avatar.png", width: '134', style: "border-radius:85px") %>
+            <% else %>
+                <%= image_tag @philanthropist.avatar.url(:medium), style: "border-radius:70px" %>
+            <%end %>
         </div>
     </div>
     
@@ -81,9 +86,11 @@
                 <% if @followers.any? %>
                 <% @followers.each do |user| %>
                 <li>
-                    <a href="#">
-                    <img src="" width="63" height="63" class="user_pic"/> 
-                    </a>
+                    <% if user.follower.avatar.blank? %>
+                        <%= link_to image_tag("default-user-avatar.png", class: 'user_pic', width: '63'), user.follower %>
+                    <% else %>
+                        <%= link_to image_tag(user.follower.avatar.url(:small), class: 'user_pic'), user.follower %>
+                    <% end %>
                     <% if user.follower.type == 'Charity'%>
                         <span id="id"></span>
                     <% end %>

@@ -57,6 +57,12 @@
 
               <%= f.label :password_confirmation, "Confirm Password" %><br />
               <%= f.password_field :password_confirmation, class: "form-input"  %>
+              <br /><br />
+
+              <%= f.label :avatar, "Photo" %>
+              <%= link_to 'X', no_avatar_philanthropist_path(@philanthropist), id: "d-i" , method: :patch, data: {confirm: "Delete profile pic?"}, remote: true  %>
+              <br />
+              <%= f.file_field :avatar %>
               <br /><br /><br />
 
               <%= f.submit "Save Changes", class: "sign-up-button" %><br />

@@ -54,3 +54,8 @@ gem 'public_activity', '1.4.2'
 
 #gem that calculates the haversine distance between two locations using longitude and latitude
 gem 'haversine', '0.3.0'
+
+#gems for image upload
+gem 'paperclip', '4.2.0'
+gem 'aws-sdk', '1.59.1'
+gem 'aws', '2.10.2'

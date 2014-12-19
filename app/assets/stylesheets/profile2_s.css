@@ -343,14 +343,15 @@ body {
 
 
 #profile_pic {
-	height: 170px;
-	width: 170px;
-	border-radius: 85px;
+	height: 134px;
+	width: 134px;
+	border-radius: 70px;
 	border: 1px solid #ecf0f1;
 	margin: auto;
-	margin-top: -130px;
+	margin-top: -138px;
 	background-color: #fff;
 }
+
 
 /** end of cover photo section**/
 

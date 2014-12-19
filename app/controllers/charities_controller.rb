@@ -1,7 +1,7 @@
 class CharitiesController < ApplicationController
   before_action :signed_in_user, only: [:show, :edit, :update, :home, :followers, :following, :about, :history]
-  before_action :correct_user,   only: [:edit, :update, :home]
-  before_action :is_superadmin?, only: [:destroy]
+  before_action :correct_user,   only: [:edit, :update, :home, :no_avatar]
+  before_action :is_superadmin?, only: [:destroy, :active]
 
 
   def new
@@ -112,9 +112,17 @@ class CharitiesController < ApplicationController
   end
 
 
+  def no_avatar
+    @charity = Charity.find(params[:id])
+    @charity.update_attribute(:avatar, nil)
+    redirect_to request.referrer 
+  end
+
+
+
   private
   	def charity_params
-  		params.require(:charity).permit(:legal_name, :name, :ein, :zip_code, :contact_person, :email, :phone, :password, :password_confirmation, :mission)
+  		params.require(:charity).permit(:legal_name, :name, :ein, :zip_code, :contact_person, :email, :phone, :password, :password_confirmation, :mission, :avatar)
   	end
 
 
