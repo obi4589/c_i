@@ -10,8 +10,9 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
 	
   has_secure_password 
-  validates :password, length: { minimum: 6 }     
+  validates :password, length: { minimum: 6 }, on: :create
 
+                     
 
   #acts as follower gem
   acts_as_followable
@@ -30,7 +31,7 @@ class User < ActiveRecord::Base
       medium: " -gravity center -crop '134x134+0+0'"
     }
     validates_attachment_content_type :avatar, 
-      :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+      :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
 
  

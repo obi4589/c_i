@@ -36,7 +36,7 @@ class Event < ActiveRecord::Base
       large: " -gravity center -crop '960x600+0+0'"
     }
     validates_attachment_content_type :cover_photo, 
-      :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+      :content_type => ["image/jpg", "image/jpeg", "image/png"]
     validates_attachment_presence :cover_photo
 
 

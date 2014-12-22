@@ -40,6 +40,10 @@
 			</div>
             <div id="body1">
             	
+            	<% flash.each do |name, msg| -%>
+      			  <%= content_tag :div, msg, class: name %>
+    			    <% end -%>
+            	
             	<%= render 'shared/error_messages_reset' %>
 
             	<%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>

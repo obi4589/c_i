@@ -164,6 +164,12 @@ body {
 	margin-right: 190px;
 }
 
+.error3 {
+	float: right;
+	color: red;
+	margin-right: 215px;
+}
+
 #error_explanation {
 	float: right;
 	color: red;

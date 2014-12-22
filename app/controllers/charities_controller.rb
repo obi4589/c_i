@@ -1,6 +1,6 @@
 class CharitiesController < ApplicationController
-  before_action :signed_in_user, only: [:show, :edit, :update, :home, :followers, :following, :about, :history]
-  before_action :correct_user,   only: [:edit, :update, :home, :no_avatar]
+  before_action :signed_in_user, only: [:show, :edit, :update, :home, :followers, :following, :about, :history, :active, :no_avatar, :change_password, :update_password]
+  before_action :correct_user,   only: [:edit, :update, :home, :no_avatar, :change_password, :update_password]
   before_action :is_superadmin?, only: [:destroy, :active]
 
 
@@ -44,7 +44,7 @@ class CharitiesController < ApplicationController
     @charity = Charity.find(params[:id])
     if @charity.update_attributes(charity_params)
       flash[:success] = "Profile updated"
-      redirect_to @charity
+      redirect_to edit_charity_path
     else
       render 'edit'
     end
@@ -116,6 +116,27 @@ class CharitiesController < ApplicationController
     @charity = Charity.find(params[:id])
     @charity.update_attribute(:avatar, nil)
     redirect_to request.referrer 
+  end
+
+
+  def change_password
+    @charity = Charity.find(params[:id])
+  end
+
+
+  def update_password
+    @charity = Charity.find(params[:id])
+    if params[:charity][:password].present?
+      if @charity.update_attributes(charity_params)
+        flash[:success] = "Password updated"
+        redirect_to change_password_charity_path
+      else
+       render 'change_password'
+      end
+    else
+      flash.now[:error] = "Please enter password"
+      render 'change_password'
+    end
   end
 
 

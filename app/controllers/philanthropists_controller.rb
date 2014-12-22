@@ -1,6 +1,6 @@
 class PhilanthropistsController < ApplicationController
-  before_action :signed_in_user, only: [:show, :edit, :update, :home, :followers, :following, :history]
-  before_action :correct_user,   only: [:edit, :update, :home, :no_avatar]
+  before_action :signed_in_user, only: [:show, :edit, :update, :home, :followers, :following, :history, :active, :no_avatar, :change_password, :update_password]
+  before_action :correct_user,   only: [:edit, :update, :home, :no_avatar, :change_password, :update_password]
   before_action :is_superadmin?, only: [:destroy, :active]
 
 
@@ -44,9 +44,9 @@ class PhilanthropistsController < ApplicationController
     @philanthropist = Philanthropist.find(params[:id])
     if @philanthropist.update_attributes(philanthropist_params)
       flash[:success] = "Profile updated"
-      redirect_to @philanthropist
+      redirect_to edit_philanthropist_path
     else
-      render 'edit'
+     render 'edit'
     end
   end
 
@@ -108,6 +108,27 @@ class PhilanthropistsController < ApplicationController
     @philanthropist = Philanthropist.find(params[:id])
     @philanthropist.update_attribute(:avatar, nil)
     redirect_to request.referrer 
+  end
+
+
+  def change_password
+    @philanthropist = Philanthropist.find(params[:id])
+  end
+
+
+  def update_password
+    @philanthropist = Philanthropist.find(params[:id])
+    if params[:philanthropist][:password].present?
+      if @philanthropist.update_attributes(philanthropist_params)
+        flash[:success] = "Password updated"
+        redirect_to change_password_philanthropist_path
+      else
+       render 'change_password'
+      end
+    else
+      flash.now[:error] = "Please enter password"
+      render 'change_password'
+    end
   end
   
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Update info</title>
+<title>Edit Profile</title>
 <%= stylesheet_link_tag    "edit1.css", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
@@ -27,10 +27,16 @@
 
 <!-- beginning of PAGE CONTENT section -->
        <div id="page_width2">
-              <div class="page">
-                     <div id="title">
-                            Update info
-                     </div>
+            <!-- beginning of control panel -->
+            <div class="control_panel">
+                <%= link_to "Edit Profile", edit_philanthropist_path(current_user), class: "control_panel_link", id: "chosen" %>
+                <%= link_to "Change Password", change_password_philanthropist_path(current_user), class: "control_panel_link" %>
+            </div>
+            <!-- end of control panel section -->
+            <div class="page">
+                   <div id="title">
+                          Edit Profile
+                   </div>
             <div id="body1">
               <%= render 'shared/error_messages_p' %>
               <%= form_for(@philanthropist) do |f| %>
@@ -50,17 +56,10 @@
               <%= f.label :zip_code, "Zip Code" %><br />
               <%= f.text_field :zip_code, class: "form-input"  %>
               <br /><br />
-              
-              <%= f.label :password %><br />
-              <%= f.password_field :password, class: "form-input"  %>
-              <br /><br />
 
-              <%= f.label :password_confirmation, "Confirm Password" %><br />
-              <%= f.password_field :password_confirmation, class: "form-input"  %>
-              <br /><br />
-
-              <%= f.label :avatar, "Photo" %>
+              <%= f.label :avatar, "Photo", id: 'hover' %>
               <%= link_to 'X', no_avatar_philanthropist_path(@philanthropist), id: "d-i" , method: :patch, data: {confirm: "Delete profile pic?"}, remote: true  %>
+              <div id="hover_2" style="font-size: 12px; position: absolute; margin-left:280px; margin-top: -18px; color: red; display: none;">jpeg or png</div>
               <br />
               <%= f.file_field :avatar %>
               <br /><br /><br />

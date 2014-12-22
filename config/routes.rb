@@ -30,8 +30,8 @@ CI::Application.routes.draw do
 
   resources :philanthropists do
     member do
-      get :home, :followers, :following, :history
-      patch :active, :no_avatar
+      get :home, :followers, :following, :history, :change_password
+      patch :active, :no_avatar, :update_password
     end
   end
   match '/signup1', to: 'philanthropists#new', via: 'get'
@@ -39,8 +39,8 @@ CI::Application.routes.draw do
 
   resources :charities do
     member do
-      get :home, :followers, :following, :about, :history
-      patch :active, :no_avatar
+      get :home, :followers, :following, :about, :history, :change_password
+      patch :active, :no_avatar, :update_password
     end
   end
   match '/signup2', to: 'charities#new', via: 'get' 

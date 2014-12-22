@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>New event</title>
+<title>New Event</title>
 <%= stylesheet_link_tag    "new_event.css", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
@@ -29,7 +29,7 @@
        <div id="page_width2">
               <div class="page">
                      <div id="title">
-                            New event
+                            New Event
                      </div>
             <div id="body1">
               <%= render 'shared/error_messages_e' %>
@@ -75,7 +75,9 @@
               <%= f.text_field :attend_limit, placeholder: 'None', class: "form-input"  %>
               <br /><br />
 
-              <%= f.label :cover_photo, "Cover Photo" %><span class="asterisk">*</span><br />
+              <%= f.label :cover_photo, "Cover Photo", id: 'hover' %><span class="asterisk">*</span>
+              <div id="hover_2" style="font-size: 12px; position: absolute; margin-left:140px; margin-top: -18px; color: red; display: none;">jpeg or png</div>
+              <br />
               <%= f.file_field :cover_photo %>
               <br /><br /><br />
 

@@ -215,6 +215,66 @@ body {
 }
 
 
+/** beginning of CONTROL PANEL section **/
+
+.control_panel {
+	display: block;
+	width: 153px;
+	height: 730px;
+	border-right: 10px solid #ecf0f1;
+	float: left;
+	margin-top: -20px;
+	margin-right: 50px;
+	
+}
+
+/** for change password page **/
+.control_panel_2 {
+	display: block;
+	width: 153px;
+	height: 450px;
+	border-right: 10px solid #ecf0f1;
+	float: left;
+	margin-top: -20px;
+	margin-right: 50px;
+	
+}
+
+#head {
+	background-color: #fff;
+	border: 1px solid #fff;
+	color: #2c3e50;
+	cursor: default;
+}
+
+.control_panel_link {
+	font-family: Arial, Helvetica, sans-serif;
+	width:131px;
+	padding: 10px;
+	font-size: 16px;
+	cursor: pointer;
+	background-color: #fff;
+	border: 1px solid #fff;
+	color: #2c3e50;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.control_panel_link:hover { 
+	background-color: #00B0F0;
+	border: 1px solid #00B0F0;
+	color: #fff;
+}
+
+#chosen {
+	background-color: #00B0F0;
+	border: 1px solid #00B0F0;
+	color: #fff;
+}
+
+
+/** end of CONTROL PANEL section **/
+
 
 .page {
 	
@@ -250,12 +310,21 @@ body {
 	float: right;
 	color: red;
 	list-style-type: none;
-	margin-right: 50px;
-
+	margin-right: 20px;
+	width: 400px;
 }
 
 #error_explanation ul {
 	list-style-type: none;
+}
+
+.error {
+	color: red;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-top: 220px;
+	margin-left: 620px ;
+	font-size: 20px;
+	position: absolute;
 }
 
 

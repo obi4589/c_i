@@ -24,13 +24,19 @@ class PasswordResetsController < ApplicationController
 
   def update
     @user = User.find_by(password_reset_token: params[:id])
-    if @user.password_reset_sent_at < 2.hours.ago
-      flash[:error2] = "Password reset has expired"
-      redirect_to reset_path
-    elsif @user.update_attributes(user_params)
-      flash[:success] = "Password has been reset"
-      redirect_to root_url
+    proper_params
+    if params[:user][:password].present? 
+      if @user.password_reset_sent_at < 2.hours.ago
+        flash[:error2] = "Password reset has expired"
+        redirect_to reset_path
+      elsif @user.update_attributes(user_params)
+        flash[:success] = "Password has been reset"
+        redirect_to root_url
+      else
+        render 'edit'
+      end
     else
+      flash.now[:error3] = "Please enter password"
       render 'edit'
     end
   end
@@ -44,6 +50,17 @@ class PasswordResetsController < ApplicationController
         params.require(:charity).permit(:password, :password_confirmation )
       else
         params.require(:superadmin).permit(:password, :password_confirmation )
+      end
+    end
+
+
+    def proper_params
+      if @user.type == "Philanthropist"
+        params[:user] = params[:philanthropist]
+      elsif @user.type == "Charity"
+        params[:user] = params[:charity]
+      else
+        params[:user] = params[:superadmin]
       end
     end
 
