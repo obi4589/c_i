@@ -173,7 +173,7 @@ body {
 }
 
 #nav_button_div ul li:hover{
-	background-color: #3498db;
+	background-color: #00B0F0;
 	color: #fff;
 	
 }
@@ -307,8 +307,8 @@ font: 100%/120% Verdana, Arial, Helvetica, sans-serif;
 	cursor: pointer;
 	color: #fff;
 	font-size: 20px;
-	border: 1px solid #3498db;
-	background-color: #3498db;
+	border: 1px solid #00B0F0;
+	background-color: #00B0F0;
 	margin-top: -15px;
 }
 
