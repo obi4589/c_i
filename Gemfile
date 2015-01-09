@@ -59,3 +59,6 @@ gem 'haversine', '0.3.0'
 gem 'paperclip', '4.2.0'
 gem 'aws-sdk', '1.59.1'
 gem 'aws', '2.10.2'
+
+#gem for root page carousel
+gem 'owlcarousel-rails', '1.1.3.3'

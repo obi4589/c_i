@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require ckeditor/init
+//= require owl.carousel
 //= require_tree .
 // 
 // Vendor files
