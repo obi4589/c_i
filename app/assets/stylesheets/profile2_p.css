@@ -263,10 +263,11 @@ body {
 #location a {
 	text-decoration: none;
 	color: #2c3e50;
+	cursor: default;
 }
 
 #location a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 
@@ -519,7 +520,7 @@ body {
 }
 
 #events_text a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 #event_title {
@@ -527,6 +528,11 @@ body {
 	text-decoration: none;
 	font-size: 19px;
 	font-weight: 100;
+}
+
+#event_title:hover {
+	text-decoration: underline;
+
 }
 
 #event_organization {
@@ -544,22 +550,24 @@ body {
 	color: #3498db;
 	font-size: 14px;
 	font-weight: 100;
+	cursor: default;
 }
 
 
 #event_date:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 #event_city {
 	color: #3498db;
 	font-size: 14px;
 	font-weight: 100;
+	cursor: default;
 }
 
 
 #event_city:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 #no_event_holder {
@@ -581,6 +589,7 @@ body {
 	margin-left: -8px;
 	background-color: #fff ;
 	font-weight: bold;
+	cursor: default;
 }
 
 /**end of EVENTS section **/

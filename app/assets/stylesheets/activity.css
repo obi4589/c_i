@@ -527,17 +527,22 @@ body {
 }
 
 #user_text a:hover {
+	text-decoration: none;
+}
+
+#user_name:hover {
 	text-decoration: underline;
 }
 
 #user_location {
 	color: #3498db;
 	font-weight: 100;
+	cursor: default;
 }
 
 
 #user_location:hover {
-	text-decoration: underline;
+	text-decoration: none;
 	
 }
 

@@ -95,7 +95,7 @@
                         <span id="id"></span>
                     <% end %>
                     <div id="user_text">
-                        <%= link_to "<b>#{user.follower.name}</b>".html_safe, user.follower %> <br/>
+                        <%= link_to "<b id='user_name'>#{user.follower.name}</b>".html_safe, user.follower %> <br/>
                         <%= link_to "<b id='user_location'>#{user.follower.zip_code.to_region}</b>".html_safe, '#' %><br/>
                     </div>
 

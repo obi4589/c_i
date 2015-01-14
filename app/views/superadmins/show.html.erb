@@ -39,7 +39,7 @@
 			</div>
 
       <div id="buttons_left">
-        <a href="#" class= "left_button" id="underline1">Events</a>
+      	<%= link_to "Events", @superadmin, class: "left_button", id: "underline1" %>
       </div>
 
       <% if is_philanthropist? || is_charity? %>
@@ -75,7 +75,7 @@
 	<div id="page_width3">
 		<div class="events_header">
 			<ul>
-				<li><a href="#">CI Events: <%=@events.count%></a></li> 
+				<li><%=link_to "CI Events: #{@events.count}", @superadmin %></li> 
 				<!--<li><a href="#">Hours: 12</a></li>-->
 			</ul>
       <div id="event_feed_toggle">

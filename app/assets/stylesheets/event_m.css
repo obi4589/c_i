@@ -393,10 +393,11 @@ body {
 	font-size: 20px;
 	color: #2c3e50;
 	font-weight: 100;
+	cursor: default;
 }
 
 #event_date:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 
@@ -404,11 +405,12 @@ body {
 	font-size: 20px;
 	color: #2c3e50;
 	font-weight: 100;
+	cursor: default;
 	
 }
 
 #event_location:hover {
-	text-decoration: underline;
+	text-decoration: none;
 	
 }
 
@@ -583,10 +585,11 @@ body {
 	color: #2c3e50;	
 	text-decoration: none;
 	font-weight: 100;
+	cursor: default;
 }
 
 .map_header ul li a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 .map_pic {
@@ -613,10 +616,11 @@ body {
 
 .map_update a {
 	text-decoration: none;
+	cursor: text;
 }
 
 .map_update a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 	color: #2c3e50;
 }
 
