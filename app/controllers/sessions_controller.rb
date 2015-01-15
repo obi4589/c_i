@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :logged_in, only: [:new]
 
   def new
 
@@ -33,6 +34,18 @@ class SessionsController < ApplicationController
     sign_out
     redirect_to root_url
   end
+
+
+
+  private
+
+    def logged_in
+      if signed_in?
+        redirect_to(home_philanthropist_path(current_user)) if current_user.type == 'Philanthropist'
+        redirect_to(home_charity_path(current_user)) if current_user.type == 'Charity'
+        redirect_to(current_user) if current_user.type == 'Superadmin'
+      end        
+    end
 
   layout false
 end

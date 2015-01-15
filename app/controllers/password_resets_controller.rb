@@ -1,4 +1,5 @@
 class PasswordResetsController < ApplicationController
+  before_action :logged_in, only: [:new]
   
   def new
   end
@@ -63,6 +64,16 @@ class PasswordResetsController < ApplicationController
         params[:user] = params[:superadmin]
       end
     end
+
+    def logged_in
+      if signed_in?
+        redirect_to(home_philanthropist_path(current_user)) if current_user.type == 'Philanthropist'
+        redirect_to(home_charity_path(current_user)) if current_user.type == 'Charity'
+        redirect_to(current_user) if current_user.type == 'Superadmin'
+      end        
+    end
+
+
 
   layout false
 end

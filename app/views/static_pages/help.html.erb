@@ -3,12 +3,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cherry Ivy Help Center</title>
+
+<% if signed_in? %>
+<%= stylesheet_link_tag    "inactive.css", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<% else %>
 	<%= stylesheet_link_tag    "help.css", media: "all", "data-turbolinks-track" => true %>
+<% end %>
   	<%= csrf_meta_tags %>
  	<%= render 'layouts/shim' %>
 </head>
 
 <body>
+
+<% if signed_in? %>
+<!-- navigation bar section -->
+<%= render 'shared/nav_bar_signed_in' %>
+<!-- end of navigation bar -->
+<% else %>
 
 <!-- navigation bar section -->
 <div class="menu1">
@@ -22,6 +34,8 @@
 	</div>
 </div>
 <!-- end of navigation bar -->
+
+<%end %>
 
 
 
@@ -95,6 +109,7 @@ See <%= link_to "SPLC's Hate Map", 'http://www.splcenter.org/get-informed/hate-m
 
 
 
+<% unless signed_in? %>
 <!-- beginning of FOOTER section -->
 
 	<div id="page_width3">
@@ -109,6 +124,7 @@ See <%= link_to "SPLC's Hate Map", 'http://www.splcenter.org/get-informed/hate-m
 	</div>
 
 <!-- end of FOOTER section -->
+<% end %>
 
 </div>
 
