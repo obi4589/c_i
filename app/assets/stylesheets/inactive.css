@@ -281,5 +281,13 @@ p a:hover {
 
 
 
+/** css for links on signed-in help page **/
 
+.splc {
+	color:#3498db;
+	text-decoration: none;
+}
 
+.splc:hover {
+	text-decoration: underline;
+}
