@@ -37,6 +37,25 @@
 <div class="menu2"> 
 
 
+	<% if @events.count >= 5 %>
+	
+	<!-- beginning of EVENTS section -->
+	<div id="page_width2">
+		<div class="owl-carousel">
+			<% @events.each do |event| %>
+			 	<div> 
+			 		<%=image_tag(event.cover_photo.url(:large), width: '960px') %>
+			        <div class="event_info">
+			        	<span id="event_title"><%= event.title[0..39]%><%if event.title.length > 40 %>...<%end%></span><br />
+			            <span id="event_host"><%= event.charity.legal_name[0..79]%><%if event.charity.legal_name.length > 80 %>...<%end%></span> 
+			        </div>
+			  	</div>
+			<% end %>
+		</div>
+	</div>
+<!-- end of EVENTS section -->
+
+	<% else %>
 
 <!-- beginning of EVENTS section -->
 	<div id="page_width2">
@@ -49,10 +68,10 @@
 			        </div>
 			  </div>
 			  <div> 
-				  	<%=image_tag("eventcoverBIG.jpg", alt: "Home", width: '960px')%>
+				  	<%=image_tag("kids-maths.jpg", alt: "Home", width: '960px')%>
 			        <div class="event_info">
-			        	<span id="event_title">Kick Off to Summer Benefit</span><br />
-			            <span id="event_host">New York Police & Fire Widow's & Children's Benefit Fund</span> 
+			        	<span id="event_title">Morning Math Games at PS 133 K</span><br />
+			            <span id="event_host">New York Cares</span> 
 			        </div>
 			  </div>
 			  <div> 
@@ -78,9 +97,9 @@
 			  </div>
 		</div>
 	</div>
-
-		
 <!-- end of EVENTS section -->
+	
+	<% end %>
 
 
 

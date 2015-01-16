@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
   before_action :logged_in, only: [:root]
 
   def root
+    @events = Event.order("RANDOM()").limit(5)
   end
 
   def about
