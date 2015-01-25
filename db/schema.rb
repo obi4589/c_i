@@ -44,9 +44,6 @@ ActiveRecord::Schema.define(version: 20150123001241) do
   create_table "events", force: true do |t|
     t.integer  "charity_id"
     t.string   "title"
-    t.date     "start_date"
-    t.datetime "start_time"
-    t.datetime "end_time"
     t.string   "location"
     t.text     "description"
     t.string   "address_line_1"
@@ -62,9 +59,11 @@ ActiveRecord::Schema.define(version: 20150123001241) do
     t.string   "cover_photo_content_type"
     t.integer  "cover_photo_file_size"
     t.datetime "cover_photo_updated_at"
+    t.datetime "start_time"
+    t.datetime "end_time"
   end
 
-  add_index "events", ["charity_id", "start_date", "start_time"], name: "index_events_on_charity_id_and_start_date_and_start_time"
+  add_index "events", ["charity_id", "start_time"], name: "index_events_on_charity_id_and_start_time"
 
   create_table "follows", force: true do |t|
     t.integer  "followable_id",                   null: false
