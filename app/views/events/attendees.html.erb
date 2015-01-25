@@ -31,7 +31,7 @@
 	<div id="event_header_section">
 		<div class="event_details">
             <%= link_to "<b id='event_title'>#{@event.title}</b>".html_safe, @event %><br/>
-            <%= link_to "<b id='event_date'>#{@event.start_date.strftime('%B %-d, %Y')} | #{@event.start_date.strftime('%A')} #{@event.start_time.strftime('%-I:%M %p')} - #{@event.end_time.strftime('%-I:%M %p')}</b>".html_safe, '#' %><br/>
+            <%= link_to "<b id='event_date'>#{@event.start_time.strftime('%B %-d, %Y')} | #{@event.start_time.strftime('%A')} #{@event.start_time.strftime('%-I:%M %p')} - #{@event.end_time.strftime('%-I:%M %p')}</b>".html_safe, '#' %><br/>
             <%= link_to "<b id='event_location'>#{@event.location}</b>".html_safe, '#' %><br/><br/>
             <%= link_to "<b id='event_host'>#{@event.charity.name}</b>".html_safe, @event.charity %><br/>
         </div>
@@ -51,7 +51,7 @@
 		<div id="going_section">
 
     <!-- LOGIC FOR GO/GOING/EVENT-FULL/EVENT-ENDED BUTTON -->
-    <% if Date.today <= @event.start_date %>  
+    <% if (Time.now - 5.hours) <= @event.start_time %>  
       <% if is_philanthropist? %> 
         <% if @event.attend_limit.blank?%>
           <div id = "attend_form">
@@ -89,7 +89,7 @@
       <% end %>
     <% else %>
       <form id="event_buttons_3">
-        <button type="button" class="full_button" style="background-color: #2ecc71; border: 1px solid #2ecc71;">Event Ended</button>
+        <button type="button" class="full_button" style="background-color: #2ecc71; border: 1px solid #2ecc71;">Event Closed</button>
       </form>
     <% end %>
     <!-- END OF LOGIC FOR GO/GOING/EVENT-FULL/EVENT-ENDED BUTTON -->

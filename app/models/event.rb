@@ -15,7 +15,7 @@ class Event < ActiveRecord::Base
 
 	validates :charity_id, presence: true
 	validates :title, presence: true
-	validates :start_date, presence: true
+	#validates :start_date, presence: true (no longer using this attribute)
 	validates :start_time, presence: true
 	validates :end_time, presence: true
 	#validates :location, presence: true

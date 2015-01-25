@@ -58,17 +58,12 @@
               <%= f.text_field :zip_code, class: "form-input"  %>
               <br /><br />
 
-              <%= f.label :start_date, "Date" %><span class="asterisk">*</span> <br />
-              <%= f.date_field :start_date, class: "form-input" %>
-              <br /><br />
-
-
               <%= f.label :start_time, "Start Time" %><span class="asterisk">*</span><br />
-              <%= f.time_field :start_time, class: "form-input"  %>
+              <%= f.datetime_local_field :start_time, class: "form-input"  %>
               <br /><br />
 
               <%= f.label :end_time, "End Time" %><span class="asterisk">*</span><br />
-              <%= f.time_field :end_time, class: "form-input"  %>
+              <%= f.datetime_local_field :end_time, class: "form-input"  %>
               <br /><br />
 
               <%= f.label :attend_limit, "Attendance Limit" %><br />
