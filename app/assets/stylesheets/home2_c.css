@@ -220,6 +220,20 @@ body {
 }
 
 
+#nearby_button {
+position: absolute;
+margin-top: 11px;
+margin-left: 449px;
+border: 2px solid #fff;
+}
+
+
+#nearby_button:hover {
+border: 2px solid #fff;
+box-shadow: 0px 0px 3px 1px #c8def0;
+}
+
+
 #name {
 	width: auto;
 	height: auto;

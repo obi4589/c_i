@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Home | <%= @philanthropist.name %></title>
+<title>Nearby</title>
 <%= stylesheet_link_tag    "home2_p.css", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   	<%= csrf_meta_tags %>
@@ -29,12 +29,17 @@
 <!-- beginning of EVENTS section -->
 	<div id="page_width2">
 		<div class="events_header1">
-			<%=link_to image_tag("nearby_icon_1.png", width: '30px'), nearby_activities_path, id: 'nearby_button' %>
+			<% if is_philanthropist? %>
+			<%=link_to image_tag("nearby_icon_2.png", width: '30px'), home_philanthropist_path(current_user), id: 'nearby_button' %>
+			<% elsif is_charity? %>
+			<%=link_to image_tag("nearby_icon_2.png", width: '30px'), home_charity_path(current_user), id: 'nearby_button' %>
+			<% end %>
+				
 			<div id="name">
-				<%= link_to current_user.name, current_user %>
+				<%= link_to "Nearby", nearby_activities_path %>	
 			</div>
 			<ul>
-				<li><a href="#">Events: <%=@philanthropist.events.count%></a></li> 
+				<!--<li><a href="#">Events: </a></li> -->
 				<!--<li><a href="#">Hours: 12</a></li>-->
 			</ul>
 		</div>
@@ -48,11 +53,11 @@
 		</div>
 		<div class="events_update">
 			<ul>
-				<%if @final_feed.any? %>
+				<%if @nearby_events.any? %>
 
 					<% @months.each do |month| %>	
 						
-	                	<% month_feed = @final_feed.select {|x| x.start_time.strftime('%B %Y') == month } %>
+	                	<% month_feed = @nearby_events.select {|x| x.start_time.strftime('%B %Y') == month } %>
 	                	<% month_feed.each do |event| %>
 		                	<li>
 		                		<div id="event_month_header">
@@ -70,9 +75,15 @@
 									<% unless event.follows_at_event(current_user).count == 0 %>
 										<%= link_to "#{event.follows_at_event(current_user).count}", friends_event_path(event), class: "num_friends_link" %>
 									<% end%>
-									<% if current_user.attending?(event) %>
-                        				<%= image_tag("star.png", alt: "pic", class: "going_star")%>
-                        			<% end %>
+									<% if is_philanthropist? %>
+                                      <%if current_user.attending?(event)%> 
+                                        <%= image_tag("star.png", alt: "pic", class: "going_star")%>
+                                      <% end %>
+                                    <% elsif is_charity? %>
+                                      <% if current_user.id == event.charity.id %>
+                                        <%= image_tag("star.png", alt: "pic", class: "going_star")%>
+                                      <% end %>
+                                    <% end %>
 								</div>
 								<div id="events_text">
 									<%= link_to "<b id='event_title'>#{event.title}</b>".html_safe, event %><br />
@@ -89,8 +100,8 @@
 					<%end%>
 				<% else %>
 					<li id="no_event_holder">
-	                No Feed Events
-	                </li>
+						No Nearby Events
+					</li>
 				<%end%>
 			</ul>		
 		</div>
