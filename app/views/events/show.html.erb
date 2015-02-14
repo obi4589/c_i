@@ -3,8 +3,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><%= @event.title %></title>
+
+<% if signed_in? %>
 <%= stylesheet_link_tag    "event_m.css", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<% else %>
+<%= stylesheet_link_tag    "event_m_so.css", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<% end %>
 <%= csrf_meta_tags %>
 <%= render 'layouts/shim' %>
 
@@ -12,9 +18,27 @@
 
 <body>
 
+<% if signed_in? %>
 <!-- navigation bar section -->
 <%= render 'shared/nav_bar_signed_in' %>
 <!-- end of navigation bar -->
+<% else %>
+
+
+<!-- navigation bar section -->
+<div class="menu1">
+	<div class="page_width1">
+		<%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), root_path %>
+		<%= link_to image_tag("Nav-Name.png", alt: "Home", id: "nav_name"), root_path %>
+		<div id="admin">
+			<%= link_to "Sign Up", signup1_path, class: "admin_button_a" %>
+			<%= link_to "Log In", login_path, class: "admin_button_a" %>
+		</div>				
+	</div>
+</div>
+<!-- end of navigation bar -->
+
+<% end %>
 
 
 
@@ -39,6 +63,8 @@
 		</div>
 		</a>
 		
+
+	<% if signed_in? %>
 		<!-- LOGIC FOR GO/GOING/EVENT-FULL/EVENT-ENDED BUTTON -->
 		<% if (Time.now - 5.hours) <= @event.start_time %>	
 			<% if is_philanthropist? %>	
@@ -82,8 +108,20 @@
 			</form>
 		<% end %>
 		<!-- END OF LOGIC FOR GO/GOING/EVENT-FULL/EVENT-ENDED BUTTON -->
+	<% else %>
+		<% if (Time.now - 5.hours) <= @event.start_time %>
+			<form id="event_buttons_3">
+				<%= link_to "<button type='button' class='full_button' style='background-color: #fff; border: 1px solid #fff; color: #2c3e50;'>Go</button>".html_safe, @event.charity %>
+			</form>
+		<% else %>
+			<form id="event_buttons_3">
+				<%= link_to "<button type='button' class='full_button' style='background-color: #2ecc71; border: 1px solid #2ecc71;'>Event Closed</button>".html_safe, @event.charity %>
+			</form>
+		<% end %>
+	<% end %>
 			
 
+	<% if signed_in? %>
 		<% if current_user?(@event.charity) %>
 		<div id = "admin_buttons_div">
 			<%= link_to "Edit", edit_event_path(@event), class: "admin_buttons" %> 
@@ -94,6 +132,7 @@
         	<%= link_to "Delete", @event, class: "admin_buttons", method: :delete, data: {confirm: "Delete event?"} %>
         </div>
         <%end%>
+    <% end %>    
 		
 		<div class="event_details">
 			<%= link_to "<b id='event_title'>#{@event.title}</b>".html_safe, @event %><br/>
@@ -128,6 +167,8 @@
 					
 				</ul>	
 			</div>
+
+		<% if signed_in? %>
 			<div class="map_header">
 				<ul>
 					<li><a href="#">Maps and Directions</a></li> 
@@ -152,9 +193,11 @@
 					<%=@event.zip_code.to_region%> <%=@event.zip_code %> 
 					<%end%></p>
 			</div>
+		<% end %>
+
 		</div>
 		<!-- end of GOING & MAP section --> 
-
+	
 
 		
 		
