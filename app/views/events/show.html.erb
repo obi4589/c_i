@@ -323,6 +323,26 @@
 		
 	</div> 
 </div>
+
+
+<% unless signed_in? %>
+<!-- beginning of FOOTER section -->
+
+	<div id="page_width3">
+		<div class="footer">
+			<ul>
+            	<li><%= link_to "About", about_path %></li>
+            	<li><%= link_to "Terms", terms_path %></li>
+            	<li><%= link_to "Privacy", privacy_path %></li>
+            	<li><%= link_to "Help", help_path %></li>
+            </ul>
+		</div>				
+	</div>
+
+<!-- end of FOOTER section -->
+<% end %>
+
+
 </div>
 </body>
 </html>
