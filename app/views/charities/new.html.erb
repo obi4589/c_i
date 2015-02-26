@@ -40,14 +40,17 @@
 			</div>
             <div id="body1">
             	<ul>
-                    <li>
-                    <%= link_to "Philanthropist", signup1_path %>
-                    </li>
-                    <li id="underline">
-                    <%= link_to "Charity", signup2_path %>
-                    </li>
-                </ul>
-			</div>
+                  <li>
+                  <%= link_to "Philanthropist", signup1_path %>
+                  </li>
+                  <li id="underline">
+                  <%= link_to "Charity", signup2_path %>
+                  </li>
+              </ul>
+              <div id="help">
+                  <%= link_to image_tag("help_icon_5.png", width: '15px', title: 'help'), help_path %>  
+              </div>
+			      </div>
             <div id="body3">
               <%= render 'shared/error_messages_c' %>
               <%= form_for(@charity) do |f| %>

@@ -167,6 +167,7 @@ body {
 #body1 ul li a {
 	text-decoration: none;
 	color: #2c3e50; 
+	font-weight: bold;
 }
 
 #body1 ul li a:hover {
@@ -175,6 +176,12 @@ body {
 
 #underline {
 	text-decoration: underline;
+}
+
+#help {
+	position: absolute;
+	margin-top: -120px;
+	margin-left: 9px;
 }
 
 

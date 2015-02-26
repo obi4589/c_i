@@ -154,6 +154,18 @@ body {
 	text-decoration: underline;
 }
 
+
+.pc_links {
+	color: #2c3e50;
+	text-decoration:  none;
+
+}
+
+.pc_links:hover {
+	text-decoration:  underline;
+
+}
+
 /**end of PAGE CONTENT section **/
 
 
