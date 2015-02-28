@@ -59,11 +59,11 @@
               <br /><br />
 
               <%= f.label :start_time, "Start Time" %><span class="asterisk">*</span><br />
-              <%= f.datetime_select :start_time, order: [:month, :day, :year], prompt: { day: 'Day', month: 'Month', year: 'Year', hour: 'Hour', minute: 'Minute'}, ampm: true, minute_step: 5, use_short_month: true, datetime_separator: "", time_separator: ""  %>
+              <%= f.datetime_select :start_time, order: [:month, :day, :year], prompt: { day: 'Day', month: 'Month', year: 'Year', hour: 'Hour', minute: 'Minute'}, ampm: true, minute_step: 5, datetime_separator: "", time_separator: ""  %>
               <br /><br />
 
               <%= f.label :end_time, "End Time" %><span class="asterisk">*</span><br />
-              <%= f.datetime_select :end_time, order: [:month, :day, :year], prompt: { day: 'Day', month: 'Month', year: 'Year', hour: 'Hour', minute: 'Minute'}, ampm: true, minute_step: 5, use_short_month: true, datetime_separator: "", time_separator: ""  %>
+              <%= f.datetime_select :end_time, order: [:month, :day, :year], prompt: { day: 'Day', month: 'Month', year: 'Year', hour: 'Hour', minute: 'Minute'}, ampm: true, minute_step: 5, datetime_separator: "", time_separator: ""  %>
               <br /><br />
 
               <%= f.label :attend_limit, "Attendance Limit" %><br />
