@@ -246,6 +246,14 @@ body {
 	border: 1px solid #2c3e50;
 }	
 
+select {
+	height: 35px;
+	width: 90px;
+	font-size: 14px;
+	margin-right: -5px;
+	
+}
+
 /**end of PAGE CONTENT section **/
 
 

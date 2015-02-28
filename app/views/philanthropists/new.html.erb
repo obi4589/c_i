@@ -64,7 +64,7 @@
               <br /><br />
 
               <%= f.label :birth_date, "Date of Birth" %><br />
-              <%= f.date_field :birth_date, class: "form-input"  %>
+              <%= f.date_select :birth_date, order: [:month, :day, :year], prompt: { day: 'Day', month: 'Month', year: 'Year' }, start_year: 1905, use_short_month: true  %>
               <br /><br />
 
               <%= f.label :zip_code, "Zip Code" %><br />
