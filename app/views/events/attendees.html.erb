@@ -51,7 +51,7 @@
 		<div id="going_section">
 
     <!-- LOGIC FOR GO/GOING/EVENT-FULL/EVENT-ENDED BUTTON -->
-    <% if (Time.now - 5.hours) <= @event.start_time %>  
+    <% if (Time.now - 4.hours) <= @event.start_time %>  
       <% if is_philanthropist? %> 
         <% if @event.attend_limit.blank?%>
           <div id = "attend_form">

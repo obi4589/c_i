@@ -66,7 +66,7 @@
 
 	<% if signed_in? %>
 		<!-- LOGIC FOR GO/GOING/EVENT-FULL/EVENT-ENDED BUTTON -->
-		<% if (Time.now - 5.hours) <= @event.start_time %>	
+		<% if (Time.now - 4.hours) <= @event.start_time %>	
 			<% if is_philanthropist? %>	
 				<% if @event.attend_limit.blank?%>
 					<div id = "attend_form">
@@ -109,7 +109,7 @@
 		<% end %>
 		<!-- END OF LOGIC FOR GO/GOING/EVENT-FULL/EVENT-ENDED BUTTON -->
 	<% else %>
-		<% if (Time.now - 5.hours) <= @event.start_time %>
+		<% if (Time.now - 4.hours) <= @event.start_time %>
 			<form id="event_buttons_3">
 				<%= link_to "<button type='button' class='full_button' style='background-color: #fff; border: 1px solid #fff; color: #2c3e50;'>Go</button>".html_safe, @event.charity %>
 			</form>
