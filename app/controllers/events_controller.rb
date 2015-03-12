@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
   before_action :signed_in_user, except: [:show]
-  before_action :correct_user, only: [:edit, :update]
+  #before_action :correct_user, only: [:edit, :update]
   before_action :correct_user_type, only: [:new]
-  before_action :correct_or_sa, only: [:destroy]
+  before_action :correct_or_sa, only: [:destroy, :edit, :update]
   before_action :is_active, only: [:new, :create, :edit, :update, :destroy]
 
   
