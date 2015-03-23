@@ -35,10 +35,10 @@
             <div id="body1">
               <ul>
                   <li id="underline">
-                    <%= link_to "Philanthropist", index1_superadmin_path(current_user) %>
+                    <%= link_to "Philanthropist", index1_superadmin_path(current_user), style: "font-weight: bold;" %>
                   </li>
                   <li>
-                    <%= link_to "Charity", index2_superadmin_path(current_user) %>
+                    <%= link_to "Charity", index2_superadmin_path(current_user), style: "font-weight: bold;" %>
                   </li>
                 </ul>
       </div>
@@ -74,6 +74,7 @@
             <div id="user_text">
              <%= link_to "<b id='user_name'>#{user.name}</b>".html_safe, user %> <br />
              <%= link_to "<b id='user_location'>#{user.zip_code.to_region}</b>".html_safe, '#' %><br />
+             <%= link_to "<b id='user_location'>#{user.email}</b>".html_safe, '#' %><br />
             </div>
             <div class="user_button_form">
               <% if is_superadmin? && !current_user?(user) %>
