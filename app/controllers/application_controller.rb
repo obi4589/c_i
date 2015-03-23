@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActionController::InvalidAuthenticityToken do |exception|
     sign_out   # Example method that will destroy the user cookies
-	flash[:success] = "Please sign in again"
+	flash[:success] = "Please log in again"
 	redirect_to root_url
   end
 
