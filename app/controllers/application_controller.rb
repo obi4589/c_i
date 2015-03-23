@@ -4,4 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
   include PasswordResetsHelper
+
+  rescue_from ActionController::InvalidAuthenticityToken do |exception|
+    sign_out   # Example method that will destroy the user cookies
+	flash[:success] = "Please sign in again"
+	redirect_to root_url
+  end
+
 end

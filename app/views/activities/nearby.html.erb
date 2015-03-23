@@ -30,9 +30,9 @@
 	<div id="page_width2">
 		<div class="events_header1">
 			<% if is_philanthropist? %>
-			<%=link_to image_tag("nearby_icon_2.png", width: '30px'), home_philanthropist_path(current_user), id: 'nearby_button' %>
+			<%=link_to image_tag("nearby_icon_2.png", width: '30px', title: "Home"), home_philanthropist_path(current_user), id: 'nearby_button' %>
 			<% elsif is_charity? %>
-			<%=link_to image_tag("nearby_icon_2.png", width: '30px'), home_charity_path(current_user), id: 'nearby_button' %>
+			<%=link_to image_tag("nearby_icon_2.png", width: '30px', title: "Home"), home_charity_path(current_user), id: 'nearby_button' %>
 			<% end %>
 				
 			<div id="name">
