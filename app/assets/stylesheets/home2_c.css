@@ -79,7 +79,7 @@ body {
 }
 
 .search-input {
-	width: 480px;
+	width: 468px;
 	border: 1px solid #ecf0f1;
 	outline: none;
 	padding: 6px;
@@ -134,7 +134,7 @@ body {
 	height: auto;
 	cursor: pointer;
 	background-color: #fff;
-	margin-left: 890px;
+	margin-left: 895px;
 	font-family: Arial, Helvetica, sans-serif;
 	border-radius: 5px;
 	padding-top: 5px;
@@ -211,16 +211,16 @@ body {
 
 
 #nearby_button {
-position: absolute;
-margin-top: 11px;
-margin-left: 449px;
-border: 2px solid #fff;
+	position: absolute;
+	margin-top: 11px;
+	margin-left: 463px;
+	border: 2px solid #fff;
 }
 
 
 #nearby_button:hover {
-border: 2px solid #fff;
-box-shadow: 0px 0px 3px 1px #c8def0;
+	border: 2px solid #fff;
+	box-shadow: 0px 0px 3px 1px #c8def0;
 }
 
 
