@@ -59,6 +59,10 @@
             <% else %>
                 <%= image_tag @charity.avatar.url(:medium), style: "border-radius:70px" %>
             <%end %>
+
+            <% if current_user?(@charity) %>
+                <%= link_to image_tag("edit_profile_pic_icon_1.jpg", id: "pp_edit_icon", title: "Update Profile Picture"), edit_charity_path(current_user) %>
+            <% end %> 
         </div>
     </div>
     
