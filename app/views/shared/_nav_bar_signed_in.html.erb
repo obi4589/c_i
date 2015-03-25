@@ -12,7 +12,8 @@
         <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), '#'%>
     <%end%>
 
-    <a ref="#" id="nav_button">O</a>
+    
+    <%= image_tag("nav_gear_icon_1.png", id: "nav_button", width: "30px", title: "Settings")%>
 
     <% if signed_in? %>
       <ul id="pages">
