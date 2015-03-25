@@ -57,15 +57,16 @@
 
         </div>
         <div id="profile_pic">
-            <% if @philanthropist.avatar.blank? %>
-                <%= image_tag("default-user-avatar.png", width: '134', style: "border-radius:85px") %>
-            <% else %>
-                <%= image_tag @philanthropist.avatar.url(:medium), style: "border-radius:70px" %>
-            <%end %>
-            
-            <% if current_user?(@philanthropist) %>
-                <%= link_to image_tag("edit_profile_pic_icon_1.jpg", id: "pp_edit_icon", title: "Update Profile Picture"), edit_philanthropist_path(current_user) %>
-            <% end %> 
+          <% if current_user?(@philanthropist) %>
+                  <%= link_to image_tag("edit_profile_pic_icon_1.jpg", id: "pp_edit_icon", title: "Update Profile Picture"), edit_philanthropist_path(current_user) %>
+          <% end %> 
+
+          <% if @philanthropist.avatar.blank? %>
+            <%= image_tag("default-user-avatar.png", width: '134', style: "border-radius:85px") %>
+          <% else %>
+            <%= image_tag @philanthropist.avatar.url(:medium), style: "border-radius:70px" %>
+          <%end %>
+       
         </div>
     </div>
     

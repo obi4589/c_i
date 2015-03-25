@@ -337,10 +337,10 @@ body {
 
 #pp_edit_icon {
 	width: 30px;
-	position: absolute;
-	margin-top: -127px;
-	margin-left: 100px;	
+	margin-top: 7px;
+	margin-left: 100px;
 	border: 2px solid #fff;
+	position: absolute;
 }
 
 #pp_edit_icon:hover {
