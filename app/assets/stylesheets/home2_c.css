@@ -211,10 +211,10 @@ body {
 
 
 #nearby_button {
-	position: absolute;
-	margin-top: 11px;
-	margin-left: 463px;
+	margin-top: -1px;
+	margin-left: 456px;
 	border: 2px solid #fff;
+	position: absolute;
 }
 
 

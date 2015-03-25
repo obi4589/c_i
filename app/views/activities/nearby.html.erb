@@ -28,14 +28,14 @@
 
 <!-- beginning of EVENTS section -->
 	<div id="page_width2">
-		<div class="events_header1">
-			<% if is_philanthropist? %>
-			<%=link_to image_tag("nearby_icon_2.png", width: '30px', title: "Home"), home_philanthropist_path(current_user), id: 'nearby_button' %>
-			<% elsif is_charity? %>
-			<%=link_to image_tag("nearby_icon_2.png", width: '30px', title: "Home"), home_charity_path(current_user), id: 'nearby_button' %>
-			<% end %>
-				
+		<div class="events_header1">				
 			<div id="name">
+				<% if is_philanthropist? %>
+					<%=link_to image_tag("nearby_icon_2.png", width: '30px', id: 'nearby_button', title: "Home"), home_philanthropist_path(current_user) %>
+				<% elsif is_charity? %>
+					<%=link_to image_tag("nearby_icon_2.png", width: '30px', id: 'nearby_button' , title: "Home"), home_charity_path(current_user)%>
+				<% end %>
+
 				<%= link_to "Nearby", nearby_activities_path %>	
 			</div>
 			<ul>
