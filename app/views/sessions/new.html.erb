@@ -11,7 +11,17 @@
 <body>
 
 <!-- navigation bar section -->
-<%= render 'shared/nav_bar_signed_out' %>
+<div class="menu1">
+  <div class="page_width1">
+    <%= link_to image_tag("Nav-Logo.png", alt: "Home", id: "nav_logo"), root_path %>
+    <%= link_to image_tag("Nav-Name.png", alt: "Home", id: "nav_name"), root_path %>
+    <%= link_to "Make philanthropy accessible", about_path, id: "tagline", title: "About Cherry Ivy" %>
+    <div id="admin">
+      <%= link_to "Sign Up", signup1_path, class: "admin_button_a" %>
+      <%= link_to "Log In", login_path, class: "admin_button_a" %>
+    </div>       
+  </div>
+</div>
 <!-- end of navigation bar -->
 
 

@@ -6,6 +6,9 @@
 		<div id="admin">
 			<%= link_to "Sign Up", signup1_path, class: "admin_button_a" %>
 			<%= link_to "Log In", login_path, class: "admin_button_a" %>
-		</div>				
+		</div>
+		<% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: name %>
+      	<% end -%>				
 	</div>
 </div>
