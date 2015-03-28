@@ -148,7 +148,7 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	background-color: #fff;
 	position: absolute;
-	margin-top: -87px;
+	margin-top: -65px;
 	padding: 10px;
 	opacity: .9;
 }
@@ -161,6 +161,7 @@ body {
 
 	font-size: 20px;
 	color: #3498db;
+	display: none;
 }
 
 
