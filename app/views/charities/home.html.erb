@@ -55,6 +55,17 @@
 	                	<% month_feed = @final_feed.select {|x| x.start_time.strftime('%B %Y') == month } %>
 	                	<% month_feed.each do |event| %>
 		                	<li>
+		                		<div>
+								     <%= link_to "#{event.philanthropists.count} Going", attendees_event_path(event), class: "num_going_link" %>
+								     <% unless event.follows_at_event(current_user).count == 0 %>
+								     	<% if event.follows_at_event(current_user).count == 1 %>
+								     		<%= link_to "#{event.follows_at_event(current_user).count} Friend", friends_event_path(event), class: "num_friends_link" %>
+								     	<% else %>
+											<%= link_to "#{event.follows_at_event(current_user).count} Friends", friends_event_path(event), class: "num_friends_link" %>
+										<% end %>
+									 <% end%>
+								</div>
+
 		                		<div id="event_month_header">
 	                				<% if event == month_feed[0] %>
 	                					<%= month %>
@@ -66,14 +77,13 @@
 								<% else %>
 									<%= link_to image_tag(event.cover_photo.url(:medium), class: 'event_pic'), event %>
 								<% end %>
+
 								<div>
-									<% unless event.follows_at_event(current_user).count == 0 %>
-										<%= link_to "#{event.follows_at_event(current_user).count}", friends_event_path(event), class: "num_friends_link" %>
-									<% end%>
 									<% if current_user.id == event.charity.id %>
-                        				<%= image_tag("star.png", alt: "pic", class: "going_star")%>
+                        				<a href="#" class="gwo">OWNER</a>
                         			<% end %>
 								</div>
+								
 								<div id="events_text">
 									<%= link_to "<b id='event_title'>#{event.title}</b>".html_safe, event %><br />
 									<%= link_to "<b id='event_organization'>#{event.charity.name}</b>".html_safe, event.charity %> <br />

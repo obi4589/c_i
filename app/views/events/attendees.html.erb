@@ -97,7 +97,11 @@
 
       <div class="going_header">
         <ul>
+          <% if (Time.now - 4.hours) <= @event.start_time %>
           <li><%= link_to "<span id='bold'>Going (<span id = 'num_attendees'>#{@event.philanthropists.count}</span>)</span>".html_safe, attendees_event_path(@event) %></li>
+          <% else %>
+          <li><%= link_to "<span id='bold'>Went (<span id = 'num_attendees'>#{@event.philanthropists.count}</span>)</span>".html_safe, attendees_event_path(@event) %></li>
+          <% end %>
         </ul>
 			</div>
       <div class="going_header">

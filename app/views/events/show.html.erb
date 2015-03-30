@@ -151,7 +151,11 @@
 		<div id="going_map_section">
 			<div class="going_header">
 				<ul>
+					<% if (Time.now - 4.hours) <= @event.start_time %>
 					<li><%= link_to "Going (<span id = 'num_attendees'>#{@event.philanthropists.count}</span>)".html_safe, attendees_event_path(@event) %></li>
+					<% else %>
+					<li><%= link_to "Went (<span id = 'num_attendees'>#{@event.philanthropists.count}</span>)".html_safe, attendees_event_path(@event) %></li>
+					<% end %>
 				</ul>
 			</div>
 			<div class="going_update">
