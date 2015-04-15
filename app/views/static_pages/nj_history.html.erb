@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Central NJ | History</title>
+<%= stylesheet_link_tag    "city_pages.css", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  	<%= csrf_meta_tags %>
+ 	<%= render 'layouts/shim' %>
+
+</head>
+
+<body>
+
+<!-- navigation bar section -->
+<%= render 'shared/nav_bar_signed_out' %>
+<!-- end of navigation bar -->
+
+
+
+
+
+
+
+<div class="menu2"> 
+
+
+
+<!-- beginning of EVENTS section -->
+	<div id="page_width2">
+		<div class="events_header1">				
+			<div id="name">
+				<%= link_to "Central New Jersey", njupcoming_path%>	
+			</div>
+			<ul>
+				<li><%= link_to "Upcoming", njupcoming_path%></li>
+				<li><%= link_to "History", njhistory_path, id: "chosen" %></li>
+			</ul>
+		</div>
+		<div class="events_header2">
+			<form id="header2_buttons">
+			<input type="submit" class="header_button" id="selected" value="Community">
+			<input type="submit" class="header_button" value="Upcoming">
+			<input type="submit" class="header_button" value="History">
+			<input type="submit" class="header_button" value="Invited">
+			</form>
+		</div>
+		<div class="events_update">
+			<ul>
+				<%if @nearby_events.any? %>
+
+					<% @months.each do |month| %>	
+						
+	                	<% month_feed = @nearby_events.select {|x| x.start_time.strftime('%B %Y') == month } %>
+	                	<% month_feed.each do |event| %>
+		                	<li>
+		                		<div>
+								     <%= link_to "#{event.philanthropists.count} Went", '#', class: "num_going_link" %>
+								</div>
+
+		                		<div id="event_month_header">
+	                				<% if event == month_feed[0] %>
+	                					<%= month %>
+	                				<%end%>
+	                			</div>
+								<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
+								<% if event.cover_photo.blank? %>
+									<%= link_to image_tag("", alt: "pic", class: "event_pic"), event %>
+								<% else %>
+									<%= link_to image_tag(event.cover_photo.url(:medium), class: 'event_pic'), event %>
+								<% end %>
+
+								
+								
+								<div id="events_text">
+									<%= link_to "<b id='event_title'>#{event.title}</b>".html_safe, event %><br />
+									<%= link_to "<b id='event_organization'>#{event.charity.name}</b>".html_safe, '#' %> <br />
+									<%= link_to "<b id='event_date'>#{event.start_time.strftime('%A')} | #{event.start_time.strftime('%B %-d')} @ #{event.start_time.strftime('%-I:%M %p')}</b>".html_safe, '#' %> <br />
+									<% if event.zip_code.blank? %>
+									<%= link_to "<b id='event_city'>#{event.location}</b>".html_safe, '#' %><br /> 
+									<% else %>
+									<%= link_to "<b id='event_city'>#{event.zip_code.to_region}</b>".html_safe, '#' %><br />  
+									<% end %>
+								</div>
+							</li>
+						<%end %>
+					<%end%>
+				<% else %>
+					<li id="no_event_holder">
+						No History of Events
+					</li>
+				<%end%>
+			</ul>		
+		</div>
+	</div>
+	
+		
+<!-- end of EVENTS section -->
+		
+
+
+</div>
+
+
+
+
+</body>
+</html>

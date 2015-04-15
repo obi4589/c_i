@@ -1,6 +1,16 @@
 class StaticPagesController < ApplicationController
   before_action :is_active, only: [:inactive]
-  before_action :logged_in, only: [:root]
+  before_action :logged_in, only: [:root, :nj_upcoming, :nj_history]
+
+
+  def haversine(zip,event)
+    lat1 = zip.to_lat.to_f
+    lon1 = zip.to_lon.to_f
+    lat2 = event.zip_code.to_lat.to_f
+    lon2 = event.zip_code.to_lon.to_f
+    Haversine.distance(lat1, lon1, lat2, lon2).to_mi <= 20
+  end
+
 
   def root
     @events = Event.order("RANDOM()").limit(10)
@@ -19,6 +29,20 @@ class StaticPagesController < ApplicationController
   end
 
   def inactive
+  end
+
+  def nj_upcoming
+    nj_zip = "08901"
+    events = Event.select{|event| event.zip_code.present?}.select{|event| event.start_time >= (Time.now - 4.hours)}.select {|event| haversine(nj_zip, event)}.map{|x| x.id}
+    @nearby_events = Event.where(id: events).sort_by {|x| [x.start_time, x.end_time] }.take(100)
+    @months = @nearby_events.map {|x| x.start_time.strftime('%B %Y')}.uniq
+  end
+
+  def nj_history
+    nj_zip = "08901"
+    events = Event.select{|event| event.zip_code.present?}.select{|event| event.start_time < (Time.now - 4.hours)}.select {|event| haversine(nj_zip, event)}.map{|x| x.id}
+    @nearby_events = Event.where(id: events).sort {|x,y| [y.start_time, y.end_time] <=> [x.start_time, x.end_time] }.take(100)
+    @months = @nearby_events.map {|x| x.start_time.strftime('%B %Y')}.uniq
   end
 
  
