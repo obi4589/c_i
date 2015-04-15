@@ -211,11 +211,11 @@ body {
 }
 
 .events_header1 ul li a:hover {
-	text-decoration: underline;
+	color: #1abc9c;
 }
 
 #chosen {
-	text-decoration: underline;
+	color: #1abc9c;
 }
 
 
