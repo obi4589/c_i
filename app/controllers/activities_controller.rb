@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
     lon1 = current_user.zip_code.to_lon.to_f
     lat2 = other.zip_code.to_lat.to_f
     lon2 = other.zip_code.to_lon.to_f
-    Haversine.distance(lat1, lon1, lat2, lon2).to_mi <= 5
+    Haversine.distance(lat1, lon1, lat2, lon2).to_mi <= 10
   end
 
 
@@ -16,7 +16,7 @@ class ActivitiesController < ApplicationController
     lon1 = current_user.zip_code.to_lon.to_f
     lat2 = other.zip_code.to_lat.to_f
     lon2 = other.zip_code.to_lon.to_f
-    Haversine.distance(lat1, lon1, lat2, lon2).to_mi <= 10
+    Haversine.distance(lat1, lon1, lat2, lon2).to_mi <= 20
   end
 
 
