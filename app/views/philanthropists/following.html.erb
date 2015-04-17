@@ -83,10 +83,10 @@
 	<div id="page_width3">
 		<div class="community_header">
         	<div id="follower_header">
-                <%= link_to "Followers: <span id='num_followers'>#{@user.followers_count}</span>".html_safe, followers_philanthropist_path(@philanthropist)%>
+                <%= link_to "Followers (<span id='num_followers'>#{@user.followers_count}</span>)".html_safe, followers_philanthropist_path(@philanthropist)%>
             </div>
             <div id="following_header">
-                <%= link_to "Following: <span id='num_following'>#{@user.follow_count}</span>".html_safe, following_philanthropist_path(@philanthropist)%>
+                <%= link_to "Following (<span id='num_following'>#{@user.follow_count}</span>)".html_safe, following_philanthropist_path(@philanthropist)%>
             </div>
 		</div>
         <div class="user_update">
