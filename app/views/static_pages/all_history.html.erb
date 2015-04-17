@@ -2,8 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Central NJ | Upcoming</title>
-<%= stylesheet_link_tag    "city_pages.css", media: "all", "data-turbolinks-track" => true %>
+<title>Events | History</title>
+
+<% if signed_in? %>
+<%= stylesheet_link_tag    "city_pages_si.css", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<% else %>
+	<%= stylesheet_link_tag    "city_pages.css", media: "all", "data-turbolinks-track" => true %>
+<% end %>
+
   	<%= csrf_meta_tags %>
  	<%= render 'layouts/shim' %>
 
@@ -11,9 +18,17 @@
 
 <body>
 
+<% if signed_in? %>
+<!-- navigation bar section -->
+<%= render 'shared/nav_bar_signed_in' %>
+<!-- end of navigation bar -->
+<% else %>
+
 <!-- navigation bar section -->
 <%= render 'shared/nav_bar_signed_out' %>
 <!-- end of navigation bar -->
+
+<%end %>
 
 
 
@@ -29,11 +44,11 @@
 	<div id="page_width2">
 		<div class="events_header1">				
 			<div id="name">
-				<%= link_to "Central New Jersey", njupcoming_path%>	
+				<%= link_to "All Events", allupcoming_path%>	
 			</div>
 			<ul>
-				<li><%= link_to "Upcoming", njupcoming_path , id: "chosen"%></li>
-				<li><%= link_to "History", njhistory_path%></li>
+				<li><%= link_to "Upcoming", allupcoming_path%></li>
+				<li><%= link_to "History", allhistory_path, id: "chosen" %></li>
 			</ul>
 		</div>
 		<div class="events_header2">
@@ -54,7 +69,18 @@
 	                	<% month_feed.each do |event| %>
 		                	<li>
 		                		<div>
-								     <%= link_to "#{event.philanthropists.count} Going", '#', class: "num_going_link" %>
+		                			<% if signed_in? %>
+			                			  <%= link_to "#{event.philanthropists.count} Going", attendees_event_path(event), class: "num_going_link" %>
+					                      <% unless event.follows_at_event(current_user).count == 0 %>
+					                        <% if event.follows_at_event(current_user).count == 1 %>
+					                          <%= link_to "#{event.follows_at_event(current_user).count} Friend", friends_event_path(event), class: "num_friends_link" %>
+					                        <% else %>
+					                          <%= link_to "#{event.follows_at_event(current_user).count} Friends", friends_event_path(event), class: "num_friends_link" %>
+					                        <% end %>
+					                      <% end%>
+								    <% else %>
+								     	<%= link_to "#{event.philanthropists.count} Going", '#', class: "num_going_link" %>
+				                    <% end %>
 								</div>
 
 		                		<div id="event_month_header">
@@ -69,11 +95,33 @@
 									<%= link_to image_tag(event.cover_photo.url(:medium), class: 'event_pic'), event %>
 								<% end %>
 
+
+
+								<% if signed_in? %>
+									<% if is_charity? or is_philanthropist? %>
+				                      <div>
+				                        <% if is_philanthropist? %>
+				                          <%if current_user.attending?(event)%> 
+				                            <a href="#" class="gwo">WENT</a>
+				                          <% end %>
+				                        <% elsif is_charity? %>
+				                          <% if current_user.id == event.charity.id %>
+				                            <a href="#" class="gwo">OWNER</a>
+				                          <% end %>
+				                        <% end %> 
+				                      </div>
+				                    <%end%>
+				                <%end %>
+
 								
 								
 								<div id="events_text">
 									<%= link_to "<b id='event_title'>#{event.title}</b>".html_safe, event %><br />
-									<%= link_to "<b id='event_organization'>#{event.charity.name}</b>".html_safe, '#' %> <br />
+									<% if signed_in? %>
+										<%= link_to "<b id='event_organization'>#{event.charity.name}</b>".html_safe, event.charity %> <br />
+									<% else %>
+										<%= link_to "<b id='event_organization'>#{event.charity.name}</b>".html_safe, '#' %> <br />
+									<%end %>
 									<%= link_to "<b id='event_date'>#{event.start_time.strftime('%A')} | #{event.start_time.strftime('%B %-d')} @ #{event.start_time.strftime('%-I:%M %p')}</b>".html_safe, '#' %> <br />
 									<% if event.zip_code.blank? %>
 									<%= link_to "<b id='event_city'>#{event.location}</b>".html_safe, '#' %><br /> 
@@ -86,7 +134,7 @@
 					<%end%>
 				<% else %>
 					<li id="no_event_holder">
-						Check Back Soon
+						No Event History
 					</li>
 				<%end%>
 			</ul>		

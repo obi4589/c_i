@@ -57,8 +57,8 @@ CI::Application.routes.draw do
   match '/privacy', to: 'static_pages#privacy', via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/inactive',    to: 'static_pages#inactive',    via: 'get'
-  match '/njupcoming',    to: 'static_pages#nj_upcoming',    via: 'get'
-  match '/njhistory',    to: 'static_pages#nj_history',    via: 'get'
+  match '/allupcoming',    to: 'static_pages#all_upcoming',    via: 'get'
+  match '/allhistory',    to: 'static_pages#all_history',    via: 'get'
   
 
 
