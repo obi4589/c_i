@@ -297,6 +297,11 @@ body {
 }
 
 
+#buttons_right_holder {
+	position: absolute; 
+	margin-left: 805px; 
+} 
+
 
 #buttons_right {
 	float: right;

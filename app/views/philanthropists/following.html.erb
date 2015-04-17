@@ -44,12 +44,14 @@
 
             <% if is_philanthropist? || is_charity? %>
               <%unless current_user?(@user)%>
-                <div id="buttons_right">
-                    <% if current_user.following?(@user)%>
-                        <%= render 'shared/unfollow_1' %>
-                    <% else %>
-                        <%= render 'shared/follow_1' %>
-                    <%end%>
+                <div id = "buttons_right_holder">
+                    <div id="buttons_right">
+                        <% if current_user.following?(@user)%>
+                            <%= render 'shared/unfollow_1' %>
+                        <% else %>
+                            <%= render 'shared/follow_1' %>
+                        <%end%>
+                    </div>
                 </div>
               <%end%>
             <%end%>
