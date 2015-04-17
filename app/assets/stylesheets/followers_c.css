@@ -304,6 +304,7 @@ body {
 #follow {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
+	font-weight: bold;
 	height: 30px;
 	cursor: pointer;
 	background-color: #ecf0f1;
@@ -316,10 +317,11 @@ body {
 #unfollow {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
+	font-weight: bold;
 	height: 30px;
 	cursor: pointer;
-	background-color: #2c3e50;
-	border: 1px solid #2c3e50;
+	background-color: #1abc9c;
+	border: 1px solid #1abc9c;
 	color: #fff;
 	margin-left: -1px;
 	margin-right: -1px;
@@ -494,6 +496,7 @@ body {
 .follow_user_button {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
+	font-weight: bold;
 	padding: 7px;
 	cursor: pointer;
 	background-color: #ecf0f1;
@@ -518,10 +521,11 @@ body {
 .unfollow_user_button {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
+	font-weight: bold;
 	padding: 7px;
 	cursor: pointer;
-	background-color: #2c3e50;
-	border: 1px solid #2c3e50;
+	background-color: #1abc9c;
+	border: 1px solid #1abc9c;
 	color: #fff;
 	margin-bottom: 1px;
 	margin-left: 2px;
