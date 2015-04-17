@@ -200,7 +200,7 @@ body {
 	margin: auto;
 	margin-top: 57px;
 	height: 180px;
-	margin-bottom: 20px;
+	margin-bottom: -20px;
 }
 
 #cover_photo_section {
@@ -259,7 +259,7 @@ body {
 	float: left;
 	margin-top: 105px;
 	position: absolute;
-	margin-left: 5px;
+	margin-left: 1px;
 	
 }
 
@@ -269,25 +269,22 @@ body {
 	display: inline-block;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
+	font-weight: bold;
 	cursor: pointer;
-	background-color: #fff;
-	border: 1px solid #fff;
 	color: #2c3e50;
 	margin-left: -1px;
 	margin-right: -1px;
-	padding: 6px;
+	padding: 7px;
 }
 
 .left_button:hover {
-	background-color: #ecf0f1;
-	border: 1px solid #ecf0f1;		
+	color: #1abc9c;
 }
 
 
 
 #underline1 {
-	background-color: #ecf0f1;
-	border: 1px solid #ecf0f1;	
+	color: #1abc9c;
 }
 
 
@@ -392,17 +389,14 @@ body {
 
 #follower_header a {
 	text-decoration: none;
-	color: #2c3e50;
-	background-color: #ecf0f1;
-	border: 1px solid #ecf0f1;
-	padding-top: 2px;
-	padding-bottom: 2px;
+	color: #1abc9c;
+	font-size: 14px;
+	padding: 2px 1px 2px 1px;
 
 }
 
 #follower_header a:hover {
-	background-color: #ecf0f1;
-	border: 1px solid #ecf0f1;
+	color: #1abc9c;
 }
 
 
@@ -417,17 +411,13 @@ body {
 #following_header a {
 	text-decoration: none;
 	color: #2c3e50;
-	background-color: #fff;
-	border: 1px solid #fff;
-	padding-top: 2px;
-	padding-bottom: 2px;
-		
+	font-size: 14px;
+	padding: 2px 1px 2px 1px;		
 	
 }
 
 #following_header a:hover {
-	background-color: #ecf0f1;
-	border: 1px solid #ecf0f1;
+	color: #1abc9c;
 }
 
 
