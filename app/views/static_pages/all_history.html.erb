@@ -70,7 +70,7 @@
 		                	<li>
 		                		<div>
 		                			<% if signed_in? %>
-			                			  <%= link_to "#{event.philanthropists.count} Going", attendees_event_path(event), class: "num_going_link" %>
+			                			  <%= link_to "#{event.philanthropists.count} Went", attendees_event_path(event), class: "num_going_link" %>
 					                      <% unless event.follows_at_event(current_user).count == 0 %>
 					                        <% if event.follows_at_event(current_user).count == 1 %>
 					                          <%= link_to "#{event.follows_at_event(current_user).count} Friend", friends_event_path(event), class: "num_friends_link" %>
@@ -79,7 +79,7 @@
 					                        <% end %>
 					                      <% end%>
 								    <% else %>
-								     	<%= link_to "#{event.philanthropists.count} Going", '#', class: "num_going_link" %>
+								     	<%= link_to "#{event.philanthropists.count} Went", '#', class: "num_going_link" %>
 				                    <% end %>
 								</div>
 
