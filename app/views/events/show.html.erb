@@ -131,9 +131,6 @@
 			<%= link_to "<b id='event_date'>#{@event.start_time.strftime('%B %-d, %Y')} | #{@event.start_time.strftime('%A')} #{@event.start_time.strftime('%-I:%M %p')} - #{@event.end_time.strftime('%-I:%M %p')}</b>".html_safe, '#' %><br/>
 			<%= link_to "<b id='event_location'>#{@event.location}</b>".html_safe, '#' %><br/><br/>
 			<%= link_to "<b id='event_host'>#{@event.charity.name}</b>".html_safe, @event.charity %><br/>
-			<form>
-			<input type="button" class="donate_button" value="Donate">
-			</form>
 		</div>
 	</div>
 	
@@ -222,59 +219,7 @@
 		
 		
 		<!-- beginning of TICKET section -->
-		<div id="ticket_section">
-			<form id="ticket_header">
-				<input type="button" class="ticket_header_button" value="Individual">
-				<input type="button" class="ticket_header_button" value="Table">
-				<input type="button" class="ticket_header_button" value="Sponsor">
-			</form>
-			<div class="ticket_wrapper">
-				<ul>
-					<li>
-						<div class="ticket">
-							<div class="price_description">
-								<div id="price"><b>$100.00</b></div>
-								<div id="description"><b>General Admission</b></div>
-							</div>
-							<form class="purchase_comment">
-								<input type="button" class="purchase_button" value="Purchase">
-								<textarea name="Comment" cols="35" rows="" onfocus="if(this.value == 'Comments') {this.value=''}" onblur="if(this.value == 
-								''){this.value ='Comments'}"/>Comments</textarea>
-							</form>
-							<div id="ticket_text">
-								Includes three-hour open bar, hors d'oeuvres, and a gift bag of fabulous items (must be 21 and over).
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="ticket">
-							<div class="price_description">
-								<div id="price"><b>$150.00</b></div>
-								<div id="description"><b>FDNY, NYPD, PAPD Ticket</b></div>
-							</div>
-							<form class="purchase_comment">
-								<input type="button" class="purchase_button" value="Purchase">
-								<textarea name="Comment" cols="35" rows="" onfocus="if(this.value == 'Comments') {this.value=''}" onblur="if(this.value == 
-								''){this.value ='Comments'}"/>Comments</textarea>
-							</form>
-							<div id="ticket_text">
-								Includes three-hour open bar, hors d'oeuvres, and a gift bag of fabulous items (must be 21 and over). This ticket is for 
-								active-duty NYPD, FDNY, and PAPD first responders who protect and serve our community every day. Please provide your badge 
-								number to take advantage of this special rate 
-							</div>
-						</div>
-					</li>
-				</ul>
-				<div class="be_there">
-					<form>
-						<input type="button" class="be_there_button" value="I'll Be There">
-					</form>
-					<div id="attending">
-						Employees and other individuals who won’t need a ticket should still let their community know that they’ll be attending!!!
-					</div>
-				</div>	
-			</div>
-		</div>
+		
 		<!-- end of TICKET section -->
 		
 		
@@ -282,39 +227,7 @@
 	
 		
 		<!-- beginning of COMMENTS section -->
-		<div id="comments_section">
-			<div class="comments_header">
-				<ul>
-					<li><a href="#">Comments (43)</a></li> 
-				</ul>
-				<form>
-					<input name="Comments" type="text" value="Type comment here..." class="comments" onfocus="if(this.value == 'Type comment here...')	
-					{this.value=''}" onblur="if(this.value == ''){this.value ='Type comment here...'}"/>
-				</form>
-			</div>
-			<div class="comments_update">
-				<ul>
-					<li>
-						<a href="#">
-						<img src="" width="63" height="63" class="friend_pic"/> 
-						</a>
-						<div id="comments_text">
-						<a href="#"><b>Obinna Ezebuiroh</b></a> <br /><br />
-						This was an awesome event! 
-						</div>
-					</li>
-					<li>
-						<a href="#">
-						<img src="" width="63" height="63" class="friend_pic"/> 
-						</a>
-						<div id="comments_text">
-						<a href="#"><b>Chinedu Ezebuiroh</b></a> <br /><br />
-						I was wondering what the dress code is going to be for this event?? 
-						</div>
-					</li>
-				</ul>		
-			</div>
-		</div>
+		
 		<!-- end of COMMENTS section --> 
 		
 	</div> 
