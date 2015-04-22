@@ -46,7 +46,11 @@
             <div id="body">
 
 <b>
-<%= link_to 'Philanthropists', signup1_path, class: "pc_links" %>	
+<% if signed_in? %>
+	Philanthropists
+<% else %>
+	<%= link_to 'Philanthropists', signup1_path, class: "pc_links" %>
+<% end %>
 </b>
 
 <p>        
@@ -56,7 +60,11 @@ All individuals are philanthropists! Whether rich or poor, famous or unknown, we
 
 <p>
 <b>
+<% if signed_in? %>
+Charities
+<% else %>
 <%= link_to 'Charities', signup2_path, class: "pc_links" %>	
+<% end %>
 </b>
 </p>
 
@@ -78,7 +86,7 @@ How It Works
 </p>
 
 <p>        
-Charities create events. Philanthropists attend events. Simple!
+Charities create events. Philanthropists attend events. Follow your favorite charities and philanthropists for a more curated and interactive experience!
 </p>
 <br />
 

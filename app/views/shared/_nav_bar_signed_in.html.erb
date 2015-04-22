@@ -38,6 +38,8 @@
           <ul>
             <% if signed_in? %>
 
+              <%= link_to "<li>Help</li>".html_safe, help_path %>
+
               <% if is_charity? %>
                 <%= link_to "<li>Settings</li>".html_safe, edit_charity_path(current_user) %>
                 <%= link_to "<li>New Event</li>".html_safe, new_event_path %>
@@ -55,6 +57,7 @@
                   <%end%>
 
               <% end %>
+
               <%= link_to "<li>All Events</li>".html_safe, allupcoming_path %>
 
               <%= link_to "<li id='s-o'>Sign Out</li>".html_safe, signout_path, method: "delete" %>
