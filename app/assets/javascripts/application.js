@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require ckeditor/init
 //= require owl.carousel
+//= require social-share-button
 //= require_tree .
 // 
 // Vendor files
