@@ -282,7 +282,7 @@ body {
 	font-size: 14px;
 	background-color: #fff;
 	position: absolute;
-	margin-top: 16px;
+	margin-top: 15px;
 	margin-left: -9px;
 	cursor: default;
 }
@@ -300,7 +300,7 @@ body {
 	font-size: 14px;
 	background-color: #fff;
 	position: absolute;
-	margin-top: 16px;
+	margin-top: 15px;
 	margin-left: -9px;
 	display: none;
 }
@@ -326,7 +326,7 @@ body {
 	font-size: 14px;
 	position: absolute;
 	margin-left: -9px;
-	margin-top: -30px;
+	margin-top: -29px;
 	cursor:default;
 }
 
