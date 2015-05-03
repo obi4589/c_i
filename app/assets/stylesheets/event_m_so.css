@@ -184,22 +184,6 @@ body {
 	position: absolute;	
 } 
 
-#share_frame1{
-	text-align: left;
-	margin-top: -48px;
-	margin-left: 750px;
-	position: absolute;	
-	display: none;
-}
-
-
-#share_frame2{
-	text-align: left;
-	margin-top: -48px;
-	margin-left: 850px;
-	position: absolute;	
-}
-
 .go_button {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
@@ -261,30 +245,6 @@ body {
 	padding: 10px;
 	width: 200px;
 }
-
-
-.share_section1 {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 16px;
-	cursor: pointer;
-	background-color: #fff;
-	border: 1px solid #fff;
-	color: #2c3e50;
-	padding: 10px;
-	width: 100px;
-}
-
-.share_section2 {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 16px;
-	cursor: pointer;
-	background-color: #fff;
-	border: 1px solid #fff;
-	color: #2c3e50;
-	padding: 10px;
-	width: 100px;
-}
-
 
 
 
