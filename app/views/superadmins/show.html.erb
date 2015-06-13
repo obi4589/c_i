@@ -77,7 +77,8 @@
 	<div id="page_width3">
 		<div class="events_header">
 			<ul>
-				<li><%=link_to "CI Events (#{@events.count})", @superadmin %></li> 
+				<li><%=link_to "CI Users (#{@users.count - @superadmins.count})", index1_superadmin_path(current_user) %></li> 
+				<li><%=link_to "CI Events (#{@events.count})", allupcoming_path %></li> 
 				<!--<li><a href="#">Hours: 12</a></li>-->
 			</ul>
       <div id="event_feed_toggle">

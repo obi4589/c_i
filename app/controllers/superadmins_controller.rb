@@ -30,6 +30,9 @@ class SuperadminsController < ApplicationController
 		@superadmin = Superadmin.find(params[:id])
 		@events = Event.all
 		@user = @superadmin
+
+		@users = User.all
+		@superadmins = Superadmin.all
 	end
 
 
