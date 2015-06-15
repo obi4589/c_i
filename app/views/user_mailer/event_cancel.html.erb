@@ -18,7 +18,7 @@
       <% unless @event.zip_code.blank? %> 
           <%=@event.zip_code.to_region%> <%=@event.zip_code %> 
       <%end%>
-    </p></br><br/>
+    </p><br/>
     <p><b><%=link_to("But don't fret! Discover other events from #{@event.charity.name}!", charity_url(@event.charity))%></b></p>
   </body>
 </html>
