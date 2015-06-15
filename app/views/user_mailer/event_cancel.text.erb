@@ -1,0 +1,33 @@
+**Apologies for any inconvenenice.**
+===============================================
+
+<%= @event.charity.name %> (<%= charity_url(@event.charity)%>) has cancelled the following event:
+
+
+Title
+
+<%= @event.title %>
+
+
+When
+
+<%= @event.start_time.strftime('%A') %> | <%= @event.start_time.strftime('%B %-d, %Y')%> at <%= @event.start_time.strftime('%-I:%M %p')%>
+
+
+Where
+
+<% unless @event.location.blank? %> 
+<%= @event.location %>
+<%end%>
+<% unless @event.address_line_1.blank? %> 
+<%= @event.address_line_1 %>
+<%end%>
+<% unless @event.address_line_2.blank? %> 
+<%= @event.address_line_2 %>
+<%end%>
+<% unless @event.zip_code.blank? %> 
+<%=@event.zip_code.to_region%> <%=@event.zip_code %> 
+<%end%>
+
+
+But don't fret! Discover other events from <%= @event.charity.name %> (<%=charity_url(@event.charity)%>)!

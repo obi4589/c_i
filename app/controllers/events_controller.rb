@@ -58,6 +58,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
+    UserMailer.event_cancel(@event).deliver
     @event.destroy
     flash[:success] = "Event deleted."
     redirect_to @event.charity
