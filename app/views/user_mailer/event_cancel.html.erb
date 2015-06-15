@@ -5,7 +5,6 @@
   </head>
   <body>
     <p><i>**Apologies for any inconvenenice.**</i></p>
-    <p>===============================================</p>
     <p><b><%=link_to("#{@event.charity.name}", charity_url(@event.charity))%></b> has cancelled the following event:</p>
     <p><b>Title</b></p>
     <p><%= @event.title %></p>    
@@ -19,7 +18,7 @@
       <% unless @event.zip_code.blank? %> 
           <%=@event.zip_code.to_region%> <%=@event.zip_code %> 
       <%end%>
-    </p></br>
-    <p><b><%=link_to("But don't fret! Discover other events from #{@event.charity.name}", charity_url(@event.charity))%>!</b></p>
+    </p></br><br/>
+    <p><b><%=link_to("But don't fret! Discover other events from #{@event.charity.name}!", charity_url(@event.charity))%></b></p>
   </body>
 </html>
