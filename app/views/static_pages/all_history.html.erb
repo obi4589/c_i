@@ -122,7 +122,7 @@
 									<% else %>
 										<%= link_to "<b id='event_organization'>#{event.charity.name}</b>".html_safe, '#' %> <br />
 									<%end %>
-									<%= link_to "<b id='event_date'>#{event.start_time.strftime('%A')} | #{event.start_time.strftime('%B %-d')} @ #{event.start_time.strftime('%-I:%M %p')}</b>".html_safe, '#' %> <br />
+									<%= link_to "<b id='event_date'>#{event.start_time.strftime('%A')} | #{event.start_time.strftime('%B %-d')} at #{event.start_time.strftime('%-I:%M %p')}</b>".html_safe, '#' %> <br />
 									<% if event.zip_code.blank? %>
 									<%= link_to "<b id='event_city'>#{event.location}</b>".html_safe, '#' %><br /> 
 									<% else %>
