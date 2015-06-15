@@ -16,4 +16,10 @@ class UserMailer < ActionMailer::Base
   	mail(to: @user.email, subject: 'Active Account')
   end
 
+  def event_confirm(event, user)
+    @event = event
+    @user = user
+    mail(to: @user.email, subject: "See You Soon: #{@event.title}!")
+  end
+
 end

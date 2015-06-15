@@ -12,6 +12,8 @@ class AttendancesController < ApplicationController
     end
     @attendance = Attendance.find_by(philanthropist_id: current_user.id, event_id: @event.id) 
     @attendance.create_activity :create, owner: current_user 
+
+    UserMailer.event_confirm(@event, current_user).deliver
   end
 
   def destroy
