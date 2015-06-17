@@ -59,7 +59,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
-    UserMailer.event_cancel(@event).deliver
+    send_cancel_email
     @event.destroy
     flash[:success] = "Event deleted."
     redirect_to @event.charity
@@ -128,6 +128,12 @@ class EventsController < ApplicationController
           if @event.previous_changes.include?("location") || @event.previous_changes.include?("address_line_1") || @event.previous_changes.include?("address_line_2") || @event.previous_changes.include?("zip_code") || @event.previous_changes.include?("start_time") || @event.previous_changes.include?("end_time")
             UserMailer.event_update(@event).deliver
           end
+        end
+      end
+
+      def send_cancel_email
+        if @event.philanthropists.any? && (Time.now - 4.hours) <= @event.start_time
+          UserMailer.event_cancel(@event).deliver
         end
       end
 
