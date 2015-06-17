@@ -28,4 +28,10 @@ class UserMailer < ActionMailer::Base
     mail(bcc: emails, subject: "Event Cancelled: #{@event.title}")
   end
 
+  def event_update(event)
+    @event = event
+    emails = @event.philanthropists.map {|user| user.email}
+    mail(bcc: emails, subject: "Event Update: #{@event.title}")
+  end
+
 end

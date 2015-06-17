@@ -48,6 +48,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update_attributes(event_params)
+      send_update_email
       flash[:success] = "Event updated"
       redirect_to @event
     else
@@ -119,6 +120,14 @@ class EventsController < ApplicationController
           redirect_to(inactive_path) unless current_user.active_p == true
         elsif current_user.type == 'Charity'
           redirect_to(inactive_path) unless current_user.active_c == true
+        end
+      end
+
+      def send_update_email
+        if @event.philanthropists.any? && (Time.now - 4.hours) <= @event.start_time
+          if @event.previous_changes.include?("location") || @event.previous_changes.include?("address_line_1") || @event.previous_changes.include?("address_line_2") || @event.previous_changes.include?("zip_code") || @event.previous_changes.include?("start_time") || @event.previous_changes.include?("end_time")
+            UserMailer.event_update(@event).deliver
+          end
         end
       end
 
