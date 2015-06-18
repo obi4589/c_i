@@ -1,2 +1,5 @@
 $("#attend_form").html("<%= escape_javascript(render('events/going')) %>")
 $("#num_attendees").html('<%=@event.philanthropists.count%>')
+<% if  (Time.now - 4.hours) <= @event.start_time && @event.attend_limit.present? && @event.attend_limit - @event.philanthropists.count >= 0 %>
+	$("#spots_left_ajax").html('<%=@event.attend_limit - @event.philanthropists.count%>')
+<% end %>

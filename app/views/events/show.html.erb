@@ -112,6 +112,22 @@
 			</form>
 		<% end %>
 	<% end %>
+
+
+	<!-- BEGGINING OF SPOTS LEFT SECTION -->
+	<% if  (Time.now - 4.hours) <= @event.start_time && @event.attend_limit.present? && @event.attend_limit - @event.philanthropists.count >= 0 %>
+		<form id="spots_left_frame">
+			<% if @event.attend_limit - @event.philanthropists.count == 1%>
+				<button type="button" class="spots_left_button" title= "Spots Left">Spot (<span id="spots_left_ajax"><%=@event.attend_limit - @event.philanthropists.count %></span>)</button>
+			<% elsif @event.attend_limit - @event.philanthropists.count >= 10%>
+				<button type="button" class="spots_left_button" title= "Spots Left">Spots (10+)</button>
+			<% else %>
+				<button type="button" class="spots_left_button" title= "Spots Left">Spots (<span id="spots_left_ajax"><%=@event.attend_limit - @event.philanthropists.count %></span>)</button>
+			<% end %>
+		</form>
+	<% end %>
+
+	<!-- END OF SPOTS LEFT SECTION -->
 			
 
 	<% if signed_in? %>
