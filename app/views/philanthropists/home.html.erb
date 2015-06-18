@@ -89,13 +89,28 @@
 
 								<div id="events_text">
 									<%= link_to "<b id='event_title'>#{event.title}</b>".html_safe, event %><br />
-									<%= link_to "<b id='event_organization'>#{event.charity.name}</b>".html_safe, event.charity %> <br />
-									<%= link_to "<b id='event_date'>#{event.start_time.strftime('%A')} | #{event.start_time.strftime('%B %-d')} at #{event.start_time.strftime('%-I:%M %p')}</b>".html_safe, '#' %> <br />
+									<%= link_to "<b id='event_organization'>#{event.charity.name}</b>".html_safe, event.charity %><br />
+									<%= link_to "<b id='event_date'>#{event.start_time.strftime('%A')} | #{event.start_time.strftime('%B %-d')} at #{event.start_time.strftime('%-I:%M %p')}</b>".html_safe, '#' %><br />
 									<% if event.zip_code.blank? %>
-									<%= link_to "<b id='event_city'>#{event.location}</b>".html_safe, '#' %><br /> 
-									<% else %>
-									<%= link_to "<b id='event_city'>#{event.zip_code.to_region}</b>".html_safe, '#' %><br />  
-									<% end %>
+                                      <% if event.location.present? %>
+                                        <%= link_to "<b id='event_city'>#{event.location}</b>".html_safe, '#' %><br /> 
+                                      <% end %>
+                                    <% else %>
+                                      <%= link_to "<b id='event_city'>#{event.zip_code.to_region}</b>".html_safe, '#' %><br />  
+                                    <% end %>
+
+                                    <!-- BEGINNING SPOTS LEFT -->
+                                    <% if  (Time.now - 4.hours) <= event.start_time && event.attend_limit.present? && event.attend_limit - event.philanthropists.count >= 0 %>
+                                      <% if event.attend_limit - event.philanthropists.count == 1%>
+                                        <span title="Spots Left" style="font-size: 14px; font-style: italic; color: #2c3e50; cursor: default;">Spot (<%=event.attend_limit - event.philanthropists.count %>)</span><br />
+                                      <% elsif event.attend_limit - event.philanthropists.count >= 10 %>
+                                        <span title="Spots Left" style="font-size: 14px; font-style: italic; color: #2c3e50; cursor: default;">Spots (10+)</span><br />
+                                      <% else %>
+                                        <span title="Spots Left" style="font-size: 14px; font-style: italic; color: #2c3e50; cursor: default;">Spots (<%=event.attend_limit - event.philanthropists.count %>)</span><br />
+                                      <% end %>
+                                    <% end %>
+                                    <!-- END SPOTS LEFT -->
+
 								</div>
 							</li>
 						<%end %>
