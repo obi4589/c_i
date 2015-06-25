@@ -463,6 +463,15 @@ body {
 	color: #2c3e50;
 }
 
+#suggest_follows_link {
+	color: #2c3e50;
+	text-decoration: none;
+}
+
+#suggest_follows_link:hover {
+	text-decoration: underline;
+}
+
 #event_month_header {
 	height: 16px;
 	margin-bottom: 10px;
