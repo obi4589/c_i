@@ -1,7 +1,12 @@
 class UserMailer < ActionMailer::Base
   default from: "Cherry Ivy <noreply@cherryivy.com>"
 
-  def welcome_email(user)
+  def welcome_email_p(user)
+    @user = user
+    mail(to: @user.email, subject: 'Welcome to Cherry Ivy!')
+  end
+
+  def welcome_email_c(user)
     @user = user
     mail(to: @user.email, subject: 'Welcome to Cherry Ivy!')
   end

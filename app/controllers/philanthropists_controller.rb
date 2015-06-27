@@ -15,7 +15,7 @@ class PhilanthropistsController < ApplicationController
   def create
     @philanthropist = Philanthropist.new(philanthropist_params)    
     if @philanthropist.save
-        UserMailer.welcome_email(@philanthropist).deliver
+        UserMailer.welcome_email_p(@philanthropist).deliver
         sign_in @philanthropist
         flash[:success] = "Welcome to Cherry Ivy"
         redirect_to allupcoming_path
