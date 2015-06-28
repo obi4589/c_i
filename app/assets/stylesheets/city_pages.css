@@ -129,12 +129,54 @@ body {
 
 
 
+/** beginning of LOCATION LINK section **/
+
+#page_width2a {
+	width: 960px;
+	margin: auto;
+	margin-top: 57px;
+	height: auto;
+	margin-bottom: 20px;
+}
+
+.location_link {
+	padding: 10px;
+	width: 456px;
+	display: inline-block;
+	text-align: center;
+	background-color: #fff;
+	border: 1px solid #fff;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #2c3e50;	
+}
+
+
+.location_link:hover {
+	background-color: #00B0F0;
+	border: 1px solid #00B0F0;
+	color: #fff;
+}
+
+#chosen_city {
+	background-color: #00B0F0;
+	border: 1px solid #00B0F0;
+	color: #fff;
+}
+
+/**end of LOCATION LINK section **/
+
+
+
+
+
+
 /** beginning of EVENTS section **/
 
 #page_width2 {
 	width: 960px;
 	margin: auto;
-	margin-top: 57px;
+	margin-top: 20px;
 	height: auto;
 	margin-bottom: 20px;
 	background-color: #fff;
