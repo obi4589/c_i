@@ -23,13 +23,13 @@ class StaticPagesController < ApplicationController
   end
 
   def all_upcoming
-    events = Event.select{|event| event.zip_code.present?}.select{|event| event.start_time >= (Time.now - 4.hours)}.map{|x| x.id}
+    events = Event.select{|event| event.zip_code.present?}.select{|event| event.start_time >= (Time.now - 4.hours)}.select{|event| event.city_st[-2..-1] == "NJ"}.map{|x| x.id}
     @nearby_events = Event.where(id: events).sort_by {|x| [x.start_time, x.end_time] }.take(100)
     @months = @nearby_events.map {|x| x.start_time.strftime('%B %Y')}.uniq
   end
 
   def all_history
-    events = Event.select{|event| event.zip_code.present?}.select{|event| event.start_time < (Time.now - 4.hours)}.map{|x| x.id}
+    events = Event.select{|event| event.zip_code.present?}.select{|event| event.start_time < (Time.now - 4.hours)}.select{|event| event.city_st[-2..-1] == "NJ"}.map{|x| x.id}
     @nearby_events = Event.where(id: events).sort {|x,y| [y.start_time, y.end_time] <=> [x.start_time, x.end_time] }.take(100)
     @months = @nearby_events.map {|x| x.start_time.strftime('%B %Y')}.uniq
   end
