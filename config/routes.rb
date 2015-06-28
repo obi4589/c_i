@@ -59,6 +59,8 @@ CI::Application.routes.draw do
   match '/inactive',    to: 'static_pages#inactive',    via: 'get'
   match '/allupcoming',    to: 'static_pages#all_upcoming',    via: 'get'
   match '/allhistory',    to: 'static_pages#all_history',    via: 'get'
+  match '/allupcomingny',    to: 'static_pages#all_upcoming_ny',    via: 'get'
+  match '/allhistoryny',    to: 'static_pages#all_history_ny',    via: 'get'
   
 
 

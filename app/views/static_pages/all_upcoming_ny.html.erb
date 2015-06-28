@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Events | Upcoming NJ</title>
+<title>Events | Upcoming NY</title>
 
 <% if signed_in? %>
 <%= stylesheet_link_tag    "city_pages_si.css", media: "all", "data-turbolinks-track" => true %>
@@ -42,8 +42,8 @@
 <!-- beginning of LOCATION LINK section -->
 
 	<div id="page_width2a">
-		<%= link_to "New Jersey", allupcoming_path, class: "location_link", id: "chosen_city"%>
-		<%= link_to "New York", allupcomingny_path, class: "location_link"%>
+		<%= link_to "New Jersey", allupcoming_path, class: "location_link"%>
+		<%= link_to "New York", allupcomingny_path, class: "location_link", id: "chosen_city"%>
 	</div>
 
 		
@@ -55,11 +55,11 @@
 	<div id="page_width2">
 		<div class="events_header1">				
 			<div id="name">
-				<%= link_to "All Events", allupcoming_path%>	
+				<%= link_to "All Events", allupcomingny_path%>	
 			</div>
 			<ul>
-				<li><%= link_to "Upcoming", allupcoming_path , id: "chosen"%></li>
-				<li><%= link_to "History", allhistory_path%></li>
+				<li><%= link_to "Upcoming", allupcomingny_path , id: "chosen"%></li>
+				<li><%= link_to "History", allhistoryny_path%></li>
 			</ul>
 		</div>
 		<div class="events_header2">
