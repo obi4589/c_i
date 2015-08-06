@@ -39,4 +39,10 @@ class UserMailer < ActionMailer::Base
     mail(bcc: emails, subject: "Event Update: #{@event.title}")
   end
 
+  def event_one_day_reminder_email(event)
+    @event = event
+    emails = @event.philanthropists.map {|user| user.email}
+    mail(bcc: emails, subject: "Event Tomorrow: #{@event.title}!")
+  end
+
 end

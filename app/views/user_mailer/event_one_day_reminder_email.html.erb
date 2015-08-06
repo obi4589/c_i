@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2><%=link_to("#{@event.title}", event_url(@event))%> <span style="font-weight: 100;">with <%= @event.charity.name %></span></h2><br/>
+    <p><b>When</b></p>
+    <p><%= @event.start_time.strftime('%A') %> | <%= @event.start_time.strftime('%B %-d, %Y')%> at <%= @event.start_time.strftime('%-I:%M %p')%></p>
+    <p><b>Where</b></p>
+    <p><%= @event.location %></p>
+    <p><%= @event.address_line_1 %></p>
+    <p><%= @event.address_line_2 %></p>
+    <p>
+      <% unless @event.zip_code.blank? %> 
+          <%=@event.zip_code.to_region%> <%=@event.zip_code %> 
+      <%end%>
+    </p><br/>
+    <p><b>Invite your friends! Share this email!<b></p>
+  </body>
+</html>

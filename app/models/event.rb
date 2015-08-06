@@ -90,4 +90,18 @@ class Event < ActiveRecord::Base
     where("lower(charity_name) LIKE lower(?) OR  lower(charity_legal_name) LIKE lower(?) OR  lower(city_st) LIKE lower(?) OR  lower(zip_code) LIKE lower(?) OR  lower(title) LIKE lower(?) OR  lower(description) LIKE lower(?)", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%") 
   end
 
+
+#this is for the one-day event reminder
+  def one_day_reminder
+    Event.all.each do |event|
+      if event.philanthropists.any? && (Time.now - 4.hours) <= event.start_time
+        if (Time.now - 4.hours - event.start_time)/1.day < 2 && (Time.now - 4.hours - event.start_time)/1.day > 1
+          UserMailer.event_one_day_reminder_email(event).deliver
+        end
+      end
+    end
+  end
+
+
+
 end
