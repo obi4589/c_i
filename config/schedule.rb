@@ -20,10 +20,10 @@
 # Learn more: http://github.com/javan/whenever
 
 
-#every :day, :at => '8:30 am' do
-#  runner "Event.one_day_reminder"
+#every 1.day, :at => '8:30am' do
+  #runner "Event.one_day_reminder"
 #end
 
-every :hour do # Many shortcuts available: :hour, :day, :month, :year, :reboot
+every 1.hour do # Many shortcuts available: :hour, :day, :month, :year, :reboot
   runner "Event.one_day_reminder"
 end
