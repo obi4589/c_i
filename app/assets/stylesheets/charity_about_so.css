@@ -1,0 +1,373 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background-color: #ecf0f1;
+	width: 100%;
+	overflow-x:hidden;
+	scrollbar-face-color: #a2a2a2;
+	scrollbar-highlight-color: #a2a2a2;
+	scrollbar-3dlight-color: #a2a2a2;
+	scrollbar-darkshadow-color:  #a2a2a2;
+	scrollbar-shadow-color:  #a2a2a2;
+	scrollbar-arrow-color: #8a8a8a;
+	scrollbar-track-color:  #a2a2a2;
+}
+
+
+
+
+/**NAVIGATION BAR **/
+
+.menu1 {
+	background-color: #fff;
+	height: 45px;
+	width: 100%;
+	margin-top: -8px;
+	z-index: 1;	
+	margin-left: -8px;
+	position: fixed;
+	
+}
+
+.page_width1 {
+	width: 960px;
+	height: auto;
+	margin: auto;
+}
+
+.page_width1 a {
+	text-decoration: none;
+}
+
+
+#nav_logo {
+	margin-top: 4px;
+	margin-left: -1px;
+	float: left;
+}
+
+
+#nav_name {
+	display: inline;
+	float: left ;
+	margin-top: 8px;
+	margin-left: 10px;
+}
+
+
+#admin {
+	
+	display: inline;
+	float: right;	
+	margin-top: 5px;
+}
+
+.admin_button_a {
+	width: 88px;
+	border: 1px solid #ecf0f1;
+	background-color: #ecf0f1;
+	padding: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #2c3e50;
+	font-size: 20px;
+	cursor: pointer;
+	display: inline-block;
+	text-align: center
+}
+
+.admin_button_a:active {
+	border: 1px solid #fff;
+	background-color: #fff;
+}
+
+
+.success {
+	padding: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #2ecc71;
+	font-size: 20px;
+	color: white;
+	opacity: 0.8;
+	text-align: center;
+	margin-top: 45px;
+	position: absolute;
+	width: 940px;
+}
+
+#tagline{
+	padding: 5px;
+	display: block;
+	margin-left: 363px;
+	text-align: center;
+	width: 230px;
+	position: absolute;
+	border: 2px solid #fff;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	text-decoration: none;
+	color: #2c3e50;
+	margin-top: 6px;
+}
+
+#tagline:hover {
+	border: 2px solid #fff;
+	box-shadow: 0px 0px 3px 1px #c8def0;
+}
+
+
+
+/** END OF NAVIGATION BAR **/
+
+
+
+
+
+
+.menu2 {
+	width: 100%;
+	margin-left: -8px;
+	position: absolute;
+}
+
+
+
+
+
+/** beginning of cover photo section **/
+
+#page_width2 {
+	width: 960px;
+	margin: auto;
+	margin-top: 57px;
+	height: 180px;
+	margin-bottom: -20px;
+}
+
+#cover_photo_section {
+	width: 960px;
+	margin: auto;
+	background-color: #fff;
+	height: 140px;
+}
+
+
+#name {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #2c3e50;
+	min-width: 150px;
+	max-width: 380px;
+	height: auto;
+	float: left;
+	margin-left: 5px;
+	margin-top: 7px;;
+}
+
+#name a {
+	text-decoration: none;
+	color: #2c3e50;
+}
+
+#name a:hover {
+	text-decoration: underline;
+}
+
+#location {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #2c3e50;
+	min-width: 150px;
+	max-width: 380px;
+	height: auto;
+	float: right;
+	text-align: right;
+	margin-right: 5px;
+	margin-top: 7px;
+}
+
+#location a {
+	text-decoration: none;
+	color: #2c3e50;
+	cursor: default;
+}
+
+#location a:hover {
+	text-decoration: none;
+}
+
+#buttons_left {
+	float: left;
+	margin-top: 105px;
+	position: absolute;
+	margin-left: 1px;
+	
+}
+
+
+.left_button {
+	text-decoration: none;
+	display: inline-block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	cursor: pointer;
+	color: #2c3e50;
+	margin-left: -1px;
+	margin-right: -1px;
+	padding: 7px;
+}
+
+.left_button:hover {
+	color: #1abc9c;	
+}
+
+
+
+#underline1 {
+	color: #1abc9c;
+}
+
+
+#buttons_right_holder {
+	position: absolute; 
+	margin-left: 805px; 
+} 
+
+
+
+#buttons_right {
+	float: right;
+	margin-top: 105px;
+	margin-right: -150px;
+}
+
+
+#follow {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	height: 30px;
+	cursor: pointer;
+	background-color: #ecf0f1;
+	border: 1px solid #ecf0f1;
+	color: #2c3e50;
+	margin-left: -1px;
+	margin-right: -1px;
+}
+
+#unfollow {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	height: 30px;
+	cursor: pointer;
+	background-color: #1abc9c;
+	border: 1px solid #1abc9c;
+	color: #fff;
+	margin-left: -1px;
+	margin-right: -1px;
+	
+}
+
+#profile_pic {
+	height: 134px;
+	width: 134px;
+	border-radius: 70px;
+	border: 1px solid #ecf0f1;
+	margin: auto;
+	margin-top: -138px;
+	background-color: #fff;
+}
+
+#pp_edit_icon {
+	width: 20px;
+	margin-top: 7px;
+	margin-left: 103px;
+	border: 2px solid #fff;
+	position: absolute;
+}
+
+#pp_edit_icon:hover {
+	border: 2px solid #fff;
+	box-shadow: 0px 0px 3px 1px #c8def0;
+}
+
+/** end of cover photo section**/
+
+
+
+
+
+
+
+
+
+
+/**beginning of EVENTS section **/
+
+#page_width3 {
+	width: 960px;
+	height: auto;
+	margin: auto;
+	margin-bottom: 20px;
+}
+
+.about_header {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	background-color: #fff;
+	height: 45px;
+	color: #2c3e50;	
+}
+
+.about_header ul {
+	list-style-type: none;
+	padding-top: 15px;
+	margin: auto;
+	margin-left: -80px;
+}
+
+.about_header li {
+	display: inline-block;
+	text-align: left;
+	margin-left: 50px;
+}
+
+
+.about_header ul li a {
+	text-decoration: none;
+	color: #2c3e50;
+	font-size: 14px;
+}
+
+.about_header ul li a:hover {
+	text-decoration: underline;
+}
+
+
+
+
+
+#body {
+	font-family: Arial, Helvetica, sans-serif;
+	height: auto;
+	margin: auto;
+	text-align: left;
+	font-size: 14px;
+	color: #2c3e50;
+	text-align: left;
+	padding: 10px;
+	background-color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+

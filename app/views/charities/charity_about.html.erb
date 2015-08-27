@@ -3,8 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><%= @charity.name %></title>
+
+<% if signed_in?%>
 <%= stylesheet_link_tag    "charity_about.css", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<% else %>
+<%= stylesheet_link_tag    "charity_about_so.css", media: "all", "data-turbolinks-track" => true %>
+<% end %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
 
@@ -12,9 +17,17 @@
 
 <body>
 
+<% if signed_in? %>
 <!-- navigation bar section -->
 <%= render 'shared/nav_bar_signed_in' %>
 <!-- end of navigation bar -->
+<% else %>
+
+<!-- navigation bar section -->
+<%= render 'shared/nav_bar_signed_out' %>
+<!-- end of navigation bar -->
+
+<%end %>
 
 
 
@@ -36,23 +49,27 @@
            <div id="buttons_left">
                 <%= link_to "Upcoming", @charity, class: "left_button"%>
                 <%= link_to "History", history_charity_path(@charity), class: "left_button"%>
-                <%= link_to "Community", followers_charity_path(@charity), class: "left_button"%>
+                <% if signed_in?%>
+                  <%= link_to "Community", followers_charity_path(@charity), class: "left_button"%>
+                <% end %>
                 <%= link_to "About", about_charity_path(@charity) , class: "left_button", id: "underline1"%>
             </div>
 
-            <% if is_philanthropist? || is_charity? %>
-              <%unless current_user?(@user)%>
-                <div id = "buttons_right_holder">
-                    <div id="buttons_right">
-                        <% if current_user.following?(@user)%>
-                            <%= render 'shared/unfollow_1' %>
-                        <% else %>
-                            <%= render 'shared/follow_1' %>
-                        <%end%>
+            <% if signed_in? %>
+                <% if is_philanthropist? || is_charity? %>
+                  <%unless current_user?(@user)%>
+                    <div id = "buttons_right_holder">
+                        <div id="buttons_right">
+                            <% if current_user.following?(@user)%>
+                                <%= render 'shared/unfollow_1' %>
+                            <% else %>
+                                <%= render 'shared/follow_1' %>
+                            <%end%>
+                        </div>
                     </div>
-                </div>
-              <%end%>
-            <%end%>
+                  <%end%>
+                <%end%>
+            <% end %>
 
         </div>
         <div id="profile_pic">
