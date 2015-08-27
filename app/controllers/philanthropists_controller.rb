@@ -1,5 +1,5 @@
 class PhilanthropistsController < ApplicationController
-  before_action :signed_in_user, only: [:show, :edit, :update, :home, :followers, :following, :history, :active, :no_avatar, :change_password, :update_password]
+  before_action :signed_in_user, only: [:edit, :update, :home, :followers, :following, :active, :no_avatar, :change_password, :update_password]
   before_action :correct_user,   only: [:home, :change_password, :update_password]
   before_action :correct_or_sa,   only: [:edit, :update, :no_avatar]
   before_action :is_superadmin?, only: [:destroy, :active]

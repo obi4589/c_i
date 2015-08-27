@@ -3,8 +3,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><%= @philanthropist.name %></title>
+
+<% if signed_in?%>
 <%= stylesheet_link_tag    "profile2_p.css", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<% else %>
+<%= stylesheet_link_tag    "profile2_p_so.css", media: "all", "data-turbolinks-track" => true %>
+<% end %>
+
   	<%= csrf_meta_tags %>
  	<%= render 'layouts/shim' %>
 
@@ -12,9 +18,17 @@
 
 <body>
 
+<% if signed_in? %>
 <!-- navigation bar section -->
 <%= render 'shared/nav_bar_signed_in' %>
 <!-- end of navigation bar -->
+<% else %>
+
+<!-- navigation bar section -->
+<%= render 'shared/nav_bar_signed_out' %>
+<!-- end of navigation bar -->
+
+<%end %>
 
 
 
@@ -39,22 +53,26 @@
 			<div id="buttons_left">
         <%= link_to "Upcoming", @philanthropist, class: "left_button", id: "underline1"%>
         <%= link_to "History", history_philanthropist_path(@philanthropist), class: "left_button"%>
-        <%= link_to "Community", followers_philanthropist_path(@philanthropist), class: "left_button" %>
+        <% if signed_in? %>
+          <%= link_to "Community", followers_philanthropist_path(@philanthropist), class: "left_button" %>
+        <% end %>
 			</div>
 
-			<% if is_philanthropist? || is_charity? %>
-			  <%unless current_user?(@user)%>
-          		<div id = "buttons_right_holder">
-                <div id="buttons_right">
-             			<% if current_user.following?(@user)%>
-                			<%= render 'shared/unfollow_1' %>
-              		<% else %>
-                			<%= render 'shared/follow_1' %>
-              		<%end%>
-            		</div>
-              </div>
-          	  <%end%>
-        	<%end%>
+      <% if signed_in?%>
+  			<% if is_philanthropist? || is_charity? %>
+  			  <%unless current_user?(@user)%>
+            		<div id = "buttons_right_holder">
+                  <div id="buttons_right">
+               			<% if current_user.following?(@user)%>
+                  			<%= render 'shared/unfollow_1' %>
+                		<% else %>
+                  			<%= render 'shared/follow_1' %>
+                		<%end%>
+              		</div>
+                </div>
+            	  <%end%>
+          	<%end%>
+      <% end %>
 			
 
 		</div>
@@ -100,14 +118,18 @@
               <% month_feed.each do |event| %>
                 <li>
                   <div>
-                     <%= link_to "#{event.philanthropists.count} Going", attendees_event_path(event), class: "num_going_link" %>
-                     <% unless event.follows_at_event(current_user).count == 0 %>
-                        <% if event.follows_at_event(current_user).count == 1 %>
-                          <%= link_to "#{event.follows_at_event(current_user).count} Friend", friends_event_path(event), class: "num_friends_link" %>
-                        <% else %>
-                          <%= link_to "#{event.follows_at_event(current_user).count} Friends", friends_event_path(event), class: "num_friends_link" %>
-                        <% end %>
-                      <% end%>
+                    <% if signed_in?%>
+                       <%= link_to "#{event.philanthropists.count} Going", attendees_event_path(event), class: "num_going_link" %>
+                       <% unless event.follows_at_event(current_user).count == 0 %>
+                          <% if event.follows_at_event(current_user).count == 1 %>
+                            <%= link_to "#{event.follows_at_event(current_user).count} Friend", friends_event_path(event), class: "num_friends_link" %>
+                          <% else %>
+                            <%= link_to "#{event.follows_at_event(current_user).count} Friends", friends_event_path(event), class: "num_friends_link" %>
+                          <% end %>
+                        <% end%>
+                    <% else %>
+                      <%= link_to "#{event.philanthropists.count} Going", '#', class: "num_going_link" %>
+                    <% end %>
                   </div>
 
                   <div id="event_month_header">
@@ -123,19 +145,22 @@
                   <% end %>
 
 
-                  <% if is_charity? or is_philanthropist? %>
-                      <div>
-                        <% if is_philanthropist? %>
-                          <%if current_user.attending?(event)%> 
-                            <a href="#" class="gwo">GOING</a>
-                          <% end %>
-                        <% elsif is_charity? %>
-                          <% if current_user.id == event.charity.id %>
-                            <a href="#" class="gwo">OWNER</a>
-                          <% end %>
-                        <% end %> 
-                      </div>
+                  <% if signed_in?%>
+                    <% if is_charity? or is_philanthropist? %>
+                        <div>
+                          <% if is_philanthropist? %>
+                            <%if current_user.attending?(event)%> 
+                              <a href="#" class="gwo">GOING</a>
+                            <% end %>
+                          <% elsif is_charity? %>
+                            <% if current_user.id == event.charity.id %>
+                              <a href="#" class="gwo">OWNER</a>
+                            <% end %>
+                          <% end %> 
+                        </div>
+                    <%end%>
                   <%end%>
+
 
                   <div id="events_text">
                     <%= link_to "<b id='event_title'>#{event.title}</b>".html_safe, event %><br />
