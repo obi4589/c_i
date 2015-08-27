@@ -408,12 +408,11 @@ body {
 	color: #1abc9c;
 	font-size: 14px;
 	font-weight: 100;
-	cursor: default;
 }
 
 
 #event_organization:hover {
-	text-decoration: none;
+	text-decoration: underline;
 }
 
 #event_date {
