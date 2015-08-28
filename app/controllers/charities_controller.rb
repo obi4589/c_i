@@ -52,10 +52,11 @@ class CharitiesController < ApplicationController
   end
 
   def destroy
-    keep_page
+    #keep_page
     Charity.find(params[:id]).destroy
     flash[:success] = "Charity deleted."
-    redirect_back_or index1_superadmin_path(current_user)
+    #redirect_back_or index1_superadmin_path(current_user)
+    redirect_to index2_superadmin_path(current_user)
   end
 
   

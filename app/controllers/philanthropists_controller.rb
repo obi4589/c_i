@@ -52,10 +52,11 @@ class PhilanthropistsController < ApplicationController
   end
 
   def destroy
-    keep_page
+    #keep_page
     Philanthropist.find(params[:id]).destroy
     flash[:success] = "Philanthropist deleted."
-    redirect_back_or index1_superadmin_path(current_user)
+    #redirect_back_or index1_superadmin_path(current_user)
+    redirect_to index1_superadmin_path(current_user)
   end
 
   def home

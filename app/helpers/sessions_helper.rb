@@ -77,6 +77,7 @@ module SessionsHelper
 
 
   #the method below is for friendly fowarding when javascript is involved, as in the SA index page (#already signed in)
+  #this method was used for friendly forwarding on event_show when signed out
   def keep_page
     session[:return_to] = request.referrer
   end
