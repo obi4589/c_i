@@ -19,6 +19,9 @@ CI::Application.routes.draw do
     member do
       get :attendees, :friends
     end
+    collection do
+      get :log_in
+    end
   end
   match '/new_event', to: "events#new", via: 'get'
 
