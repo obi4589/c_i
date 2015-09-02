@@ -142,6 +142,12 @@ class CharitiesController < ApplicationController
   end
 
 
+  def follow
+    keep_page
+    redirect_to login_url, notice: "Please sign in."
+  end
+
+
 
   private
   	def charity_params
