@@ -72,6 +72,16 @@
                 </div>
             	  <%end%>
           	<%end%>
+      <% else %>
+
+        <div id = "buttons_right_holder">
+          <div id="buttons_right">
+            <form>
+              <%= link_to "<button type='button' id='follow'>Follow</button>".html_safe, follow_philanthropists_path %>
+            </form>
+          </div>
+        </div>
+
       <% end %>
 			
 

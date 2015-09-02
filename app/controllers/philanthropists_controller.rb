@@ -132,6 +132,12 @@ class PhilanthropistsController < ApplicationController
       render 'change_password'
     end
   end
+
+
+  def follow
+    keep_page
+    redirect_to login_url, notice: "Please sign in."
+  end
   
 
   private

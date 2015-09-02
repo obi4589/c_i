@@ -36,6 +36,9 @@ CI::Application.routes.draw do
       get :home, :followers, :following, :history, :change_password
       patch :active, :no_avatar, :update_password
     end
+    collection do
+      get :follow
+    end
   end
   match '/signup1', to: 'philanthropists#new', via: 'get'
 
