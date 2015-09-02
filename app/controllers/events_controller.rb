@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :signed_in_user, except: [:show, :log_in]
+  before_action :signed_in_user, except: [:show, :go]
   #before_action :correct_user, only: [:edit, :update]
   before_action :correct_user_type, only: [:new]
   before_action :correct_or_sa, only: [:destroy, :edit, :update]
@@ -82,7 +82,7 @@ class EventsController < ApplicationController
   end
 
 
-  def log_in
+  def go
     keep_page
     redirect_to login_url, notice: "Please sign in."
   end

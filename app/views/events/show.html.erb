@@ -104,11 +104,11 @@
 	<% else %>
 		<% if (Time.now - 4.hours) <= @event.start_time %>
 			<form id="event_buttons_3">
-				<%= link_to "<button type='button' class='full_button' style='background-color: #fff; border: 1px solid #fff; color: #2c3e50;'>Go</button>".html_safe, log_in_events_path %>
+				<%= link_to "<button type='button' class='full_button' style='background-color: #fff; border: 1px solid #fff; color: #2c3e50;'>Go</button>".html_safe, go_events_path %>
 			</form>
 		<% else %>
 			<form id="event_buttons_3">
-				<%= link_to "<button type='button' class='full_button' style='background-color: #2ecc71; border: 1px solid #2ecc71;'>Event Closed</button>".html_safe, log_in_events_path %>
+				<%= link_to "<button type='button' class='full_button' style='background-color: #2ecc71; border: 1px solid #2ecc71;'>Event Closed</button>".html_safe, go_events_path %>
 			</form>
 		<% end %>
 	<% end %>
