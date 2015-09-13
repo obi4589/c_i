@@ -4,7 +4,7 @@
 body {
 	background-color: #ecf0f1;
 	width: 100%;
-	overflow-x:hidden;
+	overflow-x:scroll;
 	scrollbar-face-color: #a2a2a2;
 	scrollbar-highlight-color: #a2a2a2;
 	scrollbar-3dlight-color: #a2a2a2;
