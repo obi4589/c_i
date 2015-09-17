@@ -130,6 +130,26 @@
 	<!-- END OF SPOTS LEFT SECTION -->
 			
 
+
+
+
+	<!-- BEGINNING OF EVENT ICON SECTION -->
+
+		<div>
+			<% if @event.e_type == "v" || @event.e_type.blank? %>
+				<%= image_tag("v_event_icon_1.png", class: "event_icon", title: "Volunteer Event")%>
+			<% elsif @event.e_type == "f" %>
+				<%= image_tag("f_event_icon_1.png", class: "event_icon", title: "Fundraising Event")%>
+			<% elsif @event.e_type == "g" %>
+				<%= image_tag("g_event_icon_1.png", class: "event_icon", title: "General Event")%>
+			<% end %>
+		</div>
+
+	<!-- END OF EVENT ICON SECTION -->
+
+
+
+
 	<% if signed_in? %>
 		<% if current_user?(@event.charity) %>
 		<div id = "admin_buttons_div">

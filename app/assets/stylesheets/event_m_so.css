@@ -267,6 +267,15 @@ body {
 
 
 
+.event_icon {
+	position: absolute;
+	text-align: center;
+	margin-top: -590px;
+	margin-left: 10px;
+	width: 80px;
+}
+
+
 
 #admin_buttons_div {
 	position: absolute;
