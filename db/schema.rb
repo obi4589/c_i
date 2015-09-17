@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150123001241) do
+ActiveRecord::Schema.define(version: 20150917201355) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20150123001241) do
     t.datetime "cover_photo_updated_at"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.string   "e_type"
   end
 
   add_index "events", ["charity_id", "start_time"], name: "index_events_on_charity_id_and_start_time"

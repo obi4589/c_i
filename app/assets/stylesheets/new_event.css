@@ -253,6 +253,10 @@ body {
 	color: red;
 }
 
+.event_type_radio_button {
+	margin-right: 40px;	
+}
+
 
 .form-input {
 	width: 480px;
