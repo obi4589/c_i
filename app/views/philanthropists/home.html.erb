@@ -67,6 +67,17 @@
 								</div>
 
 
+								<div>
+									<% if event.e_type == "v" || event.e_type.blank? %>
+										<%= image_tag("v_event_icon_1.png", width: "27px", class: "event_icon", title: "Volunteer Event")%>
+									<% elsif event.e_type == "f" %>
+										<%= image_tag("f_event_icon_1.png", width: "27px", class: "event_icon", title: "Fundraising Event")%>
+									<% elsif event.e_type == "g" %>
+										<%= image_tag("g_event_icon_1.png", width: "27px", class: "event_icon", title: "General Event")%>
+									<% end %>
+								</div>
+
+
 		                		<div id="event_month_header">
 	                				<% if event == month_feed[0] %>
 	                					<%= month %>

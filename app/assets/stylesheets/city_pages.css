@@ -352,6 +352,15 @@ body {
 	text-decoration: underline;
 }
 
+
+.event_icon {
+	position: absolute;
+	margin-top: 18px;
+	margin-left: 268px;
+	width: 27px;
+}
+
+
 .event_pic {
 	/**photoshop @100% in word  height 2.3 and width 3.18**/
 	margin-left: -8px;
