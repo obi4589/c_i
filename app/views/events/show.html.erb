@@ -137,11 +137,11 @@
 
 		<div>
 			<% if @event.e_type == "v" || @event.e_type.blank? %>
-				<%= image_tag("v_event_icon_1.png", class: "event_icon", title: "Volunteer Event")%>
+				<%= image_tag("v_event_icon_1.png", width: "80px", class: "event_icon", title: "Volunteer Event")%>
 			<% elsif @event.e_type == "f" %>
-				<%= image_tag("f_event_icon_1.png", class: "event_icon", title: "Fundraising Event")%>
+				<%= image_tag("f_event_icon_1.png", width: "80px", class: "event_icon", title: "Fundraising Event")%>
 			<% elsif @event.e_type == "g" %>
-				<%= image_tag("g_event_icon_1.png", class: "event_icon", title: "General Event")%>
+				<%= image_tag("g_event_icon_1.png", width: "80px", class: "event_icon", title: "General Event")%>
 			<% end %>
 		</div>
 
