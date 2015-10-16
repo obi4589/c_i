@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_action :signed_in_user, except: [:show, :go]
   #before_action :correct_user, only: [:edit, :update]
   before_action :correct_user_type, only: [:new]
+  before_action :event_exists, only: [:show, :edit, :attendees, :friends]
   before_action :correct_or_sa, only: [:destroy, :edit, :update]
   before_action :is_active, only: [:new, :create, :edit, :update, :destroy]
 
@@ -140,6 +141,14 @@ class EventsController < ApplicationController
       def send_cancel_email
         if @event.philanthropists.any? && (Time.now - 4.hours) <= @event.start_time
           UserMailer.event_cancel(@event).deliver
+        end
+      end
+
+
+      def event_exists
+        unless Event.exists?(params[:id])
+          flash[:success] = "Event no longer exists"
+          redirect_to root_url
         end
       end
 
