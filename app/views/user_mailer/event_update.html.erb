@@ -4,6 +4,6 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p><%= @event.charity.name %> has updated the event <b><%=link_to("#{@event.title}", event_url(@event))%></b>.</p>
+    <p><%= @event.charity.name %> has updated the time, date or location of the event <b><%=link_to("#{@event.title}", event_url(@event))%></b>.</p>
     <p><b><%=link_to("Click here", event_url(@event))%></b> to see the changes.</p>
 </html>

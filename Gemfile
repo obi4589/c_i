@@ -38,7 +38,8 @@ group :production do
 end
 
 #gem for zip_cope manipulation
-gem 'area', '0.10.0'
+#gem 'area', '0.10.0'
+gem 'area', '0.10.0', :git => 'https://github.com/obi4589/area.git' 
 
 #gem for ckeditor install
 gem 'ckeditor', '4.1.0'
