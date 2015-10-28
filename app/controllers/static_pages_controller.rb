@@ -4,7 +4,8 @@ class StaticPagesController < ApplicationController
 
 
   def root
-    @events = Event.order("RANDOM()").limit(10)
+    @events_all = Event.order("RANDOM()").limit(10)
+    @events = Event.order("RANDOM()").select{|event| event.start_time >= (Time.now - 4.hours)}.take(10)
   end
 
   def about

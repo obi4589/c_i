@@ -41,11 +41,31 @@
 			<% end %>
 		</div>
 	</div>
-<!-- end of EVENTS section -->
+	<!-- end of EVENTS section -->
+	
+
+	<% elsif @events_all.count >= 3 %>
+	
+	<!-- beginning of EVENTS section -->
+	<div id="page_width2">
+		<div class="owl-carousel">
+			<% @events_all.each do |event| %>
+			 	<div> 
+			 		<%=link_to image_tag(event.cover_photo.url(:large), width: '960px'), event %>
+			        <div class="event_info">
+			        	<span id="event_title"><%= event.title[0..39]%><%if event.title.length > 40 %>...<%end%></span><br />
+			            <span id="event_host"><%= event.charity.legal_name[0..79]%><%if event.charity.legal_name.length > 80 %>...<%end%></span> 
+			        </div>
+			  	</div>
+			<% end %>
+		</div>
+	</div>
+	<!-- end of EVENTS section -->
+
 
 	<% else %>
 
-<!-- beginning of EVENTS section -->
+	<!-- beginning of EVENTS section -->
 	<div id="page_width2">
 		<div class="owl-carousel">
 			  <div> 
@@ -85,7 +105,7 @@
 			  </div>
 		</div>
 	</div>
-<!-- end of EVENTS section -->
+	<!-- end of EVENTS section -->
 	
 	<% end %>
 
