@@ -29,7 +29,7 @@ class CharitiesController < ApplicationController
   def show
   	@charity = Charity.find(params[:id]) 
     events = @charity.events.all.sort_by {|x| [x.start_time, x.end_time] }
-    @final_feed = events.select {|x| x.start_time >= (Time.now - 4.hours)}.take(100)
+    @final_feed = events.select {|x| x.start_time >= (Time.now - 5.hours)}.take(100)
     @months = @final_feed.map {|x| x.start_time.strftime('%B %Y')}.uniq
     @user = @charity
   end
@@ -68,7 +68,7 @@ class CharitiesController < ApplicationController
     feed2 = current_user.feed2.all
     total_feed = feed1 + feed2
     feed_items = total_feed.uniq.sort_by {|x| [x.start_time, x.end_time] }
-    @final_feed = feed_items.select {|x| x.start_time >= (Time.now - 4.hours)}.take(100)
+    @final_feed = feed_items.select {|x| x.start_time >= (Time.now - 5.hours)}.take(100)
     @months = @final_feed.map {|x| x.start_time.strftime('%B %Y')}.uniq
   end
  
@@ -95,7 +95,7 @@ class CharitiesController < ApplicationController
   def history
     @charity = Charity.find(params[:id])
     events = @charity.events.all.sort {|x,y| [y.start_time, y.end_time] <=> [x.start_time, x.end_time] }
-    @final_feed = events.select {|x| x.start_time < (Time.now - 4.hours)}.take(100)
+    @final_feed = events.select {|x| x.start_time < (Time.now - 5.hours)}.take(100)
     @months = @final_feed.map {|x| x.start_time.strftime('%B %Y')}.uniq
     @user = @charity
   end
