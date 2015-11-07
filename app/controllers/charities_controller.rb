@@ -18,7 +18,7 @@ class CharitiesController < ApplicationController
         UserMailer.welcome_email_c(@charity).deliver
         sign_in @charity
         flash[:success] = "Welcome to Cherry Ivy"
-        redirect_to allupcoming_path
+        redirect_to allupcomingny_path
     else
       render 'new'
     end    
