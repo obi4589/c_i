@@ -14,6 +14,7 @@ class AttendancesController < ApplicationController
     @attendance.create_activity :create, owner: current_user 
 
     UserMailer.event_confirm(@event, current_user).deliver
+    UserMailer.new_attendee(@event, current_user).deliver
   end
 
   def destroy

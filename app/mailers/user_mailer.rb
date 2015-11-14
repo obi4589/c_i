@@ -45,4 +45,10 @@ class UserMailer < ActionMailer::Base
     mail(bcc: emails, subject: "Event Tomorrow: #{@event.title}!")
   end
 
+  def new_attendee(event, user)
+    @event = event
+    @user = user
+    mail(to: @event.charity.email, subject: "New Attendee: #{@event.title}!")
+  end
+
 end
