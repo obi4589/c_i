@@ -4,6 +4,6 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p><b><%=link_to("#{@user.name}", philanthropist_url(@user))%></b> is attending <b><%=link_to("#{@event.title}", event_url(@event))%></b>!</p>
+    <p><b><%=link_to("#{@user.name}", philanthropist_url(@user))%></b> is attending <b><%=link_to("#{@event.title}", event_url(@event))%></b> on <%= @event.start_time.strftime('%B %-d, %Y')%>!</p>
     <p><b><%=link_to("Click here", attendees_event_url(@event))%></b> to see all attendees.</p>
 </html>

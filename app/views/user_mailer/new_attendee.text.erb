@@ -1,3 +1,3 @@
-<%= @user.name %> (<%=philanthropist_url(@user)%>) is attending <%=@event.title%> (<%=event_url(@event)%>)!
+<%= @user.name %> (<%=philanthropist_url(@user)%>) is attending <%=@event.title%> (<%=event_url(@event)%>) on <%= @event.start_time.strftime('%B %-d, %Y')%>!
 
 Click here (<%= attendees_event_url(@event)%>) to see all attendees.
