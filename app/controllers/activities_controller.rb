@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :signed_in_user
-  before_action :correct_user_type
+  before_action :correct_user_type, except: [:redir_email_updates]
 
   def haversine(current_user,other)
     lat1 = current_user.zip_code.to_lat.to_f
@@ -63,6 +63,17 @@ class ActivitiesController < ApplicationController
     events = Event.select{|event| event.zip_code.present?}.select{|event| event.start_time >= (Time.now - 5.hours)}.select {|event| haversine2(current_user, event)}.map{|x| x.id}
     @nearby_events = Event.where(id: events).where.not(charity_id: follows_c).where.not(id: null_events).where.not(id: my_events).sort_by {|x| [x.start_time, x.end_time] }.take(100)
     @months = @nearby_events.map {|x| x.start_time.strftime('%B %Y')}.uniq
+  end
+
+
+  def redir_email_updates
+    if current_user.type == 'Charity'
+      redirect_to email_updates_charity_path(current_user)
+    elsif current_user.type == 'Philanthropist' 
+      redirect_to email_updates_philanthropist_path(current_user)
+    elsif current_user.type == 'Superadmin' 
+      redirect_to current_user
+    end
   end
 
 
