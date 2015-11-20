@@ -28,7 +28,7 @@
 <!-- beginning of PAGE CONTENT section -->
        <div id="page_width2">
             <!-- beginning of control panel -->
-            <div class="control_panel">
+            <div class="control_panel_2">
                 <%= link_to "Edit Profile", edit_philanthropist_path(current_user), class: "control_panel_link" %>
                 <%= link_to "Email Updates", email_updates_philanthropist_path(current_user), class: "control_panel_link", id: "chosen" %>
                 <%= link_to "Change Password", change_password_philanthropist_path(current_user), class: "control_panel_link" %>
@@ -42,32 +42,29 @@
               <%= form_for(@philanthropist, url: { action: "update_emails" }) do |f| %>
 
               <%= f.label :wednesday_news, "Wednesday (\"What's New\") Newsletter" %><br /> <br /> 
-              <label class="event_type_radio_button">
+              <label class="newsletter_radio_button">
               <%= f.radio_button(:wednesday_news, "on", checked: true) %>
               On
               </label>
-              <label class="event_type_radio_button">
+              <label class="newsletter_radio_button">
               <%= f.radio_button(:wednesday_news, "off") %>
               Off
               </label>
               <br /><br /><br />
 
                <%= f.label :sunday_news, "Sunday (\"This Week\") Newsletter" %><br /> <br /> 
-              <label class="event_type_radio_button">
+              <label class="newsletter_radio_button">
               <%= f.radio_button(:sunday_news, "on", checked: true) %>
               On
               </label>
-              <label class="event_type_radio_button">
+              <label class="newsletter_radio_button">
               <%= f.radio_button(:sunday_news, "off") %>
               Off
               </label>
               <br /><br /><br />
 
-              <%= f.submit "Save Changes", class: "sign-up-button" %><br />
+              <%= f.submit "Save Changes", class: "sign-up-button-2" %><br />
               <% end %>
-
-              <br /><br /><br />
-              <br /><br /><br />
 
             </div>
               </div>
