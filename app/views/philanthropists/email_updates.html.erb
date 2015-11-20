@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Change Password</title>
+<title>Email Updates</title>
 <%= stylesheet_link_tag    "edit1.css", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
@@ -30,24 +30,37 @@
             <!-- beginning of control panel -->
             <div class="control_panel">
                 <%= link_to "Edit Profile", edit_philanthropist_path(current_user), class: "control_panel_link" %>
-                <%= link_to "Email Updates", email_updates_philanthropist_path(current_user), class: "control_panel_link" %>
-                <%= link_to "Change Password", change_password_philanthropist_path(current_user), class: "control_panel_link", id: "chosen" %>
+                <%= link_to "Email Updates", email_updates_philanthropist_path(current_user), class: "control_panel_link", id: "chosen" %>
+                <%= link_to "Change Password", change_password_philanthropist_path(current_user), class: "control_panel_link" %>
             </div>
             <!-- end of control panel section -->
             <div class="page">
                    <div id="title">
-                          Change Password
+                          Email Updates
                    </div>
             <div id="body1">
-              <%= render 'shared/error_messages_p' %>
-              <%= form_for(@philanthropist, url: { action: "update_password" }) do |f| %>
+              <%= form_for(@philanthropist, url: { action: "update_emails" }) do |f| %>
 
-              <%= f.label :password %><br />
-              <%= f.password_field :password, class: "form-input"  %>
-              <br /><br />
+              <%= f.label :wednesday_news, "Wednesday (\"What's New\") Newsletter" %><br /> <br /> 
+              <label class="event_type_radio_button">
+              <%= f.radio_button(:wednesday_news, "on", checked: true) %>
+              On
+              </label>
+              <label class="event_type_radio_button">
+              <%= f.radio_button(:wednesday_news, "off") %>
+              Off
+              </label>
+              <br /><br /><br />
 
-              <%= f.label :password_confirmation, "Confirm Password" %><br />
-              <%= f.password_field :password_confirmation, class: "form-input"  %>
+               <%= f.label :sunday_news, "Sunday (\"This Week\") Newsletter" %><br /> <br /> 
+              <label class="event_type_radio_button">
+              <%= f.radio_button(:sunday_news, "on", checked: true) %>
+              On
+              </label>
+              <label class="event_type_radio_button">
+              <%= f.radio_button(:sunday_news, "off") %>
+              Off
+              </label>
               <br /><br /><br />
 
               <%= f.submit "Save Changes", class: "sign-up-button" %><br />
@@ -55,7 +68,7 @@
 
               <br /><br /><br />
               <br /><br /><br />
-              
+
             </div>
               </div>
        </div>

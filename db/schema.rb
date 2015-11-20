@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150917201355) do
+ActiveRecord::Schema.define(version: 20151119224725) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -103,6 +103,8 @@ ActiveRecord::Schema.define(version: 20150917201355) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "wednesday_news"
+    t.string   "sunday_news"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

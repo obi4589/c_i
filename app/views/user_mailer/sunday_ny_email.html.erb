@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <%= link_to image_tag("ci_social_logo_1.png", width: "200px", style: "display: block; margin-left: auto; margin-right: auto;"), root_url %>
+
+    <p>The charities below have opportunities this week! Check them out!</p>
+    
+    <p>Also, stay informed on <b><%=link_to("what's happening in NYC", allupcomingny_url)%></b>!</p><br/>
+    
+    <% @charities.each do |charity| %>
+        <div>
+            <% if charity.avatar.blank? %>
+                <%= link_to image_tag("default-user-avatar.png", width: "63px", height: "63px", style: "border: 1px solid #ecf0f1; float: left; margin-right: 10px;"), charity_url(charity) %>
+            <% else %>
+                <%= link_to image_tag(charity.avatar.url(:small), width: "63px", height: "63px", style: "border: 1px solid #ecf0f1; float: left; margin-right: 10px;"), charity_url(charity) %>
+            <% end %>
+
+            <p><b><%=link_to("#{charity.name}", charity_url(charity))%></b><br/><%= charity.zip_code.to_region %></p>
+
+            <br/><br/>
+        </div> 
+    <% end %>
+    
+    <p>Share & Tell-A-Friend!!</p>
+    
+    <p><b><%= link_to "Like Cherry Ivy on Facebook", "https://www.facebook.com/pages/Cherry-Ivy/628111227325531" %></b>!!</p>
+    
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <h5 style="font-weight: 100;">To update your email settings, or unsubscribe, <%=link_to("click here", allupcomingny_url, style: "font-weight: bold;") %>.</h5>
+  </body>
+</html>

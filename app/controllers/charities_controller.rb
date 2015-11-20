@@ -1,7 +1,7 @@
 class CharitiesController < ApplicationController
-  before_action :signed_in_user, only: [:edit, :update, :home, :followers, :following, :active, :no_avatar, :change_password, :update_password]
+  before_action :signed_in_user, only: [:edit, :update, :home, :followers, :following, :active, :no_avatar, :change_password, :update_password, :email_updates, :update_emails]
   before_action :correct_user,   only: [:home, :change_password, :update_password]
-  before_action :correct_or_sa,   only: [:edit, :update, :no_avatar]
+  before_action :correct_or_sa,   only: [:edit, :update, :no_avatar, :email_updates, :update_emails]
   before_action :is_superadmin?, only: [:destroy, :active]
   before_action :logged_in, only: [:new]
 
@@ -142,6 +142,22 @@ class CharitiesController < ApplicationController
   end
 
 
+   def email_updates
+    @charity = Charity.find(params[:id])
+  end
+
+
+  def update_emails
+    @charity = Charity.find(params[:id])
+    if @charity.update_attributes(charity_params)
+      flash[:success] = "Emails updated"
+      redirect_to email_updates_charity_path
+    else
+     render 'email_updates'
+    end
+  end
+
+
   def follow
     keep_page
     redirect_to login_url, notice: "Please sign in."
@@ -151,7 +167,7 @@ class CharitiesController < ApplicationController
 
   private
   	def charity_params
-  		params.require(:charity).permit(:legal_name, :name, :ein, :zip_code, :contact_person, :email, :phone, :password, :password_confirmation, :mission, :avatar)
+  		params.require(:charity).permit(:legal_name, :name, :ein, :zip_code, :contact_person, :email, :phone, :password, :password_confirmation, :mission, :avatar, :wednesday_news, :sunday_news)
   	end
 
 

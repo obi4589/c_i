@@ -51,4 +51,18 @@ class UserMailer < ActionMailer::Base
     mail(to: @event.charity.email, subject: "New Attendee: #{@event.title}!")
   end
 
+  def wednesday_ny_email(charities, users)
+    @charities = charities
+    @users = users
+    emails = @users.map{|x| x.email}
+    mail(bcc: emails, subject: "Here's what's new!")
+  end
+
+  def sunday_ny_email(charities, users)
+    @charities = charities
+    @users = users
+    emails = @users.map{|x| x.email}
+    mail(bcc: emails, subject: "Happening this week!")
+  end
+
 end

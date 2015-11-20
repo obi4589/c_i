@@ -1,0 +1,23 @@
+The charities below have opportunities this week! Check them out!
+    
+Also, stay informed on what's happening in NYC (<%=allupcomingny_url%>)!
+    
+<% @charities.each do |charity| %>
+    <%= charity.name%> (<%= charity_url(charity)%>)
+    <%= charity.zip_code.to_region %>
+
+<% end %>
+Share & Tell-A-Friend!!
+    
+Like Cherry Ivy on Facebook (https://www.facebook.com/pages/Cherry-Ivy/628111227325531)!!
+
+
+
+
+
+
+
+
+
+
+To update your email settings, or unsubscribe, click here ().
