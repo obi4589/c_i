@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <%= link_to image_tag("ci_social_logo_1.png", width: "200px", style: "display: block; margin-left: auto; margin-right: auto;"), root_url %>
+    <%= link_to image_tag("https://s3.amazonaws.com/cherry-ivy-images/special_uploads/ci_social_logo_1.png", width: "200px", style: "display: block; margin-left: auto; margin-right: auto;"), root_url %>
 
     <p>The charities below have opportunities this week! Check them out!</p>
     
@@ -13,7 +13,7 @@
     <% @charities.each do |charity| %>
         <div>
             <% if charity.avatar.blank? %>
-                <%= link_to image_tag("default-user-avatar.png", width: "63px", height: "63px", style: "border: 1px solid #ecf0f1; float: left; margin-right: 10px;"), charity_url(charity) %>
+                <%= link_to image_tag("https://s3.amazonaws.com/cherry-ivy-images/special_uploads/default-user-avatar.png", width: "63px", height: "63px", style: "border: 1px solid #ecf0f1; float: left; margin-right: 10px;"), charity_url(charity) %>
             <% else %>
                 <%= link_to image_tag(charity.avatar.url(:small), width: "63px", height: "63px", style: "border: 1px solid #ecf0f1; float: left; margin-right: 10px;"), charity_url(charity) %>
             <% end %>
