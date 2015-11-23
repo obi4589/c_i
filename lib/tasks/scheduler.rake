@@ -6,13 +6,17 @@ task :event_reminder => :environment do
 end
 
 task :wed_news_ny => :environment do
-  puts "Sending wednesday newsletter..."
-  User.whats_new_wednesday_ny
-  puts "Newsletter sent!"
+	if (Time.now - 5.hours).wednesday?
+	  puts "Sending wednesday newsletter..."
+	  User.whats_new_wednesday_ny
+	  puts "Newsletter sent!"
+	end
 end
 
 task :sun_news_ny => :environment do
-  puts "Sending sunday newsletter..."
-  User.this_week_sunday_ny
-  puts "Newsletter sent!"
+	if (Time.now - 5.hours).sunday?
+	  puts "Sending sunday newsletter..."
+	  User.this_week_sunday_ny
+	  puts "Newsletter sent!"
+	end
 end
