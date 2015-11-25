@@ -50,7 +50,8 @@ class User < ActiveRecord::Base
   def self.whats_new_wednesday_ny
     charity_ids = Event.select{|event| event.start_time >= (Time.now - 5.hours)}.select{|event| event.created_at >= (Time.now - 5.hours - 7.days)}.select{|event| event.zip_code.present?}.select{|event| event.city_st[-2..-1] == "NY"}.map{|x| x.charity_id}.uniq
     charities = Charity.where(id: charity_ids).select{|charity| charity.zip_code.present?}
-    users = User.select{|user| user.zip_code.present?}.select{|user| user.city_st[-2..-1] == "NY"}.select{|user| user.wednesday_news != "off"}
+    #users = User.select{|user| user.zip_code.present?}.select{|user| user.city_st[-2..-1] == "NY"}.select{|user| user.wednesday_news != "off"}
+    users = User.select{|user| user.zip_code.present?}.select{|user| user.city_st.present?}.select{|user| user.city_st[-2..-1] == "NY"}.select{|user| user.wednesday_news != "off"}
     if charities.any? && users.any?
       UserMailer.wednesday_ny_email(charities, users).deliver
     end
@@ -61,7 +62,8 @@ class User < ActiveRecord::Base
   def self.this_week_sunday_ny
     charity_ids = Event.select{|event| event.start_time >= (Time.now - 5.hours)}.select{|event| event.start_time < (Time.now - 5.hours + 7.days)}.select{|event| event.zip_code.present?}.select{|event| event.city_st[-2..-1] == "NY"}.map{|x| x.charity_id}.uniq
     charities = Charity.where(id: charity_ids).select{|charity| charity.zip_code.present?}
-    users = User.select{|user| user.zip_code.present?}.select{|user| user.city_st[-2..-1] == "NY"}.select{|user| user.sunday_news != "off"}
+    #users = User.select{|user| user.zip_code.present?}.select{|user| user.city_st[-2..-1] == "NY"}.select{|user| user.sunday_news != "off"}
+    users = User.select{|user| user.zip_code.present?}.select{|user| user.city_st.present?}.select{|user| user.city_st[-2..-1] == "NY"}.select{|user| user.sunday_news != "off"}
     if charities.any? && users.any?
       UserMailer.sunday_ny_email(charities, users).deliver
     end
