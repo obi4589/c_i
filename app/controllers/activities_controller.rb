@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :signed_in_user
-  before_action :correct_user_type, except: [:redir_email_updates]
+  before_action :correct_user_type, except: [:redir_email_updates, :redir_new_event]
 
   def haversine(current_user,other)
     lat1 = current_user.zip_code.to_lat.to_f
@@ -74,6 +74,11 @@ class ActivitiesController < ApplicationController
     elsif current_user.type == 'Superadmin' 
       redirect_to current_user
     end
+  end
+
+
+  def redir_new_event
+    redirect_to new_event_path
   end
 
 

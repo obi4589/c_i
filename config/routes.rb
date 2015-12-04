@@ -7,7 +7,7 @@ CI::Application.routes.draw do
 
   resources :activities do
     collection do
-      get :me, :suggestions, :nearby, :redir_email_updates
+      get :me, :suggestions, :nearby, :redir_email_updates, :redir_new_event
     end
   end
 
