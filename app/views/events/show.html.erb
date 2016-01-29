@@ -154,11 +154,13 @@
 		<% if current_user?(@event.charity) %>
 		<div id = "admin_buttons_div">
 			<%= link_to "Edit", edit_event_path(@event), class: "admin_buttons" %> 
+			<%= link_to 'Clone', clone_event_path(@event), class: "admin_buttons" , method: :post, data: {confirm: "Clone event?"}  %>
 			<%= link_to "Delete", @event, class: "admin_buttons", method: :delete, data: {confirm: "Delete event?"} %>
         </div>
         <%elsif current_user.type == "Superadmin" %>
         <div id = "admin_buttons_div">
         	<%= link_to "Edit", edit_event_path(@event), class: "admin_buttons" %> 
+        	<%= link_to 'Clone', clone_event_path(@event), class: "admin_buttons" , method: :post, data: {confirm: "Clone event?"}  %>
         	<%= link_to "Delete", @event, class: "admin_buttons", method: :delete, data: {confirm: "Delete event?"} %>
         </div>
         <%end%>

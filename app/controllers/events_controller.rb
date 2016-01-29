@@ -3,8 +3,8 @@ class EventsController < ApplicationController
   #before_action :correct_user, only: [:edit, :update]
   before_action :correct_user_type, only: [:new]
   before_action :event_exists, only: [:show, :edit, :attendees, :friends]
-  before_action :correct_or_sa, only: [:destroy, :edit, :update]
-  before_action :is_active, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_or_sa, only: [:destroy, :edit, :update, :clone]
+  before_action :is_active, only: [:new, :create, :edit, :update, :destroy, :clone]
 
   
   def index
@@ -86,6 +86,15 @@ class EventsController < ApplicationController
   def go
     keep_page
     redirect_to login_url, notice: "Please sign in."
+  end
+
+
+  def clone
+    @event = Event.find(params[:id])
+    @new_event = @event.dup
+    @new_event.save
+    flash[:success] = "Event cloned! Edit your new event and change your cover photo!"
+    redirect_to edit_event_path(@new_event)
   end
 
   

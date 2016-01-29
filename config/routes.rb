@@ -18,6 +18,7 @@ CI::Application.routes.draw do
   resources :events do
     member do
       get :attendees, :friends
+      post :clone
     end
     collection do
       get :go
