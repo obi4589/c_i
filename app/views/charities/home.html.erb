@@ -85,7 +85,7 @@
 	                			</div>
 								<!-- photo 100% on MS word.. height 2.3 and width 3.18-->
 								<% if event.cover_photo.blank? %>
-									<%= link_to image_tag("", alt: "pic", class: "event_pic"), event %>
+									<%= link_to image_tag("default-event-cover-medium.png", alt: "pic", class: "event_pic"), event %>
 								<% else %>
 									<%= link_to image_tag(event.cover_photo.url(:medium), class: 'event_pic'), event %>
 								<% end %>

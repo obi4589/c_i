@@ -32,7 +32,13 @@
 		<div class="owl-carousel">
 			<% @events.each do |event| %>
 			 	<div> 
-			 		<%=link_to image_tag(event.cover_photo.url(:large), width: '960px'), event %>
+			 		
+			 		<% if event.cover_photo.blank? %>
+	          		<%=link_to image_tag("default-event-cover-large.png", alt: "pic", width: '960', height: '600'), event %>
+	        		<% else %>
+	          		<%=link_to image_tag(event.cover_photo.url(:large), width: '960px'), event %>
+	        		<% end %>
+
 			        <div class="event_info">
 			        	<span id="event_title"><%= event.title[0..39]%><%if event.title.length > 40 %>...<%end%></span><br />
 			            <span id="event_host"><%= event.charity.legal_name[0..79]%><%if event.charity.legal_name.length > 80 %>...<%end%></span> 
@@ -51,7 +57,13 @@
 		<div class="owl-carousel">
 			<% @events_all.each do |event| %>
 			 	<div> 
-			 		<%=link_to image_tag(event.cover_photo.url(:large), width: '960px'), event %>
+
+			 		<% if event.cover_photo.blank? %>
+	          		<%=link_to image_tag("default-event-cover-large.png", alt: "pic", width: '960', height: '600'), event %>
+	        		<% else %>
+	          		<%=link_to image_tag(event.cover_photo.url(:large), width: '960px'), event %>
+	        		<% end %>
+
 			        <div class="event_info">
 			        	<span id="event_title"><%= event.title[0..39]%><%if event.title.length > 40 %>...<%end%></span><br />
 			            <span id="event_host"><%= event.charity.legal_name[0..79]%><%if event.charity.legal_name.length > 80 %>...<%end%></span> 

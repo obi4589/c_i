@@ -49,7 +49,7 @@
 		<a href="#">
 		<div id="picture_holder">
 			<% if @event.cover_photo.blank? %>
-	          <%= image_tag("", alt: "pic", width: '960', height: '600') %>
+	          <%= image_tag("default-event-cover-large.png", alt: "pic", width: '960', height: '600') %>
 	        <% else %>
 	          <%= image_tag(@event.cover_photo.url(:large)) %>
 	        <% end %>

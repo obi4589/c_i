@@ -93,7 +93,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @new_event = @event.dup
     @new_event.save
-    flash[:success] = "Event cloned! Edit your new event and change your cover photo!"
+    @new_event.update_attribute(:cover_photo, nil)
+    flash[:success] = "Event cloned! Change photo and edit event details!"
     redirect_to edit_event_path(@new_event)
   end
 
