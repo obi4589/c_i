@@ -194,7 +194,7 @@
                   <% end %>
 
                   <!-- BEGINNING SPOTS LEFT -->
-                  <% if  (Time.now - 5.hours) <= event.start_time && event.attend_limit.present? && event.attend_limit - event.philanthropists.count >= 0 %>
+                  <% if  (Time.now - 4.hours) <= event.start_time && event.attend_limit.present? && event.attend_limit - event.philanthropists.count >= 0 %>
                     <% if event.attend_limit - event.philanthropists.count == 1%>
                       <span title="Spots Left" style="font-size: 14px; font-style: italic; color: #2c3e50; cursor: default;">Spot (<%=event.attend_limit - event.philanthropists.count %>)</span><br />
                     <% elsif event.attend_limit - event.philanthropists.count >= 10 %>
