@@ -14,13 +14,17 @@
     
     <% @charities.each do |charity| %>
         <div>
-            <% if charity.avatar.blank? %>
-                <%= link_to image_tag("https://s3.amazonaws.com/cherry-ivy-images/special_uploads/default-user-avatar.png", width: "63px", height: "63px", style: "border: 1px solid #ecf0f1; float: left; margin-right: 10px;"), charity_url(charity) %>
-            <% else %>
-                <%= link_to image_tag(charity.avatar.url(:small), width: "63px", height: "63px", style: "border: 1px solid #ecf0f1; float: left; margin-right: 10px;"), charity_url(charity) %>
-            <% end %>
+            <p><b><%=link_to("#{charity.name}", charity_url(charity))%></b><br/><%= charity.zip_code.to_region %><br/></p>
 
-            <p><b><%=link_to("#{charity.name}", charity_url(charity))%></b><br/><%= charity.zip_code.to_region %></p>
+            <% display_photo_logic = charity.events.select{|event| event.start_time >= (Time.now - 4.hours)}.select{|event| event.start_time < (Time.now - 4.hours + 7.days)}.select{|event| event.zip_code.present?}.select{|event| event.city_st[-2..-1] == "NY"}.map{|x| x.id}.take(1)%>
+            <% display_event_id = display_photo_logic[0] %>
+            <% display_event = Event.find(display_event_id)%>           
+
+            <% if display_event.cover_photo.blank? %>
+                <%= link_to image_tag("https://s3.amazonaws.com/cherry-ivy-images/special_uploads/default-event-cover-large.png", width: "480px", height: "300px"), charity_url(charity) %>
+            <% else %>
+                <%= link_to image_tag(display_event.cover_photo.url(:large), width: "480px", height: "300px"), charity_url(charity) %>
+            <% end %>
 
             <br/><br/><br/>
         </div> 
