@@ -51,6 +51,12 @@ class UserMailer < ActionMailer::Base
     mail(to: @event.charity.email, subject: "New Attendee: #{@event.title}!")
   end
 
+  def attendee_cancel(event, user)
+    @event = event
+    @user = user
+    mail(to: @event.charity.email, subject: "Attendee Cancellation: #{@event.title}!")
+  end
+
   def wednesday_ny_email(charities, users)
     @charities = charities
     @users = users

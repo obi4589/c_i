@@ -24,7 +24,8 @@ class AttendancesController < ApplicationController
       format.html { redirect_to @event }
       format.js
     end
-    
+
+    UserMailer.attendee_cancel(@event, current_user).deliver
   end
 
   private
