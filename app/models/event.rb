@@ -104,4 +104,17 @@ class Event < ActiveRecord::Base
 
 
 
+#this is for the one-day event reminder for charities
+  def self.one_day_reminder_org
+    Event.all.each do |event|
+      if (Time.now - 4.hours) <= event.start_time
+        if (event.start_time - Time.now + 4.hours)/86400 < 2 && (event.start_time - Time.now + 4.hours)/86400 >= 1 
+          UserMailer.event_one_day_reminder_org_email(event).deliver
+        end
+      end
+    end
+  end
+
+
+
 end

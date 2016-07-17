@@ -45,6 +45,11 @@ class UserMailer < ActionMailer::Base
     mail(from: "#{@event.charity.name} <#{@event.charity.email}>", bcc: emails, subject: "Event Tomorrow: #{@event.title}!")
   end
 
+  def event_one_day_reminder_org_email(event)
+    @event = event
+    mail(to: @event.charity.email, subject: "Event Tomorrow: #{@event.title}!")
+  end
+
   def new_attendee(event, user)
     @event = event
     @user = user
