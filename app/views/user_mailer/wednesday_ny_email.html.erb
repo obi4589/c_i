@@ -5,7 +5,7 @@
   </head>
   <body>
     <div style = "width: 200px; margin: auto;">
-        <%= link_to image_tag("https://s3.amazonaws.com/cherry-ivy-images/special_uploads/ci_social_logo_1.png", width: "200px"), root_url %>
+        <%= link_to image_tag("https://s3.amazonaws.com/cherry-ivy-images/special_uploads/ci_social_logo_1.png", width: "200px", alt: "Cherry Ivy!"), root_url %>
     </div>
 
     <p>The charities below have brand new opportunities! Check them out!</p>
@@ -21,7 +21,7 @@
             <% display_event = Event.find(display_event_id)%>  
 
             <% if display_event.cover_photo.blank? %>
-                <%= link_to image_tag("https://s3.amazonaws.com/cherry-ivy-images/special_uploads/default-event-cover-large.png", width: "480px", height: "300px"), charity_url(charity) %>
+                <%= link_to image_tag("https://s3.amazonaws.com/cherry-ivy-images/special_uploads/default-event-cover-large.png", width: "480px", height: "300px", alt: "Cherry Ivy!"), charity_url(charity) %>
             <% else %>
                 <%= link_to image_tag(display_event.cover_photo.url(:large), width: "480px", height: "300px"), charity_url(charity) %>
             <% end %>
@@ -35,6 +35,6 @@
     <p><b><%= link_to "Like Cherry Ivy on Facebook", "https://www.facebook.com/pages/Cherry-Ivy/628111227325531" %></b>!!</p>
     
     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    <h5 style="font-weight: 100;">To update your email settings, or unsubscribe, <%=link_to("click here", redir_email_updates_activities_url, style: "font-weight: bold;") %>.</h5>
+    <h5 style="font-weight: 100;">To update your email settings, or unsubscribe, <%=link_to("click here", redir_email_settings_activities_url, style: "font-weight: bold;") %>.</h5>
   </body>
 </html>

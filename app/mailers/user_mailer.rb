@@ -62,18 +62,18 @@ class UserMailer < ActionMailer::Base
     mail(to: @event.charity.email, subject: "Attendee Cancellation: #{@event.title}!")
   end
 
-  def wednesday_ny_email(charities, users)
+  def wednesday_ny_email(charities, users_char, users_phil)
     @charities = charities
-    @users = users
-    emails = @users.map{|x| x.email}
-    mail(bcc: emails, subject: "Here's what's new!")
+    @emails_char = users_char.map{|x| x.email}
+    @emails_phil = users_phil.map{|x| x.email}
+    mail(to: "info@cherryivy.com", subject: "Here's what's new!")
   end
 
-  def sunday_ny_email(charities, users)
+  def sunday_ny_email(charities, users_char, users_phil)
     @charities = charities
-    @users = users
-    emails = @users.map{|x| x.email}
-    mail(bcc: emails, subject: "Happening this week!")
+    @emails_char = users_char.map{|x| x.email}
+    @emails_phil = users_phil.map{|x| x.email}
+    mail(to: "info@cherryivy.com", subject: "Happening this week!")
   end
 
 end

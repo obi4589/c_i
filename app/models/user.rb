@@ -51,9 +51,10 @@ class User < ActiveRecord::Base
     charity_ids = Event.select{|event| event.start_time >= (Time.now - 4.hours)}.select{|event| event.created_at >= (Time.now - 4.hours - 7.days)}.select{|event| event.zip_code.present?}.select{|event| event.city_st[-2..-1] == "NY"}.map{|x| x.charity_id}.uniq
     charities = Charity.where(id: charity_ids).select{|charity| charity.zip_code.present?}
     #users = User.select{|user| user.zip_code.present?}.select{|user| user.city_st[-2..-1] == "NY"}.select{|user| user.wednesday_news != "off"}
-    users = User.select{|user| user.zip_code.present?}.select{|user| user.city_st.present?}.select{|user| user.city_st[-2..-1] == "NY"}.select{|user| user.wednesday_news != "off"}
-    if charities.any? && users.any?
-      UserMailer.wednesday_ny_email(charities, users).deliver
+    users_char = User.select{|user| user.zip_code.present?}.select{|user| user.city_st.present?}.select{|user| user.city_st[-2..-1] == "NY"}.select{|user| user.type == "Charity"}.select{|user| user.email_updates != "off"}
+    users_phil = User.select{|user| user.zip_code.present?}.select{|user| user.city_st.present?}.select{|user| user.city_st[-2..-1] == "NY"}.select{|user| user.type == "Philanthropist"}.select{|user| user.email_updates != "off"}
+    if charities.any?
+      UserMailer.wednesday_ny_email(charities, users_char, users_phil).deliver
     end
   end
 
@@ -63,9 +64,10 @@ class User < ActiveRecord::Base
     charity_ids = Event.select{|event| event.start_time >= (Time.now - 4.hours)}.select{|event| event.start_time < (Time.now - 4.hours + 7.days)}.select{|event| event.zip_code.present?}.select{|event| event.city_st[-2..-1] == "NY"}.map{|x| x.charity_id}.uniq
     charities = Charity.where(id: charity_ids).select{|charity| charity.zip_code.present?}
     #users = User.select{|user| user.zip_code.present?}.select{|user| user.city_st[-2..-1] == "NY"}.select{|user| user.sunday_news != "off"}
-    users = User.select{|user| user.zip_code.present?}.select{|user| user.city_st.present?}.select{|user| user.city_st[-2..-1] == "NY"}.select{|user| user.sunday_news != "off"}
-    if charities.any? && users.any?
-      UserMailer.sunday_ny_email(charities, users).deliver
+    users_char = User.select{|user| user.zip_code.present?}.select{|user| user.city_st.present?}.select{|user| user.city_st[-2..-1] == "NY"}.select{|user| user.type == "Charity"}.select{|user| user.email_updates != "off"}
+    users_phil = User.select{|user| user.zip_code.present?}.select{|user| user.city_st.present?}.select{|user| user.city_st[-2..-1] == "NY"}.select{|user| user.type == "Philanthropist"}.select{|user| user.email_updates != "off"}
+    if charities.any?
+      UserMailer.sunday_ny_email(charities, users_char, users_phil).deliver
     end
   end
 
