@@ -67,10 +67,15 @@ class ActivitiesController < ApplicationController
 
 
   def redir_email_updates
+    redirect_to redir_email_settings_activities_path
+  end
+
+
+  def redir_email_settings
     if current_user.type == 'Charity'
-      redirect_to email_updates_charity_path(current_user)
+      redirect_to email_settings_charity_path(current_user)
     elsif current_user.type == 'Philanthropist' 
-      redirect_to email_updates_philanthropist_path(current_user)
+      redirect_to email_settings_philanthropist_path(current_user)
     elsif current_user.type == 'Superadmin' 
       redirect_to current_user
     end
