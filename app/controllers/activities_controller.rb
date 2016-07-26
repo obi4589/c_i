@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :signed_in_user
-  before_action :correct_user_type, except: [:redir_email_updates, :redir_new_event]
+  before_action :correct_user_type, except: [:redir_email_updates, :redir_email_settings, :redir_new_event]
 
   def haversine(current_user,other)
     lat1 = current_user.zip_code.to_lat.to_f
