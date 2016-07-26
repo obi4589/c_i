@@ -41,24 +41,13 @@
             <div id="body1">
               <%= form_for(@philanthropist, url: { action: "update_emails" }) do |f| %>
 
-              <%= f.label :wednesday_news, "Wednesday (\"What's New\") Newsletter" %><br /> <br /> 
+              <%= f.label :email_updates, "Email Updates" %><br /> <br /> 
               <label class="newsletter_radio_button">
-              <%= f.radio_button(:wednesday_news, "on", checked: true) %>
+              <%= f.radio_button(:email_updates, "on", checked: true) %>
               On
               </label>
               <label class="newsletter_radio_button">
-              <%= f.radio_button(:wednesday_news, "off") %>
-              Off
-              </label>
-              <br /><br /><br />
-
-               <%= f.label :sunday_news, "Sunday (\"This Week\") Newsletter" %><br /> <br /> 
-              <label class="newsletter_radio_button">
-              <%= f.radio_button(:sunday_news, "on", checked: true) %>
-              On
-              </label>
-              <label class="newsletter_radio_button">
-              <%= f.radio_button(:sunday_news, "off") %>
+              <%= f.radio_button(:email_updates, "off") %>
               Off
               </label>
               <br /><br /><br />

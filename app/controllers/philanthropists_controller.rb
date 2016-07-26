@@ -142,7 +142,7 @@ class PhilanthropistsController < ApplicationController
   def update_emails
     @philanthropist = Philanthropist.find(params[:id])
     if @philanthropist.update_attributes(philanthropist_params)
-      flash[:success] = "Emails settings updated"
+      flash[:success] = "Email settings updated"
       redirect_to email_settings_philanthropist_path
     else
      render 'email_settings'
@@ -158,7 +158,7 @@ class PhilanthropistsController < ApplicationController
 
   private
   	def philanthropist_params
-  		params.require(:philanthropist).permit(:name, :email, :zip_code, :birth_date, :password, :password_confirmation, :avatar, :wednesday_news, :sunday_news )
+  		params.require(:philanthropist).permit(:name, :email, :zip_code, :birth_date, :password, :password_confirmation, :avatar, :wednesday_news, :sunday_news, :email_updates )
   	end
 
     # Before filters

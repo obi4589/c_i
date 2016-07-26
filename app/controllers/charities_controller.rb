@@ -150,7 +150,7 @@ class CharitiesController < ApplicationController
   def update_emails
     @charity = Charity.find(params[:id])
     if @charity.update_attributes(charity_params)
-      flash[:success] = "Emails settings updated"
+      flash[:success] = "Email settings updated"
       redirect_to email_settings_charity_path
     else
      render 'email_settings'
@@ -167,7 +167,7 @@ class CharitiesController < ApplicationController
 
   private
   	def charity_params
-  		params.require(:charity).permit(:legal_name, :name, :ein, :zip_code, :contact_person, :email, :phone, :password, :password_confirmation, :mission, :avatar, :wednesday_news, :sunday_news)
+  		params.require(:charity).permit(:legal_name, :name, :ein, :zip_code, :contact_person, :email, :phone, :password, :password_confirmation, :mission, :avatar, :wednesday_news, :sunday_news, :email_updates)
   	end
 
 
