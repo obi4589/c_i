@@ -34,7 +34,7 @@ CI::Application.routes.draw do
 
   resources :philanthropists do
     member do
-      get :home, :followers, :following, :history, :change_password, :email_updates
+      get :home, :followers, :following, :history, :change_password, :email_settings
       patch :active, :no_avatar, :update_password, :update_emails
     end
     collection do
@@ -46,7 +46,7 @@ CI::Application.routes.draw do
 
   resources :charities do
     member do
-      get :home, :followers, :following, :about, :history, :change_password, :email_updates
+      get :home, :followers, :following, :about, :history, :change_password, :email_settings
       patch :active, :no_avatar, :update_password, :update_emails
     end
     collection do

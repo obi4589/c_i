@@ -134,7 +134,7 @@ class PhilanthropistsController < ApplicationController
   end
 
 
-  def email_updates
+  def email_settings
     @philanthropist = Philanthropist.find(params[:id])
   end
 
@@ -142,10 +142,10 @@ class PhilanthropistsController < ApplicationController
   def update_emails
     @philanthropist = Philanthropist.find(params[:id])
     if @philanthropist.update_attributes(philanthropist_params)
-      flash[:success] = "Emails updated"
-      redirect_to email_updates_philanthropist_path
+      flash[:success] = "Emails settings updated"
+      redirect_to email_settings_philanthropist_path
     else
-     render 'email_updates'
+     render 'email_settings'
     end
   end
 

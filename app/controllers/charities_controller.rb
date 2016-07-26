@@ -142,7 +142,7 @@ class CharitiesController < ApplicationController
   end
 
 
-   def email_updates
+   def email_settings
     @charity = Charity.find(params[:id])
   end
 
@@ -150,10 +150,10 @@ class CharitiesController < ApplicationController
   def update_emails
     @charity = Charity.find(params[:id])
     if @charity.update_attributes(charity_params)
-      flash[:success] = "Emails updated"
-      redirect_to email_updates_charity_path
+      flash[:success] = "Emails settings updated"
+      redirect_to email_settings_charity_path
     else
-     render 'email_updates'
+     render 'email_settings'
     end
   end
 

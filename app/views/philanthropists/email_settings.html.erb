@@ -30,13 +30,13 @@
             <!-- beginning of control panel -->
             <div class="control_panel_2">
                 <%= link_to "Edit Profile", edit_philanthropist_path(current_user), class: "control_panel_link" %>
-                <%= link_to "Email Updates", email_updates_philanthropist_path(current_user), class: "control_panel_link", id: "chosen" %>
+                <%= link_to "Email Settings", email_settings_philanthropist_path(current_user), class: "control_panel_link", id: "chosen" %>
                 <%= link_to "Change Password", change_password_philanthropist_path(current_user), class: "control_panel_link" %>
             </div>
             <!-- end of control panel section -->
             <div class="page">
                    <div id="title">
-                          Email Updates
+                          Email Settings
                    </div>
             <div id="body1">
               <%= form_for(@philanthropist, url: { action: "update_emails" }) do |f| %>
