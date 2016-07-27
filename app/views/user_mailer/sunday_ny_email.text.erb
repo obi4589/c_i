@@ -27,8 +27,8 @@ To update your email settings, or unsubscribe, click here (<%=redir_email_settin
 
 
 Charities
-<%= @emails_char %>
+<%= @emails_char.to_s.gsub('"', '') %>
 
 
 Philanthropists
-<%= @emails_phil %>
+<%= @emails_phil.to_s.gsub('"', '') %>
