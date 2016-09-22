@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/obi4589/area.git
-  revision: 6faad9beb74350a5ece1af5dc436dd6f50898401
+  revision: c44888c67378c67e3ad3923561f79c5466475a66
   specs:
     area (0.10.0)
       fastercsv (~> 1.5)
