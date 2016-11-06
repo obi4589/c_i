@@ -60,7 +60,7 @@ class ActivitiesController < ApplicationController
     null_events = Attendance.where(philanthropist_id: follows_p).map{|x| x.event_id }.uniq
     my_events = current_user.events.map{|x| x.id}
 
-    events = Event.select{|event| event.zip_code.present?}.select{|event| event.start_time >= (Time.now - 4.hours)}.select {|event| haversine2(current_user, event)}.map{|x| x.id}
+    events = Event.select{|event| event.zip_code.present?}.select{|event| event.start_time >= (Time.now - 5.hours)}.select {|event| haversine2(current_user, event)}.map{|x| x.id}
     @nearby_events = Event.where(id: events).where.not(charity_id: follows_c).where.not(id: null_events).where.not(id: my_events).sort_by {|x| [x.start_time, x.end_time] }.take(100)
     @months = @nearby_events.map {|x| x.start_time.strftime('%B %Y')}.uniq
   end
