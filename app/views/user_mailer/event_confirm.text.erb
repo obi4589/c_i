@@ -22,4 +22,11 @@ Where
 <%end%>
 
 
+Contact Person
+
+<%= @event.charity.contact_person %>
+<%= @event.charity.email%>
+(<%= @event.charity.phone[0..2]%>) <%= @charity.phone[3..5]%>-<%= @charity.phone[6..9]%>
+
+
 Invite your friends! Share this email!
