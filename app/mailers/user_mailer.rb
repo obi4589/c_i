@@ -24,25 +24,25 @@ class UserMailer < ActionMailer::Base
   def event_confirm(event, user)
     @event = event
     @user = user
-    mail(from: "#{@event.charity.name} <#{@event.charity.email}>", to: @user.email, subject: "See You Soon: #{@event.title}!")
+    mail(from: "#{@event.charity.name} <noreply@cherryivy.com>", to: @user.email, subject: "See You Soon: #{@event.title}!")
   end
 
   def event_cancel(event)
     @event = event
     emails = @event.philanthropists.map {|user| user.email}
-    mail(from: "#{@event.charity.name} <#{@event.charity.email}>", bcc: emails, subject: "Event Cancelled: #{@event.title}")
+    mail(from: "#{@event.charity.name} <noreply@cherryivy.com>", bcc: emails, subject: "Event Cancelled: #{@event.title}")
   end
 
   def event_update(event)
     @event = event
     emails = @event.philanthropists.map {|user| user.email}
-    mail(from: "#{@event.charity.name} <#{@event.charity.email}>", bcc: emails, subject: "Event Update: #{@event.title}")
+    mail(from: "#{@event.charity.name} <noreply@cherryivy.com>", bcc: emails, subject: "Event Update: #{@event.title}")
   end
 
   def event_one_day_reminder_email(event)
     @event = event
     emails = @event.philanthropists.map {|user| user.email}
-    mail(from: "#{@event.charity.name} <#{@event.charity.email}>", bcc: emails, subject: "Event Tomorrow: #{@event.title}!")
+    mail(from: "#{@event.charity.name} <noreply@cherryivy.com>", bcc: emails, subject: "Event Tomorrow: #{@event.title}!")
   end
 
   def event_one_day_reminder_org_email(event)
