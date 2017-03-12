@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   
   def index
     if params[:search]
-      @events = Event.search(params[:search]).select {|x| x.start_time >= (Time.now - 5.hours) }.sort_by {|x| [x.start_time, x.end_time] }.take(30)
+      @events = Event.search(params[:search]).select {|x| x.start_time >= (Time.now - 4.hours) }.sort_by {|x| [x.start_time, x.end_time] }.take(30)
       @charities = Charity.search(params[:search]).sort_by(&:name).take(30)
       @philanthropists = Philanthropist.search(params[:search]).sort_by(&:name).take(30)
     else
@@ -141,7 +141,7 @@ class EventsController < ApplicationController
       end
 
       def send_update_email
-        if @event.philanthropists.any? && (Time.now - 5.hours) <= @event.start_time
+        if @event.philanthropists.any? && (Time.now - 4.hours) <= @event.start_time
           if @event.previous_changes.include?("location") || @event.previous_changes.include?("address_line_1") || @event.previous_changes.include?("address_line_2") || @event.previous_changes.include?("zip_code") || @event.previous_changes.include?("start_time") || @event.previous_changes.include?("end_time")
             UserMailer.event_update(@event).deliver
           end
@@ -149,7 +149,7 @@ class EventsController < ApplicationController
       end
 
       def send_cancel_email
-        if @event.philanthropists.any? && (Time.now - 5.hours) <= @event.start_time
+        if @event.philanthropists.any? && (Time.now - 4.hours) <= @event.start_time
           UserMailer.event_cancel(@event).deliver
         end
       end
