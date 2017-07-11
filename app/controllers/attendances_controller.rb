@@ -14,7 +14,10 @@ class AttendancesController < ApplicationController
     @attendance.create_activity :create, owner: current_user 
 
     UserMailer.event_confirm(@event, current_user).deliver
-    UserMailer.new_attendee(@event, current_user).deliver
+    
+    if @event.charity.email_updates != "off"
+      UserMailer.new_attendee(@event, current_user).deliver
+    end
   end
 
   def destroy
@@ -25,7 +28,9 @@ class AttendancesController < ApplicationController
       format.js
     end
 
-    UserMailer.attendee_cancel(@event, current_user).deliver
+    if @event.charity.email_updates != "off"
+      UserMailer.attendee_cancel(@event, current_user).deliver
+    end
   end
 
   private
