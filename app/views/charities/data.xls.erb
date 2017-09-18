@@ -12,7 +12,7 @@
         <Cell><Data ss:Type="String">Time</Data></Cell>
         <Cell><Data ss:Type="String">Charity</Data></Cell>
         <Cell><Data ss:Type="String">Title</Data></Cell>
-        <Cell><Data ss:Type="String">Event Type</Data></Cell>
+        <Cell><Data ss:Type="String">Event Type (Volunteer, General, Fundraiser)</Data></Cell>
         <Cell><Data ss:Type="String">Description</Data></Cell>
         <Cell><Data ss:Type="String">Location</Data></Cell>
         <Cell><Data ss:Type="String">RSVPs</Data></Cell>
@@ -29,13 +29,7 @@
         <Cell><Data ss:Type="String"><%= event.start_time.strftime('%-I:%M %p')%> - <%=event.end_time.strftime('%-I:%M %p')%></Data></Cell>
         <Cell><Data ss:Type="String"><%= event.charity.name%></Data></Cell>
         <Cell><Data ss:Type="String"><%= event.title%></Data></Cell>
-          <% if event.e_type == "v" %>
-            <Cell><Data ss:Type="String">Volunteer</Data></Cell>
-          <% elsif event.e_type == "f" %>
-            <Cell><Data ss:Type="String">Fundraiser</Data></Cell>
-          <% elsif event.e_type == "g" %>
-            <Cell><Data ss:Type="String">General</Data></Cell>
-          <%end%>
+        <Cell><Data ss:Type="String"><%= event.e_type%></Data></Cell>
         <Cell><Data ss:Type="String"><%= strip_tags(event.description)%></Data></Cell>
           <% if event.zip_code.blank? %>
             <% if event.location.present? %>
