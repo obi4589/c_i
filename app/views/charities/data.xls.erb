@@ -17,6 +17,9 @@
         <Cell><Data ss:Type="String">Location</Data></Cell>
         <Cell><Data ss:Type="String">RSVPs</Data></Cell>
         <Cell><Data ss:Type="String">Attendee Names</Data></Cell>
+        <% if is_superadmin? %>
+          <Cell><Data ss:Type="String">Attendee Emails</Data></Cell>
+        <% end %>
         
       </Row>
     <% @records.each do |event| %>
@@ -43,6 +46,9 @@
           <%end%>
         <Cell><Data ss:Type="Number"><%= event.attendances.count%></Data></Cell>
         <Cell><Data ss:Type="String"><%= event.philanthropists.map{|user| user.name}.join(" , " )%></Data></Cell>
+        <% if is_superadmin? %>
+          <Cell><Data ss:Type="String"><%= event.philanthropists.map{|user| user.email}.join(" , " )%></Data></Cell>
+        <% end %>
       </Row>
     <% end %>
     </Table>
