@@ -39,7 +39,7 @@
                   <Cell><Data ss:Type="String"><%= event.location %></Data></Cell>
             <% end %>
           <% else %>
-            <Cell><Data ss:Type="String"><%= event.address_line_1 %> <%=event.address_line_2 %> <%=event.zip_code.to_region%> <%=event.zip_code %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= event.location %> <%= event.address_line_1 %> <%=event.address_line_2 %> <%=event.zip_code.to_region%> <%=event.zip_code %></Data></Cell>
           <%end%>
         <Cell><Data ss:Type="Number"><%= event.attendances.count%></Data></Cell>
         <Cell><Data ss:Type="String"><%= event.philanthropists.map{|user| user.name}.join(" , " )%></Data></Cell>
