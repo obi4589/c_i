@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Email Updates</title>
+<title>Data</title>
 <%= stylesheet_link_tag    "edit1.css", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
@@ -29,35 +29,22 @@
        <div id="page_width2">
             <!-- beginning of control panel -->
             <div class="control_panel_2">
-                <%= link_to "Edit Profile", edit_philanthropist_path(current_user), class: "control_panel_link"  %>
-                <%= link_to "Email Settings", email_settings_philanthropist_path(current_user), class: "control_panel_link", id: "chosen" %>
-                <%= link_to "Data", data_philanthropist_path(current_user), class: "control_panel_link"%>
+                <%= link_to "Edit Profile", edit_philanthropist_path(current_user), class: "control_panel_link" %>
+                <%= link_to "Email Settings", email_settings_philanthropist_path(current_user), class: "control_panel_link" %>
+                <%= link_to "Data", data_philanthropist_path(current_user), class: "control_panel_link", id: "chosen" %>
                 <%= link_to "Change Password", change_password_philanthropist_path(current_user), class: "control_panel_link" %>
             </div>
             <!-- end of control panel section -->
             <div class="page">
                    <div id="title">
-                          Email Settings
+                          Data
                    </div>
             <div id="body1">
-              <%= form_for(@philanthropist, url: { action: "update_emails" }) do |f| %>
-
-              <%= f.label :email_updates, "Email Updates" %><br /> <br /> 
-              <label class="newsletter_radio_button">
-              <%= f.radio_button(:email_updates, "on", checked: true) %>
-              On
-              </label>
-              <label class="newsletter_radio_button">
-              <%= f.radio_button(:email_updates, "off") %>
-              Off
-              </label>
+              <span> Download Event Data </span> 
               <br /><br /><br />
-
-              <%= f.submit "Save Changes", class: "sign-up-button-2" %><br />
-              <% end %>
-
+              <%= button_to "Download", data_philanthropist_path(format: "xls"), method: :get,  class: "sign-up-button-2"%>
             </div>
-              </div>
+          </div>
        </div>
 
               

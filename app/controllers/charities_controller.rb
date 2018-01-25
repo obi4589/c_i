@@ -1,7 +1,7 @@
 class CharitiesController < ApplicationController
-  before_action :signed_in_user, only: [:edit, :update, :home, :followers, :following, :active, :no_avatar, :change_password, :update_password, :email_settings, :update_emails]
+  before_action :signed_in_user, only: [:edit, :update, :home, :followers, :following, :active, :no_avatar, :change_password, :update_password, :email_settings, :update_emails, :data]
   before_action :correct_user,   only: [:home, :change_password, :update_password]
-  before_action :correct_or_sa,   only: [:edit, :update, :no_avatar, :email_settings, :update_emails]
+  before_action :correct_or_sa,   only: [:edit, :update, :no_avatar, :email_settings, :update_emails, :data]
   before_action :is_superadmin?, only: [:destroy, :active]
   before_action :logged_in, only: [:new]
 
@@ -29,7 +29,7 @@ class CharitiesController < ApplicationController
   def show
   	@charity = Charity.find(params[:id]) 
     events = @charity.events.all.sort_by {|x| [x.start_time, x.end_time] }
-    @final_feed = events.select {|x| x.start_time >= (Time.now - 4.hours)}.take(100)
+    @final_feed = events.select {|x| x.start_time >= (Time.now - 5.hours)}.take(100)
     @months = @final_feed.map {|x| x.start_time.strftime('%B %Y')}.uniq
     @user = @charity
   end
@@ -68,7 +68,7 @@ class CharitiesController < ApplicationController
     feed2 = current_user.feed2.all
     total_feed = feed1 + feed2
     feed_items = total_feed.uniq.sort_by {|x| [x.start_time, x.end_time] }
-    @final_feed = feed_items.select {|x| x.start_time >= (Time.now - 4.hours)}.take(100)
+    @final_feed = feed_items.select {|x| x.start_time >= (Time.now - 5.hours)}.take(100)
     @months = @final_feed.map {|x| x.start_time.strftime('%B %Y')}.uniq
   end
  
@@ -95,7 +95,7 @@ class CharitiesController < ApplicationController
   def history
     @charity = Charity.find(params[:id])
     events = @charity.events.all.sort {|x,y| [y.start_time, y.end_time] <=> [x.start_time, x.end_time] }
-    @final_feed = events.select {|x| x.start_time < (Time.now - 4.hours)}.take(100)
+    @final_feed = events.select {|x| x.start_time < (Time.now - 5.hours)}.take(100)
     @months = @final_feed.map {|x| x.start_time.strftime('%B %Y')}.uniq
     @user = @charity
   end
@@ -142,7 +142,7 @@ class CharitiesController < ApplicationController
   end
 
 
-   def email_settings
+  def email_settings
     @charity = Charity.find(params[:id])
   end
 
@@ -154,6 +154,17 @@ class CharitiesController < ApplicationController
       redirect_to email_settings_charity_path
     else
      render 'email_settings'
+    end
+  end
+
+
+  def data
+    @charity = Charity.find(params[:id])
+    @records = @charity.events.sort_by {|x| [x.start_time, x.end_time] }
+    respond_to do |format|
+      format.html
+      format.csv { send_data @records.to_csv }
+      format.xls # { send_data @records.to_csv(col_sep: "\t") }
     end
   end
 

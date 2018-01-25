@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Date</Data></Cell>
+        <Cell><Data ss:Type="String">Day</Data></Cell>
+        <Cell><Data ss:Type="String">Time</Data></Cell>
+        <Cell><Data ss:Type="String">Charity</Data></Cell>
+        <Cell><Data ss:Type="String">Title</Data></Cell>
+        <Cell><Data ss:Type="String">Event Type (Volunteer, General, Fundraiser)</Data></Cell>
+        <Cell><Data ss:Type="String">Description</Data></Cell>
+        <Cell><Data ss:Type="String">Location</Data></Cell>
+        <Cell><Data ss:Type="String">RSVPs</Data></Cell>
+        <Cell><Data ss:Type="String">Attendee Names</Data></Cell>
+        <% if is_superadmin? %>
+          <Cell><Data ss:Type="String">Attendee Emails</Data></Cell>
+        <% end %>
+        
+      </Row>
+    <% @records.each do |event| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= event.start_time.strftime('%B %-d, %Y')%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.start_time.strftime('%A') %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.start_time.strftime('%-I:%M %p')%> - <%=event.end_time.strftime('%-I:%M %p')%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.charity.name%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.title%></Data></Cell>
+        <% if event.e_type.blank? %>
+          <Cell><Data ss:Type="String">v</Data></Cell>
+        <% else %>
+          <Cell><Data ss:Type="String"><%= event.e_type%></Data></Cell>
+        <%end%>
+        <Cell><Data ss:Type="String"><%= strip_tags(event.description)%></Data></Cell>
+          <% if event.zip_code.blank? %>
+            <% if event.location.present? %>
+                  <Cell><Data ss:Type="String"><%= event.location %></Data></Cell>
+            <% end %>
+          <% else %>
+            <Cell><Data ss:Type="String"><%= event.location %> <%= event.address_line_1 %> <%=event.address_line_2 %> <%=event.zip_code.to_region%> <%=event.zip_code %></Data></Cell>
+          <%end%>
+        <Cell><Data ss:Type="Number"><%= event.attendances.count%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.philanthropists.map{|user| user.name}.join(" , " )%></Data></Cell>
+        <% if is_superadmin? %>
+          <Cell><Data ss:Type="String"><%= event.philanthropists.map{|user| user.email}.join(" , " )%></Data></Cell>
+        <% end %>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

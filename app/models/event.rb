@@ -94,8 +94,8 @@ class Event < ActiveRecord::Base
 #this is for the one-day event reminder
   def self.one_day_reminder
     Event.all.each do |event|
-      if event.philanthropists.any? && (Time.now - 4.hours) <= event.start_time
-        if (event.start_time - Time.now + 4.hours)/86400 < 2 && (event.start_time - Time.now + 4.hours)/86400 >= 1 #(Time.now - 4.hours - event.start_time)/1.day > 1
+      if event.philanthropists.any? && (Time.now - 5.hours) <= event.start_time
+        if (event.start_time - Time.now + 5.hours)/86400 < 2 && (event.start_time - Time.now + 5.hours)/86400 >= 1 #(Time.now - 5.hours - event.start_time)/1.day > 1
           UserMailer.event_one_day_reminder_email(event).deliver
         end
       end
@@ -107,13 +107,26 @@ class Event < ActiveRecord::Base
 #this is for the one-day event reminder for charities
   def self.one_day_reminder_org
     Event.all.each do |event|
-      if (Time.now - 4.hours) <= event.start_time
-        if (event.start_time - Time.now + 4.hours)/86400 < 2 && (event.start_time - Time.now + 4.hours)/86400 >= 1 
+      if (Time.now - 5.hours) <= event.start_time
+        if (event.start_time - Time.now + 5.hours)/86400 < 2 && (event.start_time - Time.now + 5.hours)/86400 >= 1 
           UserMailer.event_one_day_reminder_org_email(event).deliver
         end
       end
     end
   end
+
+
+
+#method is for csv & excel interactions
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |event|
+        csv << event.attributes.values_at(*column_names)
+      end
+    end
+  end
+
 
 
 

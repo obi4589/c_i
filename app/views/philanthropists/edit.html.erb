@@ -29,8 +29,9 @@
        <div id="page_width2">
             <!-- beginning of control panel -->
             <div class="control_panel">
-                <%= link_to "Edit Profile", edit_philanthropist_path(current_user), class: "control_panel_link", id: "chosen" %>
+                <%= link_to "Edit Profile", edit_philanthropist_path(current_user), class: "control_panel_link" , id: "chosen" %>
                 <%= link_to "Email Settings", email_settings_philanthropist_path(current_user), class: "control_panel_link" %>
+                <%= link_to "Data", data_philanthropist_path(current_user), class: "control_panel_link"%>
                 <%= link_to "Change Password", change_password_philanthropist_path(current_user), class: "control_panel_link" %>
             </div>
             <!-- end of control panel section -->
