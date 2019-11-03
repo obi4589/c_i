@@ -53,7 +53,7 @@
 
 
 		<!-- LOGIC FOR GO/GOING/EVENT-FULL/EVENT-ENDED BUTTON -->
-    <% if (Time.now - 4.hours) <= @event.start_time %>   
+    <% if (Time.now - 5.hours) <= @event.start_time %>   
       <% if is_philanthropist? %> 
         <% if @event.attend_limit.blank?%>
           <div id = "attend_form">
@@ -100,7 +100,7 @@
 
       <div class="going_header">
           <ul>
-            <% if (Time.now - 4.hours) <= @event.start_time %>
+            <% if (Time.now - 5.hours) <= @event.start_time %>
               <li><%= link_to "Going (<span id = 'num_attendees'>#{@event.philanthropists.count}</span>)".html_safe, attendees_event_path(@event) %></li>
             <% else %>
               <li><%= link_to "Went (<span id = 'num_attendees'>#{@event.philanthropists.count}</span>)".html_safe, attendees_event_path(@event) %></li>
