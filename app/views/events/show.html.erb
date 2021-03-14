@@ -59,7 +59,7 @@
 
 	<% if signed_in? %>
 		<!-- LOGIC FOR GO/GOING/EVENT-FULL/EVENT-ENDED BUTTON -->
-		<% if (Time.now - 5.hours) <= @event.start_time %>	
+		<% if (Time.now - 4.hours) <= @event.start_time %>	
 			<% if is_philanthropist? %>	
 				<% if @event.attend_limit.blank?%>
 					<div id = "attend_form">
@@ -102,7 +102,7 @@
 		<% end %>
 		<!-- END OF LOGIC FOR GO/GOING/EVENT-FULL/EVENT-ENDED BUTTON -->
 	<% else %>
-		<% if (Time.now - 5.hours) <= @event.start_time %>
+		<% if (Time.now - 4.hours) <= @event.start_time %>
 			<form id="event_buttons_3">
 				<%= link_to "<button type='button' class='full_button' style='background-color: #fff; border: 1px solid #9ecaed; box-shadow: 0 0 10px #9ecaed; color: #2c3e50;'>Go</button>".html_safe, go_events_path %>
 			</form>
@@ -115,7 +115,7 @@
 
 
 	<!-- BEGGINING OF SPOTS LEFT SECTION -->
-	<% if  (Time.now - 5.hours) <= @event.start_time && @event.attend_limit.present? && @event.attend_limit - @event.philanthropists.count >= 0 %>
+	<% if  (Time.now - 4.hours) <= @event.start_time && @event.attend_limit.present? && @event.attend_limit - @event.philanthropists.count >= 0 %>
 		<form id="spots_left_frame">
 			<% if @event.attend_limit - @event.philanthropists.count == 1%>
 				<button type="button" class="spots_left_button" title= "Spots Left">Spot (<span id="spots_left_ajax"><%=@event.attend_limit - @event.philanthropists.count %></span>)</button>
@@ -197,7 +197,7 @@
 		<div id="going_map_section">
 			<div class="going_header">
 				<ul>
-					<% if (Time.now - 5.hours) <= @event.start_time %>
+					<% if (Time.now - 4.hours) <= @event.start_time %>
 					<li><%= link_to "Going (<span id = 'num_attendees'>#{@event.philanthropists.count}</span>)".html_safe, attendees_event_path(@event) %></li>
 					<% else %>
 					<li><%= link_to "Went (<span id = 'num_attendees'>#{@event.philanthropists.count}</span>)".html_safe, attendees_event_path(@event) %></li>
