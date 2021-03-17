@@ -57,7 +57,7 @@ gem 'public_activity', '1.4.2'
 gem 'haversine', '0.3.0'
 
 #gems for image upload
-gem 'paperclip', '4.2.0'
+gem 'paperclip', '4.3.7'
 gem 'aws-sdk', '1.59.1'
 gem 'aws', '2.10.2'
 
